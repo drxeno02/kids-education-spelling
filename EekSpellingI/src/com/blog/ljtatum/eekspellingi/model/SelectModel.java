@@ -1,13 +1,12 @@
 package com.blog.ljtatum.eekspellingi.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SelectModel {
 	
 	private String title;
 	private String message;
-	private static List<SelectModel> arrySelect = new ArrayList<SelectModel>();
+	private static ArrayList<SelectModel> arrySelect = new ArrayList<SelectModel>();
 	
 	public String getTitle() {
 		return title;
@@ -25,11 +24,11 @@ public class SelectModel {
 		this.message = message;
 	}
 	
-	public static List<SelectModel> getArrySelect() {
+	public static ArrayList<SelectModel> getArrySelect() {
 		return arrySelect;
 	}
 	
-	public static void setArrySelect(List<SelectModel> arry) {
+	public static void setArrySelect(ArrayList<SelectModel> arry) {
 		arrySelect = arry;
 	}
 	

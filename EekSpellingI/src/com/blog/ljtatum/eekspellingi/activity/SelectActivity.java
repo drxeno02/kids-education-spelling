@@ -1,8 +1,7 @@
 package com.blog.ljtatum.eekspellingi.activity;
 
 
-import java.util.List;
-import java.util.Timer;
+import java.util.ArrayList;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -71,11 +70,11 @@ public class SelectActivity extends BaseActivity {
 			}
 		});
 
-		List<SelectModel> arrySelect = populateSelectModel();
+		ArrayList<SelectModel> arrySelect = populateSelectModel();
 		
 		// set up adapter
 		selectAdapter = new SelectAdapter(mContext, arrySelect);
-		lv.setAdapter(selectAdapter);
+		lv.setAdapter(selectAdapter);	
 		lv.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -87,7 +86,7 @@ public class SelectActivity extends BaseActivity {
 		});		
 	}
 	
-	private List<SelectModel> populateSelectModel() {
+	private ArrayList<SelectModel> populateSelectModel() {
 		
 		SelectModel model = null;
 		for (int i = 0; i < 12; i++) {
@@ -107,7 +106,7 @@ public class SelectActivity extends BaseActivity {
 			mTitle = "Spelling Tiles";
 		} else if (level == 2 || level == 6 || level == 10) {
 			mTitle = "Word Maze";
-		} else if (level == 3 || level == 7 || level == 12) {
+		} else if (level == 3 || level == 7 || level == 11) {
 			mTitle = "Picture Drop";
 		}
 		return mTitle;
@@ -121,7 +120,7 @@ public class SelectActivity extends BaseActivity {
 			mMessage = String.valueOf(level);
 		} else if (level == 2 || level == 6 || level == 10) {
 			mMessage = String.valueOf(level);
-		} else if (level == 3 || level == 7 || level == 12) {
+		} else if (level == 3 || level == 7 || level == 11) {
 			mMessage = String.valueOf(level);
 		}	
 		return mMessage;

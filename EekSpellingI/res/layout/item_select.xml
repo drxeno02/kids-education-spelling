@@ -11,13 +11,13 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/custom_layout_a"
         android:orientation="vertical"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingTop="10dp" 
-        android:layout_marginBottom="20dp">
+        android:paddingTop="10dp" >
 
         <TextView
             android:id="@+id/tv_title"
@@ -41,7 +41,9 @@
             <ImageView
                 android:id="@+id/iv_left_bubble"
                 android:layout_width="fill_parent"
-                android:layout_height="110dp"
+                android:layout_height="100dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/ph_speech_bubble_left" />
 
@@ -57,16 +59,15 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/font_size_20"
                 android:textStyle="bold" />
-            
+
             <ImageView
                 android:id="@+id/iv_left_char"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="66dp"
+                android:layout_height="66dp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/iv_left_bubble"
                 android:scaleType="fitXY"
                 android:src="@drawable/b_character_smile" />
-
         </RelativeLayout>
 
         <!-- RTL bubble -->
@@ -80,7 +81,9 @@
             <ImageView
                 android:id="@+id/iv_right_bubble"
                 android:layout_width="fill_parent"
-                android:layout_height="110dp"
+                android:layout_height="100dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/ph_speech_bubble_right" />
 
@@ -96,13 +99,13 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/font_size_20"
                 android:textStyle="bold" />
-            
+
             <ImageView
                 android:id="@+id/iv_right_char"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_below="@id/iv_right_bubble"
+                android:layout_width="66dp"
+                android:layout_height="66dp"
                 android:layout_alignParentRight="true"
+                android:layout_below="@id/iv_right_bubble"
                 android:scaleType="fitXY"
                 android:src="@drawable/b_character_smile" />
         </RelativeLayout>

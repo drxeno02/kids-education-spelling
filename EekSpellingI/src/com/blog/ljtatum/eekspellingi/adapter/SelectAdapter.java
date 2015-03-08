@@ -1,6 +1,6 @@
 package com.blog.ljtatum.eekspellingi.adapter;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,9 +16,9 @@ import com.blog.ljtatum.eekspellingi.model.SelectModel;
 public class SelectAdapter extends BaseAdapter {
 	
 	private Context mContext;
-	private List<SelectModel> mArrySelect;
+	private ArrayList<SelectModel> mArrySelect;
 	
-	public SelectAdapter(Context context, List<SelectModel> arrySelect) {
+	public SelectAdapter(Context context, ArrayList<SelectModel> arrySelect) {
 		this.mContext = context;
 		this.mArrySelect = arrySelect;
 	}
@@ -58,25 +58,32 @@ public class SelectAdapter extends BaseAdapter {
 			holder.tvTitle = (TextView) view.findViewById(R.id.tv_title);	
 			holder.tvLeftBubble = (TextView) view.findViewById(R.id.tv_left_bubble);
 			holder.tvRightBubble = (TextView) view.findViewById(R.id.tv_right_bubble);
-			holder.tvTitle.setText(mArrySelect.get(position).getTitle());
-			
-			// set visibility gone on views
-			if (position % 2 == 0) {
-				holder.rlLeft.setVisibility(View.GONE);
-				holder.tvRightBubble.setText(mArrySelect.get(position).getMessage());
-			} else {
-				holder.rlRight.setVisibility(View.GONE);			
-				holder.tvLeftBubble.setText(mArrySelect.get(position).getMessage());
-			}
-			
+		
 			view.setTag(holder);
 		} else {
 			holder = (ViewHolder) view.getTag();
 		}
+
+		holder.tvTitle.setText(mArrySelect.get(position).getTitle());
+		
+		// set visibility gone on views
+		if (position % 2 == 0) {
+			holder.rlLeft.setVisibility(View.GONE);
+			if (holder.rlRight.getVisibility() == View.GONE) {
+				holder.rlRight.setVisibility(View.VISIBLE);
+			}
+			holder.tvRightBubble.setText(mArrySelect.get(position).getMessage());
+		} else {
+			holder.rlRight.setVisibility(View.GONE);
+			if (holder.rlLeft.getVisibility() == View.GONE) {
+				holder.rlLeft.setVisibility(View.VISIBLE);
+			}
+			holder.tvLeftBubble.setText(mArrySelect.get(position).getMessage());
+		}
 		return view;
 	}
 	
-	static class ViewHolder {
+	private static class ViewHolder {
 		private TextView tvLeftBubble, tvRightBubble, tvTitle;
 		private RelativeLayout rlLeft, rlRight;
 	}
