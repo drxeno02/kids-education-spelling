@@ -45,7 +45,8 @@
             <ImageView
                 android:id="@+id/iv_char"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" />
+                android:layout_height="fill_parent" 
+                android:scaleType="fitXY" />
         </LinearLayout>
 
         <LinearLayout
