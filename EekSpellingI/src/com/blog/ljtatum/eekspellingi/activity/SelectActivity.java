@@ -1,26 +1,10 @@
 package com.blog.ljtatum.eekspellingi.activity;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 
-import com.blog.ljtatum.eekspellingi.R;
-import com.blog.ljtatum.eekspellingi.adapter.SelectAdapter;
-import com.blog.ljtatum.eekspellingi.constants.Constants;
-import com.blog.ljtatum.eekspellingi.model.SelectModel;
-import com.blog.ljtatum.eekspellingi.sharedpref.SharedPref;
-import com.blog.ljtatum.eekspellingi.util.Config;
-import com.blog.ljtatum.eekspellingi.util.MusicUtils;
-import com.blog.ljtatum.eekspellingi.util.ShareAppUtil;
-import com.blog.ljtatum.eekspellingi.util.Utils;
-
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +14,15 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
+
+import com.blog.ljtatum.eekspellingi.R;
+import com.blog.ljtatum.eekspellingi.adapter.SelectAdapter;
+import com.blog.ljtatum.eekspellingi.constants.Constants;
+import com.blog.ljtatum.eekspellingi.model.SelectModel;
+import com.blog.ljtatum.eekspellingi.sharedpref.SharedPref;
+import com.blog.ljtatum.eekspellingi.util.MusicUtils;
+import com.blog.ljtatum.eekspellingi.util.ShareAppUtil;
+import com.blog.ljtatum.eekspellingi.util.Utils;
 
 public class SelectActivity extends BaseActivity {
 	private static final String TAG = SelectActivity.class.getSimpleName();
@@ -41,8 +34,6 @@ public class SelectActivity extends BaseActivity {
 	private SelectAdapter selectAdapter;
 	private ImageView ivBack, ivBanner;
 	private ListView lv;
-	
-	private static Timer mTimerBanner;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -103,9 +94,9 @@ public class SelectActivity extends BaseActivity {
 			model = new SelectModel();
 			model.setTitle(generateTitle(i));
 			model.setMessage(generateMessage(i));
-			model.addArrySelect(model);		
+			SelectModel.addArrySelect(model);		
 		}
-		return model.getArrySelect();
+		return SelectModel.getArrySelect();
 	}
 	
 	private String generateTitle(int level) {

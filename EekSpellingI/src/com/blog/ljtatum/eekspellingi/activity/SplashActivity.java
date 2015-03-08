@@ -1,17 +1,15 @@
 package com.blog.ljtatum.eekspellingi.activity;
 
-import com.blog.ljtatum.eekspellingi.R;
-import com.blog.ljtatum.eekspellingi.anim.Shimmer;
-import com.blog.ljtatum.eekspellingi.anim.ShimmerTextView;
-
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 
-public class SplashActivity extends Activity {
+import com.blog.ljtatum.eekspellingi.R;
+import com.blog.ljtatum.eekspellingi.anim.Shimmer;
+import com.blog.ljtatum.eekspellingi.anim.ShimmerTextView;
+
+public class SplashActivity extends BaseActivity {
 	private final int SPLASH_TIMER = 3000;
 
 	private ShimmerTextView tv3;
@@ -39,8 +37,7 @@ public class SplashActivity extends Activity {
 		new Handler().postDelayed(new Runnable() {		
 			@Override
 			public void run() {
-				Intent i = new Intent(SplashActivity.this, MainActivity.class);
-				startActivity(i);
+				goToActivity(SplashActivity.this, MainActivity.class);
 				finish();				
 			}
 		}, SPLASH_TIMER);
