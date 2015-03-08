@@ -1,0 +1,21 @@
+<resources>
+
+    <!-- application labels -->
+    <string name="app_name">Eek! Spelling I</string>
+    <string name="app_name_label">Eek! Spelling</string>
+    <string name="txt_meta">[meta]</string>
+    <string name="txt_select">Lets Learn!</string>
+    <string name="txt_by">By:</string>
+    <string name="txt_author">Jordan Mann &amp; Leonard Tatum </string>
+    <string name="txt_dialog_wait_please">Please wait&#8230;</string>
+    <string name="btn_learn">Learn</string>
+    <string name="btn_rewards">Rewards</string>
+    <string name="btn_extras">Extras</string>
+    
+    <!-- Device Menu Related Options -->
+    <string name="settings_options">More Options</string>
+    <string name="settings_share">Share App</string> 
+    <string name="action_settings">Settings</string> 
+
+    
+</resources>

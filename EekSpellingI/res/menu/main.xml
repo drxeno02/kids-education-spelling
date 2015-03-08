@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+	<item 
+	    android:id="@+id/settings" 
+	    android:title="@string/settings_options" >
+        <menu>
+            <item android:id="@+id/share" android:title="@string/settings_share" />
+        </menu>
+    </item>
+</menu>

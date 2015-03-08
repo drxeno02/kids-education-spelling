@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Color listing of standard color shades -->
+    <color name="transparent">#00000000</color>
+    <color name="black_overlay1">#CC000000</color> <!-- ~80% -->
+    <color name="black_overlay2">#33000000</color> <!-- ~20% -->
+    <color name="black_overlay3">#66000000</color> <!-- ~40% -->
+    <color name="white_overlay1">#CCffffff</color> <!-- ~80% -->
+    <color name="white_overlay2">#33ffffff</color> <!-- ~20% -->
+    <color name="white_overlay3">#19ffffff</color> <!-- ~10% -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="grey_normal">#696969</color>
+    <color name="grey_light">#CCCCCC</color>
+    <color name="grey_dark">#888888</color>
+    <color name="blue_normal">#0000FF</color>
+    <color name="blue_light">#87ce</color>
+    <color name="blue_dark">#1E90FF</color>
+    <color name="green_normal">#008000</color>
+    <color name="green_light">#ADFF2F</color>
+    <color name="green_dark">#228B22</color>
+    <color name="red_normal">#FF0000</color>
+    <color name="red_light">#F08080</color>
+    <color name="red_dark">#CC0000</color>
+    <color name="brown_normal">#7a5230</color>
+    <color name="brown_light">#B67C3D</color>
+    <color name="brown_dark">#5b3d24</color>
+    <color name="orange_normal">#ffa500</color>
+    <color name="orange_light">#ffb732</color>
+    <color name="orange_dark">#e59400</color>
+    <color name="yellow_normal">#FFFB00</color>
+    <color name="yellow_light">#F0EE86</color>
+    <color name="yellow_dark">#DBD940</color>
+    <color name="purple_normal">#912CEE</color>
+    <color name="purple_light">#BF5FFF</color>
+    <color name="purple_dark">#660198</color>
+    <color name="pink_normal">#ff69b4</color>
+    <color name="pink_light">#e55ea2</color>
+    <color name="pink_dark">#cc5490</color>    
+
+    <!-- Additional color shades -->
+    <color name="grey_shade">#6E6E6E</color>
+    <color name="blue_shade">#CAE1FF</color>
+    <color name="green_shade">#88D66B</color>
+    <color name="red_shade">#FF003C</color>
+    <color name="brown_shade">#A35200</color>
+    <color name="orange_shade">#FFC14D</color>
+    <color name="yellow_shade">#BDA400</color>
+    <color name="purple_shade">#8A2BE2</color>
+    <color name="pink_shade">#ff96ca</color> 
+
+</resources>
