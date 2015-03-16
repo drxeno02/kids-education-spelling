@@ -22,7 +22,7 @@ public class SplashActivity extends BaseActivity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);		
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.splash_activity);	
+		setContentView(R.layout.activity_splash);	
 		getIds();
 	}
 	
@@ -37,16 +37,10 @@ public class SplashActivity extends BaseActivity {
 		new Handler().postDelayed(new Runnable() {		
 			@Override
 			public void run() {
-				goToActivity(SplashActivity.this, MainActivity.class);
+				goToActivity(SplashActivity.this, MainActivity.class, -1);
 				finish();				
 			}
 		}, SPLASH_TIMER);
 	}
-	
-	@Override
-	public void onBackPressed() {
-		// TODO Auto-generated method stub
-	}
-	
 }
 	

@@ -5,7 +5,11 @@ public class Constants {
 	// debuggable mode
 	public static final boolean DEBUG = true;
 	
-	// shared prefs
+	// constants
+	public static final String LEVEL_SELECTED = "levelSelected";
+	public static final String LEVEL_COUNT = "levelCount";
+	
+	// shared pref constants
 	public static final String PREF_FILE_NAME = "prefFileName";
 	public static final String PREF_MUSIC = "prefMusic";
 	public static final String LV_UNLOCKED = "lvUnlocked";

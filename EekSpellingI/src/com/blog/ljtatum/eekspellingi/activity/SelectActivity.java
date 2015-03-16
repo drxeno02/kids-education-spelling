@@ -17,6 +17,7 @@ import android.widget.ListView;
 import com.blog.ljtatum.eekspellingi.R;
 import com.blog.ljtatum.eekspellingi.adapter.SelectAdapter;
 import com.blog.ljtatum.eekspellingi.constants.Constants;
+import com.blog.ljtatum.eekspellingi.logger.Logger;
 import com.blog.ljtatum.eekspellingi.model.SelectModel;
 import com.blog.ljtatum.eekspellingi.sharedpref.SharedPref;
 import com.blog.ljtatum.eekspellingi.util.MusicUtils;
@@ -24,15 +25,15 @@ import com.blog.ljtatum.eekspellingi.util.ShareAppUtil;
 import com.blog.ljtatum.eekspellingi.util.Utils;
 
 public class SelectActivity extends BaseActivity {
-	private static final String TAG = SelectActivity.class.getSimpleName();
-		
-	private Context mContext;
-	
+	private final static String TAG = SelectActivity.class.getSimpleName();
+
+	private Context mContext;	
+	private ImageView ivBack, ivBanner;
+	private ListView lv;
+
 	private ShareAppUtil shareApp;
 	private SharedPref sharedPref;
 	private SelectAdapter selectAdapter;
-	private ImageView ivBack, ivBanner;
-	private ListView lv;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class SelectActivity extends BaseActivity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.select_activity);	
+		setContentView(R.layout.activity_select);	
 		getIds();
 	}
 	
@@ -80,10 +81,27 @@ public class SelectActivity extends BaseActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
+				if (position == 0 || position == 4 || position == 8) {
+					Logger.i(TAG, "launching LetterTree :: pos " + position);
+					goToActivity(mContext, LetterTreeActivity.class, position);
+				} else if (position == 1 || position == 5 || position == 9) {
+					Logger.i(TAG, "launching SpellingTile :: pos " + position);
+					goToActivity(mContext, SpellingTileActivity.class, position);
+				} else if (position == 2 || position == 6 || position == 10) {
+					Logger.i(TAG, "launching WordMaze :: pos " + position);
+					goToActivity(mContext, WordMazeActivity.class, position);
+				} else if (position == 3 || position == 7 || position == 11) {
+					Logger.i(TAG, "launching PictureDrop :: pos " + position);
+					goToActivity(mContext, PictureDropActivity.class, position);
+				}
 			}		
 		});		
+	}
+	
+	private void startAnimations() {
+		startButtonAnim(ivBack);
+		startBannerAnim(mContext, ivBanner);
 	}
 	
 	private ArrayList<SelectModel> populateSelectModel() {
@@ -101,13 +119,13 @@ public class SelectActivity extends BaseActivity {
 	private String generateTitle(int level) {
 		String mTitle = "";		
 		if (level == 0 || level == 4 || level == 8) {
-			mTitle = "Letter Tree";
+			mTitle = getResources().getString(R.string.txt_letter_tree);
 		} else if (level == 1 || level == 5 || level == 9) {
-			mTitle = "Spelling Tiles";
+			mTitle = getResources().getString(R.string.txt_spelling_tile);
 		} else if (level == 2 || level == 6 || level == 10) {
-			mTitle = "Word Maze";
+			mTitle = getResources().getString(R.string.txt_word_maze);
 		} else if (level == 3 || level == 7 || level == 11) {
-			mTitle = "Picture Drop";
+			mTitle = getResources().getString(R.string.txt_picture_drop);
 		}
 		return mTitle;
 	}
@@ -131,7 +149,7 @@ public class SelectActivity extends BaseActivity {
 		// Handle item selection
 		switch (item.getItemId()) {
 		case R.id.share:
-			shareApp.shareIntent(SelectActivity.this);
+			shareApp.shareIntent(mContext);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -142,7 +160,7 @@ public class SelectActivity extends BaseActivity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		startBannerAnim(mContext, ivBanner);
+		startAnimations();
 		if (sharedPref.getBooleanPref(Constants.PREF_MUSIC, true)) {
 			MusicUtils.start(mContext, 1);
 		}
@@ -166,8 +184,5 @@ public class SelectActivity extends BaseActivity {
 		// TODO Auto-generated method stub
 		super.onBackPressed();
 	}
-	
-	
-	
 
 }
