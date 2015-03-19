@@ -3,9 +3,13 @@ package com.blog.ljtatum.eekspellingi.util;
 import java.util.Random;
 
 import com.blog.ljtatum.eekspellingi.R;
+import com.blog.ljtatum.eekspellingi.anim.ShimmerTextView;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class Utils {
@@ -47,7 +51,7 @@ public class Utils {
 	 * @param objectToCheck
 	 * @return boolean
 	 */
-	public static <T> boolean CheckIfNull(T objectToCheck) {
+	public static <T> boolean checkIfNull(T objectToCheck) {
 		return objectToCheck == null ? true : false;
 	}
 

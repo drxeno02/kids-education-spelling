@@ -46,10 +46,12 @@
         android:weightSum="1" >
 
         <LinearLayout
+            android:id="@+id/ll_word_bank"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="0.8"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:visibility="gone" >
 
             <TextView
                 android:layout_width="fill_parent"
@@ -59,7 +61,7 @@
                 android:text="@string/txt_bank"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
-                android:textSize="@dimen/font_size_18" />
+                android:textSize="@dimen/font_size_24" />
 
             <View
                 android:layout_width="fill_parent"
@@ -89,81 +91,89 @@
                         android:id="@+id/tv1"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
                         android:layout_weight="0.1"
                         android:gravity="center_horizontal"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_20" />
+                        android:textSize="@dimen/font_size_34" />
 
                     <TextView
                         android:id="@+id/tv2"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
                         android:layout_weight="0.1"
                         android:gravity="center_horizontal"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_20" />
+                        android:textSize="@dimen/font_size_34" />
 
                     <TextView
                         android:id="@+id/tv3"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
                         android:layout_weight="0.1"
                         android:gravity="center_horizontal"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_20" />
+                        android:textSize="@dimen/font_size_34" />
 
                     <TextView
                         android:id="@+id/tv4"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
                         android:layout_weight="0.1"
                         android:gravity="center_horizontal"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_20" />
+                        android:textSize="@dimen/font_size_34" />
 
                     <TextView
                         android:id="@+id/tv5"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
                         android:layout_weight="0.1"
                         android:gravity="center_horizontal"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_20" />
+                        android:textSize="@dimen/font_size_30" />
 
                     <TextView
                         android:id="@+id/tv6"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
                         android:layout_weight="0.1"
                         android:gravity="center_horizontal"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_20" />
+                        android:textSize="@dimen/font_size_34" />
 
                     <TextView
                         android:id="@+id/tv7"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
                         android:layout_weight="0.1"
                         android:gravity="center_horizontal"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_20" />
+                        android:textSize="@dimen/font_size_34" />
 
                     <TextView
                         android:id="@+id/tv8"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
                         android:layout_weight="0.1"
                         android:gravity="center_horizontal"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_20" />
+                        android:textSize="@dimen/font_size_34" />
 
                     <TextView
                         android:id="@+id/tv9"
@@ -173,7 +183,7 @@
                         android:gravity="center_horizontal"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_20" />
+                        android:textSize="@dimen/font_size_34" />
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>
@@ -311,6 +321,7 @@
                 android:weightSum="0.9" >
 
                 <View
+                    android:id="@+id/v1"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_marginLeft="4dp"
@@ -319,6 +330,7 @@
                     android:visibility="gone" />
 
                 <View
+                    android:id="@+id/v2"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_marginLeft="4dp"
@@ -327,6 +339,7 @@
                     android:visibility="gone" />
 
                 <View
+                    android:id="@+id/v3"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_marginLeft="4dp"
@@ -335,6 +348,7 @@
                     android:visibility="gone" />
 
                 <View
+                    android:id="@+id/v4"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_marginLeft="4dp"
@@ -343,6 +357,7 @@
                     android:visibility="gone" />
 
                 <View
+                    android:id="@+id/v5"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_marginLeft="4dp"
@@ -351,6 +366,7 @@
                     android:visibility="gone" />
 
                 <View
+                    android:id="@+id/v6"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_marginLeft="4dp"
@@ -359,6 +375,7 @@
                     android:visibility="gone" />
 
                 <View
+                    android:id="@+id/v7"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_marginLeft="4dp"
@@ -367,6 +384,7 @@
                     android:visibility="gone" />
 
                 <View
+                    android:id="@+id/v8"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_marginLeft="4dp"
@@ -375,6 +393,7 @@
                     android:visibility="gone" />
 
                 <View
+                    android:id="@+id/v9"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_marginLeft="4dp"

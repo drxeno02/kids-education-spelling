@@ -1,6 +1,7 @@
 package com.blog.ljtatum.eekspellingi.activity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -179,6 +180,7 @@ public class BaseActivity extends Activity {
 	protected List<String> getWordBank(String[] wordBank, int level) {
 		List<String> mWordBank = new ArrayList<String>();
 
+		// populate word bank based on length
 		for (int i = 0; i < wordBank.length; i++) {
 			String metaStr = wordBank[i].toString().trim();
 			if (level >= 0 && level <= 3) {
@@ -196,8 +198,10 @@ public class BaseActivity extends Activity {
 			}	
 		}
 
-		for (int i = 0; i < mWordBank.size(); i++) {
-			Logger.i(TAG, mWordBank.get(i).toString());
+		if (Constants.DEBUG) {
+			for (int i = 0; i < mWordBank.size(); i++) {
+				Logger.i(TAG, mWordBank.get(i).toString());
+			}
 		}
 		
 		return mWordBank;		
