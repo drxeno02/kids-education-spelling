@@ -140,7 +140,7 @@
                         android:gravity="center_horizontal"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_30" />
+                        android:textSize="@dimen/font_size_34" />
 
                     <TextView
                         android:id="@+id/tv6"

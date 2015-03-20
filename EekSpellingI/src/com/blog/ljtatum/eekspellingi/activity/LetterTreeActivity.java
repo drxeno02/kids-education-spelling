@@ -208,10 +208,26 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	private char[] getJumbledWord(String origStr) {
 		StringBuilder builder = new StringBuilder();
 		String alphabet = "abcdefghijklmnopqrstuvwxyz";
-		 
+		Logger.d(TAG, "origStr = " + origStr); 
+		
 		if (mLevel == 0) {
 			for (int i = 0; i <= (8 - origStr.length()); i++) {
-				builder.append(alphabet.charAt(r.nextInt(alphabet.length())));
+
+				char temp = alphabet.charAt(r.nextInt(alphabet.length()));
+				while(origStr.indexOf(temp) != -1) {
+					Logger.i(TAG, "c=" + temp);
+					temp = alphabet.charAt(r.nextInt(alphabet.length()));	
+				}
+				
+//				int n = 0;
+//				for (n = 0; n < origStr.length(); n++) {
+//					while(origStr.indexOf(n, temp) != -1) {
+//						Logger.i(TAG, "c=" + temp);
+//						temp = alphabet.charAt(r.nextInt(alphabet.length()));	
+//						n = 0;
+//					}
+//				}			
+				builder.append(temp);
 			}
 		} else if (mLevel == 4) {
 			for (int i = 0; i <= (10 - origStr.length()); i++) {
