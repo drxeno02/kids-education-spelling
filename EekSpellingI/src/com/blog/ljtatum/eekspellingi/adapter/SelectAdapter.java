@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.blog.ljtatum.eekspellingi.R;
 import com.blog.ljtatum.eekspellingi.model.SelectModel;
+import com.blog.ljtatum.eekspellingi.util.Utils;
 
 public class SelectAdapter extends BaseAdapter {
 	
@@ -47,7 +48,7 @@ public class SelectAdapter extends BaseAdapter {
 		
 		View view = convertView;
 		ViewHolder holder;
-		if (view == null) {
+		if (Utils.checkIfNull(view)) {
 			LayoutInflater inflater = (LayoutInflater) mContext
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			view = inflater.inflate(R.layout.item_select, null);		

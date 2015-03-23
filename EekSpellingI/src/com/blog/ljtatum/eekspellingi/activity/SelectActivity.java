@@ -99,11 +99,18 @@ public class SelectActivity extends BaseActivity {
 		});		
 	}
 	
+	/**
+	 * Method is used to start animations
+	 */
 	private void startAnimations() {
 		startButtonAnim(ivBack);
 		startBannerAnim(mContext, ivBanner);
 	}
 	
+	/**
+	 * Method is used to populate a model class with title and message
+	 * @return arryList of titles and messages
+	 */
 	private ArrayList<SelectModel> populateSelectModel() {
 		
 		SelectModel model = null;
@@ -116,6 +123,11 @@ public class SelectActivity extends BaseActivity {
 		return SelectModel.getArrySelect();
 	}
 	
+	/**
+	 * Method is used to generate title
+	 * @param level
+	 * @return
+	 */
 	private String generateTitle(int level) {
 		String mTitle = "";		
 		if (level == 0 || level == 4 || level == 8) {
@@ -130,6 +142,11 @@ public class SelectActivity extends BaseActivity {
 		return mTitle;
 	}
 	
+	/**
+	 * Method is used to generate message
+	 * @param level
+	 * @return
+	 */
 	private String generateMessage(int level) {
 		String mMessage = "";	
 		if (level == 0 || level == 4 || level == 8) {

@@ -215,100 +215,118 @@
                     android:id="@+id/tv_answer_1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="4dp"
                     android:layout_weight="0.1"
+                    android:gravity="center"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/font_size_20"
+                    android:textSize="@dimen/font_size_28"
                     android:visibility="gone" />
 
                 <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
                     android:id="@+id/tv_answer_2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="4dp"
                     android:layout_weight="0.1"
+                    android:gravity="center"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/font_size_20"
+                    android:textSize="@dimen/font_size_28"
                     android:visibility="gone" />
 
                 <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
                     android:id="@+id/tv_answer_3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="4dp"
                     android:layout_weight="0.1"
+                    android:gravity="center"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/font_size_20"
+                    android:textSize="@dimen/font_size_28"
                     android:visibility="gone" />
 
                 <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
                     android:id="@+id/tv_answer_4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="4dp"
                     android:layout_weight="0.1"
+                    android:gravity="center"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/font_size_20"
+                    android:textSize="@dimen/font_size_28"
                     android:visibility="gone" />
 
                 <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
                     android:id="@+id/tv_answer_5"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="4dp"
                     android:layout_weight="0.1"
+                    android:gravity="center"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/font_size_20"
+                    android:textSize="@dimen/font_size_28"
                     android:visibility="gone" />
 
                 <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
                     android:id="@+id/tv_answer_6"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="4dp"
                     android:layout_weight="0.1"
+                    android:gravity="center"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/font_size_20"
+                    android:textSize="@dimen/font_size_28"
                     android:visibility="gone" />
 
                 <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
                     android:id="@+id/tv_answer_7"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="4dp"
                     android:layout_weight="0.1"
+                    android:gravity="center"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/font_size_20"
+                    android:textSize="@dimen/font_size_28"
                     android:visibility="gone" />
 
                 <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
                     android:id="@+id/tv_answer_8"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="4dp"
                     android:layout_weight="0.1"
+                    android:gravity="center"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/font_size_20"
+                    android:textSize="@dimen/font_size_28"
                     android:visibility="gone" />
 
                 <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
                     android:id="@+id/tv_answer_9"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="4dp"
                     android:layout_marginRight="4dp"
                     android:layout_weight="0.1"
+                    android:gravity="center"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/font_size_20"
+                    android:textSize="@dimen/font_size_28"
                     android:visibility="gone" />
             </LinearLayout>
 

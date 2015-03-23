@@ -74,6 +74,9 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		ivChar.setBackgroundResource(R.drawable.b_character_smile);
 	}
 	
+	/**
+	 * Method is used to start animations
+	 */
 	private void startAnimations() {
 		startButtonAnim(btnLearn);
 		// startViewAnim();
@@ -111,7 +114,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		AlertDialog.Builder dialog = new AlertDialog.Builder(this);
 		dialog.setTitle("Exit");
 		dialog.setMessage("Are you sure you want to exit");
-		dialog.setPositiveButton("Yes?", new DialogInterface.OnClickListener() {
+		dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -120,7 +123,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 			}
 			
 		});
-		dialog.setNegativeButton("No!", new DialogInterface.OnClickListener() {
+		dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {

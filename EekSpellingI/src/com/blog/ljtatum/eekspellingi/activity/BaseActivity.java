@@ -198,7 +198,7 @@ public class BaseActivity extends Activity {
 			}	
 		}
 
-		if (Constants.DEBUG) {
+		if (Constants.DEBUG && Constants.DEBUG_HIGH_VERBOSITY) {
 			for (int i = 0; i < mWordBank.size(); i++) {
 				Logger.i(TAG, mWordBank.get(i).toString());
 			}

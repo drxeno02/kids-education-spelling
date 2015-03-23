@@ -4,6 +4,7 @@ public class Constants {
 
 	// debuggable mode
 	public static final boolean DEBUG = true;
+	public static final boolean DEBUG_HIGH_VERBOSITY = true;
 	
 	// constants
 	public static final String LEVEL_SELECTED = "levelSelected";

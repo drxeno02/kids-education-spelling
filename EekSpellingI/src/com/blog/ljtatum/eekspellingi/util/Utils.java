@@ -2,14 +2,10 @@ package com.blog.ljtatum.eekspellingi.util;
 
 import java.util.Random;
 
-import com.blog.ljtatum.eekspellingi.R;
-import com.blog.ljtatum.eekspellingi.anim.ShimmerTextView;
-
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.blog.ljtatum.eekspellingi.R;
 
 
 public class Utils {
@@ -46,7 +42,7 @@ public class Utils {
 	}
 		
 	/**
-	 * Method can be used to check null value for any object
+	 * Method is used to check null value for any object
 	 * 
 	 * @param objectToCheck
 	 * @return boolean
@@ -55,4 +51,18 @@ public class Utils {
 		return objectToCheck == null ? true : false;
 	}
 
+	/**
+	 * Method is used to remove duplicate characters
+	 * @param origStr
+	 * @return
+	 */
+	public static String removeDuplicates(String origStr) {		
+	    String result = "";
+	    for (int i = 0; i < origStr.length(); i++) {
+	        if(!result.contains(String.valueOf(origStr.charAt(i)))) {
+	            result += String.valueOf(origStr.charAt(i));
+	        } 
+	    } 
+	    return result;
+	} 
 }
