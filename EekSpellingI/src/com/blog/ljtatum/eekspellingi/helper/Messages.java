@@ -9,14 +9,14 @@ import com.blog.ljtatum.eekspellingi.sharedpref.SharedPref;
 
 public class Messages {
 	
-	private String[] metaDesc;
+	private static String[] metaDesc;
 	
 	/**
 	 * Method is used for retrieving description text for SelectActivity blurps
 	 * @param context
 	 * @return
 	 */
-	public String[] getDesc(Context context) {
+	public static String[] getDesc(Context context) {
 		
 		int level = 0;
 		Random r = new Random();
@@ -34,9 +34,7 @@ public class Messages {
 				
 			}
 			
-		}
-		
-		
+		}		
 		return metaDesc;
 	}
 

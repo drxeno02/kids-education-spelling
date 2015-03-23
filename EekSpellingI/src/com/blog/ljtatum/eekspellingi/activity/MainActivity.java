@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,6 +28,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 	
 	private ShareAppUtil shareApp;
 	private SharedPref sharedPref;	
+	
+	private Handler mHandler;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +45,10 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
 	private void getIds() {
 		mContext = MainActivity.this;
+		initTTS(mContext);
 		shareApp = new ShareAppUtil();
 		sharedPref = new SharedPref(mContext, Constants.PREF_FILE_NAME);
+		mHandler = new Handler();
 		ivChar = (ImageView) findViewById(R.id.iv_char);
 		ivBanner = (ImageView) findViewById(R.id.iv_banner);
 		btnLearn = (Button) findViewById(R.id.btn_learn);
@@ -71,7 +76,15 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 			}
 		});
 		
+		// set character image
 		ivChar.setBackgroundResource(R.drawable.b_character_smile);
+
+		// delay before welcome message to allow tts initialization
+		mHandler.postDelayed(new Runnable() {
+            public void run() {          	
+        		speakText("Welcome. . . Lets learn together! Press learn to start");
+            }
+        }, 2000);
 	}
 	
 	/**
@@ -86,6 +99,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+		stopTTS();
+		
 		switch (v.getId()) {
 		case R.id.btn_learn:
 			goToActivity(mContext, SelectActivity.class, -1);
@@ -119,6 +134,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
+				destroyTTS();
+				MusicUtils.release();
 				finish();
 			}
 			
@@ -169,6 +186,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
+		destroyTTS();
+		MusicUtils.release();
 		super.onDestroy();
 	}
 

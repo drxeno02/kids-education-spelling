@@ -94,7 +94,7 @@ public class MusicUtils {
 			
 			try {
 				gameBgm.setLooping(true);
-				gameBgm.setVolume(.5f, .5f);
+				gameBgm.setVolume(.4f, .4f);
 				// gameBgm.seekTo(0);
 				gameBgm.start();
 			} catch (Exception e) {

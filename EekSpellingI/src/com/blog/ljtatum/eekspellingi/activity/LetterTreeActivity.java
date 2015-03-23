@@ -367,6 +367,10 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	}
 
 	private void resetVisibility() {
+		// reset corrent and incorrect trackers
+		mCorrectLetters = 0;
+		mIncorrectLetters = 0;
+		
 		// clear letter views
 		tvAnswer1.setText("");
 		tvAnswer2.setText("");

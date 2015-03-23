@@ -1,8 +1,9 @@
 package com.blog.ljtatum.eekspellingi.activity;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -11,6 +12,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeech.OnInitListener;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
@@ -22,8 +25,12 @@ import com.blog.ljtatum.eekspellingi.logger.Logger;
 import com.blog.ljtatum.eekspellingi.util.Config;
 import com.blog.ljtatum.eekspellingi.util.Utils;
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends Activity implements OnInitListener {
 	private final static String TAG = BaseActivity.class.getSimpleName();
+	
+	private Context mContext;
+	private static TextToSpeech textToSpeech;
+	private static HashMap<String, String> map = new HashMap<String, String>();
 	
 	/**
 	 * Method is used to re-direct to different Activity
@@ -206,4 +213,49 @@ public class BaseActivity extends Activity {
 		
 		return mWordBank;		
 	}
+	
+	/**
+	 * Initialize Text-To-Speech engine
+	 * @param context
+	 */
+	protected void initTTS(Context context) {
+		mContext = context;
+		textToSpeech = new TextToSpeech(context, (OnInitListener) context);
+		textToSpeech.setLanguage(Locale.US);
+		textToSpeech.setPitch(10/10);
+		textToSpeech.setSpeechRate(17/12);
+	}
+	
+	@SuppressWarnings("deprecation")
+	protected static void speakText(String text) {
+		if (textToSpeech.isSpeaking()) {
+			return;
+		} else {
+			textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, map);
+		}
+	}
+	
+	protected void stopTTS() {
+		while (textToSpeech.isSpeaking()) {
+			textToSpeech.stop();
+		}
+	}
+	
+	protected void destroyTTS() {
+		textToSpeech.stop();
+		textToSpeech.shutdown();
+	}
+
+	@Override
+	public void onInit(int status) {
+		// TODO Auto-generated method stub
+		if (status == TextToSpeech.SUCCESS) {
+			map.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "UniqueID");
+
+		} else if (status == TextToSpeech.ERROR) {
+			// initialization of TTS failed so reinitialize new TTS Engine
+			initTTS(mContext);
+		}
+	}
+	
 }
