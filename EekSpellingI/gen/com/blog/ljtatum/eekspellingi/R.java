@@ -9,7 +9,17 @@ package com.blog.ljtatum.eekspellingi;
 
 public final class R {
     public static final class array {
-        public static final int arryWordBank=0x7f050000;
+        public static final int arryWordBankActions=0x7f050002;
+        public static final int arryWordBankAnimals=0x7f050003;
+        public static final int arryWordBankCareer=0x7f050008;
+        public static final int arryWordBankColors=0x7f050005;
+        public static final int arryWordBankDays=0x7f050006;
+        public static final int arryWordBankMath=0x7f050009;
+        public static final int arryWordBankMonths=0x7f050007;
+        public static final int arryWordBankNumbers=0x7f050004;
+        public static final int arryWordBankObj=0x7f050000;
+        public static final int arryWordBankPlaces=0x7f050001;
+        public static final int arryWordBankScience=0x7f05000a;
     }
     public static final class attr {
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
@@ -189,24 +199,63 @@ containing a value of this type.
         public static final int btn_extras=0x7f0b0024;
         public static final int btn_learn=0x7f0b0022;
         public static final int btn_rewards=0x7f0b0023;
-        public static final int dialogProgressBar=0x7f0b002f;
+        public static final int dialogProgressBar=0x7f0b0056;
+        public static final int end1=0x7f0b0031;
+        public static final int end2=0x7f0b0037;
+        public static final int end3=0x7f0b0040;
+        public static final int end4=0x7f0b0049;
+        public static final int iv1=0x7f0b004c;
         public static final int iv_back=0x7f0b0001;
         public static final int iv_banner=0x7f0b0020;
         public static final int iv_char=0x7f0b0021;
-        public static final int iv_left_bubble=0x7f0b0028;
-        public static final int iv_left_char=0x7f0b002a;
-        public static final int iv_right_bubble=0x7f0b002c;
-        public static final int iv_right_char=0x7f0b002e;
+        public static final int iv_left_bubble=0x7f0b004f;
+        public static final int iv_left_char=0x7f0b0051;
+        public static final int iv_right_bubble=0x7f0b0053;
+        public static final int iv_right_char=0x7f0b0055;
         public static final int iv_tree=0x7f0b000c;
+        public static final int ll1=0x7f0b0026;
+        public static final int ll2=0x7f0b002c;
+        public static final int ll3=0x7f0b0032;
+        public static final int ll4=0x7f0b0038;
+        public static final int ll5=0x7f0b0041;
+        public static final int ll_answer=0x7f0b004a;
         public static final int ll_banner=0x7f0b001f;
+        public static final int ll_view=0x7f0b004b;
         public static final int ll_word_bank=0x7f0b0002;
         public static final int lv=0x7f0b0025;
+        public static final int ph1=0x7f0b0027;
+        public static final int ph2=0x7f0b002b;
+        public static final int ph3=0x7f0b002d;
+        public static final int ph4=0x7f0b0033;
+        public static final int ph5=0x7f0b0039;
+        public static final int ph6=0x7f0b0042;
+        public static final int pos1=0x7f0b0028;
+        public static final int pos10=0x7f0b003a;
+        public static final int pos11=0x7f0b003c;
+        public static final int pos12=0x7f0b003e;
+        public static final int pos13=0x7f0b0043;
+        public static final int pos14=0x7f0b0045;
+        public static final int pos15=0x7f0b0047;
+        public static final int pos2=0x7f0b0029;
+        public static final int pos3=0x7f0b002a;
+        public static final int pos4=0x7f0b002e;
+        public static final int pos5=0x7f0b002f;
+        public static final int pos6=0x7f0b0030;
+        public static final int pos7=0x7f0b0034;
+        public static final int pos8=0x7f0b0035;
+        public static final int pos9=0x7f0b0036;
         public static final int rl=0x7f0b0000;
-        public static final int rl_left=0x7f0b0027;
-        public static final int rl_right=0x7f0b002b;
-        public static final int settings=0x7f0b0030;
-        public static final int share=0x7f0b0031;
+        public static final int rl_left=0x7f0b004e;
+        public static final int rl_right=0x7f0b0052;
+        public static final int settings=0x7f0b0057;
+        public static final int share=0x7f0b0058;
         public static final int tv1=0x7f0b0003;
+        public static final int tv10=0x7f0b003b;
+        public static final int tv11=0x7f0b003d;
+        public static final int tv12=0x7f0b003f;
+        public static final int tv13=0x7f0b0044;
+        public static final int tv14=0x7f0b0046;
+        public static final int tv15=0x7f0b0048;
         public static final int tv2=0x7f0b0004;
         public static final int tv3=0x7f0b0005;
         public static final int tv4=0x7f0b0006;
@@ -224,9 +273,9 @@ containing a value of this type.
         public static final int tv_answer_7=0x7f0b0013;
         public static final int tv_answer_8=0x7f0b0014;
         public static final int tv_answer_9=0x7f0b0015;
-        public static final int tv_left_bubble=0x7f0b0029;
-        public static final int tv_right_bubble=0x7f0b002d;
-        public static final int tv_title=0x7f0b0026;
+        public static final int tv_left_bubble=0x7f0b0050;
+        public static final int tv_right_bubble=0x7f0b0054;
+        public static final int tv_title=0x7f0b004d;
         public static final int v1=0x7f0b0016;
         public static final int v2=0x7f0b0017;
         public static final int v3=0x7f0b0018;
@@ -242,8 +291,9 @@ containing a value of this type.
         public static final int activity_main=0x7f030001;
         public static final int activity_select=0x7f030002;
         public static final int activity_splash=0x7f030003;
-        public static final int item_select=0x7f030004;
-        public static final int progress_bar=0x7f030005;
+        public static final int activity_word_maze=0x7f030004;
+        public static final int item_select=0x7f030005;
+        public static final int progress_bar=0x7f030006;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;

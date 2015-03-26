@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Vibrator;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.view.animation.AlphaAnimation;
@@ -27,41 +28,44 @@ import com.blog.ljtatum.eekspellingi.util.Utils;
 
 public class BaseActivity extends Activity implements OnInitListener {
 	private final static String TAG = BaseActivity.class.getSimpleName();
-	
+
 	private Context mContext;
 	private static TextToSpeech textToSpeech;
 	private static HashMap<String, String> map = new HashMap<String, String>();
-	
+
 	/**
 	 * Method is used to re-direct to different Activity
+	 *
 	 * @param context
 	 * @param activity
 	 */
 	protected void goToActivity(Context context, Class<?> activity, int level) {
-		Intent intent = new Intent (context, activity);
+		Intent intent = new Intent(context, activity);
 		if (level >= 0) {
 			intent.putExtra(Constants.LEVEL_SELECTED, level);
 		}
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
-				| Intent.FLAG_ACTIVITY_SINGLE_TOP);
+			| Intent.FLAG_ACTIVITY_SINGLE_TOP);
 		startActivity(intent);
 	}
-	
+
 	/**
 	 * Method is used to re-direct user to the app store
+	 *
 	 * @param pkgName
 	 */
 	protected void goToStore(String pkgName) {
-		try{
+		try {
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.MARKET + pkgName)));
-		} catch(android.content.ActivityNotFoundException anfe){
+		} catch (android.content.ActivityNotFoundException anfe) {
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.GOOGLE_PLAY + pkgName)));
 
 		}
 	}
-	
+
 	/**
 	 * Method is used to set an initial banner
+	 *
 	 * @param context
 	 * @param ivBanner
 	 */
@@ -70,9 +74,10 @@ public class BaseActivity extends Activity implements OnInitListener {
 		Drawable mDrawable = Utils.getBanner(context);
 		ivBanner.setImageDrawable(mDrawable);
 	}
-	
+
 	/**
 	 * Method is used to randomly select a banner
+	 *
 	 * @param context
 	 * @param ivBanner
 	 */
@@ -89,15 +94,15 @@ public class BaseActivity extends Activity implements OnInitListener {
 					public void run() {
 						// TODO Auto-generated method stub
 						Drawable mDrawable = Utils.getBanner(context);
-						ivBanner.setImageDrawable(mDrawable);	
-				
+						ivBanner.setImageDrawable(mDrawable);
+
 					}
 				});
-				
+
 			}
 		}, Config.BANNER_TIMER, Config.BANNER_TIMER);
 	}
-	
+
 	/**
 	 * Method is used to start animation on imageView
 	 */
@@ -113,19 +118,20 @@ public class BaseActivity extends Activity implements OnInitListener {
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
-	
+
 					}
 				});
-				
+
 			}
 		}, Config.VIEW_TIMER, Config.VIEW_TIMER);
-	}	
-	
+	}
+
 	/**
 	 * Method is used to start a repeating glow animation
+	 *
 	 * @param param Button widget
 	 */
-	protected void startButtonAnim(final Button... param) {	
+	protected void startButtonAnim(final Button... param) {
 		Animation animation = new AlphaAnimation(1.0F, 0.4F);
 		animation.setDuration(400);
 		animation.setInterpolator(new LinearInterpolator());
@@ -136,14 +142,15 @@ public class BaseActivity extends Activity implements OnInitListener {
 		for (Button mBtn : param) {
 			mBtn.startAnimation(animation);
 		}
-		
+
 	}
-	
+
 	/**
 	 * Method is used to start a repeating glow animation
+	 *
 	 * @param param Button widget
 	 */
-	protected void startButtonAnim(final ImageView... param) {	
+	protected void startButtonAnim(final ImageView... param) {
 		Animation animation = new AlphaAnimation(1.0F, 0.4F);
 		animation.setDuration(400);
 		animation.setInterpolator(new LinearInterpolator());
@@ -154,11 +161,12 @@ public class BaseActivity extends Activity implements OnInitListener {
 		for (ImageView iv : param) {
 			iv.startAnimation(animation);
 		}
-		
+
 	}
-	
+
 	/**
 	 * Method is used to clear button animation
+	 *
 	 * @param btn
 	 */
 	protected void clearButtonAnim(final Button... param) {
@@ -166,9 +174,10 @@ public class BaseActivity extends Activity implements OnInitListener {
 			mBtn.clearAnimation();
 		}
 	}
-	
+
 	/**
 	 * Method is used to clear button animation
+	 *
 	 * @param btn
 	 */
 	protected void clearButtonAnim(final ImageView... param) {
@@ -178,8 +187,8 @@ public class BaseActivity extends Activity implements OnInitListener {
 	}
 
 	/**
-	 * Method is used to return a list of words use for
-	 * learning activities
+	 * Method is used to return a list of words use for learning activities
+	 *
 	 * @param wordBank
 	 * @param level
 	 * @return
@@ -202,7 +211,7 @@ public class BaseActivity extends Activity implements OnInitListener {
 				if (metaStr.length() >= 6 && metaStr.length() <= 9) {
 					mWordBank.add(metaStr);
 				}
-			}	
+			}
 		}
 
 		if (Constants.DEBUG && Constants.DEBUG_HIGH_VERBOSITY) {
@@ -210,37 +219,48 @@ public class BaseActivity extends Activity implements OnInitListener {
 				Logger.i(TAG, mWordBank.get(i).toString());
 			}
 		}
-		
-		return mWordBank;		
+
+		return mWordBank;
 	}
-	
+
 	/**
 	 * Initialize Text-To-Speech engine
+	 *
 	 * @param context
 	 */
 	protected void initTTS(Context context) {
 		mContext = context;
 		textToSpeech = new TextToSpeech(context, (OnInitListener) context);
 		textToSpeech.setLanguage(Locale.US);
-		textToSpeech.setPitch(10/10);
-		textToSpeech.setSpeechRate(17/12);
+		textToSpeech.setPitch(10 / 10);
+		textToSpeech.setSpeechRate(17 / 12);
 	}
-	
+
+	/**
+	 * Method is used to speak the String using the specified queuing strategy and speech parameters
+	 *
+	 * @param text
+	 */
 	@SuppressWarnings("deprecation")
 	protected static void speakText(String text) {
 		if (textToSpeech.isSpeaking()) {
 			return;
-		} else {
-			textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, map);
 		}
+		textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, map);
 	}
-	
+
+	/**
+	 * Method is used to stop the TTS Engine
+	 */
 	protected void stopTTS() {
 		while (textToSpeech.isSpeaking()) {
 			textToSpeech.stop();
 		}
 	}
-	
+
+	/**
+	 * Method is used to destroy the TTS Engine
+	 */
 	protected void destroyTTS() {
 		textToSpeech.stop();
 		textToSpeech.shutdown();
@@ -254,8 +274,17 @@ public class BaseActivity extends Activity implements OnInitListener {
 
 		} else if (status == TextToSpeech.ERROR) {
 			// initialization of TTS failed so reinitialize new TTS Engine
+			Logger.e(TAG, "Initialization of TTS Engine fail");
 			initTTS(mContext);
 		}
 	}
 	
+	/**
+	 * Method is used to vibrate phone
+	 */
+	protected void vibrate(Context context, int milliseconds) {
+		Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+		v.vibrate(milliseconds);
+	}
+
 }

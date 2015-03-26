@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,15 +22,20 @@ import com.blog.ljtatum.eekspellingi.R;
 import com.blog.ljtatum.eekspellingi.anim.Shimmer;
 import com.blog.ljtatum.eekspellingi.anim.ShimmerTextView;
 import com.blog.ljtatum.eekspellingi.constants.Constants;
+import com.blog.ljtatum.eekspellingi.helper.Messages;
 import com.blog.ljtatum.eekspellingi.logger.Logger;
 import com.blog.ljtatum.eekspellingi.sharedpref.SharedPref;
 import com.blog.ljtatum.eekspellingi.util.MusicUtils;
 import com.blog.ljtatum.eekspellingi.util.ShareAppUtil;
 import com.blog.ljtatum.eekspellingi.util.Utils;
 
-public class LetterTreeActivity extends BaseActivity implements OnClickListener {
-	private final static String TAG = LetterTreeActivity.class.getSimpleName();
+import de.keyboardsurfer.android.widget.crouton.Crouton;
+import de.keyboardsurfer.android.widget.crouton.Style;
 
+public class LetterTreeActivity extends BaseActivity implements OnClickListener {
+	private static final String TAG = LetterTreeActivity.class.getSimpleName();
+
+	private Activity mActivity;
 	private Context mContext;
 	private ImageView ivBack, ivBanner;
 	private View v1, v2, v3, v4, v5, v6, v7, v8, v9;
@@ -37,13 +44,15 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
 	private LinearLayout ll;
 	private Random r;
-	private int mLevel, mCorrectLetters, mIncorrectLetters, mSolvedWords = 0;
+	private int mLevel = 0, mCorrectLetters = 0, mIncorrectLetters = 0, mSolvedWords = 0;
 	private String origStr;
 	private char[] arryJumbled = null;
 	private List<String> wordBank, arryPrev;
 
 	private ShareAppUtil shareApp;
 	private SharedPref sharedPref;
+
+	private Handler mHandler;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +67,11 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	}
 
 	private void getIds() {
+		mActivity = LetterTreeActivity.this;
 		mContext = LetterTreeActivity.this;
 		shareApp = new ShareAppUtil();
 		sharedPref = new SharedPref(mContext, Constants.PREF_FILE_NAME);
+		mHandler = new Handler();
 		wordBank = new ArrayList<String>();
 		arryPrev = new ArrayList<String>();
 		r = new Random();
@@ -104,26 +115,14 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		tv7.setOnClickListener(this);
 		tv8.setOnClickListener(this);
 		tv9.setOnClickListener(this);
+		ivBack.setOnClickListener(this);
+		ivBanner.setOnClickListener(this);
 
 		// initialize lesson
 		initLesson();
 
 		// set default banner
 		setDefaultBanner(mContext, ivBanner);
-		ivBanner.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				if (Utils.getBannerId() == 1) {
-					goToStore(Constants.PKG_NAME_MATH);
-				} else if (Utils.getBannerId() == 2) {
-					goToStore(Constants.PKG_NAME_ELEMENTS);
-				} else if (Utils.getBannerId() == 3) {
-					goToStore(Constants.PKG_NAME_BANANA);
-				}
-			}
-		});
 	}
 
 	@Override
@@ -157,14 +156,27 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		case R.id.tv9:
 			checkLetter(8);
 			break;
+		case R.id.iv_back:
+			finish();
+			break;
+		case R.id.iv_banner:
+			if (Utils.getBannerId() == 1) {
+				goToStore(Constants.PKG_NAME_MATH);
+			} else if (Utils.getBannerId() == 2) {
+				goToStore(Constants.PKG_NAME_ELEMENTS);
+			} else if (Utils.getBannerId() == 3) {
+				goToStore(Constants.PKG_NAME_BANANA);
+			}
+			break;
 		default:
 			break;
 		}
 	}
 
 	/**
-	 * Method is used to initialize the game level; sets level, default word,
-	 * and then calls method to generate the UI components. 
+	 * Method is used to initialize the game level; sets level, default word, and then calls method
+	 * to generate the UI components.
+	 *
 	 * @Note Only needs to be called once
 	 */
 	private void initLesson() {
@@ -176,7 +188,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		}
 
 		// retrieve full word bank
-		String[] arryWordBankFull = getResources().getStringArray(R.array.arryWordBank);
+		String[] arryWordBankFull = getResources().getStringArray(R.array.arryWordBankObj);
 		wordBank = getWordBank(arryWordBankFull, mLevel);
 		origStr = wordBank.get(r.nextInt(wordBank.size()));
 		Logger.i(TAG, origStr + " //count: " + origStr.length());
@@ -184,9 +196,27 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	}
 
 	/**
+	 * Method is used to speak instructions
+	 */
+	private void speakInstructions() {
+		int temp = r.nextInt(3);
+		if (temp >= 0) {
+			speakText("Try to solve the word!");
+		} else if (temp == 1) {
+			speakText("Can you solve this word?");
+		} else if (temp == 2) {
+			speakText("What can this word possibly be?");
+		} else {
+			speakText("Lets solve this word together!");
+		}
+	}
+
+	/**
 	 * Method is used to setup the game level
 	 */
 	private void generateLevel() {
+		speakInstructions();
+
 		// confirm that next set of words are unique
 		if (!Utils.checkIfNull(arryPrev)) {
 			boolean isCheck = false;
@@ -194,17 +224,17 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				int i = 0;
 				for (i = 0; i < arryPrev.size(); i++) {
 					if (arryPrev.get(i).equalsIgnoreCase(origStr)) {
-						origStr = wordBank.get(r.nextInt(wordBank.size()));	
+						origStr = wordBank.get(r.nextInt(wordBank.size()));
 						i = 0;
 					}
 				}
-				isCheck = true;						
+				isCheck = true;
 			}
-			
+
 			arryPrev.add(origStr);
 			Logger.i(TAG, origStr + " //count: " + origStr.length());
 		}
-		
+
 		// reset jumbled array
 		if (!Utils.checkIfNull(arryJumbled)) {
 			arryJumbled = null;
@@ -212,11 +242,11 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 
 		// set visibility of views
 		setVisibility(origStr.length());
-		
+
 		// populate an array of jumbled letters or the letters to the correct word
 		if (mLevel == 0 || mLevel == 4) {
 			arryJumbled = getJumbledWord();
-		
+
 			// set char values of word bank
 			tv1.setText(String.valueOf(arryJumbled[0]));
 			tv2.setText(String.valueOf(arryJumbled[1]));
@@ -234,6 +264,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 
 	/**
 	 * Method is used to add random letters to word bank
+	 *
 	 * @return array of jumbled letters
 	 */
 	private char[] getJumbledWord() {
@@ -242,7 +273,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 
 		// remove duplicate values from origStr
 		String noDup = Utils.removeDuplicates(origStr);
-				
+
 		// append random letters to work bank pool
 		if (mLevel == 0) {
 			for (int i = 0; i <= 8 - noDup.length(); i++) {
@@ -295,68 +326,11 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			resetVisibility();
 		}
 
+		// setup visibility view for word bank
 		if (mLevel == 0 || mLevel == 4) {
-
 			// add word bank view
 			if (ll.getVisibility() == View.GONE) {
 				ll.setVisibility(View.VISIBLE);
-			}
-
-			if (num == 3) {
-				v1.setVisibility(View.VISIBLE);
-				v2.setVisibility(View.VISIBLE);
-				v3.setVisibility(View.VISIBLE);
-				tvAnswer1.setVisibility(View.VISIBLE);
-				tvAnswer2.setVisibility(View.VISIBLE);
-				tvAnswer3.setVisibility(View.VISIBLE);
-			} else if (num == 4) {
-				v1.setVisibility(View.VISIBLE);
-				v2.setVisibility(View.VISIBLE);
-				v3.setVisibility(View.VISIBLE);
-				v4.setVisibility(View.VISIBLE);
-				tvAnswer1.setVisibility(View.VISIBLE);
-				tvAnswer2.setVisibility(View.VISIBLE);
-				tvAnswer3.setVisibility(View.VISIBLE);
-				tvAnswer4.setVisibility(View.VISIBLE);
-			} else if (num == 5) {
-				v1.setVisibility(View.VISIBLE);
-				v2.setVisibility(View.VISIBLE);
-				v3.setVisibility(View.VISIBLE);
-				v4.setVisibility(View.VISIBLE);
-				v5.setVisibility(View.VISIBLE);
-				tvAnswer1.setVisibility(View.VISIBLE);
-				tvAnswer2.setVisibility(View.VISIBLE);
-				tvAnswer3.setVisibility(View.VISIBLE);
-				tvAnswer4.setVisibility(View.VISIBLE);
-				tvAnswer5.setVisibility(View.VISIBLE);
-			} else if (num == 6) {
-				v1.setVisibility(View.VISIBLE);
-				v2.setVisibility(View.VISIBLE);
-				v3.setVisibility(View.VISIBLE);
-				v4.setVisibility(View.VISIBLE);
-				v5.setVisibility(View.VISIBLE);
-				v6.setVisibility(View.VISIBLE);
-				tvAnswer1.setVisibility(View.VISIBLE);
-				tvAnswer2.setVisibility(View.VISIBLE);
-				tvAnswer3.setVisibility(View.VISIBLE);
-				tvAnswer4.setVisibility(View.VISIBLE);
-				tvAnswer5.setVisibility(View.VISIBLE);
-				tvAnswer6.setVisibility(View.VISIBLE);
-			} else if (num == 7) {
-				v1.setVisibility(View.VISIBLE);
-				v2.setVisibility(View.VISIBLE);
-				v3.setVisibility(View.VISIBLE);
-				v4.setVisibility(View.VISIBLE);
-				v5.setVisibility(View.VISIBLE);
-				v6.setVisibility(View.VISIBLE);
-				v7.setVisibility(View.VISIBLE);
-				tvAnswer1.setVisibility(View.VISIBLE);
-				tvAnswer2.setVisibility(View.VISIBLE);
-				tvAnswer3.setVisibility(View.VISIBLE);
-				tvAnswer4.setVisibility(View.VISIBLE);
-				tvAnswer5.setVisibility(View.VISIBLE);
-				tvAnswer6.setVisibility(View.VISIBLE);
-				tvAnswer7.setVisibility(View.VISIBLE);
 			}
 		} else {
 			// remove word bank view
@@ -364,13 +338,107 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				ll.setVisibility(View.GONE);
 			}
 		}
+
+		// setup words to solve views
+		if (num == 3) {
+			v1.setVisibility(View.VISIBLE);
+			v2.setVisibility(View.VISIBLE);
+			v3.setVisibility(View.VISIBLE);
+			tvAnswer1.setVisibility(View.VISIBLE);
+			tvAnswer2.setVisibility(View.VISIBLE);
+			tvAnswer3.setVisibility(View.VISIBLE);
+		} else if (num == 4) {
+			v1.setVisibility(View.VISIBLE);
+			v2.setVisibility(View.VISIBLE);
+			v3.setVisibility(View.VISIBLE);
+			v4.setVisibility(View.VISIBLE);
+			tvAnswer1.setVisibility(View.VISIBLE);
+			tvAnswer2.setVisibility(View.VISIBLE);
+			tvAnswer3.setVisibility(View.VISIBLE);
+			tvAnswer4.setVisibility(View.VISIBLE);
+		} else if (num == 5) {
+			v1.setVisibility(View.VISIBLE);
+			v2.setVisibility(View.VISIBLE);
+			v3.setVisibility(View.VISIBLE);
+			v4.setVisibility(View.VISIBLE);
+			v5.setVisibility(View.VISIBLE);
+			tvAnswer1.setVisibility(View.VISIBLE);
+			tvAnswer2.setVisibility(View.VISIBLE);
+			tvAnswer3.setVisibility(View.VISIBLE);
+			tvAnswer4.setVisibility(View.VISIBLE);
+			tvAnswer5.setVisibility(View.VISIBLE);
+		} else if (num == 6) {
+			v1.setVisibility(View.VISIBLE);
+			v2.setVisibility(View.VISIBLE);
+			v3.setVisibility(View.VISIBLE);
+			v4.setVisibility(View.VISIBLE);
+			v5.setVisibility(View.VISIBLE);
+			v6.setVisibility(View.VISIBLE);
+			tvAnswer1.setVisibility(View.VISIBLE);
+			tvAnswer2.setVisibility(View.VISIBLE);
+			tvAnswer3.setVisibility(View.VISIBLE);
+			tvAnswer4.setVisibility(View.VISIBLE);
+			tvAnswer5.setVisibility(View.VISIBLE);
+			tvAnswer6.setVisibility(View.VISIBLE);
+		} else if (num == 7) {
+			v1.setVisibility(View.VISIBLE);
+			v2.setVisibility(View.VISIBLE);
+			v3.setVisibility(View.VISIBLE);
+			v4.setVisibility(View.VISIBLE);
+			v5.setVisibility(View.VISIBLE);
+			v6.setVisibility(View.VISIBLE);
+			v7.setVisibility(View.VISIBLE);
+			tvAnswer1.setVisibility(View.VISIBLE);
+			tvAnswer2.setVisibility(View.VISIBLE);
+			tvAnswer3.setVisibility(View.VISIBLE);
+			tvAnswer4.setVisibility(View.VISIBLE);
+			tvAnswer5.setVisibility(View.VISIBLE);
+			tvAnswer6.setVisibility(View.VISIBLE);
+			tvAnswer7.setVisibility(View.VISIBLE);
+		} else if (num == 8) {
+			v1.setVisibility(View.VISIBLE);
+			v2.setVisibility(View.VISIBLE);
+			v3.setVisibility(View.VISIBLE);
+			v4.setVisibility(View.VISIBLE);
+			v5.setVisibility(View.VISIBLE);
+			v6.setVisibility(View.VISIBLE);
+			v7.setVisibility(View.VISIBLE);
+			v8.setVisibility(View.VISIBLE);
+			tvAnswer1.setVisibility(View.VISIBLE);
+			tvAnswer2.setVisibility(View.VISIBLE);
+			tvAnswer3.setVisibility(View.VISIBLE);
+			tvAnswer4.setVisibility(View.VISIBLE);
+			tvAnswer5.setVisibility(View.VISIBLE);
+			tvAnswer6.setVisibility(View.VISIBLE);
+			tvAnswer7.setVisibility(View.VISIBLE);
+			tvAnswer8.setVisibility(View.VISIBLE);
+		} else if (num == 9) {
+			v1.setVisibility(View.VISIBLE);
+			v2.setVisibility(View.VISIBLE);
+			v3.setVisibility(View.VISIBLE);
+			v4.setVisibility(View.VISIBLE);
+			v5.setVisibility(View.VISIBLE);
+			v6.setVisibility(View.VISIBLE);
+			v7.setVisibility(View.VISIBLE);
+			v8.setVisibility(View.VISIBLE);
+			v9.setVisibility(View.VISIBLE);
+			tvAnswer1.setVisibility(View.VISIBLE);
+			tvAnswer2.setVisibility(View.VISIBLE);
+			tvAnswer3.setVisibility(View.VISIBLE);
+			tvAnswer4.setVisibility(View.VISIBLE);
+			tvAnswer5.setVisibility(View.VISIBLE);
+			tvAnswer6.setVisibility(View.VISIBLE);
+			tvAnswer7.setVisibility(View.VISIBLE);
+			tvAnswer8.setVisibility(View.VISIBLE);
+			tvAnswer9.setVisibility(View.VISIBLE);
+		}
 	}
 
 	private void resetVisibility() {
-		// reset corrent and incorrect trackers
+		// reset correct and incorrect trackers
 		mCorrectLetters = 0;
 		mIncorrectLetters = 0;
-		
+
 		// clear letter views
 		tvAnswer1.setText("");
 		tvAnswer2.setText("");
@@ -381,7 +449,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		tvAnswer7.setText("");
 		tvAnswer8.setText("");
 		tvAnswer9.setText("");
-		
+
 		// reset views there were gone
 		tv1.setVisibility(View.VISIBLE);
 		tv2.setVisibility(View.VISIBLE);
@@ -418,6 +486,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 
 	/**
 	 * Method is used to remove letters from word bank
+	 *
 	 * @param pos
 	 */
 	private void updateVisibility(int pos) {
@@ -452,7 +521,6 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	}
 
 	private void checkLetter(int pos) {
-
 		if (!Utils.checkIfNull(arryJumbled)) {
 			String c = String.valueOf(arryJumbled[pos]);
 			ArrayList<Integer> arryDuplicates = new ArrayList<Integer>();
@@ -465,6 +533,9 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				// set letter to correct position
 				for (int i = 0; i < arryDuplicates.size(); i++) {
 					mCorrectLetters++;
+					String temp = Messages.msgPath(true, true);
+					Crouton.showText(mActivity, temp, Style.CONFIRM);
+					speakText(temp);
 					if (arryDuplicates.get(i) == 0) {
 						tvAnswer1.setText(c);
 						startShimmerAnimation(tvAnswer1);
@@ -499,7 +570,24 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				}
 			} else {
 				// TODO: play sounds, animations and messaging
+				vibrate(mContext, 500);
 				mIncorrectLetters++;
+				String temp = Messages.msgPath(false, true);
+				Crouton.showText(mActivity, temp, Style.ALERT);
+				speakText(temp);
+				if (mLevel == 0) {
+					if (mIncorrectLetters >= 5) {
+
+					}
+				} else if (mLevel == 4) {
+					if (mIncorrectLetters >= 4) {
+
+					}
+				} else {
+					if (mIncorrectLetters >= 3) {
+
+					}
+				}
 			}
 
 			// check if puzzle is solved
@@ -508,16 +596,33 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				mSolvedWords++;
 				if (mSolvedWords >= 3) {
 					// TODO: play sounds, animations, messaging and add rewards for completing level
+					String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
+					int lvCount = sharedPref.getIntPref(strPrefName, 0);
+					sharedPref.setPref(Constants.LV_COUNT.concat("_" + mLevel), lvCount++);
 					goToActivity(mContext, SelectActivity.class, -1);
 				} else {
 					// restart level
 					// TODO: play sounds, animations, messaging and add rewards for completing level
-					generateLevel();
+
+					// delay before generating the next level
+					mHandler.postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							speakInstructions();
+							generateLevel();
+						}
+					}, 2500);
 				}
 			}
 		}
 	}
 
+	/**
+	 * Method is used to start shimmer animation
+	 *
+	 * @param stv
+	 */
+	@SuppressWarnings("static-method")
 	private void startShimmerAnimation(ShimmerTextView stv) {
 		Shimmer shimmer = new Shimmer();
 		shimmer.setRepeatCount(1);
@@ -526,6 +631,9 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		shimmer.start(stv);
 	}
 
+	/**
+	 * Method is used to start animations
+	 */
 	private void startAnimations() {
 		startButtonAnim(ivBack);
 		startBannerAnim(mContext, ivBanner);
@@ -558,17 +666,23 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		// TODO Auto-generated method stub
 		super.onPause();
 		MusicUtils.pause();
+		Crouton.cancelAllCroutons();
+		Crouton.clearCroutonsForActivity(this);
 	}
 
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
+		destroyTTS();
+		Crouton.cancelAllCroutons();
+		Crouton.clearCroutonsForActivity(this);
 		super.onDestroy();
 	}
 
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
+		destroyTTS();
 		super.onBackPressed();
 	}
 
