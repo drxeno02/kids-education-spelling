@@ -41,12 +41,13 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	private View v1, v2, v3, v4, v5, v6, v7, v8, v9;
 	private TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9;
 	private ShimmerTextView tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4,
-		tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
+	tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
 	private LinearLayout ll;
 	private Random r;
 	private int mLevel = 0, mCorrectLetters = 0, mIncorrectLetters = 0, mSolvedWords = 0;
 	private String origStr;
 	private char[] arryJumbled = null;
+	private boolean[] arrySelected = new boolean[9];
 	private List<String> wordBank, arryPrev;
 
 	private ShareAppUtil shareApp;
@@ -130,31 +131,63 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.tv1:
-			checkLetter(0);
+			if (!arrySelected[0]) {
+				checkLetter(0);
+			} else {
+				vibrate(mContext, 500);
+			}
 			break;
 		case R.id.tv2:
-			checkLetter(1);
+			if (!arrySelected[1]) {
+				checkLetter(1);
+			} else {
+				vibrate(mContext, 500);
+			}
 			break;
 		case R.id.tv3:
-			checkLetter(2);
+			if (!arrySelected[2]) {
+				checkLetter(2);
+			} else {
+				vibrate(mContext, 500);
+			}
 			break;
 		case R.id.tv4:
-			checkLetter(3);
+			if (!arrySelected[3]) {
+				checkLetter(3);
+			} else {
+				vibrate(mContext, 500);
+			}
 			break;
 		case R.id.tv5:
-			checkLetter(4);
+			if (!arrySelected[4]) {
+				checkLetter(4);
+			}
 			break;
 		case R.id.tv6:
-			checkLetter(5);
+			if (!arrySelected[5]) {
+				checkLetter(5);
+			} else {
+				vibrate(mContext, 500);
+			}
 			break;
 		case R.id.tv7:
-			checkLetter(6);
+			if (!arrySelected[6]) {
+				checkLetter(6);
+			}
 			break;
 		case R.id.tv8:
-			checkLetter(7);
+			if (!arrySelected[7]) {
+				checkLetter(7);
+			} else {
+				vibrate(mContext, 500);
+			}
 			break;
 		case R.id.tv9:
-			checkLetter(8);
+			if (!arrySelected[8]) {
+				checkLetter(8);
+			} else {
+				vibrate(mContext, 500);
+			}
 			break;
 		case R.id.iv_back:
 			finish();
@@ -191,7 +224,6 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		String[] arryWordBankFull = getResources().getStringArray(R.array.arryWordBankObj);
 		wordBank = getWordBank(arryWordBankFull, mLevel);
 		origStr = wordBank.get(r.nextInt(wordBank.size()));
-		Logger.i(TAG, origStr + " //count: " + origStr.length());
 		generateLevel();
 	}
 
@@ -260,6 +292,11 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		} else {
 			arryJumbled = origStr.toCharArray();
 		}
+
+		// set default selection
+		for (int i = 0; i < arrySelected.length; i++) {
+			arrySelected[i] = false;
+		}
 	}
 
 	/**
@@ -274,7 +311,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		// remove duplicate values from origStr
 		String noDup = Utils.removeDuplicates(origStr);
 
-		// append random letters to work bank pool
+		// append random letters to word bank pool
 		if (mLevel == 0) {
 			for (int i = 0; i <= 8 - noDup.length(); i++) {
 				char temp = alphabet.charAt(r.nextInt(alphabet.length()));
@@ -523,44 +560,44 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	private void checkLetter(int pos) {
 		if (!Utils.checkIfNull(arryJumbled)) {
 			String c = String.valueOf(arryJumbled[pos]);
-			ArrayList<Integer> arryDuplicates = new ArrayList<Integer>();
+			ArrayList<Integer> arryMatch = new ArrayList<Integer>();
 			if (origStr.contains(c)) {
 				// check the entire word for instances of the selected letter
 				for (int i = -1; (i = origStr.indexOf(c, i + 1)) != -1;) {
-					arryDuplicates.add(i);
+					arryMatch.add(i);
 				}
 
 				// set letter to correct position
-				for (int i = 0; i < arryDuplicates.size(); i++) {
+				for (int i = 0; i < arryMatch.size(); i++) {
 					mCorrectLetters++;
 					String temp = Messages.msgPath(true, true);
 					Crouton.showText(mActivity, temp, Style.CONFIRM);
 					speakText(temp);
-					if (arryDuplicates.get(i) == 0) {
+					if (arryMatch.get(i) == 0) {
 						tvAnswer1.setText(c);
 						startShimmerAnimation(tvAnswer1);
-					} else if (arryDuplicates.get(i) == 1) {
+					} else if (arryMatch.get(i) == 1) {
 						tvAnswer2.setText(c);
 						startShimmerAnimation(tvAnswer2);
-					} else if (arryDuplicates.get(i) == 2) {
+					} else if (arryMatch.get(i) == 2) {
 						tvAnswer3.setText(c);
 						startShimmerAnimation(tvAnswer3);
-					} else if (arryDuplicates.get(i) == 3) {
+					} else if (arryMatch.get(i) == 3) {
 						tvAnswer4.setText(c);
 						startShimmerAnimation(tvAnswer4);
-					} else if (arryDuplicates.get(i) == 4) {
+					} else if (arryMatch.get(i) == 4) {
 						tvAnswer5.setText(c);
 						startShimmerAnimation(tvAnswer5);
-					} else if (arryDuplicates.get(i) == 5) {
+					} else if (arryMatch.get(i) == 5) {
 						tvAnswer6.setText(c);
 						startShimmerAnimation(tvAnswer6);
-					} else if (arryDuplicates.get(i) == 6) {
+					} else if (arryMatch.get(i) == 6) {
 						tvAnswer7.setText(c);
 						startShimmerAnimation(tvAnswer7);
-					} else if (arryDuplicates.get(i) == 7) {
+					} else if (arryMatch.get(i) == 7) {
 						tvAnswer8.setText(c);
 						startShimmerAnimation(tvAnswer8);
-					} else if (arryDuplicates.get(i) == 8) {
+					} else if (arryMatch.get(i) == 8) {
 						tvAnswer9.setText(c);
 						startShimmerAnimation(tvAnswer9);
 					}
@@ -575,17 +612,63 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				String temp = Messages.msgPath(false, true);
 				Crouton.showText(mActivity, temp, Style.ALERT);
 				speakText(temp);
-				if (mLevel == 0) {
-					if (mIncorrectLetters >= 5) {
 
+				// add color marker that letter is incorrect
+				if (pos == 0) {
+					tv1.setTextColor(getResources().getColor(R.color.red_shade));
+				} else if (pos == 1) {
+					tv2.setTextColor(getResources().getColor(R.color.red_shade));
+				} else if (pos == 2) {
+					tv3.setTextColor(getResources().getColor(R.color.red_shade));
+				} else if (pos == 3) {
+					tv4.setTextColor(getResources().getColor(R.color.red_shade));
+				} else if (pos == 4) {
+					tv5.setTextColor(getResources().getColor(R.color.red_shade));
+				} else if (pos == 5) {
+					tv6.setTextColor(getResources().getColor(R.color.red_shade));
+				} else if (pos == 6) {
+					tv7.setTextColor(getResources().getColor(R.color.red_shade));
+				} else if (pos == 7) {
+					tv8.setTextColor(getResources().getColor(R.color.red_shade));
+				} else if (pos == 8) {
+					tv9.setTextColor(getResources().getColor(R.color.red_shade));
+				}
+
+				// add selection marker that incorrect letter was selected
+				arrySelected[pos] = true;
+
+				if (mLevel == 0) {
+					if (mIncorrectLetters >= 4) {
+						Logger.e(TAG, "level failed");
+						// delay before generating the next level
+						mHandler.postDelayed(new Runnable() {
+							@Override
+							public void run() {
+								goToActivity(mContext, SelectActivity.class, -1);
+							}
+						}, 2500);
 					}
 				} else if (mLevel == 4) {
-					if (mIncorrectLetters >= 4) {
-
+					if (mIncorrectLetters >= 3) {
+						Logger.e(TAG, "level failed");
+						// delay before generating the next level
+						mHandler.postDelayed(new Runnable() {
+							@Override
+							public void run() {
+								goToActivity(mContext, SelectActivity.class, -1);
+							}
+						}, 2500);
 					}
 				} else {
-					if (mIncorrectLetters >= 3) {
-
+					if (mIncorrectLetters >= 4) {
+						Logger.e(TAG, "level failed");
+						// delay before generating the next level
+						mHandler.postDelayed(new Runnable() {
+							@Override
+							public void run() {
+								goToActivity(mContext, SelectActivity.class, -1);
+							}
+						}, 2500);
 					}
 				}
 			}

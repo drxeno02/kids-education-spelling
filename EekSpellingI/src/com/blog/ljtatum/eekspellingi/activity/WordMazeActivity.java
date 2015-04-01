@@ -1,5 +1,6 @@
 package com.blog.ljtatum.eekspellingi.activity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -35,25 +36,25 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 
 	private Activity mActivity;
 	private Context mContext;
-	private ImageView ivBack, ivBanner;
+	private ImageView ivBack, ivBanner, iv1;
 	private TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10, tv11,
-	tv12, tv13, tv14, tv15;
+		tv12, tv13, tv14, tv15;
 	private LinearLayout pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9,
 		pos10, pos11, pos12, pos13, pos14, pos15;
 	private View end1, end2, end3, end4, v1, v2, v3, v4, v5, v6, v7, v8, v9;
 	private ShimmerTextView tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4,
-	tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
+		tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
 	private Random r;
-	private int mLevel = 0, mSolvedWords = 0, mSteps = 0;
+	private int mLevel = 0, mSolvedWords = 0, mSteps = 0, xStart = 0, yStart = 0,
+		xEnd = 0, yEnd = 0, currPos = 0;
 	private String origStr;
 	private List<String> wordBank, arryPrev;
+	private List<Integer> arryPath;
 
 	private ShareAppUtil shareApp;
 	private SharedPref sharedPref;
 
 	private Handler mHandler;
-
-	private LinearLayout ll;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +73,11 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		shareApp = new ShareAppUtil();
 		sharedPref = new SharedPref(mContext, Constants.PREF_FILE_NAME);
 		mHandler = new Handler();
+		arryPath = new ArrayList<Integer>();
 		r = new Random();
 		ivBanner = (ImageView) findViewById(R.id.iv_banner);
 		ivBack = (ImageView) findViewById(R.id.iv_back);
+		iv1 = (ImageView) findViewById(R.id.iv1);
 		v1 = findViewById(R.id.v1);
 		v2 = findViewById(R.id.v2);
 		v3 = findViewById(R.id.v3);
@@ -222,68 +225,120 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 
 	private void transverseToPos(int pos) {
 		if (pos == 1 && mSteps == 0) {
-			mSteps++;
-			moveRight(pos);
+			setRightCords(pos);
 		} else {
-			moveRight(pos);
+			setDownCords(pos);
 		}
 
 	}
 
-	private void moveRight(int pos) {
-		Logger.i(TAG, "moveRight()");
-		int xStart = 0, xEnd = 0, yStart = 0, yEnd = 0;
-		if (pos == 1) {
-			Logger.e(TAG, "height: " + pos1.getHeight() + " // width: " + pos1.getWidth() + " // x: " + pos1.getLeft() + " // y: " + pos1.getTop());
-		} else if (pos == 2) {
-			Logger.e(TAG, "height: " + pos2.getHeight() + " // width: " + pos2.getWidth() + " // x: " + pos2.getLeft() + " // y: " + pos2.getTop());
-		} else if (pos == 3) {
-			Logger.e(TAG, "height: " + pos3.getHeight() + " // width: " + pos3.getWidth() + " // x: " + pos3.getLeft() + " // y: " + pos3.getTop());
-		} else if (pos == 4) {
-			Logger.e(TAG, "height: " + pos4.getHeight() + " // width: " + pos4.getWidth() + " // x: " + pos4.getLeft() + " // y: " + pos4.getTop());
-		} else if (pos == 5) {
-			Logger.e(TAG, "height: " + pos5.getHeight() + " // width: " + pos5.getWidth() + " // x: " + pos5.getLeft() + " // y: " + pos5.getTop());
-		} else if (pos == 6) {
-			Logger.e(TAG, "height: " + pos6.getHeight() + " // width: " + pos6.getWidth() + " // x: " + pos6.getLeft() + " // y: " + pos6.getTop());
+	private void setRightCords(int pos) {
+		Logger.i(TAG, "setRightCords()");
+		yStart = yEnd;
+		xStart = xEnd;
+		if (currPos == 0 && pos == 1) {
+			currPos = 1;
+			xEnd = pos1.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 1 && pos == 2) {
+			currPos = 2;
+			xEnd = pos2.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 2 && pos == 3) {
+			currPos = 3;
+			xEnd = pos3.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 4 && pos == 5) {
+			currPos = 5;
+			xEnd = pos5.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 5 && pos == 6) { // can win from here
+			currPos = 6;
+			xEnd = pos6.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 7 && pos == 8) {
+			currPos = 8;
+			xEnd = pos8.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 8 && pos == 9) { // can win from here
+			currPos = 9;
+			xEnd = pos9.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 10 && pos == 11) {
+			currPos = 11;
+			startMovement();
+			xEnd = pos11.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 11 && pos == 12) { // can win from here
+			currPos = 12;
+			xEnd = pos12.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 13 && pos == 14) {
+			currPos = 14;
+			xEnd = pos14.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 14 && pos == 15) { // can win from here
+			currPos = 15;
+			xEnd = pos15.getLeft();
+			mSteps++;
+			startMovement();
 		}
+	}
 
-		int[] imgCords = new int[2];
+	private void setDownCords(int pos) {
+		Logger.i(TAG, "setDownCords()" + pos);
+		xStart = xEnd;
+		yStart = yEnd;
 
-		if (pos == 1) {
-			pos1.getLocationOnScreen(imgCords);
-			int x = imgCords[0];
-			int y = imgCords[1];
-			Logger.e(TAG, "new x: " + x + " // new y: " + y);
-		} else if (pos == 2) {
-			pos2.getLocationOnScreen(imgCords);
-			int x = imgCords[0];
-			int y = imgCords[1];
-			Logger.e(TAG, "new x: " + x + " // new y: " + y);
-		} else if (pos == 3) {
-			pos3.getLocationOnScreen(imgCords);
-			int x = imgCords[0];
-			int y = imgCords[1];
-			Logger.e(TAG, "new x: " + x + " // new y: " + y);
-		} else if (pos == 4) {
-			pos4.getLocationOnScreen(imgCords);
-			int x = imgCords[0];
-			int y = imgCords[1];
-			Logger.e(TAG, "new x: " + x + " // new y: " + y);
-		} else if (pos == 5) {
-			pos5.getLocationOnScreen(imgCords);
-			int x = imgCords[0];
-			int y = imgCords[1];
-			Logger.e(TAG, "new x: " + x + " // new y: " + y);
-		} else if (pos == 6) {
-			pos6.getLocationOnScreen(imgCords);
-			int x = imgCords[0];
-			int y = imgCords[1];
-			Logger.e(TAG, "new x: " + x + " // new y: " + y);
+		if (currPos == 1 && pos == 4) {
+			currPos = 4;
+			yEnd = pos4.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 2 && pos == 5) {
+			currPos = 5;
+			yEnd = pos5.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 3 && pos == 6) {
+			currPos = 6;
+			yEnd = pos6.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 4 && pos == 7) {
+			currPos = 7;
+			yEnd = pos7.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 5 && pos == 8) {
+			currPos = 8;
+			yEnd = pos8.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 6 && pos == 9) {
+			currPos = 9;
+			yEnd = pos9.getLeft();
+			mSteps++;
+			startMovement();
 		}
+	}
 
+	private void startMovement() {
+		Logger.d(TAG, "xStart:" + xStart + " //yStart:" + yStart + " //xEnd:" + xEnd + " //yEnd: " + yEnd);
 		TranslateAnimation animation = new TranslateAnimation(xStart, xEnd, yStart, yEnd);
-		animation.setDuration(1500);
+		animation.setDuration(1000);
 		animation.setFillAfter(true);
+		iv1.startAnimation(animation);
 	}
 
 	/**
@@ -383,6 +438,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		}
 
 		char[] arryLetters = origStr.toCharArray();
+		arryPath.clear();
 		// setup words to solve views
 		if (num == 3) {
 			v1.setVisibility(View.VISIBLE);
@@ -400,13 +456,17 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 
 			if (mLevel == 2) {
 				tv1.setText(String.valueOf(arryLetters[0]));
+				arryPath.add(1);
 				int temp = r.nextInt(1);
 				if (temp == 0) {
 					tv2.setText(String.valueOf(arryLetters[1]));
+					arryPath.add(2);
 				} else {
-					tv3.setText(String.valueOf(arryLetters[1]));
+					tv4.setText(String.valueOf(arryLetters[1]));
+					arryPath.add(3);
 				}
-				tv4.setText(String.valueOf(arryLetters[2]));
+				tv5.setText(String.valueOf(arryLetters[2]));
+				arryPath.add(4);
 			}
 		} else if (num == 4) {
 			v1.setVisibility(View.VISIBLE);
@@ -428,18 +488,26 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 
 			if (mLevel == 2) {
 				tv1.setText(String.valueOf(arryLetters[0]));
+				arryPath.add(1);
 				int temp = r.nextInt(2);
 				if (temp == 0) {
 					tv2.setText(String.valueOf(arryLetters[1]));
 					tv3.setText(String.valueOf(arryLetters[2]));
+					arryPath.add(2);
+					arryPath.add(3);
 				} else if (temp == 1) {
 					tv4.setText(String.valueOf(arryLetters[1]));
 					tv5.setText(String.valueOf(arryLetters[2]));
+					arryPath.add(4);
+					arryPath.add(5);
 				} else {
 					tv2.setText(String.valueOf(arryLetters[1]));
 					tv5.setText(String.valueOf(arryLetters[2]));
+					arryPath.add(2);
+					arryPath.add(5);
 				}
 				tv6.setText(String.valueOf(arryLetters[3]));
+				arryPath.add(6);
 			}
 		} else if (num == 5) {
 			v1.setVisibility(View.VISIBLE);
@@ -463,6 +531,43 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			pos8.setVisibility(View.VISIBLE);
 			pos9.setVisibility(View.VISIBLE);
 			end2.setVisibility(View.VISIBLE);
+
+			if (mLevel == 2) {
+				tv1.setText(String.valueOf(arryLetters[0]));
+				arryPath.add(1);
+				int temp = r.nextInt(3);
+				if (temp == 0) {
+					tv2.setText(String.valueOf(arryLetters[1]));
+					tv3.setText(String.valueOf(arryLetters[2]));
+					tv6.setText(String.valueOf(arryLetters[3]));
+					arryPath.add(2);
+					arryPath.add(3);
+					arryPath.add(6);
+				} else if (temp == 1) {
+					tv4.setText(String.valueOf(arryLetters[1]));
+					tv7.setText(String.valueOf(arryLetters[2]));
+					tv8.setText(String.valueOf(arryLetters[3]));
+					arryPath.add(4);
+					arryPath.add(7);
+					arryPath.add(8);
+				} else if (temp == 2) {
+					tv4.setText(String.valueOf(arryLetters[1]));
+					tv5.setText(String.valueOf(arryLetters[2]));
+					tv8.setText(String.valueOf(arryLetters[3]));
+					arryPath.add(4);
+					arryPath.add(5);
+					arryPath.add(8);
+				} else {
+					tv2.setText(String.valueOf(arryLetters[1]));
+					tv5.setText(String.valueOf(arryLetters[2]));
+					tv8.setText(String.valueOf(arryLetters[3]));
+					arryPath.add(2);
+					arryPath.add(5);
+					arryPath.add(8);
+				}
+				tv9.setText(String.valueOf(arryLetters[4]));
+				arryPath.add(9);
+			}
 		} else if (num == 6) {
 			v1.setVisibility(View.VISIBLE);
 			v2.setVisibility(View.VISIBLE);

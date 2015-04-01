@@ -280,6 +280,12 @@
         <item>therefore</item>
 
         <!-- animals letter words -->
+        <item>ant</item>
+        <item>beetle</item>
+        <item>seagall</item>
+        <item>dolphin</item>
+        <item>fish</item>
+        <item>dear</item>
         <item>cat</item>
         <item>cow</item>
         <item>dog</item>
@@ -297,6 +303,7 @@
         <item>frogs</item>
         <item>gorilla</item>
         <item>gorillas</item>
+        <item>zebra</item>
 
         <!-- colors letter words -->
         <item>white</item>
