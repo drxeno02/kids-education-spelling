@@ -41,14 +41,14 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	private View v1, v2, v3, v4, v5, v6, v7, v8, v9;
 	private TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9;
 	private ShimmerTextView tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4,
-	tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
+		tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
 	private LinearLayout ll;
 	private Random r;
 	private int mLevel = 0, mCorrectLetters = 0, mIncorrectLetters = 0, mSolvedWords = 0;
-	private String origStr;
+	private String mWord;
 	private char[] arryJumbled = null;
 	private boolean[] arrySelected = new boolean[9];
-	private List<String> wordBank, arryPrev;
+	private List<String> mArryWordBank, arryPrev;
 
 	private ShareAppUtil shareApp;
 	private SharedPref sharedPref;
@@ -73,7 +73,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		shareApp = new ShareAppUtil();
 		sharedPref = new SharedPref(mContext, Constants.PREF_FILE_NAME);
 		mHandler = new Handler();
-		wordBank = new ArrayList<String>();
+		mArryWordBank = new ArrayList<String>();
 		arryPrev = new ArrayList<String>();
 		r = new Random();
 		ll = (LinearLayout) findViewById(R.id.ll_word_bank);
@@ -173,6 +173,8 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		case R.id.tv7:
 			if (!arrySelected[6]) {
 				checkLetter(6);
+			} else {
+				vibrate(mContext, 500);
 			}
 			break;
 		case R.id.tv8:
@@ -221,9 +223,9 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		}
 
 		// retrieve full word bank
-		String[] arryWordBankFull = getResources().getStringArray(R.array.arryWordBankObj);
-		wordBank = getWordBank(arryWordBankFull, mLevel);
-		origStr = wordBank.get(r.nextInt(wordBank.size()));
+		String[] arryWordBankFull = getWordBank(mLevel);
+		mArryWordBank = getWordBank(arryWordBankFull, mLevel);
+		mWord = mArryWordBank.get(r.nextInt(mArryWordBank.size()));
 		generateLevel();
 	}
 
@@ -255,16 +257,15 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			while (!isCheck) {
 				int i = 0;
 				for (i = 0; i < arryPrev.size(); i++) {
-					if (arryPrev.get(i).equalsIgnoreCase(origStr)) {
-						origStr = wordBank.get(r.nextInt(wordBank.size()));
+					if (arryPrev.get(i).equalsIgnoreCase(mWord)) {
+						mWord = mArryWordBank.get(r.nextInt(mArryWordBank.size()));
 						i = 0;
 					}
 				}
 				isCheck = true;
 			}
 
-			arryPrev.add(origStr);
-			Logger.i(TAG, origStr + " //count: " + origStr.length());
+			arryPrev.add(mWord);
 		}
 
 		// reset jumbled array
@@ -273,7 +274,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		}
 
 		// set visibility of views
-		setVisibility(origStr.length());
+		setVisibility(mWord.length());
 
 		// populate an array of jumbled letters or the letters to the correct word
 		if (mLevel == 0 || mLevel == 4) {
@@ -290,7 +291,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			tv8.setText(String.valueOf(arryJumbled[7]));
 			tv9.setText(String.valueOf(arryJumbled[8]));
 		} else {
-			arryJumbled = origStr.toCharArray();
+			arryJumbled = mWord.toCharArray();
 		}
 
 		// set default selection
@@ -305,35 +306,38 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	 * @return array of jumbled letters
 	 */
 	private char[] getJumbledWord() {
-		StringBuilder builder = new StringBuilder();
+		//StringBuilder builder = new StringBuilder();
 		String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
 		// remove duplicate values from origStr
-		String noDup = Utils.removeDuplicates(origStr);
+		String noDup = Utils.removeDuplicates(mWord);
+		int len = 0;
+		if(mLevel == 0) {
+			len = 8 - noDup.length();
+		} else {
+			len = 10 - noDup.length();
+		}
 
 		// append random letters to word bank pool
 		if (mLevel == 0) {
-			for (int i = 0; i <= 8 - noDup.length(); i++) {
+			for (int i = 0; i <= len; i++) {
 				char temp = alphabet.charAt(r.nextInt(alphabet.length()));
 				while (noDup.indexOf(temp) != -1) {
 					temp = alphabet.charAt(r.nextInt(alphabet.length()));
 				}
-				builder.append(temp);
+				noDup = noDup.concat(String.valueOf(temp));
 			}
 		} else if (mLevel == 4) {
-			for (int i = 0; i <= 10 - noDup.length(); i++) {
+			for (int i = 0; i <= len; i++) {
 				char temp = alphabet.charAt(r.nextInt(alphabet.length()));
 				while (noDup.indexOf(temp) != -1) {
 					temp = alphabet.charAt(r.nextInt(alphabet.length()));
 				}
-				builder.append(temp);
+				noDup = noDup.concat(String.valueOf(temp));
 			}
 		}
-		String matchStr = builder.append(noDup).toString();
-		char[] arryChar = matchStr.toCharArray();
-		char[] arryCharJumbled = shuffle(arryChar);
 
-		return arryCharJumbled;
+		return shuffle(noDup.toCharArray());
 	}
 
 	/**
@@ -378,96 +382,30 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 
 		// setup words to solve views
 		if (num == 3) {
-			v1.setVisibility(View.VISIBLE);
-			v2.setVisibility(View.VISIBLE);
-			v3.setVisibility(View.VISIBLE);
-			tvAnswer1.setVisibility(View.VISIBLE);
-			tvAnswer2.setVisibility(View.VISIBLE);
-			tvAnswer3.setVisibility(View.VISIBLE);
+			Utils.setViewVisibility(true, v1, v2, v3,
+					tvAnswer1, tvAnswer2, tvAnswer3);
 		} else if (num == 4) {
-			v1.setVisibility(View.VISIBLE);
-			v2.setVisibility(View.VISIBLE);
-			v3.setVisibility(View.VISIBLE);
-			v4.setVisibility(View.VISIBLE);
-			tvAnswer1.setVisibility(View.VISIBLE);
-			tvAnswer2.setVisibility(View.VISIBLE);
-			tvAnswer3.setVisibility(View.VISIBLE);
-			tvAnswer4.setVisibility(View.VISIBLE);
+			Utils.setViewVisibility(true, v1, v2, v3, v4,
+					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4);
 		} else if (num == 5) {
-			v1.setVisibility(View.VISIBLE);
-			v2.setVisibility(View.VISIBLE);
-			v3.setVisibility(View.VISIBLE);
-			v4.setVisibility(View.VISIBLE);
-			v5.setVisibility(View.VISIBLE);
-			tvAnswer1.setVisibility(View.VISIBLE);
-			tvAnswer2.setVisibility(View.VISIBLE);
-			tvAnswer3.setVisibility(View.VISIBLE);
-			tvAnswer4.setVisibility(View.VISIBLE);
-			tvAnswer5.setVisibility(View.VISIBLE);
+			Utils.setViewVisibility(true, v1, v2, v3, v4, v5,
+					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5);
 		} else if (num == 6) {
-			v1.setVisibility(View.VISIBLE);
-			v2.setVisibility(View.VISIBLE);
-			v3.setVisibility(View.VISIBLE);
-			v4.setVisibility(View.VISIBLE);
-			v5.setVisibility(View.VISIBLE);
-			v6.setVisibility(View.VISIBLE);
-			tvAnswer1.setVisibility(View.VISIBLE);
-			tvAnswer2.setVisibility(View.VISIBLE);
-			tvAnswer3.setVisibility(View.VISIBLE);
-			tvAnswer4.setVisibility(View.VISIBLE);
-			tvAnswer5.setVisibility(View.VISIBLE);
-			tvAnswer6.setVisibility(View.VISIBLE);
+			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6,
+					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
+					tvAnswer6);
 		} else if (num == 7) {
-			v1.setVisibility(View.VISIBLE);
-			v2.setVisibility(View.VISIBLE);
-			v3.setVisibility(View.VISIBLE);
-			v4.setVisibility(View.VISIBLE);
-			v5.setVisibility(View.VISIBLE);
-			v6.setVisibility(View.VISIBLE);
-			v7.setVisibility(View.VISIBLE);
-			tvAnswer1.setVisibility(View.VISIBLE);
-			tvAnswer2.setVisibility(View.VISIBLE);
-			tvAnswer3.setVisibility(View.VISIBLE);
-			tvAnswer4.setVisibility(View.VISIBLE);
-			tvAnswer5.setVisibility(View.VISIBLE);
-			tvAnswer6.setVisibility(View.VISIBLE);
-			tvAnswer7.setVisibility(View.VISIBLE);
+			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7,
+					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
+					tvAnswer6, tvAnswer7);
 		} else if (num == 8) {
-			v1.setVisibility(View.VISIBLE);
-			v2.setVisibility(View.VISIBLE);
-			v3.setVisibility(View.VISIBLE);
-			v4.setVisibility(View.VISIBLE);
-			v5.setVisibility(View.VISIBLE);
-			v6.setVisibility(View.VISIBLE);
-			v7.setVisibility(View.VISIBLE);
-			v8.setVisibility(View.VISIBLE);
-			tvAnswer1.setVisibility(View.VISIBLE);
-			tvAnswer2.setVisibility(View.VISIBLE);
-			tvAnswer3.setVisibility(View.VISIBLE);
-			tvAnswer4.setVisibility(View.VISIBLE);
-			tvAnswer5.setVisibility(View.VISIBLE);
-			tvAnswer6.setVisibility(View.VISIBLE);
-			tvAnswer7.setVisibility(View.VISIBLE);
-			tvAnswer8.setVisibility(View.VISIBLE);
+			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7, v8,
+					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
+					tvAnswer6, tvAnswer7, tvAnswer8);
 		} else if (num == 9) {
-			v1.setVisibility(View.VISIBLE);
-			v2.setVisibility(View.VISIBLE);
-			v3.setVisibility(View.VISIBLE);
-			v4.setVisibility(View.VISIBLE);
-			v5.setVisibility(View.VISIBLE);
-			v6.setVisibility(View.VISIBLE);
-			v7.setVisibility(View.VISIBLE);
-			v8.setVisibility(View.VISIBLE);
-			v9.setVisibility(View.VISIBLE);
-			tvAnswer1.setVisibility(View.VISIBLE);
-			tvAnswer2.setVisibility(View.VISIBLE);
-			tvAnswer3.setVisibility(View.VISIBLE);
-			tvAnswer4.setVisibility(View.VISIBLE);
-			tvAnswer5.setVisibility(View.VISIBLE);
-			tvAnswer6.setVisibility(View.VISIBLE);
-			tvAnswer7.setVisibility(View.VISIBLE);
-			tvAnswer8.setVisibility(View.VISIBLE);
-			tvAnswer9.setVisibility(View.VISIBLE);
+			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7, v8, v9,
+					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
+					tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9);
 		}
 	}
 
@@ -477,49 +415,22 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		mIncorrectLetters = 0;
 
 		// clear letter views
-		tvAnswer1.setText("");
-		tvAnswer2.setText("");
-		tvAnswer3.setText("");
-		tvAnswer4.setText("");
-		tvAnswer5.setText("");
-		tvAnswer6.setText("");
-		tvAnswer7.setText("");
-		tvAnswer8.setText("");
-		tvAnswer9.setText("");
+		Utils.clearText(tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4,
+				tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9);
 
-		// reset views there were gone
-		tv1.setVisibility(View.VISIBLE);
-		tv2.setVisibility(View.VISIBLE);
-		tv3.setVisibility(View.VISIBLE);
-		tv4.setVisibility(View.VISIBLE);
-		tv5.setVisibility(View.VISIBLE);
-		tv6.setVisibility(View.VISIBLE);
-		tv7.setVisibility(View.VISIBLE);
-		tv8.setVisibility(View.VISIBLE);
-		tv9.setVisibility(View.VISIBLE);
-
-		// reset underscore views
-		v1.setVisibility(View.GONE);
-		v2.setVisibility(View.GONE);
-		v3.setVisibility(View.GONE);
-		v4.setVisibility(View.GONE);
-		v5.setVisibility(View.GONE);
-		v6.setVisibility(View.GONE);
-		v7.setVisibility(View.GONE);
-		v8.setVisibility(View.GONE);
-		v9.setVisibility(View.GONE);
-
+		// reset views that were gone to visible
+		Utils.setViewVisibility(true, tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9);
+		
+		// reset views color
+		Utils.setTextViewColor(getResources().getColor(R.color.black), 
+				tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9);
+		
 		// reset letter views
-		tvAnswer1.setVisibility(View.GONE);
-		tvAnswer2.setVisibility(View.GONE);
-		tvAnswer3.setVisibility(View.GONE);
-		tvAnswer4.setVisibility(View.GONE);
-		tvAnswer5.setVisibility(View.GONE);
-		tvAnswer6.setVisibility(View.GONE);
-		tvAnswer7.setVisibility(View.GONE);
-		tvAnswer8.setVisibility(View.GONE);
-		tvAnswer9.setVisibility(View.GONE);
+		Utils.setViewVisibility(false, v1, v2, v3, v4, v5, v6, v7, v8, v9,
+				tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
+				tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9);
 	}
+
 
 	/**
 	 * Method is used to remove letters from word bank
@@ -561,9 +472,9 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		if (!Utils.checkIfNull(arryJumbled)) {
 			String c = String.valueOf(arryJumbled[pos]);
 			ArrayList<Integer> arryMatch = new ArrayList<Integer>();
-			if (origStr.contains(c)) {
+			if (mWord.contains(c)) {
 				// check the entire word for instances of the selected letter
-				for (int i = -1; (i = origStr.indexOf(c, i + 1)) != -1;) {
+				for (int i = -1; (i = mWord.indexOf(c, i + 1)) != -1;) {
 					arryMatch.add(i);
 				}
 
@@ -674,7 +585,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			}
 
 			// check if puzzle is solved
-			if (origStr.length() == mCorrectLetters) {
+			if (mWord.length() == mCorrectLetters) {
 				Logger.i(TAG, "word solved");
 				mSolvedWords++;
 				if (mSolvedWords >= 3) {

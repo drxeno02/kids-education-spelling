@@ -2,1311 +2,116 @@
 <resources>
 
     <array name="arryWordBankObj">
-
         <!-- three letter words -->
         <item>bay</item>
-        <item>day</item>
         <item>hay</item>
-        <item>way</item>
-        <item>say</item>
         <item>tie</item>
         <item>pie</item>
-        <item>lie</item>
-        <item>cry</item>
-        <item>and</item>
-        <item>can</item>
-        <item>eat</item>
-        <item>law</item>
-        <item>ate</item>
-        <item>eat</item>
-        <item>age</item>
         <item>bow</item>
-        <item>mow</item>
-        <item>tow</item>
-        <item>see</item>
         <item>sea</item>
-        <item>run</item>
         <item>sun</item>
-        <item>not</item>
-        <item>buy</item>
-        <item>dry</item>
-        <item>top</item>
         <item>air</item>
-        <item>hot</item>
-        <item>son</item>
-        <item>win</item>
-        <item>sub</item>
-        <item>act</item>
-        <item>add</item>
         <item>boy</item>
 
         <!-- four letter words -->
-        <item>date</item>
-        <item>fate</item>
         <item>gate</item>
-        <item>hate</item>
-        <item>late</item>
         <item>cage</item>
-        <item>damp</item>
         <item>lamp</item>
-        <item>noon</item>
-        <item>soon</item>
-        <item>ruin</item>
         <item>ball</item>
-        <item>fall</item>
-        <item>call</item>
-        <item>tall</item>
-        <item>hall</item>
         <item>wall</item>
         <item>mall</item>
-        <item>bent</item>
-        <item>dent</item>
-        <item>tent</item>
-        <item>beep</item>
-        <item>peep</item>
-        <item>bold</item>
-        <item>cold</item>
-        <item>hold</item>
-        <item>sold</item>
-        <item>told</item>
-        <item>game</item>
-        <item>kind</item>
-        <item>stun</item>
-        <item>spun</item>
-        <item>year</item>
-        <item>date</item>
         <item>soap</item>
-        <item>size</item>
         <item>rope</item>
-        <item>cone</item>
         <item>home</item>
-        <item>hone</item>
-        <item>tone</item>
         <item>cake</item>
         <item>rake</item>
-        <item>bake</item>
-        <item>wake</item>
-        <item>fake</item>
-        <item>stay</item>
         <item>clay</item>
-        <item>away</item>
-        <item>chat</item>
-        <item>both</item>
         <item>girl</item>
-        <item>page</item>
-        <item>read</item>
-        <item>teen</item>
         <item>baby</item>
-        <item>myth</item>
         <item>suit</item>
-        <item>care</item>
-        <item>them</item>
         <item>book</item>
         <item>cook</item>
         <item>head</item>
-        <item>cost</item>
         <item>door</item>
-        <item>hard</item>
-        <item>easy</item>
-        <item>cold</item>
-        <item>mild</item>
-        <item>fair</item>
-        <item>fact</item>
-        <item>loss</item>
-        <item>lose</item>
-        <item>case</item>
-        <item>care</item>
-        <item>tell</item>
-        <item>went</item>
-        <item>long</item>
-        <item>deep</item>
-        <item>name</item>
-        <item>code</item>
 
         <!-- five letter words -->
-        <item>maybe</item>
-        <item>rerun</item>
-        <item>since</item>
-        <item>month</item>
-        <item>stray</item>
-        <item>write</item>
         <item>stone</item>
-        <item>decoy</item>
-        <item>awake</item>
-        <item>quake</item>
-        <item>shake</item>
-        <item>chase</item>
-        <item>chick</item>
-        <item>charm</item>
         <item>chips</item>
-        <item>lunch</item>
-        <item>bunch</item>
-        <item>hunch</item>
-        <item>punch</item>
-        <item>bring</item>
-        <item>uncle</item>
-        <item>judge</item>
         <item>paper</item>
-        <item>norse</item>
-        <item>there</item>
-        <item>their</item>
-        <item>other</item>
-        <item>party</item>
-        <item>build</item>
-        <item>bonus</item>
-        <item>spent</item>
-        <item>began</item>
-        <item>today</item>
-        <item>honor</item>
-        <item>adult</item>
-        <item>round</item>
-        <item>watch</item>
-        <item>catch</item>
-        <item>cause</item>
-        <item>chain</item>
-        <item>chief</item>
-        <item>child</item>
-        <item>sorry</item>
-        <item>study</item>
-        <item>coder</item>
-        <item>often</item>
-        <item>smile</item>
-        <item>adopt</item>
-        <item>spell</item>
-        <item>stole</item>
+        <item>chain</item>      
         <item>house</item>
-        <item>alone</item>
         <item>stone</item>
-        <item>alone</item>
         <item>table</item>
-        <item>print</item>
 
         <!-- six letter words -->
-        <item>recite</item>
-        <item>excite</item>
-        <item>anyway</item>
-        <item>outrun</item>
-        <item>crunch</item>
-        <item>brunch</item>
         <item>carpet</item>
-        <item>piglet</item>
-        <item>sunset</item>
         <item>icebox</item>
-        <item>accept</item>
-        <item>chores</item>
-        <item>indoor</item>
-        <item>retire</item>
-        <item>report</item>
-        <item>unable</item>
-        <item>bought</item>
-        <item>sister</item>
         <item>bridge</item>
-        <item>cousin</item>
-        <item>matter</item>
-        <item>vessel</item>
-        <item>victim</item>
-        <item>before</item>
-        <item>rather</item>
-        <item>toward</item>
-        <item>afraid</item>
-        <item>street</item>
-        <item>direct</item>
-        <item>annual</item>
-        <item>answer</item>
-        <item>victim</item>
-        <item>summon</item>
-        <item>summer</item>
         <item>school</item>
-        <item>pretty</item>
-        <item>attend</item>
-        <item>engine</item>
-        <item>travel</item>
-        <item>salary</item>
-        <item>career</item>
 
         <!-- seven letter words -->
         <item>mailbox</item>
-        <item>foxhole</item>
-        <item>somehow</item>
-        <item>daytime</item>
-        <item>indoors</item>
-        <item>outdoor</item>
-        <item>weather</item>
-        <item>whether</item>
         <item>factory</item>
         <item>theater</item>
-        <item>promise</item>
-        <item>primary</item>
-        <item>morning</item>
-        <item>success</item>
-        <item>destroy</item>
-        <item>succeed</item>
-        <item>stopped</item>
-        <item>useless</item>
-        <item>program</item>
-        <item>recover</item>
-        <item>brother</item>
-        <item>century</item>
-        <item>forward</item>
         <item>college</item>
 
         <!-- eight letter words -->
         <item>seashore</item>
         <item>seashell</item>
-        <item>woodwork</item>
-        <item>daylight</item>
         <item>raindrop</item>
-        <item>birthday</item>
-        <item>outdoors</item>
-        <item>negative</item>
-        <item>positive</item>
-        <item>marriage</item>
-        <item>teenager</item>
-        <item>official</item>
-        <item>addition</item>
-        <item>subtract</item>
-        <item>pleasant</item>
-        <item>tomorrow</item>
         <item>treasure</item>
-        <item>restrain</item>
-        <item>backward</item>
-        <item>autonomy</item>
 
         <!-- nine letter words -->
         <item>seashells</item>
         <item>dollhouse</item>
-        <item>important</item>
-        <item>president</item>
-        <item>therefore</item>
-
-        <!-- animals letter words -->
-        <item>ant</item>
-        <item>beetle</item>
-        <item>seagall</item>
-        <item>dolphin</item>
-        <item>fish</item>
-        <item>dear</item>
-        <item>cat</item>
-        <item>cow</item>
-        <item>dog</item>
-        <item>crow</item>
-        <item>frog</item>
-        <item>snake</item>
-        <item>bobcat</item>
-        <item>monkey</item>
-        <item>cheetah</item>
-        <item>horse</item>
-        <item>mouse</item>
-        <item>rat</item>
-        <item>mice</item>
-        <item>rats</item>
-        <item>frogs</item>
-        <item>gorilla</item>
-        <item>gorillas</item>
-        <item>zebra</item>
-
-        <!-- colors letter words -->
-        <item>white</item>
-        <item>black</item>
-
-        <!-- days of week -->
-        <item>monday</item>
-        <item>tuesday</item>
-        <item>wednesday</item>
-        <item>thursday</item>
-        <item>friday</item>
-        <item>saturday</item>
-        <item>sunday</item>
-
-        <!-- months of year -->
-        <item>january</item>
-        <item>february</item>
-        <item>march</item>
-        <item>april</item>
-        <item>may</item>
-        <item>june</item>
-        <item>july</item>
-        <item>august</item>
-        <item>september</item>
-        <item>october</item>
-        <item>november</item>
-        <item>december</item>
-
-        <!-- career letter words -->
-        <item>firemen</item>
-        <item>fireman</item>
-        <item>doctor</item>
-        <item>lawyer</item>
-        <item>police</item>
-        <item>programmer</item>
-        <item>chef</item>
-        <item>artist</item>
-        <item>engineer</item>
-        <item>nurse</item>
-        <item>therapist</item>
-        <item>astronaut</item>
-
-        <!-- number letter words -->
-        <item>first</item>
-        <item>second</item>
-        <item>third</item>
-        <item>fourth</item>
-        <item>fifth</item>
-        <item>sixth</item>
-        <item>seventh</item>
-        <item>eighth</item>
-        <item>ninth</item>
-        <item>tenth</item>
-        <item>one</item>
-        <item>two</item>
-        <item>three</item>
-        <item>four</item>
-        <item>five</item>
-        <item>six</item>
-        <item>seven</item>
-        <item>eight</item>
-        <item>nine</item>
-        <item>ten</item>
-        <item>eleven</item>
-        <item>twelve</item>
-        <item>thirteen</item>
-        <item>fourteen</item>
-        <item>fifteen</item>
-        <item>twenty</item>
-        <item>thirty</item>
-        <item>forty</item>
-        <item>fifty</item>
-        <item>sixty</item>
-        <item>seventy</item>
-        <item>eighty</item>
-        <item>ninety</item>
-        <item>hundred</item>
-
-        <!-- math letter words -->
-        <item>height</item>
-        <item>width</item>
-        <item>length</item>
-        <item>meter</item>
-        <item>inch</item>
-        <item>yard</item>
-        <item>second</item>
-        <item>minute</item>
-        <item>hour</item>
-        <item>seconds</item>
-        <item>minutes</item>
-        <item>hours</item>
-        <item>circle</item>
-        <item>triangle</item>
-        <item>square</item>
-        <item>obtuse</item>
-        <item>integral</item>
-
-        <!-- science letter words -->
-        <item>pancreas</item>
-        <item>liver</item>
-        <item>heart</item>
-        <item>dna</item>
-        <item>bones</item>
-        <item>bone</item>
-        <item>skin</item>
-        <item>eye</item>
-        <item>finger</item>
-        <item>fingers</item>
-        <item>abdomen</item>
-        <item>thumb</item>
-        <item>eyelid</item>
-        <item>eyebrow</item>
-        <item>knees</item>
-        <item>knee</item>
-        <item>toe</item>
-        <item>toes</item>
-        <item>shoulder</item>
-        <item>shoulders</item>
-        <item>chemical</item>
-        <item>computer</item>
-        <item>keyboard</item>
-        <item>printer</item>
-        <item>processor</item>
-        <item>calculus</item>
-        <item>fraction</item>
-        <item>equation</item>
-        <item>medicine</item>
-        <item>biology</item>
-        <item>chemistry</item>
-        <item>chemist</item>
-        <item>element</item>
-        <item>nitrogen</item>
-        <item>oxygen</item>
-        <item>carbon</item>
-        <item>mercury</item>
-        <item>hydrogen</item>
     </array>
+    
     <array name="arryWordBankPlaces">
-
-        <!-- three letter words -->
-        <item>bay</item>
-        <item>day</item>
-        <item>hay</item>
-        <item>way</item>
-        <item>say</item>
-        <item>tie</item>
-        <item>pie</item>
-        <item>lie</item>
-        <item>cry</item>
-        <item>and</item>
-        <item>can</item>
-        <item>eat</item>
-        <item>law</item>
-        <item>ate</item>
-        <item>eat</item>
-        <item>age</item>
-        <item>bow</item>
-        <item>mow</item>
-        <item>tow</item>
-        <item>see</item>
-        <item>sea</item>
-        <item>run</item>
-        <item>sun</item>
-        <item>not</item>
-        <item>buy</item>
-        <item>dry</item>
-        <item>top</item>
-        <item>air</item>
-        <item>hot</item>
-        <item>son</item>
-        <item>win</item>
-        <item>sub</item>
-        <item>act</item>
-        <item>add</item>
-        <item>boy</item>
-
-        <!-- four letter words -->
-        <item>date</item>
-        <item>fate</item>
-        <item>gate</item>
-        <item>hate</item>
-        <item>late</item>
-        <item>cage</item>
-        <item>damp</item>
-        <item>lamp</item>
-        <item>noon</item>
-        <item>soon</item>
-        <item>ruin</item>
-        <item>ball</item>
-        <item>fall</item>
-        <item>call</item>
-        <item>tall</item>
-        <item>hall</item>
-        <item>wall</item>
-        <item>mall</item>
-        <item>bent</item>
-        <item>dent</item>
-        <item>tent</item>
-        <item>beep</item>
-        <item>peep</item>
-        <item>bold</item>
-        <item>cold</item>
-        <item>hold</item>
-        <item>sold</item>
-        <item>told</item>
-        <item>game</item>
-        <item>kind</item>
-        <item>stun</item>
-        <item>spun</item>
-        <item>year</item>
-        <item>date</item>
-        <item>soap</item>
-        <item>size</item>
-        <item>rope</item>
-        <item>cone</item>
-        <item>home</item>
-        <item>hone</item>
-        <item>tone</item>
-        <item>cake</item>
-        <item>rake</item>
-        <item>bake</item>
-        <item>wake</item>
-        <item>fake</item>
-        <item>stay</item>
-        <item>clay</item>
-        <item>away</item>
-        <item>chat</item>
-        <item>both</item>
-        <item>girl</item>
-        <item>page</item>
-        <item>read</item>
-        <item>teen</item>
-        <item>baby</item>
-        <item>myth</item>
-        <item>suit</item>
-        <item>care</item>
-        <item>them</item>
-        <item>book</item>
-        <item>cook</item>
-        <item>head</item>
-        <item>cost</item>
-        <item>door</item>
-        <item>hard</item>
-        <item>easy</item>
-        <item>cold</item>
-        <item>mild</item>
-        <item>fair</item>
-        <item>fact</item>
-        <item>loss</item>
-        <item>lose</item>
-        <item>case</item>
-        <item>care</item>
-        <item>tell</item>
-        <item>went</item>
-        <item>long</item>
-        <item>deep</item>
-        <item>name</item>
-        <item>code</item>
-
-        <!-- five letter words -->
-        <item>maybe</item>
-        <item>rerun</item>
-        <item>since</item>
-        <item>month</item>
-        <item>stray</item>
-        <item>write</item>
-        <item>stone</item>
-        <item>decoy</item>
-        <item>awake</item>
-        <item>quake</item>
-        <item>shake</item>
-        <item>chase</item>
-        <item>chick</item>
-        <item>charm</item>
-        <item>chips</item>
-        <item>lunch</item>
-        <item>bunch</item>
-        <item>hunch</item>
-        <item>punch</item>
-        <item>bring</item>
-        <item>uncle</item>
-        <item>judge</item>
-        <item>paper</item>
-        <item>norse</item>
-        <item>there</item>
-        <item>their</item>
-        <item>other</item>
-        <item>party</item>
-        <item>build</item>
-        <item>bonus</item>
-        <item>spent</item>
-        <item>began</item>
-        <item>today</item>
-        <item>honor</item>
-        <item>adult</item>
-        <item>round</item>
-        <item>watch</item>
-        <item>catch</item>
-        <item>cause</item>
-        <item>chain</item>
-        <item>chief</item>
-        <item>child</item>
-        <item>sorry</item>
-        <item>study</item>
-        <item>coder</item>
-        <item>often</item>
-        <item>smile</item>
-        <item>adopt</item>
-        <item>spell</item>
-        <item>stole</item>
-        <item>house</item>
-        <item>alone</item>
-        <item>stone</item>
-        <item>alone</item>
-        <item>table</item>
-        <item>print</item>
-
-        <!-- six letter words -->
-        <item>recite</item>
-        <item>excite</item>
-        <item>anyway</item>
-        <item>outrun</item>
-        <item>crunch</item>
-        <item>brunch</item>
-        <item>carpet</item>
-        <item>piglet</item>
-        <item>sunset</item>
-        <item>icebox</item>
-        <item>accept</item>
-        <item>chores</item>
-        <item>indoor</item>
-        <item>retire</item>
-        <item>report</item>
-        <item>unable</item>
-        <item>bought</item>
-        <item>sister</item>
-        <item>bridge</item>
-        <item>cousin</item>
-        <item>matter</item>
-        <item>vessel</item>
-        <item>victim</item>
-        <item>before</item>
-        <item>rather</item>
-        <item>toward</item>
-        <item>afraid</item>
-        <item>street</item>
-        <item>direct</item>
-        <item>annual</item>
-        <item>answer</item>
-        <item>victim</item>
-        <item>summon</item>
-        <item>summer</item>
-        <item>school</item>
-        <item>pretty</item>
-        <item>attend</item>
-        <item>engine</item>
-        <item>travel</item>
-        <item>salary</item>
-        <item>career</item>
-
-        <!-- seven letter words -->
-        <item>mailbox</item>
-        <item>foxhole</item>
-        <item>somehow</item>
-        <item>daytime</item>
-        <item>indoors</item>
-        <item>outdoor</item>
-        <item>weather</item>
-        <item>whether</item>
-        <item>factory</item>
-        <item>theater</item>
-        <item>promise</item>
-        <item>primary</item>
-        <item>morning</item>
-        <item>success</item>
-        <item>destroy</item>
-        <item>succeed</item>
-        <item>stopped</item>
-        <item>useless</item>
-        <item>program</item>
-        <item>recover</item>
-        <item>brother</item>
-        <item>century</item>
-        <item>forward</item>
-        <item>college</item>
-
-        <!-- eight letter words -->
-        <item>seashore</item>
-        <item>seashell</item>
-        <item>woodwork</item>
-        <item>daylight</item>
-        <item>raindrop</item>
-        <item>birthday</item>
-        <item>outdoors</item>
-        <item>negative</item>
-        <item>positive</item>
-        <item>marriage</item>
-        <item>teenager</item>
-        <item>official</item>
-        <item>addition</item>
-        <item>subtract</item>
-        <item>pleasant</item>
-        <item>tomorrow</item>
-        <item>treasure</item>
-        <item>restrain</item>
-        <item>backward</item>
-        <item>autonomy</item>
-
-        <!-- nine letter words -->
-        <item>seashells</item>
-        <item>dollhouse</item>
-        <item>important</item>
-        <item>president</item>
-        <item>therefore</item>
-
-        <!-- animals letter words -->
-        <item>cat</item>
-        <item>cow</item>
-        <item>dog</item>
-        <item>crow</item>
-        <item>frog</item>
-        <item>snake</item>
-        <item>bobcat</item>
-        <item>monkey</item>
-        <item>cheetah</item>
-        <item>horse</item>
-        <item>mouse</item>
-        <item>rat</item>
-        <item>mice</item>
-        <item>rats</item>
-        <item>frogs</item>
-        <item>gorilla</item>
-        <item>gorillas</item>
-
-        <!-- colors letter words -->
-        <item>white</item>
-        <item>black</item>
-
-        <!-- days of week -->
-        <item>monday</item>
-        <item>tuesday</item>
-        <item>wednesday</item>
-        <item>thursday</item>
-        <item>friday</item>
-        <item>saturday</item>
-        <item>sunday</item>
-
-        <!-- months of year -->
-        <item>january</item>
-        <item>february</item>
-        <item>march</item>
-        <item>april</item>
-        <item>may</item>
-        <item>june</item>
-        <item>july</item>
-        <item>august</item>
-        <item>september</item>
-        <item>october</item>
-        <item>november</item>
-        <item>december</item>
-
-        <!-- career letter words -->
-        <item>firemen</item>
-        <item>fireman</item>
-        <item>doctor</item>
-        <item>lawyer</item>
-        <item>police</item>
-        <item>programmer</item>
-        <item>chef</item>
-        <item>artist</item>
-        <item>engineer</item>
-        <item>nurse</item>
-        <item>therapist</item>
-        <item>astronaut</item>
-
-        <!-- number letter words -->
-        <item>first</item>
-        <item>second</item>
-        <item>third</item>
-        <item>fourth</item>
-        <item>fifth</item>
-        <item>sixth</item>
-        <item>seventh</item>
-        <item>eighth</item>
-        <item>ninth</item>
-        <item>tenth</item>
-        <item>one</item>
-        <item>two</item>
-        <item>three</item>
-        <item>four</item>
-        <item>five</item>
-        <item>six</item>
-        <item>seven</item>
-        <item>eight</item>
-        <item>nine</item>
-        <item>ten</item>
-        <item>eleven</item>
-        <item>twelve</item>
-        <item>thirteen</item>
-        <item>fourteen</item>
-        <item>fifteen</item>
-        <item>twenty</item>
-        <item>thirty</item>
-        <item>forty</item>
-        <item>fifty</item>
-        <item>sixty</item>
-        <item>seventy</item>
-        <item>eighty</item>
-        <item>ninety</item>
-        <item>hundred</item>
-
-        <!-- math letter words -->
-        <item>height</item>
-        <item>width</item>
-        <item>length</item>
-        <item>meter</item>
-        <item>inch</item>
-        <item>yard</item>
-        <item>second</item>
-        <item>minute</item>
-        <item>hour</item>
-        <item>seconds</item>
-        <item>minutes</item>
-        <item>hours</item>
-        <item>circle</item>
-        <item>triangle</item>
-        <item>square</item>
-        <item>obtuse</item>
-        <item>integral</item>
-
-        <!-- science letter words -->
-        <item>pancreas</item>
-        <item>liver</item>
-        <item>heart</item>
-        <item>dna</item>
-        <item>bones</item>
-        <item>bone</item>
-        <item>skin</item>
-        <item>eye</item>
-        <item>finger</item>
-        <item>fingers</item>
-        <item>abdomen</item>
-        <item>thumb</item>
-        <item>eyelid</item>
-        <item>eyebrow</item>
-        <item>knees</item>
-        <item>knee</item>
-        <item>toe</item>
-        <item>toes</item>
-        <item>shoulder</item>
-        <item>shoulders</item>
-        <item>chemical</item>
-        <item>computer</item>
-        <item>keyboard</item>
-        <item>printer</item>
-        <item>processor</item>
-        <item>calculus</item>
-        <item>fraction</item>
-        <item>equation</item>
-        <item>medicine</item>
-        <item>biology</item>
-        <item>chemistry</item>
-        <item>chemist</item>
-        <item>element</item>
-        <item>nitrogen</item>
-        <item>oxygen</item>
-        <item>carbon</item>
-        <item>mercury</item>
-        <item>hydrogen</item>
+        <item>Ohio</item>
+        <item>Wyoming</item>
+        <item>Africa</item>
     </array>
+    
     <array name="arryWordBankActions">
-
         <!-- three letter words -->
-        <item>bay</item>
-        <item>day</item>
-        <item>hay</item>
-        <item>way</item>
-        <item>say</item>
-        <item>tie</item>
-        <item>pie</item>
         <item>lie</item>
         <item>cry</item>
-        <item>and</item>
-        <item>can</item>
         <item>eat</item>
-        <item>law</item>
-        <item>ate</item>
-        <item>eat</item>
-        <item>age</item>
-        <item>bow</item>
-        <item>mow</item>
-        <item>tow</item>
-        <item>see</item>
-        <item>sea</item>
         <item>run</item>
-        <item>sun</item>
-        <item>not</item>
-        <item>buy</item>
-        <item>dry</item>
-        <item>top</item>
-        <item>air</item>
-        <item>hot</item>
-        <item>son</item>
-        <item>win</item>
-        <item>sub</item>
-        <item>act</item>
-        <item>add</item>
-        <item>boy</item>
 
         <!-- four letter words -->
-        <item>date</item>
-        <item>fate</item>
-        <item>gate</item>
-        <item>hate</item>
-        <item>late</item>
-        <item>cage</item>
-        <item>damp</item>
-        <item>lamp</item>
-        <item>noon</item>
-        <item>soon</item>
-        <item>ruin</item>
-        <item>ball</item>
         <item>fall</item>
         <item>call</item>
-        <item>tall</item>
-        <item>hall</item>
-        <item>wall</item>
-        <item>mall</item>
-        <item>bent</item>
-        <item>dent</item>
-        <item>tent</item>
-        <item>beep</item>
-        <item>peep</item>
-        <item>bold</item>
-        <item>cold</item>
-        <item>hold</item>
-        <item>sold</item>
-        <item>told</item>
-        <item>game</item>
-        <item>kind</item>
-        <item>stun</item>
-        <item>spun</item>
-        <item>year</item>
-        <item>date</item>
-        <item>soap</item>
-        <item>size</item>
-        <item>rope</item>
-        <item>cone</item>
-        <item>home</item>
-        <item>hone</item>
-        <item>tone</item>
-        <item>cake</item>
-        <item>rake</item>
         <item>bake</item>
         <item>wake</item>
-        <item>fake</item>
-        <item>stay</item>
-        <item>clay</item>
-        <item>away</item>
         <item>chat</item>
-        <item>both</item>
-        <item>girl</item>
-        <item>page</item>
-        <item>read</item>
-        <item>teen</item>
-        <item>baby</item>
-        <item>myth</item>
-        <item>suit</item>
-        <item>care</item>
-        <item>them</item>
-        <item>book</item>
-        <item>cook</item>
-        <item>head</item>
-        <item>cost</item>
-        <item>door</item>
-        <item>hard</item>
-        <item>easy</item>
-        <item>cold</item>
-        <item>mild</item>
-        <item>fair</item>
-        <item>fact</item>
-        <item>loss</item>
-        <item>lose</item>
-        <item>case</item>
-        <item>care</item>
-        <item>tell</item>
-        <item>went</item>
-        <item>long</item>
-        <item>deep</item>
-        <item>name</item>
         <item>code</item>
-
+  
         <!-- five letter words -->
-        <item>maybe</item>
-        <item>rerun</item>
-        <item>since</item>
-        <item>month</item>
-        <item>stray</item>
-        <item>write</item>
-        <item>stone</item>
-        <item>decoy</item>
         <item>awake</item>
-        <item>quake</item>
         <item>shake</item>
         <item>chase</item>
-        <item>chick</item>
-        <item>charm</item>
-        <item>chips</item>
-        <item>lunch</item>
-        <item>bunch</item>
-        <item>hunch</item>
-        <item>punch</item>
-        <item>bring</item>
-        <item>uncle</item>
-        <item>judge</item>
-        <item>paper</item>
-        <item>norse</item>
-        <item>there</item>
-        <item>their</item>
-        <item>other</item>
-        <item>party</item>
-        <item>build</item>
-        <item>bonus</item>
-        <item>spent</item>
-        <item>began</item>
-        <item>today</item>
-        <item>honor</item>
-        <item>adult</item>
-        <item>round</item>
-        <item>watch</item>
         <item>catch</item>
-        <item>cause</item>
-        <item>chain</item>
-        <item>chief</item>
-        <item>child</item>
-        <item>sorry</item>
         <item>study</item>
-        <item>coder</item>
-        <item>often</item>
         <item>smile</item>
-        <item>adopt</item>
-        <item>spell</item>
-        <item>stole</item>
-        <item>house</item>
-        <item>alone</item>
-        <item>stone</item>
-        <item>alone</item>
-        <item>table</item>
-        <item>print</item>
 
         <!-- six letter words -->
         <item>recite</item>
-        <item>excite</item>
-        <item>anyway</item>
-        <item>outrun</item>
         <item>crunch</item>
         <item>brunch</item>
-        <item>carpet</item>
-        <item>piglet</item>
-        <item>sunset</item>
-        <item>icebox</item>
-        <item>accept</item>
-        <item>chores</item>
-        <item>indoor</item>
-        <item>retire</item>
-        <item>report</item>
-        <item>unable</item>
-        <item>bought</item>
-        <item>sister</item>
-        <item>bridge</item>
-        <item>cousin</item>
-        <item>matter</item>
-        <item>vessel</item>
-        <item>victim</item>
-        <item>before</item>
-        <item>rather</item>
-        <item>toward</item>
-        <item>afraid</item>
-        <item>street</item>
-        <item>direct</item>
-        <item>annual</item>
-        <item>answer</item>
-        <item>victim</item>
         <item>summon</item>
-        <item>summer</item>
-        <item>school</item>
-        <item>pretty</item>
-        <item>attend</item>
-        <item>engine</item>
-        <item>travel</item>
-        <item>salary</item>
-        <item>career</item>
 
         <!-- seven letter words -->
-        <item>mailbox</item>
-        <item>foxhole</item>
-        <item>somehow</item>
-        <item>daytime</item>
-        <item>indoors</item>
-        <item>outdoor</item>
-        <item>weather</item>
-        <item>whether</item>
-        <item>factory</item>
-        <item>theater</item>
         <item>promise</item>
-        <item>primary</item>
-        <item>morning</item>
-        <item>success</item>
         <item>destroy</item>
-        <item>succeed</item>
-        <item>stopped</item>
-        <item>useless</item>
-        <item>program</item>
-        <item>recover</item>
-        <item>brother</item>
-        <item>century</item>
-        <item>forward</item>
-        <item>college</item>
 
         <!-- eight letter words -->
-        <item>seashore</item>
-        <item>seashell</item>
-        <item>woodwork</item>
-        <item>daylight</item>
-        <item>raindrop</item>
-        <item>birthday</item>
-        <item>outdoors</item>
-        <item>negative</item>
-        <item>positive</item>
-        <item>marriage</item>
-        <item>teenager</item>
-        <item>official</item>
-        <item>addition</item>
-        <item>subtract</item>
-        <item>pleasant</item>
-        <item>tomorrow</item>
-        <item>treasure</item>
-        <item>restrain</item>
-        <item>backward</item>
-        <item>autonomy</item>
-
-        <!-- nine letter words -->
-        <item>seashells</item>
-        <item>dollhouse</item>
-        <item>important</item>
-        <item>president</item>
-        <item>therefore</item>
-
-        <!-- animals letter words -->
-        <item>cat</item>
-        <item>cow</item>
-        <item>dog</item>
-        <item>crow</item>
-        <item>frog</item>
-        <item>snake</item>
-        <item>bobcat</item>
-        <item>monkey</item>
-        <item>cheetah</item>
-        <item>horse</item>
-        <item>mouse</item>
-        <item>rat</item>
-        <item>mice</item>
-        <item>rats</item>
-        <item>frogs</item>
-        <item>gorilla</item>
-        <item>gorillas</item>
-
-        <!-- colors letter words -->
-        <item>white</item>
-        <item>black</item>
-
-        <!-- days of week -->
-        <item>monday</item>
-        <item>tuesday</item>
-        <item>wednesday</item>
-        <item>thursday</item>
-        <item>friday</item>
-        <item>saturday</item>
-        <item>sunday</item>
-
-        <!-- months of year -->
-        <item>january</item>
-        <item>february</item>
-        <item>march</item>
-        <item>april</item>
-        <item>may</item>
-        <item>june</item>
-        <item>july</item>
-        <item>august</item>
-        <item>september</item>
-        <item>october</item>
-        <item>november</item>
-        <item>december</item>
-
-        <!-- career letter words -->
-        <item>firemen</item>
-        <item>fireman</item>
-        <item>doctor</item>
-        <item>lawyer</item>
-        <item>police</item>
-        <item>programmer</item>
-        <item>chef</item>
-        <item>artist</item>
-        <item>engineer</item>
-        <item>nurse</item>
-        <item>therapist</item>
-        <item>astronaut</item>
-
-        <!-- number letter words -->
-        <item>first</item>
-        <item>second</item>
-        <item>third</item>
-        <item>fourth</item>
-        <item>fifth</item>
-        <item>sixth</item>
-        <item>seventh</item>
-        <item>eighth</item>
-        <item>ninth</item>
-        <item>tenth</item>
-        <item>one</item>
-        <item>two</item>
-        <item>three</item>
-        <item>four</item>
-        <item>five</item>
-        <item>six</item>
-        <item>seven</item>
-        <item>eight</item>
-        <item>nine</item>
-        <item>ten</item>
-        <item>eleven</item>
-        <item>twelve</item>
-        <item>thirteen</item>
-        <item>fourteen</item>
-        <item>fifteen</item>
-        <item>twenty</item>
-        <item>thirty</item>
-        <item>forty</item>
-        <item>fifty</item>
-        <item>sixty</item>
-        <item>seventy</item>
-        <item>eighty</item>
-        <item>ninety</item>
-        <item>hundred</item>
-
-        <!-- math letter words -->
-        <item>height</item>
-        <item>width</item>
-        <item>length</item>
-        <item>meter</item>
-        <item>inch</item>
-        <item>yard</item>
-        <item>second</item>
-        <item>minute</item>
-        <item>hour</item>
-        <item>seconds</item>
-        <item>minutes</item>
-        <item>hours</item>
-        <item>circle</item>
-        <item>triangle</item>
-        <item>square</item>
-        <item>obtuse</item>
-        <item>integral</item>
-
-        <!-- science letter words -->
-        <item>pancreas</item>
-        <item>liver</item>
-        <item>heart</item>
-        <item>dna</item>
-        <item>bones</item>
-        <item>bone</item>
-        <item>skin</item>
-        <item>eye</item>
-        <item>finger</item>
-        <item>fingers</item>
-        <item>abdomen</item>
-        <item>thumb</item>
-        <item>eyelid</item>
-        <item>eyebrow</item>
-        <item>knees</item>
-        <item>knee</item>
-        <item>toe</item>
-        <item>toes</item>
-        <item>shoulder</item>
-        <item>shoulders</item>
-        <item>chemical</item>
-        <item>computer</item>
-        <item>keyboard</item>
-        <item>printer</item>
-        <item>processor</item>
-        <item>calculus</item>
-        <item>fraction</item>
-        <item>equation</item>
-        <item>medicine</item>
-        <item>biology</item>
-        <item>chemistry</item>
-        <item>chemist</item>
-        <item>element</item>
-        <item>nitrogen</item>
-        <item>oxygen</item>
-        <item>carbon</item>
-        <item>mercury</item>
-        <item>hydrogen</item>
+        <item>building</item>
+        <item>laughing</item>
+        <item>spinning</item>
+        <item>feasting</item>
     </array>
+    
     <array name="arryWordBankAnimals">
 
         <!-- animals letter words -->
@@ -1327,464 +132,11 @@
         <item>frogs</item>
         <item>gorilla</item>
         <item>gorillas</item>
-    </array>
-    <array name="arryWordBankNumbers">
-
-        <!-- number letter words -->
-        <item>first</item>
-        <item>second</item>
-        <item>third</item>
-        <item>fourth</item>
-        <item>fifth</item>
-        <item>sixth</item>
-        <item>seventh</item>
-        <item>eighth</item>
-        <item>ninth</item>
-        <item>tenth</item>
-        <item>one</item>
-        <item>two</item>
-        <item>three</item>
-        <item>four</item>
-        <item>five</item>
-        <item>six</item>
-        <item>seven</item>
-        <item>eight</item>
-        <item>nine</item>
-        <item>ten</item>
-        <item>eleven</item>
-        <item>twelve</item>
-        <item>thirteen</item>
-        <item>fourteen</item>
-        <item>fifteen</item>
-        <item>twenty</item>
-        <item>thirty</item>
-        <item>forty</item>
-        <item>fifty</item>
-        <item>sixty</item>
-        <item>seventy</item>
-        <item>eighty</item>
-        <item>ninety</item>
-        <item>hundred</item>
-    </array>
-    <array name="arryWordBankColors">
-
-        <!-- colors letter words -->
-        <item>white</item>
-        <item>black</item>
-    </array>
-    <array name="arryWordBankDays">
-
-        <!-- days of week -->
-        <item>monday</item>
-        <item>tuesday</item>
-        <item>wednesday</item>
-        <item>thursday</item>
-        <item>friday</item>
-        <item>saturday</item>
-        <item>sunday</item>
-    </array>
-    <array name="arryWordBankMonths">
-
-        <!-- months of year -->
-        <item>january</item>
-        <item>february</item>
-        <item>march</item>
-        <item>april</item>
-        <item>may</item>
-        <item>june</item>
-        <item>july</item>
-        <item>august</item>
-        <item>september</item>
-        <item>october</item>
-        <item>november</item>
-        <item>december</item>
-    </array>
-    <array name="arryWordBankCareer">
-
-        <!-- career letter words -->
-        <item>firemen</item>
-        <item>fireman</item>
-        <item>doctor</item>
-        <item>lawyer</item>
-        <item>police</item>
-        <item>programmer</item>
-        <item>chef</item>
-        <item>artist</item>
-        <item>engineer</item>
-        <item>nurse</item>
-        <item>therapist</item>
-        <item>astronaut</item>
-    </array>
-    <array name="arryWordBankMath">
-
-        <!-- math letter words -->
-        <item>height</item>
-        <item>width</item>
-        <item>length</item>
-        <item>meter</item>
-        <item>inch</item>
-        <item>yard</item>
-        <item>second</item>
-        <item>minute</item>
-        <item>hour</item>
-        <item>seconds</item>
-        <item>minutes</item>
-        <item>hours</item>
-        <item>circle</item>
-        <item>triangle</item>
-        <item>square</item>
-        <item>obtuse</item>
-        <item>integral</item>
-    </array>
-    <array name="arryWordBankScience">
-
-        <!-- three letter words -->
-        <item>bay</item>
-        <item>day</item>
-        <item>hay</item>
-        <item>way</item>
-        <item>say</item>
-        <item>tie</item>
-        <item>pie</item>
-        <item>lie</item>
-        <item>cry</item>
-        <item>and</item>
-        <item>can</item>
-        <item>eat</item>
-        <item>law</item>
-        <item>ate</item>
-        <item>eat</item>
-        <item>age</item>
-        <item>bow</item>
-        <item>mow</item>
-        <item>tow</item>
-        <item>see</item>
-        <item>sea</item>
-        <item>run</item>
-        <item>sun</item>
-        <item>not</item>
-        <item>buy</item>
-        <item>dry</item>
-        <item>top</item>
-        <item>air</item>
-        <item>hot</item>
-        <item>son</item>
-        <item>win</item>
-        <item>sub</item>
-        <item>act</item>
-        <item>add</item>
-        <item>boy</item>
-
-        <!-- four letter words -->
-        <item>date</item>
-        <item>fate</item>
-        <item>gate</item>
-        <item>hate</item>
-        <item>late</item>
-        <item>cage</item>
-        <item>damp</item>
-        <item>lamp</item>
-        <item>noon</item>
-        <item>soon</item>
-        <item>ruin</item>
-        <item>ball</item>
-        <item>fall</item>
-        <item>call</item>
-        <item>tall</item>
-        <item>hall</item>
-        <item>wall</item>
-        <item>mall</item>
-        <item>bent</item>
-        <item>dent</item>
-        <item>tent</item>
-        <item>beep</item>
-        <item>peep</item>
-        <item>bold</item>
-        <item>cold</item>
-        <item>hold</item>
-        <item>sold</item>
-        <item>told</item>
-        <item>game</item>
-        <item>kind</item>
-        <item>stun</item>
-        <item>spun</item>
-        <item>year</item>
-        <item>date</item>
-        <item>soap</item>
-        <item>size</item>
-        <item>rope</item>
-        <item>cone</item>
-        <item>home</item>
-        <item>hone</item>
-        <item>tone</item>
-        <item>cake</item>
-        <item>rake</item>
-        <item>bake</item>
-        <item>wake</item>
-        <item>fake</item>
-        <item>stay</item>
-        <item>clay</item>
-        <item>away</item>
-        <item>chat</item>
-        <item>both</item>
-        <item>girl</item>
-        <item>page</item>
-        <item>read</item>
-        <item>teen</item>
-        <item>baby</item>
-        <item>myth</item>
-        <item>suit</item>
-        <item>care</item>
-        <item>them</item>
-        <item>book</item>
-        <item>cook</item>
-        <item>head</item>
-        <item>cost</item>
-        <item>door</item>
-        <item>hard</item>
-        <item>easy</item>
-        <item>cold</item>
-        <item>mild</item>
-        <item>fair</item>
-        <item>fact</item>
-        <item>loss</item>
-        <item>lose</item>
-        <item>case</item>
-        <item>care</item>
-        <item>tell</item>
-        <item>went</item>
-        <item>long</item>
-        <item>deep</item>
-        <item>name</item>
-        <item>code</item>
-
-        <!-- five letter words -->
-        <item>maybe</item>
-        <item>rerun</item>
-        <item>since</item>
-        <item>month</item>
-        <item>stray</item>
-        <item>write</item>
-        <item>stone</item>
-        <item>decoy</item>
-        <item>awake</item>
-        <item>quake</item>
-        <item>shake</item>
-        <item>chase</item>
-        <item>chick</item>
-        <item>charm</item>
-        <item>chips</item>
-        <item>lunch</item>
-        <item>bunch</item>
-        <item>hunch</item>
-        <item>punch</item>
-        <item>bring</item>
-        <item>uncle</item>
-        <item>judge</item>
-        <item>paper</item>
-        <item>norse</item>
-        <item>there</item>
-        <item>their</item>
-        <item>other</item>
-        <item>party</item>
-        <item>build</item>
-        <item>bonus</item>
-        <item>spent</item>
-        <item>began</item>
-        <item>today</item>
-        <item>honor</item>
-        <item>adult</item>
-        <item>round</item>
-        <item>watch</item>
-        <item>catch</item>
-        <item>cause</item>
-        <item>chain</item>
-        <item>chief</item>
-        <item>child</item>
-        <item>sorry</item>
-        <item>study</item>
-        <item>coder</item>
-        <item>often</item>
-        <item>smile</item>
-        <item>adopt</item>
-        <item>spell</item>
-        <item>stole</item>
-        <item>house</item>
-        <item>alone</item>
-        <item>stone</item>
-        <item>alone</item>
-        <item>table</item>
-        <item>print</item>
-
-        <!-- six letter words -->
-        <item>recite</item>
-        <item>excite</item>
-        <item>anyway</item>
-        <item>outrun</item>
-        <item>crunch</item>
-        <item>brunch</item>
-        <item>carpet</item>
         <item>piglet</item>
-        <item>sunset</item>
-        <item>icebox</item>
-        <item>accept</item>
-        <item>chores</item>
-        <item>indoor</item>
-        <item>retire</item>
-        <item>report</item>
-        <item>unable</item>
-        <item>bought</item>
-        <item>sister</item>
-        <item>bridge</item>
-        <item>cousin</item>
-        <item>matter</item>
-        <item>vessel</item>
-        <item>victim</item>
-        <item>before</item>
-        <item>rather</item>
-        <item>toward</item>
-        <item>afraid</item>
-        <item>street</item>
-        <item>direct</item>
-        <item>annual</item>
-        <item>answer</item>
-        <item>victim</item>
-        <item>summon</item>
-        <item>summer</item>
-        <item>school</item>
-        <item>pretty</item>
-        <item>attend</item>
-        <item>engine</item>
-        <item>travel</item>
-        <item>salary</item>
-        <item>career</item>
-
-        <!-- seven letter words -->
-        <item>mailbox</item>
-        <item>foxhole</item>
-        <item>somehow</item>
-        <item>daytime</item>
-        <item>indoors</item>
-        <item>outdoor</item>
-        <item>weather</item>
-        <item>whether</item>
-        <item>factory</item>
-        <item>theater</item>
-        <item>promise</item>
-        <item>primary</item>
-        <item>morning</item>
-        <item>success</item>
-        <item>destroy</item>
-        <item>succeed</item>
-        <item>stopped</item>
-        <item>useless</item>
-        <item>program</item>
-        <item>recover</item>
-        <item>brother</item>
-        <item>century</item>
-        <item>forward</item>
-        <item>college</item>
-
-        <!-- eight letter words -->
-        <item>seashore</item>
-        <item>seashell</item>
-        <item>woodwork</item>
-        <item>daylight</item>
-        <item>raindrop</item>
-        <item>birthday</item>
-        <item>outdoors</item>
-        <item>negative</item>
-        <item>positive</item>
-        <item>marriage</item>
-        <item>teenager</item>
-        <item>official</item>
-        <item>addition</item>
-        <item>subtract</item>
-        <item>pleasant</item>
-        <item>tomorrow</item>
-        <item>treasure</item>
-        <item>restrain</item>
-        <item>backward</item>
-        <item>autonomy</item>
-
-        <!-- nine letter words -->
-        <item>seashells</item>
-        <item>dollhouse</item>
-        <item>important</item>
-        <item>president</item>
-        <item>therefore</item>
-
-        <!-- animals letter words -->
-        <item>cat</item>
-        <item>cow</item>
-        <item>dog</item>
-        <item>crow</item>
-        <item>frog</item>
-        <item>snake</item>
-        <item>bobcat</item>
-        <item>monkey</item>
-        <item>cheetah</item>
-        <item>horse</item>
-        <item>mouse</item>
-        <item>rat</item>
-        <item>mice</item>
-        <item>rats</item>
-        <item>frogs</item>
-        <item>gorilla</item>
-        <item>gorillas</item>
-
-        <!-- colors letter words -->
-        <item>white</item>
-        <item>black</item>
-
-        <!-- days of week -->
-        <item>monday</item>
-        <item>tuesday</item>
-        <item>wednesday</item>
-        <item>thursday</item>
-        <item>friday</item>
-        <item>saturday</item>
-        <item>sunday</item>
-
-        <!-- months of year -->
-        <item>january</item>
-        <item>february</item>
-        <item>march</item>
-        <item>april</item>
-        <item>may</item>
-        <item>june</item>
-        <item>july</item>
-        <item>august</item>
-        <item>september</item>
-        <item>october</item>
-        <item>november</item>
-        <item>december</item>
-
-        <!-- career letter words -->
-        <item>firemen</item>
-        <item>fireman</item>
-        <item>doctor</item>
-        <item>lawyer</item>
-        <item>police</item>
-        <item>programmer</item>
-        <item>chef</item>
-        <item>artist</item>
-        <item>engineer</item>
-        <item>nurse</item>
-        <item>therapist</item>
-        <item>astronaut</item>
-
+    </array>
+    
+    <array name="arryWordBankNumbers">
         <!-- number letter words -->
-        <item>first</item>
-        <item>second</item>
-        <item>third</item>
-        <item>fourth</item>
-        <item>fifth</item>
-        <item>sixth</item>
-        <item>seventh</item>
-        <item>eighth</item>
-        <item>ninth</item>
-        <item>tenth</item>
         <item>one</item>
         <item>two</item>
         <item>three</item>
@@ -1809,7 +161,58 @@
         <item>eighty</item>
         <item>ninety</item>
         <item>hundred</item>
-
+    </array>
+    
+    <array name="arryWordBankColors">
+        <!-- colors letter words -->
+        <item>white</item>
+        <item>black</item>
+    </array>
+    
+    <array name="arryWordBankDays">
+        <!-- days of week -->
+        <item>monday</item>
+        <item>tuesday</item>
+        <item>wednesday</item>
+        <item>thursday</item>
+        <item>friday</item>
+        <item>saturday</item>
+        <item>sunday</item>
+    </array>
+    
+    <array name="arryWordBankMonths">
+        <!-- months of year -->
+        <item>january</item>
+        <item>february</item>
+        <item>march</item>
+        <item>april</item>
+        <item>may</item>
+        <item>june</item>
+        <item>july</item>
+        <item>august</item>
+        <item>september</item>
+        <item>october</item>
+        <item>november</item>
+        <item>december</item>
+    </array>
+    
+    <array name="arryWordBankCareer">
+        <!-- career letter words -->
+        <item>firemen</item>
+        <item>fireman</item>
+        <item>doctor</item>
+        <item>lawyer</item>
+        <item>police</item>
+        <item>programmer</item>
+        <item>chef</item>
+        <item>artist</item>
+        <item>engineer</item>
+        <item>nurse</item>
+        <item>therapist</item>
+        <item>astronaut</item>
+    </array>
+    
+    <array name="arryWordBankMath">
         <!-- math letter words -->
         <item>height</item>
         <item>width</item>
@@ -1828,7 +231,9 @@
         <item>square</item>
         <item>obtuse</item>
         <item>integral</item>
-
+    </array>
+    
+    <array name="arryWordBankScience">
         <!-- science letter words -->
         <item>pancreas</item>
         <item>liver</item>

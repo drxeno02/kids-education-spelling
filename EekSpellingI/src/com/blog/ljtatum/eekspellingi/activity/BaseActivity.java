@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,6 +22,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.blog.ljtatum.eekspellingi.R;
 import com.blog.ljtatum.eekspellingi.constants.Constants;
 import com.blog.ljtatum.eekspellingi.logger.Logger;
 import com.blog.ljtatum.eekspellingi.util.Config;
@@ -187,7 +189,8 @@ public class BaseActivity extends Activity implements OnInitListener {
 	}
 
 	/**
-	 * Method is used to return a list of words use for learning activities
+	 * Method is used to return a list of words used for learning activities
+	 * that uses a level parameter to filter out words of specific length
 	 *
 	 * @param wordBank
 	 * @param level
@@ -221,6 +224,96 @@ public class BaseActivity extends Activity implements OnInitListener {
 		}
 
 		return mWordBank;
+	}
+	
+	/**
+	 * Method is used to randomly return an array of words for learning activities
+	 * that uses a level parameter to filter out words of specific category. The 
+	 * returned array is a full array that should be truncated
+	 * @param level
+	 * @return
+	 */
+	protected String[] getWordBank(int level) {
+		Random r = new Random();
+		int rand = r.nextInt(4);	
+		String[] arryTempA;
+		String[] arryTempB;
+		String[] arryTempC;
+		String[] arryTempD;
+		if (level >= 0 && level <= 3) {
+			if (rand == 0) {
+				// object + places
+				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
+				arryTempB = getResources().getStringArray(R.array.arryWordBankPlaces);	
+				return Utils.concatenate(arryTempA, arryTempB);
+			} else if (rand == 1) {
+				// object + numbers
+				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
+				arryTempB = getResources().getStringArray(R.array.arryWordBankNumbers);
+				return Utils.concatenate(arryTempA, arryTempB);
+			} else if (rand == 2) {
+				// object + colors
+				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
+				arryTempB = getResources().getStringArray(R.array.arryWordBankColors);
+				return Utils.concatenate(arryTempA, arryTempB);
+			} else {
+				// places + numbers + colors 
+				arryTempA = getResources().getStringArray(R.array.arryWordBankPlaces);
+				arryTempB = getResources().getStringArray(R.array.arryWordBankNumbers);
+				arryTempC = getResources().getStringArray(R.array.arryWordBankColors);
+				return Utils.concatenate(arryTempA, arryTempB, arryTempC);
+			}
+		} else if (level >= 4 && level <= 7) {
+			if (rand == 0) {
+				// object + actions
+				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
+				arryTempB = getResources().getStringArray(R.array.arryWordBankActions);
+				return Utils.concatenate(arryTempA, arryTempB);
+			} else if (rand == 1) {
+				// object + animals
+				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
+				arryTempB = getResources().getStringArray(R.array.arryWordBankAnimals);
+				return Utils.concatenate(arryTempA, arryTempB);
+			} else if (rand == 2) {
+				// object + days + months
+				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
+				arryTempB = getResources().getStringArray(R.array.arryWordBankDays);
+				arryTempC = getResources().getStringArray(R.array.arryWordBankMonths);
+				return Utils.concatenate(arryTempA, arryTempB, arryTempC);
+			} else {
+				// actions + animals + days + months 
+				arryTempA = getResources().getStringArray(R.array.arryWordBankActions);
+				arryTempB = getResources().getStringArray(R.array.arryWordBankAnimals);
+				arryTempC = getResources().getStringArray(R.array.arryWordBankDays);
+				arryTempD = getResources().getStringArray(R.array.arryWordBankMonths);
+				return Utils.concatenate(arryTempA, arryTempB, arryTempC, arryTempD);
+			}
+		} else if (level >= 8) {
+			if (rand == 0) {
+				// object + career
+				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
+				arryTempB = getResources().getStringArray(R.array.arryWordBankCareer);
+				return Utils.concatenate(arryTempA, arryTempB);
+			} else if (rand == 1) {
+				// object + math
+				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
+				arryTempB = getResources().getStringArray(R.array.arryWordBankMath);
+				return Utils.concatenate(arryTempA, arryTempB);
+			} else if (rand == 2) {
+				// object + science
+				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
+				arryTempB = getResources().getStringArray(R.array.arryWordBankScience);
+				return Utils.concatenate(arryTempA, arryTempB);
+			} else {
+				// career + math + science
+				arryTempA = getResources().getStringArray(R.array.arryWordBankCareer);
+				arryTempB = getResources().getStringArray(R.array.arryWordBankMath);
+				arryTempC = getResources().getStringArray(R.array.arryWordBankActions);
+				return Utils.concatenate(arryTempA, arryTempB, arryTempC);
+			}
+		}
+			
+		return getResources().getStringArray(R.array.arryWordBankObj);
 	}
 
 	/**
@@ -286,5 +379,4 @@ public class BaseActivity extends Activity implements OnInitListener {
 		Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 		v.vibrate(milliseconds);
 	}
-
 }
