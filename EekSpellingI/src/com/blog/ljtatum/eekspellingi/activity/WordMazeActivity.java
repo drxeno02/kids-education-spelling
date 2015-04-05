@@ -38,30 +38,31 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	private Context mContext;
 	private ImageView ivBack, ivBanner, iv1;
 	private TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10, tv11,
-		tv12, tv13, tv14, tv15;
+			tv12, tv13, tv14, tv15;
 	private LinearLayout pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9,
-		pos10, pos11, pos12, pos13, pos14, pos15;
+			pos10, pos11, pos12, pos13, pos14, pos15;
 	private View end1, end2, end3, end4, v1, v2, v3, v4, v5, v6, v7, v8, v9;
 	private ShimmerTextView tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4,
-		tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
+			tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
 	private Random r;
-	private int mLevel = 0, mSolvedWords = 0, mSteps = 0, xStart = 0, yStart = 0,
-		xEnd = 0, yEnd = 0, currPos = 0;
-	private String origStr;
-	private List<String> wordBank, arryPrev;
+	private int mLevel = 0, mSolvedWords = 0, mSteps = 0, xStart = 0,
+			yStart = 0, xEnd = 0, yEnd = 0, currPos = 0;
+	private String mWord;
+	private List<String> mArryWordBank, arryPrev;
 	private List<Integer> arryPath;
 
 	private ShareAppUtil shareApp;
 	private SharedPref sharedPref;
 
 	private Handler mHandler;
+	private char[] arryLetters;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-			WindowManager.LayoutParams.FLAG_FULLSCREEN);
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_word_maze);
 		getIds();
@@ -226,10 +227,21 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	private void transverseToPos(int pos) {
 		if (pos == 1 && mSteps == 0) {
 			setRightCords(pos);
-		} else {
+		} else if (pos == 2 && mSteps == 1 && pos == arryPath.get(pos) - 1) {
+			setRightCords(pos);
+		} else if (pos == 3 && mSteps == 2 && pos == arryPath.get(pos) - 1) {
+			setRightCords(pos);
+		} else if (pos == 4 && mSteps == 1 && pos == arryPath.get(pos) - 1) {
 			setDownCords(pos);
-		}
-
+		} else if (pos == 5 && mSteps == 2 && pos == arryPath.get(pos) - 1) {
+			setRightCords(pos);
+		} else if (pos == 6 && mSteps == 3 && pos == arryPath.get(pos) - 3) {
+			setDownCords(pos);
+		} else if (pos == 7 && mSteps == 2 && pos == arryPath.get(pos) - 1) {
+			setRightCords(pos);
+		} else if (pos == 8 && mSteps == 3 && pos == arryPath.get(pos) - 1) {
+		}   setRightCords(pos);
+	
 	}
 
 	private void setRightCords(int pos) {
@@ -334,16 +346,19 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	}
 
 	private void startMovement() {
-		Logger.d(TAG, "xStart:" + xStart + " //yStart:" + yStart + " //xEnd:" + xEnd + " //yEnd: " + yEnd);
-		TranslateAnimation animation = new TranslateAnimation(xStart, xEnd, yStart, yEnd);
+		Logger.d(TAG, "xStart:" + xStart + " //yStart:" + yStart + " //xEnd:"
+				+ xEnd + " //yEnd: " + yEnd);
+		TranslateAnimation animation = new TranslateAnimation(xStart, xEnd,
+				yStart, yEnd);
 		animation.setDuration(1000);
 		animation.setFillAfter(true);
 		iv1.startAnimation(animation);
+
 	}
 
 	/**
-	 * Method is used to initialize the game level; sets level, default word, and then calls method
-	 * to generate the UI components.
+	 * Method is used to initialize the game level; sets level, default word,
+	 * and then calls method to generate the UI components.
 	 *
 	 * @Note Only needs to be called once
 	 */
@@ -356,10 +371,10 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		}
 
 		// retrieve full word bank
-		String[] arryWordBankFull = getResources().getStringArray(R.array.arryWordBankObj);
-		wordBank = getWordBank(arryWordBankFull, mLevel);
-		origStr = wordBank.get(r.nextInt(wordBank.size()));
-		Logger.i(TAG, origStr + " //count: " + origStr.length());
+		String[] arryWordBankFull = getWordBank(mLevel);
+		mArryWordBank = getWordBank(arryWordBankFull, mLevel);
+		mWord = mArryWordBank.get(r.nextInt(mArryWordBank.size()));
+		Logger.i(TAG, mWord + " //count: " + mWord.length());
 		generateLevel();
 	}
 
@@ -391,20 +406,21 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			while (!isCheck) {
 				int i = 0;
 				for (i = 0; i < arryPrev.size(); i++) {
-					if (arryPrev.get(i).equalsIgnoreCase(origStr)) {
-						origStr = wordBank.get(r.nextInt(wordBank.size()));
+					if (arryPrev.get(i).equalsIgnoreCase(mWord)) {
+						mWord = mArryWordBank.get(r.nextInt(mArryWordBank
+								.size()));
 						i = 0;
 					}
 				}
 				isCheck = true;
 			}
 
-			arryPrev.add(origStr);
-			Logger.i(TAG, origStr + " //count: " + origStr.length());
+			arryPrev.add(mWord);
+			Logger.i(TAG, mWord + " //count: " + mWord.length());
 		}
 
 		// set visibility of views
-		setVisibility(origStr.length());
+		setVisibility(mWord.length());
 	}
 
 	/**
@@ -419,40 +435,17 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 
 		// setup maze map views
 		if (num >= 6) {
-			pos1.setVisibility(View.VISIBLE);
-			pos2.setVisibility(View.VISIBLE);
-			pos3.setVisibility(View.VISIBLE);
-			pos4.setVisibility(View.VISIBLE);
-			pos5.setVisibility(View.VISIBLE);
-			pos6.setVisibility(View.VISIBLE);
-			pos7.setVisibility(View.VISIBLE);
-			pos8.setVisibility(View.VISIBLE);
-			pos9.setVisibility(View.VISIBLE);
-			pos10.setVisibility(View.VISIBLE);
-			pos11.setVisibility(View.VISIBLE);
-			pos12.setVisibility(View.VISIBLE);
-			pos13.setVisibility(View.VISIBLE);
-			pos14.setVisibility(View.VISIBLE);
-			pos15.setVisibility(View.VISIBLE);
-			end4.setVisibility(View.VISIBLE);
+			Utils.setViewVisibility(true, pos1, pos2, pos3, pos4, pos5, pos6,
+					pos7, pos8, pos9, pos10, pos11, pos12, pos13, pos14, pos15,
+					end4);
 		}
 
-		char[] arryLetters = origStr.toCharArray();
+		arryLetters = mWord.toCharArray();
 		arryPath.clear();
 		// setup words to solve views
 		if (num == 3) {
-			v1.setVisibility(View.VISIBLE);
-			v2.setVisibility(View.VISIBLE);
-			v3.setVisibility(View.VISIBLE);
-			tvAnswer1.setVisibility(View.VISIBLE);
-			tvAnswer2.setVisibility(View.VISIBLE);
-			tvAnswer3.setVisibility(View.VISIBLE);
-
-			pos1.setVisibility(View.VISIBLE);
-			pos2.setVisibility(View.VISIBLE);
-			pos4.setVisibility(View.VISIBLE);
-			pos5.setVisibility(View.VISIBLE);
-			end1.setVisibility(View.VISIBLE);
+			Utils.setViewVisibility(true, v1, v2, v3, tvAnswer1, tvAnswer2,
+					tvAnswer3, pos1, pos2, pos4, pos5, end1);
 
 			if (mLevel == 2) {
 				tv1.setText(String.valueOf(arryLetters[0]));
@@ -469,22 +462,9 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				arryPath.add(4);
 			}
 		} else if (num == 4) {
-			v1.setVisibility(View.VISIBLE);
-			v2.setVisibility(View.VISIBLE);
-			v3.setVisibility(View.VISIBLE);
-			v4.setVisibility(View.VISIBLE);
-			tvAnswer1.setVisibility(View.VISIBLE);
-			tvAnswer2.setVisibility(View.VISIBLE);
-			tvAnswer3.setVisibility(View.VISIBLE);
-			tvAnswer4.setVisibility(View.VISIBLE);
-
-			pos1.setVisibility(View.VISIBLE);
-			pos2.setVisibility(View.VISIBLE);
-			pos3.setVisibility(View.VISIBLE);
-			pos4.setVisibility(View.VISIBLE);
-			pos5.setVisibility(View.VISIBLE);
-			pos6.setVisibility(View.VISIBLE);
-			end1.setVisibility(View.VISIBLE);
+			Utils.setViewVisibility(true, v1, v2, v3, v4, tvAnswer1, tvAnswer2,
+					tvAnswer3, tvAnswer4, pos1, pos2, pos3, pos4, pos5, pos6,
+					end1);
 
 			if (mLevel == 2) {
 				tv1.setText(String.valueOf(arryLetters[0]));
@@ -510,27 +490,9 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				arryPath.add(6);
 			}
 		} else if (num == 5) {
-			v1.setVisibility(View.VISIBLE);
-			v2.setVisibility(View.VISIBLE);
-			v3.setVisibility(View.VISIBLE);
-			v4.setVisibility(View.VISIBLE);
-			v5.setVisibility(View.VISIBLE);
-			tvAnswer1.setVisibility(View.VISIBLE);
-			tvAnswer2.setVisibility(View.VISIBLE);
-			tvAnswer3.setVisibility(View.VISIBLE);
-			tvAnswer4.setVisibility(View.VISIBLE);
-			tvAnswer5.setVisibility(View.VISIBLE);
-
-			pos1.setVisibility(View.VISIBLE);
-			pos2.setVisibility(View.VISIBLE);
-			pos3.setVisibility(View.VISIBLE);
-			pos4.setVisibility(View.VISIBLE);
-			pos5.setVisibility(View.VISIBLE);
-			pos6.setVisibility(View.VISIBLE);
-			pos7.setVisibility(View.VISIBLE);
-			pos8.setVisibility(View.VISIBLE);
-			pos9.setVisibility(View.VISIBLE);
-			end2.setVisibility(View.VISIBLE);
+			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, tvAnswer1,
+					tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5, pos1, pos2,
+					pos3, pos4, pos5, pos6, pos7, pos8, pos9, end2);
 
 			if (mLevel == 2) {
 				tv1.setText(String.valueOf(arryLetters[0]));
@@ -569,143 +531,41 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				arryPath.add(9);
 			}
 		} else if (num == 6) {
-			v1.setVisibility(View.VISIBLE);
-			v2.setVisibility(View.VISIBLE);
-			v3.setVisibility(View.VISIBLE);
-			v4.setVisibility(View.VISIBLE);
-			v5.setVisibility(View.VISIBLE);
-			v6.setVisibility(View.VISIBLE);
-			tvAnswer1.setVisibility(View.VISIBLE);
-			tvAnswer2.setVisibility(View.VISIBLE);
-			tvAnswer3.setVisibility(View.VISIBLE);
-			tvAnswer4.setVisibility(View.VISIBLE);
-			tvAnswer5.setVisibility(View.VISIBLE);
-			tvAnswer6.setVisibility(View.VISIBLE);
+			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, tvAnswer1,
+					tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5, tvAnswer6);
+
 		} else if (num == 7) {
-			v1.setVisibility(View.VISIBLE);
-			v2.setVisibility(View.VISIBLE);
-			v3.setVisibility(View.VISIBLE);
-			v4.setVisibility(View.VISIBLE);
-			v5.setVisibility(View.VISIBLE);
-			v6.setVisibility(View.VISIBLE);
-			v7.setVisibility(View.VISIBLE);
-			tvAnswer1.setVisibility(View.VISIBLE);
-			tvAnswer2.setVisibility(View.VISIBLE);
-			tvAnswer3.setVisibility(View.VISIBLE);
-			tvAnswer4.setVisibility(View.VISIBLE);
-			tvAnswer5.setVisibility(View.VISIBLE);
-			tvAnswer6.setVisibility(View.VISIBLE);
-			tvAnswer7.setVisibility(View.VISIBLE);
+			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7,
+					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
+					tvAnswer6, tvAnswer7);
+
 		} else if (num == 8) {
-			v1.setVisibility(View.VISIBLE);
-			v2.setVisibility(View.VISIBLE);
-			v3.setVisibility(View.VISIBLE);
-			v4.setVisibility(View.VISIBLE);
-			v5.setVisibility(View.VISIBLE);
-			v6.setVisibility(View.VISIBLE);
-			v7.setVisibility(View.VISIBLE);
-			v8.setVisibility(View.VISIBLE);
-			tvAnswer1.setVisibility(View.VISIBLE);
-			tvAnswer2.setVisibility(View.VISIBLE);
-			tvAnswer3.setVisibility(View.VISIBLE);
-			tvAnswer4.setVisibility(View.VISIBLE);
-			tvAnswer5.setVisibility(View.VISIBLE);
-			tvAnswer6.setVisibility(View.VISIBLE);
-			tvAnswer7.setVisibility(View.VISIBLE);
-			tvAnswer8.setVisibility(View.VISIBLE);
+			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7, v8,
+					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
+					tvAnswer6, tvAnswer7, tvAnswer8);
+
 		} else if (num == 9) {
-			v1.setVisibility(View.VISIBLE);
-			v2.setVisibility(View.VISIBLE);
-			v3.setVisibility(View.VISIBLE);
-			v4.setVisibility(View.VISIBLE);
-			v5.setVisibility(View.VISIBLE);
-			v6.setVisibility(View.VISIBLE);
-			v7.setVisibility(View.VISIBLE);
-			v8.setVisibility(View.VISIBLE);
-			v9.setVisibility(View.VISIBLE);
-			tvAnswer1.setVisibility(View.VISIBLE);
-			tvAnswer2.setVisibility(View.VISIBLE);
-			tvAnswer3.setVisibility(View.VISIBLE);
-			tvAnswer4.setVisibility(View.VISIBLE);
-			tvAnswer5.setVisibility(View.VISIBLE);
-			tvAnswer6.setVisibility(View.VISIBLE);
-			tvAnswer7.setVisibility(View.VISIBLE);
-			tvAnswer8.setVisibility(View.VISIBLE);
-			tvAnswer9.setVisibility(View.VISIBLE);
+			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7, v8, v9,
+					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
+					tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9);
 		}
 	}
 
 	private void resetVisibility() {
 		// clear maze letter views
-		tv1.setText("");
-		tv2.setText("");
-		tv3.setText("");
-		tv4.setText("");
-		tv5.setText("");
-		tv6.setText("");
-		tv7.setText("");
-		tv8.setText("");
-		tv9.setText("");
-		tv10.setText("");
-		tv11.setText("");
-		tv12.setText("");
-		tv13.setText("");
-		tv14.setText("");
-		tv15.setText("");
-
-		// clear letter views
-		tvAnswer1.setText("");
-		tvAnswer2.setText("");
-		tvAnswer3.setText("");
-		tvAnswer4.setText("");
-		tvAnswer5.setText("");
-		tvAnswer6.setText("");
-		tvAnswer7.setText("");
-		tvAnswer8.setText("");
-		tvAnswer9.setText("");
+		Utils.clearText(tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10,
+				tv11, tv12, tv13, tv14, tv15, tvAnswer1, tvAnswer2, tvAnswer3,
+				tvAnswer4, tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8,
+				tvAnswer9);
 
 		// reset underscore views
-		v1.setVisibility(View.GONE);
-		v2.setVisibility(View.GONE);
-		v3.setVisibility(View.GONE);
-		v4.setVisibility(View.GONE);
-		v5.setVisibility(View.GONE);
-		v6.setVisibility(View.GONE);
-		v7.setVisibility(View.GONE);
-		v8.setVisibility(View.GONE);
-		v9.setVisibility(View.GONE);
-
-		// reset letter views
-		tvAnswer1.setVisibility(View.GONE);
-		tvAnswer2.setVisibility(View.GONE);
-		tvAnswer3.setVisibility(View.GONE);
-		tvAnswer4.setVisibility(View.GONE);
-		tvAnswer5.setVisibility(View.GONE);
-		tvAnswer6.setVisibility(View.GONE);
-		tvAnswer7.setVisibility(View.GONE);
-		tvAnswer8.setVisibility(View.GONE);
-		tvAnswer9.setVisibility(View.GONE);
-
 		// reset maze views
-		pos1.setVisibility(View.GONE);
-		pos2.setVisibility(View.GONE);
-		pos3.setVisibility(View.GONE);
-		pos4.setVisibility(View.GONE);
-		pos5.setVisibility(View.GONE);
-		pos6.setVisibility(View.GONE);
-		pos7.setVisibility(View.GONE);
-		pos8.setVisibility(View.GONE);
-		pos9.setVisibility(View.GONE);
-		pos10.setVisibility(View.GONE);
-		pos11.setVisibility(View.GONE);
-		pos12.setVisibility(View.GONE);
-		pos13.setVisibility(View.GONE);
-		pos14.setVisibility(View.GONE);
-		pos15.setVisibility(View.GONE);
-		end1.setVisibility(View.GONE);
-		end2.setVisibility(View.GONE);
-		end3.setVisibility(View.GONE);
-		end4.setVisibility(View.GONE);
+		Utils.setViewVisibility(false, v1, v2, v3, v4, v5, v6, v7, v8, v9,
+				tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
+				tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9, pos1, pos2, pos3,
+				pos4, pos5, pos6, pos7, pos8, pos9, pos10, pos11, pos12, pos13,
+				pos14, pos15, end1, end2, end3, end4);
+
 	}
 
 	/**
