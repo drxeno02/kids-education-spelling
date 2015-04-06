@@ -47,13 +47,8 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	private Random r;
 	private int mLevel = 0, mSolvedWords = 0, mSteps = 0, xStart = 0,
 			yStart = 0, xEnd = 0, yEnd = 0, currPos = 0;
-<<<<<<< HEAD
-	private String origStr;
-	private List<String> wordBank, arryPrev;
-=======
 	private String mWord;
 	private List<String> mArryWordBank, arryPrev;
->>>>>>> ee3880c0e1696812efd6c6805f65370f615ccb92
 	private List<Integer> arryPath;
 
 	private ShareAppUtil shareApp;
@@ -234,9 +229,6 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			setRightCords(pos);
 		} else if (pos == 2 && mSteps == 1 && pos == arryPath.get(pos) - 1) {
 			setRightCords(pos);
-<<<<<<< HEAD
-		}
-=======
 		} else if (pos == 3 && mSteps == 2 && pos == arryPath.get(pos) - 1) {
 			setRightCords(pos);
 		} else if (pos == 4 && mSteps == 1 && pos == arryPath.get(pos) - 1) {
@@ -248,9 +240,8 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		} else if (pos == 7 && mSteps == 2 && pos == arryPath.get(pos) - 1) {
 			setRightCords(pos);
 		} else if (pos == 8 && mSteps == 3 && pos == arryPath.get(pos) - 1) {
-		}   setRightCords(pos);
-	
->>>>>>> ee3880c0e1696812efd6c6805f65370f615ccb92
+			setRightCords(pos);
+		}   
 	}
 
 	private void setRightCords(int pos) {
@@ -368,11 +359,6 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	/**
 	 * Method is used to initialize the game level; sets level, default word,
 	 * and then calls method to generate the UI components.
-<<<<<<< HEAD
-	 * 
-=======
-	 *
->>>>>>> ee3880c0e1696812efd6c6805f65370f615ccb92
 	 * @Note Only needs to be called once
 	 */
 	private void initLesson() {
@@ -384,18 +370,10 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		}
 
 		// retrieve full word bank
-<<<<<<< HEAD
-		String[] arryWordBankFull = getResources().getStringArray(
-				R.array.arryWordBankObj);
-		wordBank = getWordBank(arryWordBankFull, mLevel);
-		origStr = wordBank.get(r.nextInt(wordBank.size()));
-		Logger.i(TAG, origStr + " //count: " + origStr.length());
-=======
 		String[] arryWordBankFull = getWordBank(mLevel);
 		mArryWordBank = getWordBank(arryWordBankFull, mLevel);
 		mWord = mArryWordBank.get(r.nextInt(mArryWordBank.size()));
 		Logger.i(TAG, mWord + " //count: " + mWord.length());
->>>>>>> ee3880c0e1696812efd6c6805f65370f615ccb92
 		generateLevel();
 	}
 
@@ -460,13 +438,10 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 					pos7, pos8, pos9, pos10, pos11, pos12, pos13, pos14, pos15,
 					end4);
 		}
-
-<<<<<<< HEAD
-		arryLetters = origStr.toCharArray();
-=======
+		
 		arryLetters = mWord.toCharArray();
->>>>>>> ee3880c0e1696812efd6c6805f65370f615ccb92
 		arryPath.clear();
+		
 		// setup words to solve views
 		if (num == 3) {
 			Utils.setViewVisibility(true, v1, v2, v3, tvAnswer1, tvAnswer2,
