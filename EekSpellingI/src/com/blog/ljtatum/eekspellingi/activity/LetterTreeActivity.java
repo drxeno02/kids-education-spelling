@@ -209,8 +209,8 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	}
 
 	/**
-	 * Method is used to initialize the game level; sets level, default word, and then calls method
-	 * to generate the UI components.
+	 * Method is used to initialize the game level; sets level, default word, 
+	 * and then calls method to generate the UI components.
 	 *
 	 * @Note Only needs to be called once
 	 */
@@ -306,7 +306,6 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	 * @return array of jumbled letters
 	 */
 	private char[] getJumbledWord() {
-		//StringBuilder builder = new StringBuilder();
 		String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
 		// remove duplicate values from origStr

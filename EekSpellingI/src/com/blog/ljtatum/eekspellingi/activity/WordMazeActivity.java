@@ -38,15 +38,15 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	private Context mContext;
 	private ImageView ivBack, ivBanner, iv1;
 	private TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10, tv11,
-		tv12, tv13, tv14, tv15;
+			tv12, tv13, tv14, tv15;
 	private LinearLayout pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9,
-		pos10, pos11, pos12, pos13, pos14, pos15;
+			pos10, pos11, pos12, pos13, pos14, pos15;
 	private View end1, end2, end3, end4, v1, v2, v3, v4, v5, v6, v7, v8, v9;
 	private ShimmerTextView tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4,
-		tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
+			tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
 	private Random r;
-	private int mLevel = 0, mSolvedWords = 0, mSteps = 0, xStart = 0, yStart = 0,
-		xEnd = 0, yEnd = 0, currPos = 0;
+	private int mLevel = 0, mSolvedWords = 0, mSteps = 0, xStart = 0,
+			yStart = 0, xEnd = 0, yEnd = 0, currPos = 0;
 	private String origStr;
 	private List<String> wordBank, arryPrev;
 	private List<Integer> arryPath;
@@ -55,13 +55,14 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	private SharedPref sharedPref;
 
 	private Handler mHandler;
+	private char[] arryLetters;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-			WindowManager.LayoutParams.FLAG_FULLSCREEN);
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_word_maze);
 		getIds();
@@ -226,10 +227,9 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	private void transverseToPos(int pos) {
 		if (pos == 1 && mSteps == 0) {
 			setRightCords(pos);
-		} else {
-			setDownCords(pos);
+		} else if (pos == 2 && mSteps == 1 && pos == arryPath.get(pos) - 1) {
+			setRightCords(pos);
 		}
-
 	}
 
 	private void setRightCords(int pos) {
@@ -334,17 +334,19 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	}
 
 	private void startMovement() {
-		Logger.d(TAG, "xStart:" + xStart + " //yStart:" + yStart + " //xEnd:" + xEnd + " //yEnd: " + yEnd);
-		TranslateAnimation animation = new TranslateAnimation(xStart, xEnd, yStart, yEnd);
+		Logger.d(TAG, "xStart:" + xStart + " //yStart:" + yStart + " //xEnd:"
+				+ xEnd + " //yEnd: " + yEnd);
+		TranslateAnimation animation = new TranslateAnimation(xStart, xEnd,
+				yStart, yEnd);
 		animation.setDuration(1000);
 		animation.setFillAfter(true);
 		iv1.startAnimation(animation);
 	}
 
 	/**
-	 * Method is used to initialize the game level; sets level, default word, and then calls method
-	 * to generate the UI components.
-	 *
+	 * Method is used to initialize the game level; sets level, default word,
+	 * and then calls method to generate the UI components.
+	 * 
 	 * @Note Only needs to be called once
 	 */
 	private void initLesson() {
@@ -356,7 +358,8 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		}
 
 		// retrieve full word bank
-		String[] arryWordBankFull = getResources().getStringArray(R.array.arryWordBankObj);
+		String[] arryWordBankFull = getResources().getStringArray(
+				R.array.arryWordBankObj);
 		wordBank = getWordBank(arryWordBankFull, mLevel);
 		origStr = wordBank.get(r.nextInt(wordBank.size()));
 		Logger.i(TAG, origStr + " //count: " + origStr.length());
@@ -409,7 +412,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 
 	/**
 	 * Sets the number of needed visible views to form the correct word
-	 *
+	 * 
 	 * @param num
 	 */
 	private void setVisibility(int num) {
@@ -437,7 +440,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			end4.setVisibility(View.VISIBLE);
 		}
 
-		char[] arryLetters = origStr.toCharArray();
+		arryLetters = origStr.toCharArray();
 		arryPath.clear();
 		// setup words to solve views
 		if (num == 3) {
@@ -463,10 +466,10 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 					arryPath.add(2);
 				} else {
 					tv4.setText(String.valueOf(arryLetters[1]));
-					arryPath.add(3);
+					arryPath.add(4);
 				}
 				tv5.setText(String.valueOf(arryLetters[2]));
-				arryPath.add(4);
+				arryPath.add(5);
 			}
 		} else if (num == 4) {
 			v1.setVisibility(View.VISIBLE);
@@ -710,7 +713,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 
 	/**
 	 * Method is used to start shimmer animation
-	 *
+	 * 
 	 * @param stv
 	 */
 	@SuppressWarnings("static-method")
