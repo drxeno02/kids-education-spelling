@@ -596,7 +596,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				} else {
 					// restart level
 					// TODO: play sounds, animations, messaging and add rewards for completing level
-
+					
 					// delay before generating the next level
 					mHandler.postDelayed(new Runnable() {
 						@Override

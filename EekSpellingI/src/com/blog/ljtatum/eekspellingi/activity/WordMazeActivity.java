@@ -225,23 +225,41 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	}
 
 	private void transverseToPos(int pos) {
-		if (pos == 1 && mSteps == 0) {
+		if (pos == 1 && mSteps == 0 && pos == arryPath.get(mSteps)) {
 			setRightCords(pos);
-		} else if (pos == 2 && mSteps == 1 && pos == arryPath.get(pos) - 1) {
+		} else if (pos == 2 && mSteps == 1 && pos == arryPath.get(mSteps)) {
 			setRightCords(pos);
-		} else if (pos == 3 && mSteps == 2 && pos == arryPath.get(pos) - 1) {
+		} else if (pos == 3 && mSteps == 2 && pos == arryPath.get(mSteps)) {
 			setRightCords(pos);
-		} else if (pos == 4 && mSteps == 1 && pos == arryPath.get(pos) - 1) {
+		} else if (pos == 4 && mSteps == 1 && pos == arryPath.get(mSteps)) {
 			setDownCords(pos);
-		} else if (pos == 5 && mSteps == 2 && pos == arryPath.get(pos) - 1) {
-			setRightCords(pos);
-		} else if (pos == 6 && mSteps == 3 && pos == arryPath.get(pos) - 3) {
+		} else if (pos == 5 && mSteps == 2 && pos == arryPath.get(mSteps)) {
+			if (currPos == 2) {
+				setDownCords(pos); // from pos 2
+			} else {
+				setRightCords(pos); // from pos 4
+			}	
+		} else if (pos == 6 && mSteps == 3 && pos == arryPath.get(mSteps)) {
+			if (currPos == 3) {
+				setDownCords(pos); // from pos 3
+			} else {
+				setRightCords(pos); // from pos 5
+			}
+		} else if (pos == 7 && mSteps == 2 && pos == arryPath.get(mSteps)) {
 			setDownCords(pos);
-		} else if (pos == 7 && mSteps == 2 && pos == arryPath.get(pos) - 1) {
-			setRightCords(pos);
-		} else if (pos == 8 && mSteps == 3 && pos == arryPath.get(pos) - 1) {
-			setRightCords(pos);
-		}   
+		} else if (pos == 8 && mSteps == 3 && pos == arryPath.get(mSteps)) {
+			if (currPos == 5) {
+				setDownCords(pos); // from pos 5
+			} else {
+				setRightCords(pos); // from pos 7
+			}
+		} else if (pos == 9 && mSteps == 4 && pos == arryPath.get(mSteps)) {
+			if (currPos == 6) {
+				setDownCords(pos); // from pos 6
+			} else {
+				setRightCords(pos); // from pos 8
+			}
+		}
 	}
 
 	private void setRightCords(int pos) {
@@ -317,7 +335,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			yEnd = pos4.getLeft();
 			mSteps++;
 			startMovement();
-		} else if (currPos == 2 && pos == 5) {
+		} else if (currPos == 2 && pos == 5) { // can win from here
 			currPos = 5;
 			yEnd = pos5.getLeft();
 			mSteps++;
@@ -353,8 +371,39 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		animation.setDuration(1000);
 		animation.setFillAfter(true);
 		iv1.startAnimation(animation);
+		
+		// check for win
+		if (mSteps >= arryPath.size()) {
+			Logger.i(TAG, "maze completed");
+			mSolvedWords++;
+			setRightCords(currPos+1);
+			if ( mSolvedWords>= 3) {
+				// TODO: play sounds, animations, messaging and add rewards for completing level
+				String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
+				int lvCount = sharedPref.getIntPref(strPrefName, 0);
+				sharedPref.setPref(Constants.LV_COUNT.concat("_" + mLevel), lvCount++);
+				goToActivity(mContext, SelectActivity.class, -1);
+			} else {
+				// restart level
+				// TODO: play sounds, animations, messaging and add rewards for completing level
+				
+				// delay before generating the next level
+				mHandler.postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						speakInstructions();
+						generateLevel();
+					}
+				}, 2500);
+			}			
+		}
 
 	}
+	
+	
+	
+	
+	
 
 	/**
 	 * Method is used to initialize the game level; sets level, default word,
@@ -440,7 +489,10 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		}
 		
 		arryLetters = mWord.toCharArray();
-		arryPath.clear();
+		// reset path list
+		if (arryPath.size() > 0) {
+			arryPath.clear();
+		}
 		
 		// setup words to solve views
 		if (num == 3) {
@@ -552,6 +604,14 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	}
 
 	private void resetVisibility() {
+		// reset correct and incorrect trackers
+		mSteps = 0;
+		xStart = 0;
+		yStart = 0; 
+		xEnd = 0; 
+		yEnd = 0; 
+		currPos = 0;	
+		
 		// clear maze letter views
 		Utils.clearText(tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10,
 				tv11, tv12, tv13, tv14, tv15, tvAnswer1, tvAnswer2, tvAnswer3,
