@@ -42,7 +42,8 @@
                 android:layout_marginRight="6dp"
                 android:layout_toLeftOf="@id/tv_title"
                 android:scaleType="fitXY"
-                android:src="@drawable/lock" />
+                android:src="@drawable/lock"
+                android:visibility="gone" />
         </RelativeLayout>
 
         <!-- LTR bubble -->

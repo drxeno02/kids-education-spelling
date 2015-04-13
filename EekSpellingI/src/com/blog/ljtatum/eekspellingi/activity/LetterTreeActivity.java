@@ -46,6 +46,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	private Random r;
 	private int mLevel = 0, mCorrectLetters = 0, mIncorrectLetters = 0, mSolvedWords = 0;
 	private String mWord;
+	private boolean isController = false;
 	private char[] arryJumbled = null;
 	private boolean[] arrySelected = new boolean[9];
 	private List<String> mArryWordBank, arryPrev;
@@ -131,67 +132,85 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.tv1:
-			if (!arrySelected[0]) {
-				checkLetter(0);
-			} else {
-				vibrate(mContext, 500);
-			}
+			if (!isController) {
+				if (!arrySelected[0]) {
+					checkLetter(0);
+				} else {
+					vibrate(mContext, 500);
+				}
+			}		
 			break;
 		case R.id.tv2:
-			if (!arrySelected[1]) {
-				checkLetter(1);
-			} else {
-				vibrate(mContext, 500);
-			}
+			if (!isController) {
+				if (!arrySelected[1]) {
+					checkLetter(1);
+				} else {
+					vibrate(mContext, 500);
+				}
+			}			
 			break;
 		case R.id.tv3:
-			if (!arrySelected[2]) {
-				checkLetter(2);
-			} else {
-				vibrate(mContext, 500);
-			}
+			if (!isController) {
+				if (!arrySelected[2]) {
+					checkLetter(2);
+				} else {
+					vibrate(mContext, 500);
+				}
+			}					
 			break;
 		case R.id.tv4:
-			if (!arrySelected[3]) {
-				checkLetter(3);
-			} else {
-				vibrate(mContext, 500);
-			}
+			if (!isController) {
+				if (!arrySelected[3]) {
+					checkLetter(3);
+				} else {
+					vibrate(mContext, 500);
+				}
+			}			
 			break;
 		case R.id.tv5:
-			if (!arrySelected[4]) {
-				checkLetter(4);
-			}
+			if (!isController) {
+				if (!arrySelected[4]) {
+					checkLetter(4);
+				}
+			}		
 			break;
 		case R.id.tv6:
-			if (!arrySelected[5]) {
-				checkLetter(5);
-			} else {
-				vibrate(mContext, 500);
-			}
+			if (!isController) {
+				if (!arrySelected[5]) {
+					checkLetter(5);
+				} else {
+					vibrate(mContext, 500);
+				}
+			}			
 			break;
 		case R.id.tv7:
-			if (!arrySelected[6]) {
-				checkLetter(6);
-			} else {
-				vibrate(mContext, 500);
-			}
+			if (!isController) {
+				if (!arrySelected[6]) {
+					checkLetter(6);
+				} else {
+					vibrate(mContext, 500);
+				}
+			}		
 			break;
 		case R.id.tv8:
-			if (!arrySelected[7]) {
-				checkLetter(7);
-			} else {
-				vibrate(mContext, 500);
-			}
+			if (!isController) {
+				if (!arrySelected[7]) {
+					checkLetter(7);
+				} else {
+					vibrate(mContext, 500);
+				}
+			}			
 			break;
 		case R.id.tv9:
-			if (!arrySelected[8]) {
-				checkLetter(8);
-			} else {
-				vibrate(mContext, 500);
-			}
+			if (!isController) {
+				if (!arrySelected[8]) {
+					checkLetter(8);
+				} else {
+					vibrate(mContext, 500);
+				}
+			}			
 			break;
-		case R.id.iv_back:
+		case R.id.iv_back:		
 			finish();
 			break;
 		case R.id.iv_banner:
@@ -468,6 +487,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	}
 
 	private void checkLetter(int pos) {
+		isController = true;
 		if (!Utils.checkIfNull(arryJumbled)) {
 			String c = String.valueOf(arryJumbled[pos]);
 			ArrayList<Integer> arryMatch = new ArrayList<Integer>();
@@ -514,6 +534,16 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 
 					// update views
 					updateVisibility(pos);
+					
+					if (isController) {
+						// delay before allowing word bank selection
+						mHandler.postDelayed(new Runnable() {
+							@Override
+							public void run() {
+								isController = false;
+							}
+						}, 2500);
+					}
 				}
 			} else {
 				// TODO: play sounds, animations and messaging
@@ -550,37 +580,44 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				if (mLevel == 0) {
 					if (mIncorrectLetters >= 4) {
 						Logger.e(TAG, "level failed");
-						// delay before generating the next level
 						mHandler.postDelayed(new Runnable() {
 							@Override
 							public void run() {
-								goToActivity(mContext, SelectActivity.class, -1);
+								goToActivityAnimRight(mContext, SelectActivity.class, -1);
 							}
 						}, 2500);
 					}
 				} else if (mLevel == 4) {
 					if (mIncorrectLetters >= 3) {
 						Logger.e(TAG, "level failed");
-						// delay before generating the next level
 						mHandler.postDelayed(new Runnable() {
 							@Override
 							public void run() {
-								goToActivity(mContext, SelectActivity.class, -1);
+								goToActivityAnimRight(mContext, SelectActivity.class, -1);
 							}
 						}, 2500);
 					}
 				} else {
 					if (mIncorrectLetters >= 4) {
 						Logger.e(TAG, "level failed");
-						// delay before generating the next level
 						mHandler.postDelayed(new Runnable() {
 							@Override
 							public void run() {
-								goToActivity(mContext, SelectActivity.class, -1);
+								goToActivityAnimRight(mContext, SelectActivity.class, -1);
 							}
 						}, 2500);
 					}
 				}
+				
+				if (isController) {
+					// delay before allowing word bank selection
+					mHandler.postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							isController = false;
+						}
+					}, 2500);
+				}			
 			}
 
 			// check if puzzle is solved
@@ -590,9 +627,15 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				if (mSolvedWords >= 3) {
 					// TODO: play sounds, animations, messaging and add rewards for completing level
 					String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
+					String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + (mLevel+3));
 					int lvCount = sharedPref.getIntPref(strPrefName, 0);
+					if (lvCount >= 3) {
+						if (sharedPref.getBooleanPref(strPrefNameUnlock, false)) {
+							sharedPref.setPref(strPrefNameUnlock, true);
+						}
+					}				
 					sharedPref.setPref(Constants.LV_COUNT.concat("_" + mLevel), lvCount++);
-					goToActivity(mContext, SelectActivity.class, -1);
+					goToActivityAnimRight(mContext, SelectActivity.class, -1);
 				} else {
 					// restart level
 					// TODO: play sounds, animations, messaging and add rewards for completing level
@@ -600,7 +643,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 					// delay before generating the next level
 					mHandler.postDelayed(new Runnable() {
 						@Override
-						public void run() {
+						public void run() {						
 							speakInstructions();
 							generateLevel();
 						}

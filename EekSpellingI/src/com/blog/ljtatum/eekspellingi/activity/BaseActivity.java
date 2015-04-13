@@ -1,5 +1,6 @@
 package com.blog.ljtatum.eekspellingi.activity;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,9 +12,11 @@ import java.util.TimerTask;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Vibrator;
+import android.provider.MediaStore.Images;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.view.animation.AlphaAnimation;
@@ -35,6 +38,44 @@ public class BaseActivity extends Activity implements OnInitListener {
 	private static TextToSpeech textToSpeech;
 	private static HashMap<String, String> map = new HashMap<String, String>();
 
+	/**
+	 * Method is used to re-direct to different Activity with a
+	 * transition animation slide in from left
+	 *
+	 * @param context
+	 * @param activity
+	 */
+	protected void goToActivityAnimLeft(Context context, Class<?> activity, int level) {
+		Intent intent = new Intent(context, activity);
+		if (level >= 0) {
+			intent.putExtra(Constants.LEVEL_SELECTED, level);
+		}
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+			| Intent.FLAG_ACTIVITY_SINGLE_TOP);
+		startActivity(intent);
+		// transition animation
+		overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
+	}
+	
+	/**
+	 * Method is used to re-direct to different Activity with a
+	 * transition animation slide in from right
+	 *
+	 * @param context
+	 * @param activity
+	 */
+	protected void goToActivityAnimRight(Context context, Class<?> activity, int level) {
+		Intent intent = new Intent(context, activity);
+		if (level >= 0) {
+			intent.putExtra(Constants.LEVEL_SELECTED, level);
+		}
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+			| Intent.FLAG_ACTIVITY_SINGLE_TOP);
+		startActivity(intent);
+		// transition animation
+		overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
+	}	
+	
 	/**
 	 * Method is used to re-direct to different Activity
 	 *
@@ -378,5 +419,12 @@ public class BaseActivity extends Activity implements OnInitListener {
 	protected void vibrate(Context context, int milliseconds) {
 		Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 		v.vibrate(milliseconds);
+	}
+	
+	protected Uri getImageUri(Context context, Bitmap bitmap) {
+		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+		bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+		String path = Images.Media.insertImage(context.getContentResolver(), bitmap, "image", null);
+		return Uri.parse(path);
 	}
 }

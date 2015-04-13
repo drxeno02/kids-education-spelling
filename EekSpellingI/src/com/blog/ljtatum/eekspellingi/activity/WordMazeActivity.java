@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -48,6 +50,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	private int mLevel = 0, mSolvedWords = 0, mSteps = 0, xStart = 0,
 			yStart = 0, xEnd = 0, yEnd = 0, currPos = 0;
 	private String mWord;
+	private boolean isController = false;
 	private List<String> mArryWordBank, arryPrev;
 	private List<Integer> arryPath;
 
@@ -225,39 +228,43 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	}
 
 	private void transverseToPos(int pos) {
-		if (pos == 1 && mSteps == 0 && pos == arryPath.get(mSteps)) {
-			setRightCords(pos);
-		} else if (pos == 2 && mSteps == 1 && pos == arryPath.get(mSteps)) {
-			setRightCords(pos);
-		} else if (pos == 3 && mSteps == 2 && pos == arryPath.get(mSteps)) {
-			setRightCords(pos);
-		} else if (pos == 4 && mSteps == 1 && pos == arryPath.get(mSteps)) {
-			setDownCords(pos);
-		} else if (pos == 5 && mSteps == 2 && pos == arryPath.get(mSteps)) {
-			if (currPos == 2) {
-				setDownCords(pos); // from pos 2
-			} else {
-				setRightCords(pos); // from pos 4
-			}	
-		} else if (pos == 6 && mSteps == 3 && pos == arryPath.get(mSteps)) {
-			if (currPos == 3) {
-				setDownCords(pos); // from pos 3
-			} else {
-				setRightCords(pos); // from pos 5
-			}
-		} else if (pos == 7 && mSteps == 2 && pos == arryPath.get(mSteps)) {
-			setDownCords(pos);
-		} else if (pos == 8 && mSteps == 3 && pos == arryPath.get(mSteps)) {
-			if (currPos == 5) {
-				setDownCords(pos); // from pos 5
-			} else {
-				setRightCords(pos); // from pos 7
-			}
-		} else if (pos == 9 && mSteps == 4 && pos == arryPath.get(mSteps)) {
-			if (currPos == 6) {
-				setDownCords(pos); // from pos 6
-			} else {
-				setRightCords(pos); // from pos 8
+		if (!isController) {
+			// prevent register of action until animation ends
+			isController = true;
+			if (pos == 1 && mSteps == 0 && pos == arryPath.get(mSteps)) {
+				setRightCords(pos);
+			} else if (pos == 2 && mSteps == 1 && pos == arryPath.get(mSteps)) {
+				setRightCords(pos);
+			} else if (pos == 3 && mSteps == 2 && pos == arryPath.get(mSteps)) {
+				setRightCords(pos);
+			} else if (pos == 4 && mSteps == 1 && pos == arryPath.get(mSteps)) {
+				setDownCords(pos);
+			} else if (pos == 5 && mSteps == 2 && pos == arryPath.get(mSteps)) {
+				if (currPos == 2) {
+					setDownCords(pos); // from pos 2
+				} else {
+					setRightCords(pos); // from pos 4
+				}	
+			} else if (pos == 6 && mSteps == 3 && pos == arryPath.get(mSteps)) {
+				if (currPos == 3) {
+					setDownCords(pos); // from pos 3
+				} else {
+					setRightCords(pos); // from pos 5
+				}
+			} else if (pos == 7 && mSteps == 2 && pos == arryPath.get(mSteps)) {
+				setDownCords(pos);
+			} else if (pos == 8 && mSteps == 3 && pos == arryPath.get(mSteps)) {
+				if (currPos == 5) {
+					setDownCords(pos); // from pos 5
+				} else {
+					setRightCords(pos); // from pos 7
+				}
+			} else if (pos == 9 && mSteps == 4 && pos == arryPath.get(mSteps)) {
+				if (currPos == 6) {
+					setDownCords(pos); // from pos 6
+				} else {
+					setRightCords(pos); // from pos 8
+				}
 			}
 		}
 	}
@@ -370,7 +377,59 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				yStart, yEnd);
 		animation.setDuration(1000);
 		animation.setFillAfter(true);
+		animation.setAnimationListener(new AnimationListener() {
+
+			@Override
+			public void onAnimationStart(Animation animation) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				// TODO Auto-generated method stub
+				Logger.e(TAG, "onAnimationEnd");
+				if (isController) {
+					isController = false;
+				}
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				// TODO Auto-generated method stub
+			}
+			
+		});		
 		iv1.startAnimation(animation);
+		
+		// set letter to correct position
+		if (mSteps == 1) {
+			tvAnswer1.setText(String.valueOf(arryLetters[mSteps]));
+			startShimmerAnimation(tvAnswer1);
+		} else if (mSteps == 2) {
+			tvAnswer2.setText(String.valueOf(arryLetters[mSteps]));
+			startShimmerAnimation(tvAnswer2);
+		} else if (mSteps == 3) {
+			tvAnswer3.setText(String.valueOf(arryLetters[mSteps]));
+			startShimmerAnimation(tvAnswer3);
+		} else if (mSteps == 4) {
+			tvAnswer4.setText(String.valueOf(arryLetters[mSteps]));
+			startShimmerAnimation(tvAnswer4);
+		} else if (mSteps == 5) {
+			tvAnswer5.setText(String.valueOf(arryLetters[mSteps]));
+			startShimmerAnimation(tvAnswer5);
+		} else if (mSteps == 6) {
+			tvAnswer6.setText(String.valueOf(arryLetters[mSteps]));
+			startShimmerAnimation(tvAnswer6);
+		} else if (mSteps == 7) {
+			tvAnswer7.setText(String.valueOf(arryLetters[mSteps]));
+			startShimmerAnimation(tvAnswer7);
+		} else if (mSteps == 8) {
+			tvAnswer8.setText(String.valueOf(arryLetters[mSteps]));
+			startShimmerAnimation(tvAnswer8);
+		} else if (mSteps == 9) {
+			tvAnswer9.setText(String.valueOf(arryLetters[mSteps]));
+			startShimmerAnimation(tvAnswer9);
+		}
 		
 		// check for win
 		if (mSteps >= arryPath.size()) {
@@ -382,7 +441,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
 				int lvCount = sharedPref.getIntPref(strPrefName, 0);
 				sharedPref.setPref(Constants.LV_COUNT.concat("_" + mLevel), lvCount++);
-				goToActivity(mContext, SelectActivity.class, -1);
+				goToActivityAnimRight(mContext, SelectActivity.class, -1);
 			} else {
 				// restart level
 				// TODO: play sounds, animations, messaging and add rewards for completing level
@@ -494,7 +553,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			arryPath.clear();
 		}
 		
-		// setup words to solve views
+		// setup maze path
 		if (num == 3) {
 			Utils.setViewVisibility(true, v1, v2, v3, tvAnswer1, tvAnswer2,
 					tvAnswer3, pos1, pos2, pos4, pos5, end1);
@@ -600,6 +659,10 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7, v8, v9,
 					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
 					tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9);
+		}
+		
+		for (int i = 0; i < arryPath.size(); i++) {
+			Logger.i(TAG, arryPath.get(i) + ", ");
 		}
 	}
 

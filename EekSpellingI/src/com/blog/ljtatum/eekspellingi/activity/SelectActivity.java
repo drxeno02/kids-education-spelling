@@ -80,16 +80,16 @@ public class SelectActivity extends BaseActivity implements OnClickListener {
 				// TODO Auto-generated method stub
 				if (position == 0 || position == 4 || position == 8) {
 					Logger.i(TAG, "launching LetterTree :: pos " + position);
-					goToActivity(mContext, LetterTreeActivity.class, position);
+					goToActivityAnimLeft(mContext, LetterTreeActivity.class, position);
 				} else if (position == 1 || position == 5 || position == 9) {
 					Logger.i(TAG, "launching SpellingTile :: pos " + position);
-					goToActivity(mContext, SpellingTileActivity.class, position);
+					goToActivityAnimLeft(mContext, SpellingTileActivity.class, position);
 				} else if (position == 2 || position == 6 || position == 10) {
 					Logger.i(TAG, "launching WordMaze :: pos " + position);
-					goToActivity(mContext, WordMazeActivity.class, position);
+					goToActivityAnimLeft(mContext, WordMazeActivity.class, position);
 				} else if (position == 3 || position == 7 || position == 11) {
 					Logger.i(TAG, "launching PictureDrop :: pos " + position);
-					goToActivity(mContext, PictureDropActivity.class, position);
+					goToActivityAnimLeft(mContext, PictureDropActivity.class, position);
 				}
 			}
 		});

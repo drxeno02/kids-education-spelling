@@ -45,9 +45,13 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.blog.ljtatum.eekspellingi.activity.Extras"
+            android:name="com.blog.ljtatum.eekspellingi.activity.ExtrasActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.blog.ljtatum.eekspellingi.activity.RewardsActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />        
         <activity
             android:name="com.blog.ljtatum.eekspellingi.activity.LetterTreeActivity"
             android:label="@string/app_name"

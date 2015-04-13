@@ -9,6 +9,12 @@
     <color name="white_overlay1">#CCffffff</color> <!-- ~80% -->
     <color name="white_overlay2">#33ffffff</color> <!-- ~20% -->
     <color name="white_overlay3">#19ffffff</color> <!-- ~10% -->
+    <color name="green_overlay1">#CC88D66B</color>
+    <color name="green_overlay2">#3388D66B</color>
+    <color name="green_overlay3">#6688D66B</color>
+    <color name="red_overlay1">#CCFF003C</color>
+    <color name="red_overlay2">#33FF003C</color>
+    <color name="red_overlay3">#66FF003C</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="grey_normal">#696969</color>

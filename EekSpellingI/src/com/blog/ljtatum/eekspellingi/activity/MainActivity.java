@@ -117,13 +117,13 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
 		switch (v.getId()) {
 		case R.id.btn_learn:
-			goToActivity(mContext, SelectActivity.class, -1);
+			goToActivityAnimLeft(mContext, SelectActivity.class, -1);
 			break;
 		case R.id.btn_rewards:
-			goToActivity(mContext, RewardsActivity.class, -1);
+			//goToActivityAnimLeft(mContext, RewardsActivity.class, -1);
 			break;
 		case R.id.btn_extras:
-			goToActivity(mContext, ExtrasActivity.class, -1);
+			goToActivityAnimLeft(mContext, ExtrasActivity.class, -1);
 			break;
 		case R.id.iv_banner:
 			if (Utils.getBannerId() == 1) {

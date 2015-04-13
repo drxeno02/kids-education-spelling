@@ -18,6 +18,16 @@
     <string name="txt_picture_drop">Picture Drop</string>
     <string name="txt_spelling_tile">Spelling Tile</string>
     <string name="txt_word_maze">Word Maze</string>
+    <string name="txt_extras">Extras</string>
+    <string name="txt_fb">Facebook</string>
+    <string name="txt_twitter">Twitter</string>
+    <string name="txt_feedback">Feedback</string>
+    <string name="txt_toggle_music">Music Settings:</string>
+    <string name="txt_more_apps">More Apps</string>
+    <string name="txt_share">Share</string>
+    <string name="txt_eek_math">Eek! Math I</string>
+    <string name="txt_elements">Elements</string>
+    <string name="txt_banana">Banana And The Beat</string>
 
     <!-- device menu related options -->
     <string name="settings_options">More Options</string>
