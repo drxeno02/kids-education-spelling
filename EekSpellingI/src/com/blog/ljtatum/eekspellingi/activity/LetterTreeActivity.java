@@ -627,14 +627,16 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				if (mSolvedWords >= 3) {
 					// TODO: play sounds, animations, messaging and add rewards for completing level
 					String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
-					String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + (mLevel+3));
-					int lvCount = sharedPref.getIntPref(strPrefName, 0);
+					String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + (mLevel+4));
+					int lvCount = sharedPref.getIntPref(strPrefName, 0);				
 					if (lvCount >= 3) {
-						if (sharedPref.getBooleanPref(strPrefNameUnlock, false)) {
+						boolean isUnlock = sharedPref.getBooleanPref(strPrefNameUnlock, false);
+						if (!isUnlock) {
 							sharedPref.setPref(strPrefNameUnlock, true);
 						}
-					}				
-					sharedPref.setPref(Constants.LV_COUNT.concat("_" + mLevel), lvCount++);
+					}		
+					lvCount++;
+					sharedPref.setPref(strPrefName, lvCount);
 					goToActivityAnimRight(mContext, SelectActivity.class, -1);
 				} else {
 					// restart level

@@ -40,6 +40,8 @@ public class SelectActivity extends BaseActivity implements OnClickListener {
 	private ShareAppUtil shareApp;
 	private SharedPref sharedPref;
 	private SelectAdapter selectAdapter;
+	private String strPrefNameUnlock;
+	private boolean isUnlock = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,18 +80,40 @@ public class SelectActivity extends BaseActivity implements OnClickListener {
 			public void onItemClick(AdapterView<?> parent, View view,
 				int position, long id) {
 				// TODO Auto-generated method stub
+				strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + position);
+				isUnlock = sharedPref.getBooleanPref(strPrefNameUnlock, false);
 				if (position == 0 || position == 4 || position == 8) {
-					Logger.i(TAG, "launching LetterTree :: pos " + position);
-					goToActivityAnimLeft(mContext, LetterTreeActivity.class, position);
+					if (isUnlock) {
+						Logger.i(TAG, "launching LetterTree :: pos " + position);
+						goToActivityAnimLeft(mContext, LetterTreeActivity.class, position);
+					} else {
+						vibrate(mContext, 500);
+						Crouton.showText(mActivity, "Level is locked", Style.ALERT);
+					}
 				} else if (position == 1 || position == 5 || position == 9) {
-					Logger.i(TAG, "launching SpellingTile :: pos " + position);
-					goToActivityAnimLeft(mContext, SpellingTileActivity.class, position);
+					if (isUnlock) {
+						Logger.i(TAG, "launching SpellingTile :: pos " + position);
+						goToActivityAnimLeft(mContext, SpellingTileActivity.class, position);
+					} else {
+						vibrate(mContext, 500);
+						Crouton.showText(mActivity, "Level is locked", Style.ALERT);
+					}
 				} else if (position == 2 || position == 6 || position == 10) {
-					Logger.i(TAG, "launching WordMaze :: pos " + position);
-					goToActivityAnimLeft(mContext, WordMazeActivity.class, position);
+					if (isUnlock) {
+						Logger.i(TAG, "launching WordMaze :: pos " + position);
+						goToActivityAnimLeft(mContext, WordMazeActivity.class, position);
+					} else {
+						vibrate(mContext, 500);
+						Crouton.showText(mActivity, "Level is locked", Style.ALERT);
+					}
 				} else if (position == 3 || position == 7 || position == 11) {
-					Logger.i(TAG, "launching PictureDrop :: pos " + position);
-					goToActivityAnimLeft(mContext, PictureDropActivity.class, position);
+					if (isUnlock) {
+						Logger.i(TAG, "launching PictureDrop :: pos " + position);
+						goToActivityAnimLeft(mContext, PictureDropActivity.class, position);
+					} else {
+						vibrate(mContext, 500);
+						Crouton.showText(mActivity, "Level is locked", Style.ALERT);
+					}
 				}
 			}
 		});
