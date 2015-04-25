@@ -403,31 +403,31 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		
 		// set letter to correct position
 		if (mSteps == 1) {
-			tvAnswer1.setText(String.valueOf(arryLetters[mSteps]));
+			tvAnswer1.setText(String.valueOf(arryLetters[mSteps-1]));
 			startShimmerAnimation(tvAnswer1);
 		} else if (mSteps == 2) {
-			tvAnswer2.setText(String.valueOf(arryLetters[mSteps]));
+			tvAnswer2.setText(String.valueOf(arryLetters[mSteps-1]));
 			startShimmerAnimation(tvAnswer2);
 		} else if (mSteps == 3) {
-			tvAnswer3.setText(String.valueOf(arryLetters[mSteps]));
+			tvAnswer3.setText(String.valueOf(arryLetters[mSteps-1]));
 			startShimmerAnimation(tvAnswer3);
 		} else if (mSteps == 4) {
-			tvAnswer4.setText(String.valueOf(arryLetters[mSteps]));
+			tvAnswer4.setText(String.valueOf(arryLetters[mSteps-1]));
 			startShimmerAnimation(tvAnswer4);
 		} else if (mSteps == 5) {
-			tvAnswer5.setText(String.valueOf(arryLetters[mSteps]));
+			tvAnswer5.setText(String.valueOf(arryLetters[mSteps-1]));
 			startShimmerAnimation(tvAnswer5);
 		} else if (mSteps == 6) {
-			tvAnswer6.setText(String.valueOf(arryLetters[mSteps]));
+			tvAnswer6.setText(String.valueOf(arryLetters[mSteps-1]));
 			startShimmerAnimation(tvAnswer6);
 		} else if (mSteps == 7) {
-			tvAnswer7.setText(String.valueOf(arryLetters[mSteps]));
+			tvAnswer7.setText(String.valueOf(arryLetters[mSteps-1]));
 			startShimmerAnimation(tvAnswer7);
 		} else if (mSteps == 8) {
-			tvAnswer8.setText(String.valueOf(arryLetters[mSteps]));
+			tvAnswer8.setText(String.valueOf(arryLetters[mSteps-1]));
 			startShimmerAnimation(tvAnswer8);
 		} else if (mSteps == 9) {
-			tvAnswer9.setText(String.valueOf(arryLetters[mSteps]));
+			tvAnswer9.setText(String.valueOf(arryLetters[mSteps-1]));
 			startShimmerAnimation(tvAnswer9);
 		}
 		

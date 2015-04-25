@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:text="@string/txt_word_maze"
+            android:text="@string/txt_spelling_tile"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="@dimen/font_size_28" />
@@ -45,13 +45,26 @@
         android:orientation="horizontal"
         android:weightSum="1" >
 
-        <View
-            android:id="@+id/ph1"
+        
+                <LinearLayout
+            android:id="@+id/pos0"
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
+            android:background="@color/red_shade"
             android:orientation="horizontal"
-            android:visibility="invisible" />
+            android:visibility="visible" >
+
+            <TextView
+                android:id="@+id/tv0"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28" />
+        </LinearLayout>
+        
 
         <LinearLayout
             android:id="@+id/pos1"
@@ -60,7 +73,7 @@
             android:layout_weight="0.2"
             android:background="@color/white"
             android:orientation="horizontal"
-            android:visibility="gone" >
+            android:visibility="visible" >
 
             <TextView
                 android:id="@+id/tv1"
@@ -79,7 +92,7 @@
             android:layout_weight="0.2"
             android:background="@color/grey_shade"
             android:orientation="horizontal"
-            android:visibility="gone" >
+            android:visibility="visible" >
 
             <TextView
                 android:id="@+id/tv2"
@@ -98,7 +111,7 @@
             android:layout_weight="0.2"
             android:background="@color/white"
             android:orientation="horizontal"
-            android:visibility="gone" >
+            android:visibility="visible" >
 
             <TextView
                 android:id="@+id/tv3"
@@ -110,39 +123,15 @@
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
 
-        <View
-            android:id="@+id/ph2"
-            android:layout_width="0dp"
-            android:layout_height="64dp"
-            android:layout_weight="0.2"
-            android:orientation="horizontal"
-            android:visibility="gone" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ll1"
-        android:orientation="horizontal"
-        android:weightSum="1" >
-
-        <View
-            android:id="@+id/ph3"
-            android:layout_width="0dp"
-            android:layout_height="64dp"
-            android:layout_weight="0.2"
-            android:orientation="horizontal"
-            android:visibility="invisible" />
-
+        
         <LinearLayout
             android:id="@+id/pos4"
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/grey_shade"
+            android:background="@color/red_shade"
             android:orientation="horizontal"
-            android:visibility="gone" >
+            android:visibility="visible" >
 
             <TextView
                 android:id="@+id/tv4"
@@ -153,15 +142,26 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
+        
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll1"
+        android:orientation="horizontal"
+        android:weightSum="1" >
 
         <LinearLayout
             android:id="@+id/pos5"
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/white"
+            android:background="@color/red_shade"
             android:orientation="horizontal"
-            android:visibility="gone" >
+            android:visibility="visible" >
 
             <TextView
                 android:id="@+id/tv5"
@@ -180,7 +180,7 @@
             android:layout_weight="0.2"
             android:background="@color/grey_shade"
             android:orientation="horizontal"
-            android:visibility="gone" >
+            android:visibility="visible" >
 
             <TextView
                 android:id="@+id/tv6"
@@ -192,32 +192,6 @@
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
 
-        <View
-            android:id="@+id/end1"
-            android:layout_width="0dp"
-            android:layout_height="64dp"
-            android:layout_weight="0.2"
-            android:background="@color/yellow_shade"
-            android:orientation="horizontal"
-            android:visibility="gone" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll3"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ll2"
-        android:orientation="horizontal"
-        android:weightSum="1" >
-
-        <View
-            android:id="@+id/ph4"
-            android:layout_width="0dp"
-            android:layout_height="64dp"
-            android:layout_weight="0.2"
-            android:orientation="horizontal"
-            android:visibility="invisible" />
-
         <LinearLayout
             android:id="@+id/pos7"
             android:layout_width="0dp"
@@ -225,7 +199,7 @@
             android:layout_weight="0.2"
             android:background="@color/white"
             android:orientation="horizontal"
-            android:visibility="gone" >
+            android:visibility="visible" >
 
             <TextView
                 android:id="@+id/tv7"
@@ -244,7 +218,7 @@
             android:layout_weight="0.2"
             android:background="@color/grey_shade"
             android:orientation="horizontal"
-            android:visibility="gone" >
+            android:visibility="visible" >
 
             <TextView
                 android:id="@+id/tv8"
@@ -255,15 +229,15 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
-
-        <LinearLayout
+        
+                <LinearLayout
             android:id="@+id/pos9"
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/white"
+            android:background="@color/red_shade"
             android:orientation="horizontal"
-            android:visibility="gone" >
+            android:visibility="visible" >
 
             <TextView
                 android:id="@+id/tv9"
@@ -275,40 +249,24 @@
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
 
-        <View
-            android:id="@+id/end2"
-            android:layout_width="0dp"
-            android:layout_height="64dp"
-            android:layout_weight="0.2"
-            android:background="@color/yellow_shade"
-            android:orientation="horizontal"
-            android:visibility="gone" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll4"
+        android:id="@+id/ll3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ll3"
+        android:layout_below="@id/ll2"
         android:orientation="horizontal"
         android:weightSum="1" >
-
-        <View
-            android:id="@+id/ph5"
-            android:layout_width="0dp"
-            android:layout_height="64dp"
-            android:layout_weight="0.2"
-            android:orientation="horizontal"
-            android:visibility="invisible" />
 
         <LinearLayout
             android:id="@+id/pos10"
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/grey_shade"
+            android:background="@color/red_shade"
             android:orientation="horizontal"
-            android:visibility="gone" >
+            android:visibility="visible" >
 
             <TextView
                 android:id="@+id/tv10"
@@ -327,7 +285,7 @@
             android:layout_weight="0.2"
             android:background="@color/white"
             android:orientation="horizontal"
-            android:visibility="gone" >
+            android:visibility="visible" >
 
             <TextView
                 android:id="@+id/tv11"
@@ -346,7 +304,7 @@
             android:layout_weight="0.2"
             android:background="@color/grey_shade"
             android:orientation="horizontal"
-            android:visibility="gone" >
+            android:visibility="visible" >
 
             <TextView
                 android:id="@+id/tv12"
@@ -358,32 +316,6 @@
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
 
-        <View
-            android:id="@+id/end3"
-            android:layout_width="0dp"
-            android:layout_height="64dp"
-            android:layout_weight="0.2"
-            android:background="@color/yellow_shade"
-            android:orientation="horizontal"
-            android:visibility="gone" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll5"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ll4"
-        android:orientation="horizontal"
-        android:weightSum="1" >
-
-        <View
-            android:id="@+id/ph6"
-            android:layout_width="0dp"
-            android:layout_height="64dp"
-            android:layout_weight="0.2"
-            android:orientation="horizontal"
-            android:visibility="invisible" />
-
         <LinearLayout
             android:id="@+id/pos13"
             android:layout_width="0dp"
@@ -391,7 +323,7 @@
             android:layout_weight="0.2"
             android:background="@color/white"
             android:orientation="horizontal"
-            android:visibility="gone" >
+            android:visibility="visible" >
 
             <TextView
                 android:id="@+id/tv13"
@@ -402,15 +334,15 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
-
-        <LinearLayout
+        
+         <LinearLayout
             android:id="@+id/pos14"
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/grey_shade"
+            android:background="@color/red_shade"
             android:orientation="horizontal"
-            android:visibility="gone" >
+            android:visibility="visible" >
 
             <TextView
                 android:id="@+id/tv14"
@@ -420,16 +352,26 @@
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_28" />
-        </LinearLayout>
+        </LinearLayout>       
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll3"
+        android:orientation="horizontal"
+        android:weightSum="1" >
 
         <LinearLayout
             android:id="@+id/pos15"
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/white"
+            android:background="@color/red_shade"
             android:orientation="horizontal"
-            android:visibility="gone" >
+            android:visibility="visible" >
 
             <TextView
                 android:id="@+id/tv15"
@@ -441,14 +383,187 @@
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
 
-        <View
-            android:id="@+id/end4"
+        <LinearLayout
+            android:id="@+id/pos16"
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/yellow_shade"
+            android:background="@color/grey_shade"
             android:orientation="horizontal"
-            android:visibility="gone" />
+            android:visibility="visible" >
+
+            <TextView
+                android:id="@+id/tv16"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pos17"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="0.2"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <TextView
+                android:id="@+id/tv17"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pos18"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="0.2"
+            android:background="@color/grey_shade"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <TextView
+                android:id="@+id/tv18"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/pos19"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="0.2"
+            android:background="@color/red_shade"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <TextView
+                android:id="@+id/tv19"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28" />
+        </LinearLayout>        
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll5"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll4"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <LinearLayout
+            android:id="@+id/pos20"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="0.2"
+            android:background="@color/red_shade"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <TextView
+                android:id="@+id/tv20"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28" />
+        </LinearLayout> 
+
+        <LinearLayout
+            android:id="@+id/pos21"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="0.2"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <TextView
+                android:id="@+id/tv21"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pos22"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="0.2"
+            android:background="@color/grey_shade"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <TextView
+                android:id="@+id/tv22"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pos23"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="0.2"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <TextView
+                android:id="@+id/tv23"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28" />
+        </LinearLayout>
+        
+                <LinearLayout
+            android:id="@+id/pos24"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="0.2"
+            android:background="@color/red_shade"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <TextView
+                android:id="@+id/tv24"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -472,7 +587,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
             android:id="@+id/tv_answer_2"
@@ -485,7 +600,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
             android:id="@+id/tv_answer_3"
@@ -498,7 +613,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
             android:id="@+id/tv_answer_4"
@@ -511,7 +626,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
             android:id="@+id/tv_answer_5"
@@ -524,7 +639,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
             android:id="@+id/tv_answer_6"
@@ -537,7 +652,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
             android:id="@+id/tv_answer_7"
@@ -550,7 +665,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
             android:id="@+id/tv_answer_8"
@@ -563,7 +678,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
             android:id="@+id/tv_answer_9"
@@ -577,7 +692,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="gone" />
+            android:visibility="visible" />
     </LinearLayout>
 
     <LinearLayout
@@ -673,12 +788,12 @@
             android:visibility="gone" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/iv1"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_below="@id/rl"
-        android:background="@drawable/a" />
+<!--     <ImageView -->
+<!--         android:id="@+id/iv1" -->
+<!--         android:layout_width="60dp" -->
+<!--         android:layout_height="60dp" -->
+<!--         android:layout_below="@id/rl" -->
+<!--         android:background="@drawable/a" /> -->
 
     <!-- Banner size: 320x65 -->
 
