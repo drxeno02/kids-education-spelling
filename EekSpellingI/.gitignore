@@ -1,0 +1,19 @@
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# general folders
+bin/
+gen/
+assets/bin/
+
+# proguard
+.gradle/
+.settings/
+.idea/
+
+.apt_generated/
+project.properties
