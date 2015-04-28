@@ -8,7 +8,6 @@
 # general folders
 bin/
 gen/
-assets/bin/
 
 # proguard
 .gradle/
@@ -17,3 +16,9 @@ assets/bin/
 
 .apt_generated/
 project.properties
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log Files
+*.log
