@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:id="@+id/rl"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/black_overlay3"
         android:orientation="horizontal" >
@@ -39,14 +39,13 @@
 
     <LinearLayout
         android:id="@+id/ll1"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rl"
         android:orientation="horizontal"
         android:weightSum="1" >
 
-        
-                <LinearLayout
+        <LinearLayout
             android:id="@+id/pos0"
             android:layout_width="0dp"
             android:layout_height="64dp"
@@ -64,7 +63,6 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
-        
 
         <LinearLayout
             android:id="@+id/pos1"
@@ -123,7 +121,6 @@
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
 
-        
         <LinearLayout
             android:id="@+id/pos4"
             android:layout_width="0dp"
@@ -142,13 +139,11 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
-        
-        
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll2"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ll1"
         android:orientation="horizontal"
@@ -229,8 +224,8 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
-        
-                <LinearLayout
+
+        <LinearLayout
             android:id="@+id/pos9"
             android:layout_width="0dp"
             android:layout_height="64dp"
@@ -248,12 +243,11 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll3"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ll2"
         android:orientation="horizontal"
@@ -334,8 +328,8 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
-        
-         <LinearLayout
+
+        <LinearLayout
             android:id="@+id/pos14"
             android:layout_width="0dp"
             android:layout_height="64dp"
@@ -352,13 +346,12 @@
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_28" />
-        </LinearLayout>       
-
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll4"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ll3"
         android:orientation="horizontal"
@@ -439,7 +432,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
-        
+
         <LinearLayout
             android:id="@+id/pos19"
             android:layout_width="0dp"
@@ -457,13 +450,12 @@
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_28" />
-        </LinearLayout>        
-
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll5"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ll4"
         android:orientation="horizontal"
@@ -486,7 +478,7 @@
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_28" />
-        </LinearLayout> 
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/pos21"
@@ -544,8 +536,8 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
-        
-                <LinearLayout
+
+        <LinearLayout
             android:id="@+id/pos24"
             android:layout_width="0dp"
             android:layout_height="64dp"
@@ -563,12 +555,11 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_size_28" />
         </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_answer"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ll5"
         android:layout_marginTop="30dp"
@@ -697,7 +688,7 @@
 
     <LinearLayout
         android:id="@+id/ll_view"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ll_answer"
         android:layout_marginTop="6dp"
@@ -788,18 +779,11 @@
             android:visibility="gone" />
     </LinearLayout>
 
-<!--     <ImageView -->
-<!--         android:id="@+id/iv1" -->
-<!--         android:layout_width="60dp" -->
-<!--         android:layout_height="60dp" -->
-<!--         android:layout_below="@id/rl" -->
-<!--         android:background="@drawable/a" /> -->
-
     <!-- Banner size: 320x65 -->
 
     <LinearLayout
         android:id="@+id/ll_banner"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="center_horizontal"

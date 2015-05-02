@@ -120,7 +120,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 			goToActivityAnimLeft(mContext, SelectActivity.class, -1);
 			break;
 		case R.id.btn_rewards:
-			//goToActivityAnimLeft(mContext, RewardsActivity.class, -1);
+			// goToActivityAnimLeft(mContext, RewardsActivity.class, -1);
 			break;
 		case R.id.btn_extras:
 			goToActivityAnimLeft(mContext, ExtrasActivity.class, -1);
@@ -180,7 +180,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 			if (i < 4) {
 				sharedPref.setPref(strPrefNameUnlock, true);
 			} else {
-				sharedPref.setPref(strPrefNameUnlock, false);
+				sharedPref.setPref(strPrefNameUnlock, true); // false
 			}
 		}
 

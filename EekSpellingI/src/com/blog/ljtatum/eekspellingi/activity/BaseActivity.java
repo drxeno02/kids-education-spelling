@@ -91,12 +91,6 @@ public class BaseActivity extends Activity implements OnInitListener {
 			| Intent.FLAG_ACTIVITY_SINGLE_TOP);
 		startActivity(intent);
 	}
-	
-	
-	
-	
-	
-	
 
 	/**
 	 * Method is used to re-direct user to the app store

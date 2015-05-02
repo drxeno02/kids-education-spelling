@@ -10,8 +10,8 @@
     tools:ignore="UselessParent,contentDescription" >
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:orientation="vertical" >
 

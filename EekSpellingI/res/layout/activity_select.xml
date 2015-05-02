@@ -10,7 +10,7 @@
 
     <RelativeLayout
         android:id="@+id/rl"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/black_overlay3"
         android:orientation="horizontal" >
@@ -48,7 +48,7 @@
 
     <LinearLayout
         android:id="@+id/ll_banner"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom|center"
         android:orientation="vertical" >

@@ -42,7 +42,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	private TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9;
 	private ShimmerTextView tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4,
 		tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
-	private LinearLayout ll;
+	private LinearLayout llWordBank, llEditAnswer, llTxtAnswer;
 	private Random r;
 	private int mLevel = 0, mCorrectLetters = 0, mIncorrectLetters = 0, mSolvedWords = 0;
 	private String mWord;
@@ -77,7 +77,9 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		mArryWordBank = new ArrayList<String>();
 		arryPrev = new ArrayList<String>();
 		r = new Random();
-		ll = (LinearLayout) findViewById(R.id.ll_word_bank);
+		llWordBank = (LinearLayout) findViewById(R.id.ll_word_bank);
+		llEditAnswer = (LinearLayout) findViewById(R.id.ll_edit_answer);
+		llTxtAnswer = (LinearLayout) findViewById(R.id.ll_txt_answer);
 		ivBanner = (ImageView) findViewById(R.id.iv_banner);
 		ivBack = (ImageView) findViewById(R.id.iv_back);
 		v1 = findViewById(R.id.v1);
@@ -388,13 +390,13 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		// setup visibility view for word bank
 		if (mLevel == 0 || mLevel == 4) {
 			// add word bank view
-			if (ll.getVisibility() == View.GONE) {
-				ll.setVisibility(View.VISIBLE);
+			if (llWordBank.getVisibility() == View.GONE) {
+				llWordBank.setVisibility(View.VISIBLE);
 			}
 		} else {
 			// remove word bank view
-			if (ll.getVisibility() == View.VISIBLE) {
-				ll.setVisibility(View.GONE);
+			if (llWordBank.getVisibility() == View.VISIBLE) {
+				llWordBank.setVisibility(View.GONE);
 			}
 		}
 
