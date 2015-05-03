@@ -7,6 +7,7 @@ import java.util.Random;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,6 +25,7 @@ import com.blog.ljtatum.eekspellingi.R;
 import com.blog.ljtatum.eekspellingi.anim.Shimmer;
 import com.blog.ljtatum.eekspellingi.anim.ShimmerTextView;
 import com.blog.ljtatum.eekspellingi.constants.Constants;
+import com.blog.ljtatum.eekspellingi.enums.WordCategory;
 import com.blog.ljtatum.eekspellingi.helper.Messages;
 import com.blog.ljtatum.eekspellingi.logger.Logger;
 import com.blog.ljtatum.eekspellingi.sharedpref.SharedPref;
@@ -39,13 +43,15 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	private Context mContext;
 	private ImageView ivBack, ivBanner;
 	private View v1, v2, v3, v4, v5, v6, v7, v8, v9;
-	private TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9;
+	private TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tvHint;
 	private ShimmerTextView tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4,
 		tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
 	private LinearLayout llWordBank, llEditAnswer, llTxtAnswer;
+	private Button btnSubmit;
+	private EditText edtAnswer;
 	private Random r;
 	private int mLevel = 0, mCorrectLetters = 0, mIncorrectLetters = 0, mSolvedWords = 0;
-	private String mWord;
+	private String mWord, mLetterEditText;
 	private boolean isController = false;
 	private char[] arryJumbled = null;
 	private boolean[] arrySelected = new boolean[9];
@@ -82,6 +88,8 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		llTxtAnswer = (LinearLayout) findViewById(R.id.ll_txt_answer);
 		ivBanner = (ImageView) findViewById(R.id.iv_banner);
 		ivBack = (ImageView) findViewById(R.id.iv_back);
+		btnSubmit = (Button) findViewById(R.id.btn_submit);
+		edtAnswer = (EditText) findViewById(R.id.edt_answer_1);
 		v1 = findViewById(R.id.v1);
 		v2 = findViewById(R.id.v2);
 		v3 = findViewById(R.id.v3);
@@ -100,6 +108,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		tv7 = (TextView) findViewById(R.id.tv7);
 		tv8 = (TextView) findViewById(R.id.tv8);
 		tv9 = (TextView) findViewById(R.id.tv9);
+		tvHint = (TextView) findViewById(R.id.tv_hint);
 		tvAnswer1 = (ShimmerTextView) findViewById(R.id.tv_answer_1);
 		tvAnswer2 = (ShimmerTextView) findViewById(R.id.tv_answer_2);
 		tvAnswer3 = (ShimmerTextView) findViewById(R.id.tv_answer_3);
@@ -224,6 +233,9 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				goToStore(Constants.PKG_NAME_BANANA);
 			}
 			break;
+		case R.id.btn_submit:	
+			mLetterEditText = edtAnswer.getText().toString().trim();
+			break;
 		default:
 			break;
 		}
@@ -245,7 +257,35 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 
 		// retrieve full word bank
 		String[] arryWordBankFull = getWordBank(mLevel);
+		
+		// set hint
+		if (mLevel >= 8) {
+			tvHint.setText("????");
+			tvHint.setTextColor(getResources().getColor(R.color.red_shade));
+		} else {
+			if (mWordCategory == WordCategory.CATEGORY_OBJECT_PLACE) {
+				tvHint.setText("Object or Place");
+			} else if (mWordCategory == WordCategory.CATEGORY_OBJECT_NUMBER) {
+				tvHint.setText("Object or Number");
+			} else if (mWordCategory == WordCategory.CATEGORY_OBJECT_COLOR) {
+				tvHint.setText("Object or Color");
+			} else if (mWordCategory == WordCategory.CATEGORY_PLACE_NUMBER_COLOR) {	
+				tvHint.setText("Object, Number or Color");
+			} else if (mWordCategory == WordCategory.CATEGORY_OBJECT_ACTION) {
+				tvHint.setText("Object or Action");
+			} else if (mWordCategory == WordCategory.CATEGORY_OBJECT_ANIMAL) {	
+				tvHint.setText("Object or Animal");
+			} else if (mWordCategory == WordCategory.CATEGORY_OBJECT_DAY_MONTH) {	
+				tvHint.setText("Object, Day or Month");
+			} else if (mWordCategory == WordCategory.CATEGORY_ACTION_ANIMAL_DAY_MONTH) {
+				tvHint.setText("Action, Animal, Day or Month");
+			}
+			tvHint.setTextColor(getResources().getColor(R.color.black));
+		}
+		
+		// retrieve list of usable words
 		mArryWordBank = getWordBank(arryWordBankFull, mLevel);
+		// select a word from usable word list
 		mWord = mArryWordBank.get(r.nextInt(mArryWordBank.size()));
 		generateLevel();
 	}
@@ -390,13 +430,18 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		// setup visibility view for word bank
 		if (mLevel == 0 || mLevel == 4) {
 			// add word bank view
-			if (llWordBank.getVisibility() == View.GONE) {
+			if (llWordBank.getVisibility() != View.VISIBLE) {
 				llWordBank.setVisibility(View.VISIBLE);
 			}
 		} else {
 			// remove word bank view
-			if (llWordBank.getVisibility() == View.VISIBLE) {
+			if (llWordBank.getVisibility() != View.GONE) {
 				llWordBank.setVisibility(View.GONE);
+			}
+			
+			// add editText view for letter input
+			if (llEditAnswer.getVisibility() != View.VISIBLE) {
+				llEditAnswer.setVisibility(View.VISIBLE);
 			}
 		}
 

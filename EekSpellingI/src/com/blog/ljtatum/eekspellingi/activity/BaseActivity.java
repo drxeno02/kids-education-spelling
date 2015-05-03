@@ -27,6 +27,7 @@ import android.widget.ImageView;
 
 import com.blog.ljtatum.eekspellingi.R;
 import com.blog.ljtatum.eekspellingi.constants.Constants;
+import com.blog.ljtatum.eekspellingi.enums.WordCategory;
 import com.blog.ljtatum.eekspellingi.logger.Logger;
 import com.blog.ljtatum.eekspellingi.util.Config;
 import com.blog.ljtatum.eekspellingi.util.Utils;
@@ -35,6 +36,7 @@ public class BaseActivity extends Activity implements OnInitListener {
 	private final static String TAG = BaseActivity.class.getSimpleName();
 
 	private Context mContext;
+	protected WordCategory mWordCategory;
 	private static TextToSpeech textToSpeech;
 	private static HashMap<String, String> map = new HashMap<String, String>();
 
@@ -284,21 +286,25 @@ public class BaseActivity extends Activity implements OnInitListener {
 		if (level >= 0 && level <= 3) {
 			if (rand == 0) {
 				// object + places
+				mWordCategory = WordCategory.CATEGORY_OBJECT_PLACE;
 				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
 				arryTempB = getResources().getStringArray(R.array.arryWordBankPlaces);	
 				return Utils.concatenate(arryTempA, arryTempB);
 			} else if (rand == 1) {
 				// object + numbers
+				mWordCategory = WordCategory.CATEGORY_OBJECT_NUMBER;
 				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
 				arryTempB = getResources().getStringArray(R.array.arryWordBankNumbers);
 				return Utils.concatenate(arryTempA, arryTempB);
 			} else if (rand == 2) {
 				// object + colors
+				mWordCategory = WordCategory.CATEGORY_OBJECT_COLOR;
 				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
 				arryTempB = getResources().getStringArray(R.array.arryWordBankColors);
 				return Utils.concatenate(arryTempA, arryTempB);
 			} else {
 				// places + numbers + colors 
+				mWordCategory = WordCategory.CATEGORY_PLACE_NUMBER_COLOR;
 				arryTempA = getResources().getStringArray(R.array.arryWordBankPlaces);
 				arryTempB = getResources().getStringArray(R.array.arryWordBankNumbers);
 				arryTempC = getResources().getStringArray(R.array.arryWordBankColors);
@@ -307,22 +313,26 @@ public class BaseActivity extends Activity implements OnInitListener {
 		} else if (level >= 4 && level <= 7) {
 			if (rand == 0) {
 				// object + actions
+				mWordCategory = WordCategory.CATEGORY_OBJECT_ACTION;
 				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
 				arryTempB = getResources().getStringArray(R.array.arryWordBankActions);
 				return Utils.concatenate(arryTempA, arryTempB);
 			} else if (rand == 1) {
 				// object + animals
+				mWordCategory = WordCategory.CATEGORY_OBJECT_ANIMAL;
 				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
 				arryTempB = getResources().getStringArray(R.array.arryWordBankAnimals);
 				return Utils.concatenate(arryTempA, arryTempB);
 			} else if (rand == 2) {
 				// object + days + months
+				mWordCategory = WordCategory.CATEGORY_OBJECT_DAY_MONTH;
 				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
 				arryTempB = getResources().getStringArray(R.array.arryWordBankDays);
 				arryTempC = getResources().getStringArray(R.array.arryWordBankMonths);
 				return Utils.concatenate(arryTempA, arryTempB, arryTempC);
 			} else {
 				// actions + animals + days + months 
+				mWordCategory = WordCategory.CATEGORY_ACTION_ANIMAL_DAY_MONTH;
 				arryTempA = getResources().getStringArray(R.array.arryWordBankActions);
 				arryTempB = getResources().getStringArray(R.array.arryWordBankAnimals);
 				arryTempC = getResources().getStringArray(R.array.arryWordBankDays);
