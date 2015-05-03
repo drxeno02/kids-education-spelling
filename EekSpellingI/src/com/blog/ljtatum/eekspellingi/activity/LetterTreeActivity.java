@@ -11,8 +11,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
-import android.text.InputFilter;
-import android.text.Spanned;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
@@ -376,7 +374,6 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				}
 				isCheck = true;
 			}
-
 			arryPrev.add(mWord);
 		}
 
@@ -409,9 +406,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			}
 		} else {
 			arryJumbled = mWord.toCharArray();
-		}
-
-		
+		}	
 	}
 
 	/**
@@ -695,8 +690,6 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 					// add selection marker that incorrect letter was selected
 					arrySelected[pos] = true;
 				}
-
-				
 
 				if (mLevel == 0) {
 					if (mIncorrectLetters >= 4) {

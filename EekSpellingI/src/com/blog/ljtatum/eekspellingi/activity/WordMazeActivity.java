@@ -25,6 +25,7 @@ import com.blog.ljtatum.eekspellingi.R;
 import com.blog.ljtatum.eekspellingi.anim.Shimmer;
 import com.blog.ljtatum.eekspellingi.anim.ShimmerTextView;
 import com.blog.ljtatum.eekspellingi.constants.Constants;
+import com.blog.ljtatum.eekspellingi.helper.Messages;
 import com.blog.ljtatum.eekspellingi.logger.Logger;
 import com.blog.ljtatum.eekspellingi.sharedpref.SharedPref;
 import com.blog.ljtatum.eekspellingi.util.MusicUtils;
@@ -32,6 +33,7 @@ import com.blog.ljtatum.eekspellingi.util.ShareAppUtil;
 import com.blog.ljtatum.eekspellingi.util.Utils;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
+import de.keyboardsurfer.android.widget.crouton.Style;
 
 public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	private static final String TAG = WordMazeActivity.class.getSimpleName();
@@ -40,10 +42,11 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	private Context mContext;
 	private ImageView ivBack, ivBanner, iv1;
 	private TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10, tv11,
-			tv12, tv13, tv14, tv15;
+			tv12, tv13, tv14, tv15, tvHint;
 	private LinearLayout pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9,
-			pos10, pos11, pos12, pos13, pos14, pos15;
-	private View end1, end2, end3, end4, v1, v2, v3, v4, v5, v6, v7, v8, v9;
+			pos10, pos11, pos12, pos13, pos14, pos15, pos16, pos17, pos18,
+			pos19, pos20, pos21, ll1, ll2, ll3, ll4, ll5;
+	private View end1, end2, end3, end4, end5, end6, v1, v2, v3, v4, v5, v6, v7, v8, v9;
 	private ShimmerTextView tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4,
 			tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
 	private Random r;
@@ -79,6 +82,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		mHandler = new Handler();
 		arryPath = new ArrayList<Integer>();
 		r = new Random();
+		arryPrev = new ArrayList<String>();
 		ivBanner = (ImageView) findViewById(R.id.iv_banner);
 		ivBack = (ImageView) findViewById(R.id.iv_back);
 		iv1 = (ImageView) findViewById(R.id.iv1);
@@ -106,6 +110,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		tv13 = (TextView) findViewById(R.id.tv13);
 		tv14 = (TextView) findViewById(R.id.tv14);
 		tv15 = (TextView) findViewById(R.id.tv15);
+		tvHint = (TextView) findViewById(R.id.tv_hint);
 		pos1 = (LinearLayout) findViewById(R.id.pos1);
 		pos2 = (LinearLayout) findViewById(R.id.pos2);
 		pos3 = (LinearLayout) findViewById(R.id.pos3);
@@ -121,10 +126,23 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		pos13 = (LinearLayout) findViewById(R.id.pos13);
 		pos14 = (LinearLayout) findViewById(R.id.pos14);
 		pos15 = (LinearLayout) findViewById(R.id.pos15);
+		pos16 = (LinearLayout) findViewById(R.id.pos16);
+		pos17 = (LinearLayout) findViewById(R.id.pos17);
+		pos18 = (LinearLayout) findViewById(R.id.pos18);
+		pos19 = (LinearLayout) findViewById(R.id.pos19);
+		pos20 = (LinearLayout) findViewById(R.id.pos20);
+		pos21 = (LinearLayout) findViewById(R.id.pos21);
+		ll1 = (LinearLayout) findViewById(R.id.ll1);
+		ll2 = (LinearLayout) findViewById(R.id.ll2);
+		ll3 = (LinearLayout) findViewById(R.id.ll3);
+		ll4 = (LinearLayout) findViewById(R.id.ll4);
+		ll5 = (LinearLayout) findViewById(R.id.ll5);
 		end1 = findViewById(R.id.end1);
 		end2 = findViewById(R.id.end2);
 		end3 = findViewById(R.id.end3);
 		end4 = findViewById(R.id.end4);
+		end5 = findViewById(R.id.end5);
+		end6 = findViewById(R.id.end6);
 		tvAnswer1 = (ShimmerTextView) findViewById(R.id.tv_answer_1);
 		tvAnswer2 = (ShimmerTextView) findViewById(R.id.tv_answer_2);
 		tvAnswer3 = (ShimmerTextView) findViewById(R.id.tv_answer_3);
@@ -152,13 +170,19 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		pos13.setOnClickListener(this);
 		pos14.setOnClickListener(this);
 		pos15.setOnClickListener(this);
+		
+		// retrieve level
+		Intent intent = getIntent();
+		if (!Utils.checkIfNull(intent)) {
+			mLevel = intent.getIntExtra(Constants.LEVEL_SELECTED, 0);
+			Logger.i(TAG, "level: " + mLevel);
+		}
 
 		// initialize lesson
 		initLesson();
 
 		// set default banner
 		setDefaultBanner(mContext, ivBanner);
-
 	}
 
 	@Override
@@ -227,6 +251,10 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		}
 	}
 
+	/**
+	 * Method is used to move image object across canvas
+	 * @param pos
+	 */
 	private void transverseToPos(int pos) {
 		if (!isController) {
 			// prevent register of action until animation ends
@@ -266,11 +294,20 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 					setRightCords(pos); // from pos 8
 				}
 			}
+			
+			// reset controller
+			if (isController) {
+				isController = false;
+			}
 		}
 	}
 
+	/**
+	 * Method is used to set the right coordinates for
+	 * right movement
+	 * @param pos
+	 */
 	private void setRightCords(int pos) {
-		Logger.i(TAG, "setRightCords()");
 		yStart = yEnd;
 		xStart = xEnd;
 		if (currPos == 0 && pos == 1) {
@@ -293,7 +330,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			xEnd = pos5.getLeft();
 			mSteps++;
 			startMovement();
-		} else if (currPos == 5 && pos == 6) { // can win from here
+		} else if (currPos == 5 && pos == 6) {
 			currPos = 6;
 			xEnd = pos6.getLeft();
 			mSteps++;
@@ -303,18 +340,17 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			xEnd = pos8.getLeft();
 			mSteps++;
 			startMovement();
-		} else if (currPos == 8 && pos == 9) { // can win from here
+		} else if (currPos == 8 && pos == 9) {
 			currPos = 9;
 			xEnd = pos9.getLeft();
 			mSteps++;
 			startMovement();
 		} else if (currPos == 10 && pos == 11) {
 			currPos = 11;
-			startMovement();
 			xEnd = pos11.getLeft();
 			mSteps++;
 			startMovement();
-		} else if (currPos == 11 && pos == 12) { // can win from here
+		} else if (currPos == 11 && pos == 12) {
 			currPos = 12;
 			xEnd = pos12.getLeft();
 			mSteps++;
@@ -324,54 +360,186 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			xEnd = pos14.getLeft();
 			mSteps++;
 			startMovement();
-		} else if (currPos == 14 && pos == 15) { // can win from here
+		} else if (currPos == 14 && pos == 15) {
 			currPos = 15;
 			xEnd = pos15.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 16 && pos == 17) {
+			currPos = 17;
+			xEnd = pos17.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 17 && pos == 18) {
+			currPos = 18;
+			xEnd = pos18.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 19 && pos == 20) {
+			currPos = 20;
+			xEnd = pos20.getLeft();
+			mSteps++;
+			startMovement();
+		} else if (currPos == 20 && pos == 21) {
+			currPos = 21;
+			xEnd = pos21.getLeft();
 			mSteps++;
 			startMovement();
 		}
 	}
 
+	/**
+	 * Method is used to set the right coordinates for
+	 * down movement
+	 * @param pos
+	 */
 	private void setDownCords(int pos) {
-		Logger.i(TAG, "setDownCords()" + pos);
 		xStart = xEnd;
 		yStart = yEnd;
 
 		if (currPos == 1 && pos == 4) {
 			currPos = 4;
-			yEnd = pos4.getLeft();
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll1.getBottom() - ll1.getTop();
+			}	
 			mSteps++;
 			startMovement();
-		} else if (currPos == 2 && pos == 5) { // can win from here
+		} else if (currPos == 2 && pos == 5) {
 			currPos = 5;
-			yEnd = pos5.getLeft();
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll1.getBottom() - ll1.getTop();
+			}	
 			mSteps++;
 			startMovement();
-		} else if (currPos == 3 && pos == 6) {
+		} else if (currPos == 3 && pos == 6) {			
 			currPos = 6;
-			yEnd = pos6.getLeft();
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll1.getBottom() - ll1.getTop();
+			}	
 			mSteps++;
 			startMovement();
 		} else if (currPos == 4 && pos == 7) {
 			currPos = 7;
-			yEnd = pos7.getLeft();
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll2.getBottom() - ll2.getTop();
+			}	
 			mSteps++;
 			startMovement();
 		} else if (currPos == 5 && pos == 8) {
 			currPos = 8;
-			yEnd = pos8.getLeft();
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll2.getBottom() - ll2.getTop();
+			}	
 			mSteps++;
 			startMovement();
 		} else if (currPos == 6 && pos == 9) {
 			currPos = 9;
-			yEnd = pos9.getLeft();
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll2.getBottom() - ll2.getTop();
+			}	
+			mSteps++;
+			startMovement();
+		} else if (currPos == 7 && pos == 10) {
+			currPos = 10;
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll3.getBottom() - ll3.getTop();
+			}	
+			mSteps++;
+			startMovement();
+		} else if (currPos == 8 && pos == 11) {			
+			currPos = 11;
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll3.getBottom() - ll3.getTop();
+			}	
+			mSteps++;
+			startMovement();
+		} else if (currPos == 9 && pos == 12) {
+			currPos = 12;
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll3.getBottom() - ll3.getTop();
+			}	
+			mSteps++;
+			startMovement();
+		} else if (currPos == 10 && pos == 13) {
+			currPos = 13;
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll4.getBottom() - ll4.getTop();
+			}	
+			mSteps++;
+			startMovement();
+		} else if (currPos == 11 && pos == 14) {
+			currPos = 14;
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll4.getBottom() - ll4.getTop();
+			}	
+			mSteps++;
+			startMovement();
+		} else if (currPos == 12 && pos == 15) {
+			currPos = 15;
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll4.getBottom() - ll4.getTop();
+			}	
+			mSteps++;
+			startMovement();
+		} else if (currPos == 16 && pos == 119) {
+			currPos = 19;
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll5.getBottom() - ll5.getTop();
+			}	
+			mSteps++;
+			startMovement();
+		} else if (currPos == 17 && pos == 20) {
+			currPos = 20;
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll5.getBottom() - ll5.getTop();
+			}	
+			mSteps++;
+			startMovement();
+		} else if (currPos == 18 && pos == 21) {
+			currPos = 21;
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll5.getBottom() - ll5.getTop();
+			}	
 			mSteps++;
 			startMovement();
 		}
 	}
 
+	/**
+	 * Method is used to do the movement animation
+	 */
 	private void startMovement() {
-		Logger.d(TAG, "xStart:" + xStart + " //yStart:" + yStart + " //xEnd:"
+		Logger.v(TAG, "xStart:" + xStart + " //yStart:" + yStart + " //xEnd:"
 				+ xEnd + " //yEnd: " + yEnd);
 		TranslateAnimation animation = new TranslateAnimation(xStart, xEnd,
 				yStart, yEnd);
@@ -399,7 +567,18 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			}
 			
 		});		
-		iv1.startAnimation(animation);
+		iv1.startAnimation(animation);	
+		checkLetter();		
+	}
+	
+	/**
+	 * Method is used to check for completion of activity 
+	 * and to reset the level
+	 */
+	private void checkLetter() {
+		String temp = Messages.msgPath(true, true);
+		Crouton.showText(mActivity, temp, Style.CONFIRM);
+		speakText(temp);
 		
 		// set letter to correct position
 		if (mSteps == 1) {
@@ -434,18 +613,24 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		// check for win
 		if (mSteps >= arryPath.size()) {
 			Logger.i(TAG, "maze completed");
-			mSolvedWords++;
-			setRightCords(currPos+1);
+			mSolvedWords++;		
 			if ( mSolvedWords>= 3) {
 				// TODO: play sounds, animations, messaging and add rewards for completing level
-				String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
-				int lvCount = sharedPref.getIntPref(strPrefName, 0);
-				sharedPref.setPref(Constants.LV_COUNT.concat("_" + mLevel), lvCount++);
-				goToActivityAnimRight(mContext, SelectActivity.class, -1);
+				
+				// delay before ending this activity
+				mHandler.postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
+						int lvCount = sharedPref.getIntPref(strPrefName, 0);
+						sharedPref.setPref(Constants.LV_COUNT.concat("_" + mLevel), lvCount++);
+						goToActivityAnimRight(mContext, SelectActivity.class, -1);
+					}
+				}, 3500);				
 			} else {
 				// restart level
 				// TODO: play sounds, animations, messaging and add rewards for completing level
-				
+
 				// delay before generating the next level
 				mHandler.postDelayed(new Runnable() {
 					@Override
@@ -453,16 +638,11 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 						speakInstructions();
 						generateLevel();
 					}
-				}, 2500);
+				}, 3000);
 			}			
 		}
 
 	}
-	
-	
-	
-	
-	
 
 	/**
 	 * Method is used to initialize the game level; sets level, default word,
@@ -470,18 +650,10 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	 * @Note Only needs to be called once
 	 */
 	private void initLesson() {
-		// retrieve level
-		Intent intent = getIntent();
-		if (!Utils.checkIfNull(intent)) {
-			mLevel = intent.getIntExtra(Constants.LEVEL_SELECTED, 0);
-			Logger.i(TAG, "level: " + mLevel);
-		}
-
 		// retrieve full word bank
 		String[] arryWordBankFull = getWordBank(mLevel);
 		mArryWordBank = getWordBank(arryWordBankFull, mLevel);
 		mWord = mArryWordBank.get(r.nextInt(mArryWordBank.size()));
-		Logger.i(TAG, mWord + " //count: " + mWord.length());
 		generateLevel();
 	}
 
@@ -500,12 +672,54 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			speakText("Lets get through this maze together!");
 		}
 	}
+	
+	/**
+	 * Method is used to do the movement animation
+	 */
+	private void reset() {
+		xStart = 0;
+		xEnd = 0;
+		yStart = 0;
+		yEnd = 0;
+		TranslateAnimation animation = new TranslateAnimation(xStart, xEnd,
+				yStart, yEnd);
+		animation.setDuration(0);
+		animation.setFillAfter(true);
+		animation.setAnimationListener(new AnimationListener() {
+
+			@Override
+			public void onAnimationStart(Animation animation) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				// TODO Auto-generated method stub
+				Logger.e(TAG, "onAnimationEnd");
+				if (isController) {
+					isController = false;
+				}
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				// TODO Auto-generated method stub
+			}
+			
+		});		
+		iv1.startAnimation(animation);	
+	}
 
 	/**
 	 * Method is used to setup the game level
 	 */
 	private void generateLevel() {
 		speakInstructions();
+		
+		// reset image position
+		if (mSolvedWords > 0) {
+			reset();
+		}
 
 		// confirm that next set of words are unique
 		if (!Utils.checkIfNull(arryPrev)) {
@@ -514,16 +728,13 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				int i = 0;
 				for (i = 0; i < arryPrev.size(); i++) {
 					if (arryPrev.get(i).equalsIgnoreCase(mWord)) {
-						mWord = mArryWordBank.get(r.nextInt(mArryWordBank
-								.size()));
+						mWord = mArryWordBank.get(r.nextInt(mArryWordBank.size()));
 						i = 0;
 					}
 				}
 				isCheck = true;
 			}
-
 			arryPrev.add(mWord);
-			Logger.i(TAG, mWord + " //count: " + mWord.length());
 		}
 
 		// set visibility of views
@@ -558,111 +769,267 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			Utils.setViewVisibility(true, v1, v2, v3, tvAnswer1, tvAnswer2,
 					tvAnswer3, pos1, pos2, pos4, pos5, end1);
 
-			if (mLevel == 2) {
-				tv1.setText(String.valueOf(arryLetters[0]));
-				arryPath.add(1);
-				int temp = r.nextInt(1);
-				if (temp == 0) {
-					tv2.setText(String.valueOf(arryLetters[1]));
-					arryPath.add(2);
-				} else {
-					tv4.setText(String.valueOf(arryLetters[1]));
-					arryPath.add(4);
-				}
-				tv5.setText(String.valueOf(arryLetters[2]));
-				arryPath.add(5);
+			tv1.setText(String.valueOf(arryLetters[0]));
+			arryPath.add(1);
+			int temp = r.nextInt(1);
+			if (temp == 0) {
+				tv2.setText(String.valueOf(arryLetters[1]));
+				arryPath.add(2);
+			} else {
+				tv4.setText(String.valueOf(arryLetters[1]));
+				arryPath.add(4);
 			}
+			tv5.setText(String.valueOf(arryLetters[2]));
+			arryPath.add(5);
 		} else if (num == 4) {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, tvAnswer1, tvAnswer2,
 					tvAnswer3, tvAnswer4, pos1, pos2, pos3, pos4, pos5, pos6,
 					end1);
 
-			if (mLevel == 2) {
-				tv1.setText(String.valueOf(arryLetters[0]));
-				arryPath.add(1);
-				int temp = r.nextInt(2);
-				if (temp == 0) {
-					tv2.setText(String.valueOf(arryLetters[1]));
-					tv3.setText(String.valueOf(arryLetters[2]));
-					arryPath.add(2);
-					arryPath.add(3);
-				} else if (temp == 1) {
-					tv4.setText(String.valueOf(arryLetters[1]));
-					tv5.setText(String.valueOf(arryLetters[2]));
-					arryPath.add(4);
-					arryPath.add(5);
-				} else {
-					tv2.setText(String.valueOf(arryLetters[1]));
-					tv5.setText(String.valueOf(arryLetters[2]));
-					arryPath.add(2);
-					arryPath.add(5);
-				}
-				tv6.setText(String.valueOf(arryLetters[3]));
-				arryPath.add(6);
+			tv1.setText(String.valueOf(arryLetters[0]));
+			arryPath.add(1);
+			int temp = r.nextInt(2);
+			if (temp == 0) {
+				tv2.setText(String.valueOf(arryLetters[1]));
+				tv3.setText(String.valueOf(arryLetters[2]));
+				arryPath.add(2);
+				arryPath.add(3);
+			} else if (temp == 1) {
+				tv4.setText(String.valueOf(arryLetters[1]));
+				tv5.setText(String.valueOf(arryLetters[2]));
+				arryPath.add(4);
+				arryPath.add(5);
+			} else {
+				tv2.setText(String.valueOf(arryLetters[1]));
+				tv5.setText(String.valueOf(arryLetters[2]));
+				arryPath.add(2);
+				arryPath.add(5);
 			}
+			tv6.setText(String.valueOf(arryLetters[3]));
+			arryPath.add(6);
 		} else if (num == 5) {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, tvAnswer1,
 					tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5, pos1, pos2,
 					pos3, pos4, pos5, pos6, pos7, pos8, pos9, end2);
 
-			if (mLevel == 2) {
-				tv1.setText(String.valueOf(arryLetters[0]));
-				arryPath.add(1);
-				int temp = r.nextInt(3);
-				if (temp == 0) {
-					tv2.setText(String.valueOf(arryLetters[1]));
-					tv3.setText(String.valueOf(arryLetters[2]));
-					tv6.setText(String.valueOf(arryLetters[3]));
-					arryPath.add(2);
-					arryPath.add(3);
-					arryPath.add(6);
-				} else if (temp == 1) {
-					tv4.setText(String.valueOf(arryLetters[1]));
-					tv7.setText(String.valueOf(arryLetters[2]));
-					tv8.setText(String.valueOf(arryLetters[3]));
-					arryPath.add(4);
-					arryPath.add(7);
-					arryPath.add(8);
-				} else if (temp == 2) {
-					tv4.setText(String.valueOf(arryLetters[1]));
-					tv5.setText(String.valueOf(arryLetters[2]));
-					tv8.setText(String.valueOf(arryLetters[3]));
-					arryPath.add(4);
-					arryPath.add(5);
-					arryPath.add(8);
-				} else {
-					tv2.setText(String.valueOf(arryLetters[1]));
-					tv5.setText(String.valueOf(arryLetters[2]));
-					tv8.setText(String.valueOf(arryLetters[3]));
-					arryPath.add(2);
-					arryPath.add(5);
-					arryPath.add(8);
-				}
-				tv9.setText(String.valueOf(arryLetters[4]));
-				arryPath.add(9);
+			tv1.setText(String.valueOf(arryLetters[0]));
+			arryPath.add(1);
+			int temp = r.nextInt(3);
+			if (temp == 0) {
+				tv2.setText(String.valueOf(arryLetters[1]));
+				tv3.setText(String.valueOf(arryLetters[2]));
+				tv6.setText(String.valueOf(arryLetters[3]));
+				arryPath.add(2);
+				arryPath.add(3);
+				arryPath.add(6);
+			} else if (temp == 1) {
+				tv4.setText(String.valueOf(arryLetters[1]));
+				tv7.setText(String.valueOf(arryLetters[2]));
+				tv8.setText(String.valueOf(arryLetters[3]));
+				arryPath.add(4);
+				arryPath.add(7);
+				arryPath.add(8);
+			} else if (temp == 2) {
+				tv4.setText(String.valueOf(arryLetters[1]));
+				tv5.setText(String.valueOf(arryLetters[2]));
+				tv8.setText(String.valueOf(arryLetters[3]));
+				arryPath.add(4);
+				arryPath.add(5);
+				arryPath.add(8);
+			} else {
+				tv2.setText(String.valueOf(arryLetters[1]));
+				tv5.setText(String.valueOf(arryLetters[2]));
+				tv8.setText(String.valueOf(arryLetters[3]));
+				arryPath.add(2);
+				arryPath.add(5);
+				arryPath.add(8);
 			}
+			tv9.setText(String.valueOf(arryLetters[4]));
+			arryPath.add(9);
 		} else if (num == 6) {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, tvAnswer1,
-					tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5, tvAnswer6);
+					tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5, tvAnswer6,
+					pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9,
+					pos10, pos11, pos12, end3);
 
+			tv1.setText(String.valueOf(arryLetters[0]));
+			arryPath.add(1);
+			int temp = r.nextInt(4);
+			if (temp == 0) {
+				tv2.setText(String.valueOf(arryLetters[1]));
+				tv3.setText(String.valueOf(arryLetters[2]));
+				tv6.setText(String.valueOf(arryLetters[3]));
+				tv9.setText(String.valueOf(arryLetters[4]));
+				arryPath.add(2);
+				arryPath.add(3);
+				arryPath.add(6);
+				arryPath.add(9);
+			} else if (temp == 1) {
+				tv4.setText(String.valueOf(arryLetters[1]));
+				tv7.setText(String.valueOf(arryLetters[2]));
+				tv10.setText(String.valueOf(arryLetters[3]));
+				tv11.setText(String.valueOf(arryLetters[4]));
+				arryPath.add(4);
+				arryPath.add(7);
+				arryPath.add(10);
+				arryPath.add(11);
+			} else if (temp == 2) {
+				tv2.setText(String.valueOf(arryLetters[1]));
+				tv5.setText(String.valueOf(arryLetters[2]));
+				tv8.setText(String.valueOf(arryLetters[3]));
+				tv9.setText(String.valueOf(arryLetters[4]));
+				arryPath.add(2);
+				arryPath.add(5);
+				arryPath.add(8);
+				arryPath.add(9);
+			} else if (temp == 3) {
+				tv2.setText(String.valueOf(arryLetters[1]));
+				tv5.setText(String.valueOf(arryLetters[2]));
+				tv8.setText(String.valueOf(arryLetters[3]));
+				tv11.setText(String.valueOf(arryLetters[4]));
+				arryPath.add(2);
+				arryPath.add(5);
+				arryPath.add(8);
+				arryPath.add(11);
+			} else {
+				tv4.setText(String.valueOf(arryLetters[1]));
+				tv7.setText(String.valueOf(arryLetters[2]));
+				tv8.setText(String.valueOf(arryLetters[3]));
+				tv11.setText(String.valueOf(arryLetters[4]));
+				arryPath.add(4);
+				arryPath.add(7);
+				arryPath.add(8);
+				arryPath.add(11);
+			}				
+			tv12.setText(String.valueOf(arryLetters[5]));
+			arryPath.add(12);
 		} else if (num == 7) {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7,
 					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
-					tvAnswer6, tvAnswer7);
+					tvAnswer6, tvAnswer7, pos1, pos2, pos3, pos4, pos5, 
+					pos6, pos7, pos8, pos9,pos10, pos11, pos12, pos13, 
+					pos14, pos15, end3);
 
+			tv1.setText(String.valueOf(arryLetters[0]));
+			arryPath.add(1);
+			int temp = r.nextInt(5);
+			if (temp == 0) {
+				tv2.setText(String.valueOf(arryLetters[1]));
+				tv3.setText(String.valueOf(arryLetters[2]));
+				tv6.setText(String.valueOf(arryLetters[3]));
+				tv9.setText(String.valueOf(arryLetters[4]));
+				tv12.setText(String.valueOf(arryLetters[5]));
+				arryPath.add(2);
+				arryPath.add(3);
+				arryPath.add(6);
+				arryPath.add(9);
+				arryPath.add(12);
+			} else if (temp == 1) {
+				tv4.setText(String.valueOf(arryLetters[1]));
+				tv7.setText(String.valueOf(arryLetters[2]));
+				tv10.setText(String.valueOf(arryLetters[3]));
+				tv13.setText(String.valueOf(arryLetters[4]));
+				tv14.setText(String.valueOf(arryLetters[5]));
+				arryPath.add(4);
+				arryPath.add(7);
+				arryPath.add(10);
+				arryPath.add(13);
+				arryPath.add(14);
+			} else if (temp == 2) {
+				tv4.setText(String.valueOf(arryLetters[1]));
+				tv5.setText(String.valueOf(arryLetters[2]));
+				tv8.setText(String.valueOf(arryLetters[3]));
+				tv11.setText(String.valueOf(arryLetters[4]));
+				tv12.setText(String.valueOf(arryLetters[5]));
+				arryPath.add(4);
+				arryPath.add(5);
+				arryPath.add(8);
+				arryPath.add(11);
+				arryPath.add(12);
+			} else if (temp == 3) {
+				tv2.setText(String.valueOf(arryLetters[1]));
+				tv5.setText(String.valueOf(arryLetters[2]));
+				tv8.setText(String.valueOf(arryLetters[3]));
+				tv9.setText(String.valueOf(arryLetters[4]));
+				tv12.setText(String.valueOf(arryLetters[5]));
+				arryPath.add(2);
+				arryPath.add(5);
+				arryPath.add(8);
+				arryPath.add(9);
+				arryPath.add(12);
+			} else if (temp == 4) {
+				tv2.setText(String.valueOf(arryLetters[1]));
+				tv5.setText(String.valueOf(arryLetters[2]));
+				tv6.setText(String.valueOf(arryLetters[3]));
+				tv9.setText(String.valueOf(arryLetters[4]));
+				tv12.setText(String.valueOf(arryLetters[5]));
+				arryPath.add(2);
+				arryPath.add(5);
+				arryPath.add(6);
+				arryPath.add(9);
+				arryPath.add(12);
+			} else {
+				tv2.setText(String.valueOf(arryLetters[1]));
+				tv5.setText(String.valueOf(arryLetters[2]));
+				tv8.setText(String.valueOf(arryLetters[3]));
+				tv11.setText(String.valueOf(arryLetters[4]));
+				tv14.setText(String.valueOf(arryLetters[5]));
+				arryPath.add(2);
+				arryPath.add(5);
+				arryPath.add(8);
+				arryPath.add(11);
+				arryPath.add(14);
+			}
+			tv15.setText(String.valueOf(arryLetters[6]));
+			arryPath.add(15);
 		} else if (num == 8) {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7, v8,
 					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
 					tvAnswer6, tvAnswer7, tvAnswer8);
 
+			tv1.setText(String.valueOf(arryLetters[0]));
+			arryPath.add(1);
+			int temp = r.nextInt(6);		
+			if (temp == 0) {
+				
+			} else if (temp == 1) {
+				
+			} else if (temp == 2) {
+				
+			} else if (temp == 3) {
+				
+			} else if (temp == 4) {
+				
+			} else if (temp == 5) {
+				
+			} else {
+				
+			}
+			
 		} else if (num == 9) {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7, v8, v9,
 					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
 					tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9);
-		}
-		
-		for (int i = 0; i < arryPath.size(); i++) {
-			Logger.i(TAG, arryPath.get(i) + ", ");
+			
+			tv1.setText(String.valueOf(arryLetters[0]));
+			arryPath.add(1);	
+			int temp = r.nextInt(7);
+			if (temp == 0) {
+				
+			} else if (temp == 1) {
+				
+			} else if (temp == 2) {
+				
+			} else if (temp == 3) {
+				
+			} else if (temp == 4) {
+				
+			} else if (temp == 5) {
+				
+			} else if (temp == 6) {
+				
+			}
+			
 		}
 	}
 
