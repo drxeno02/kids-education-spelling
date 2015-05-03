@@ -19,9 +19,12 @@ import android.os.Vibrator;
 import android.provider.MediaStore.Images;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
+import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -206,7 +209,28 @@ public class BaseActivity extends Activity implements OnInitListener {
 		for (ImageView iv : param) {
 			iv.startAnimation(animation);
 		}
-
+	}
+	
+	/**
+	 * Method is used to shake a view
+	 * @param context
+	 * @param param
+	 */
+	protected void startShakeAnim(Context context, final View... param) {
+		Animation animation = AnimationUtils.loadAnimation(context, R.anim.anim_shake);
+		for (View v : param) {
+			v.startAnimation(animation);
+		}
+	}
+	
+	/**
+	 * Method is used to hide virtual keyboard
+	 */
+	protected void hideKeyboard() {
+		// hide virtual keyboard 						
+		InputMethodManager imm = (InputMethodManager) getSystemService(
+				Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
 	}
 
 	/**

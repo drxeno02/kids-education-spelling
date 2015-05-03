@@ -248,6 +248,8 @@ public class SelectActivity extends BaseActivity implements OnClickListener {
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
 		super.onBackPressed();
+		// transition animation
+		overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
 	}
 
 }

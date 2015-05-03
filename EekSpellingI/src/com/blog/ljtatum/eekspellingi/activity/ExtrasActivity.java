@@ -263,5 +263,7 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 		destroyTTS();
 		super.onBackPressed();
+		// transition animation
+		overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
 	}
 }

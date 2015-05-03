@@ -2,14 +2,18 @@ package com.blog.ljtatum.eekspellingi.activity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.Spanned;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -46,7 +50,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	private TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tvHint;
 	private ShimmerTextView tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4,
 		tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
-	private LinearLayout llWordBank, llEditAnswer, llTxtAnswer;
+	private LinearLayout llWordBank, llEditAnswer;
 	private Button btnSubmit;
 	private EditText edtAnswer;
 	private Random r;
@@ -85,7 +89,6 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		r = new Random();
 		llWordBank = (LinearLayout) findViewById(R.id.ll_word_bank);
 		llEditAnswer = (LinearLayout) findViewById(R.id.ll_edit_answer);
-		llTxtAnswer = (LinearLayout) findViewById(R.id.ll_txt_answer);
 		ivBanner = (ImageView) findViewById(R.id.iv_banner);
 		ivBack = (ImageView) findViewById(R.id.iv_back);
 		btnSubmit = (Button) findViewById(R.id.btn_submit);
@@ -130,6 +133,53 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		tv9.setOnClickListener(this);
 		ivBack.setOnClickListener(this);
 		ivBanner.setOnClickListener(this);
+		btnSubmit.setOnClickListener(this);
+		
+		// retrieve level
+		Intent intent = getIntent();
+		if (!Utils.checkIfNull(intent)) {
+			mLevel = intent.getIntExtra(Constants.LEVEL_SELECTED, 0);
+			Logger.i(TAG, "level: " + mLevel);
+		}
+		
+		// setup editText listener
+		if (mLevel >= 8) {		
+			edtAnswer.addTextChangedListener(new TextWatcher() {
+
+				@Override
+				public void beforeTextChanged(CharSequence s, int start,
+						int count, int after) {
+					// TODO Auto-generated method stub
+					// do nothing
+				}
+
+				@Override
+				public void onTextChanged(CharSequence s, int start,
+						int before, int count) {
+					// TODO Auto-generated method stub
+					Logger.i(TAG, "onTextChanged");
+					if (edtAnswer != null && Utils.isNumericRegex(edtAnswer.getText().toString().trim())) {
+						vibrate(mContext, 500);
+						edtAnswer.setTextColor(getResources().getColor(R.color.red_shade));
+						String temp = getResources().getString(R.string.txt_no_numbers);
+						hideKeyboard();
+						Crouton.showText(mActivity, temp, Style.ALERT);
+						speakText(temp);
+					}
+					
+					if (edtAnswer.getText().toString().equals("")) {
+						edtAnswer.setTextColor(getResources().getColor(R.color.black));
+					}
+				}
+
+				@Override
+				public void afterTextChanged(Editable s) {
+					// TODO Auto-generated method stub
+					// do nothing
+				}
+				
+			});
+		}
 
 		// initialize lesson
 		initLesson();
@@ -234,7 +284,15 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			}
 			break;
 		case R.id.btn_submit:	
-			mLetterEditText = edtAnswer.getText().toString().trim();
+			if (edtAnswer != null && !edtAnswer.getText().toString().equalsIgnoreCase("")) {
+				if (!isController) {
+					mLetterEditText = edtAnswer.getText().toString().toLowerCase(Locale.US).trim();
+					hideKeyboard();
+					checkLetter(-1);
+				} else {
+					vibrate(mContext, 500);
+				}				
+			}		
 			break;
 		default:
 			break;
@@ -247,14 +305,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	 *
 	 * @Note Only needs to be called once
 	 */
-	private void initLesson() {
-		// retrieve level
-		Intent intent = getIntent();
-		if (!Utils.checkIfNull(intent)) {
-			mLevel = intent.getIntExtra(Constants.LEVEL_SELECTED, 0);
-			Logger.i(TAG, "level: " + mLevel);
-		}
-
+	private void initLesson() {		
 		// retrieve full word bank
 		String[] arryWordBankFull = getWordBank(mLevel);
 		
@@ -351,14 +402,16 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			tv7.setText(String.valueOf(arryJumbled[6]));
 			tv8.setText(String.valueOf(arryJumbled[7]));
 			tv9.setText(String.valueOf(arryJumbled[8]));
+			
+			// set default selection
+			for (int i = 0; i < arrySelected.length; i++) {
+				arrySelected[i] = false;
+			}
 		} else {
 			arryJumbled = mWord.toCharArray();
 		}
 
-		// set default selection
-		for (int i = 0; i < arrySelected.length; i++) {
-			arrySelected[i] = false;
-		}
+		
 	}
 
 	/**
@@ -503,40 +556,54 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	 * @param pos
 	 */
 	private void updateVisibility(int pos) {
-		if (pos == 0) {
-			tv1.setText("");
-			tv1.setVisibility(View.GONE);
-		} else if (pos == 1) {
-			tv2.setText("");
-			tv2.setVisibility(View.GONE);
-		} else if (pos == 2) {
-			tv3.setText("");
-			tv3.setVisibility(View.GONE);
-		} else if (pos == 3) {
-			tv4.setText("");
-			tv4.setVisibility(View.GONE);
-		} else if (pos == 4) {
-			tv5.setText("");
-			tv5.setVisibility(View.GONE);
-		} else if (pos == 5) {
-			tv6.setText("");
-			tv6.setVisibility(View.GONE);
-		} else if (pos == 6) {
-			tv7.setText("");
-			tv7.setVisibility(View.GONE);
-		} else if (pos == 7) {
-			tv8.setText("");
-			tv8.setVisibility(View.GONE);
+		if (mLevel >= 8) {
+			edtAnswer.setText("");
 		} else {
-			tv9.setText("");
-			tv9.setVisibility(View.GONE);
+			if (pos == 0) {
+				tv1.setText("");
+				tv1.setVisibility(View.GONE);
+			} else if (pos == 1) {
+				tv2.setText("");
+				tv2.setVisibility(View.GONE);
+			} else if (pos == 2) {
+				tv3.setText("");
+				tv3.setVisibility(View.GONE);
+			} else if (pos == 3) {
+				tv4.setText("");
+				tv4.setVisibility(View.GONE);
+			} else if (pos == 4) {
+				tv5.setText("");
+				tv5.setVisibility(View.GONE);
+			} else if (pos == 5) {
+				tv6.setText("");
+				tv6.setVisibility(View.GONE);
+			} else if (pos == 6) {
+				tv7.setText("");
+				tv7.setVisibility(View.GONE);
+			} else if (pos == 7) {
+				tv8.setText("");
+				tv8.setVisibility(View.GONE);
+			} else {
+				tv9.setText("");
+				tv9.setVisibility(View.GONE);
+			}
 		}
 	}
 
+	/**
+	 * Method is used to check the selected letter from the 
+	 * word bank with the possible letters of the correct answer
+	 * @param pos
+	 */
 	private void checkLetter(int pos) {
 		isController = true;
 		if (!Utils.checkIfNull(arryJumbled)) {
-			String c = String.valueOf(arryJumbled[pos]);
+			String c = "";
+			if (mLevel >= 8) {
+				c = mLetterEditText;
+			} else {
+				c = String.valueOf(arryJumbled[pos]);
+			}
 			ArrayList<Integer> arryMatch = new ArrayList<Integer>();
 			if (mWord.contains(c)) {
 				// check the entire word for instances of the selected letter
@@ -600,29 +667,36 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				Crouton.showText(mActivity, temp, Style.ALERT);
 				speakText(temp);
 
-				// add color marker that letter is incorrect
-				if (pos == 0) {
-					tv1.setTextColor(getResources().getColor(R.color.red_shade));
-				} else if (pos == 1) {
-					tv2.setTextColor(getResources().getColor(R.color.red_shade));
-				} else if (pos == 2) {
-					tv3.setTextColor(getResources().getColor(R.color.red_shade));
-				} else if (pos == 3) {
-					tv4.setTextColor(getResources().getColor(R.color.red_shade));
-				} else if (pos == 4) {
-					tv5.setTextColor(getResources().getColor(R.color.red_shade));
-				} else if (pos == 5) {
-					tv6.setTextColor(getResources().getColor(R.color.red_shade));
-				} else if (pos == 6) {
-					tv7.setTextColor(getResources().getColor(R.color.red_shade));
-				} else if (pos == 7) {
-					tv8.setTextColor(getResources().getColor(R.color.red_shade));
-				} else if (pos == 8) {
-					tv9.setTextColor(getResources().getColor(R.color.red_shade));
+				if (mLevel >= 8) {
+					startShakeAnim(mContext, llEditAnswer);
+					edtAnswer.setTextColor(getResources().getColor(R.color.red_shade));
+				} else {
+					// add color marker that letter is incorrect
+					if (pos == 0) {
+						tv1.setTextColor(getResources().getColor(R.color.red_shade));
+					} else if (pos == 1) {
+						tv2.setTextColor(getResources().getColor(R.color.red_shade));
+					} else if (pos == 2) {
+						tv3.setTextColor(getResources().getColor(R.color.red_shade));
+					} else if (pos == 3) {
+						tv4.setTextColor(getResources().getColor(R.color.red_shade));
+					} else if (pos == 4) {
+						tv5.setTextColor(getResources().getColor(R.color.red_shade));
+					} else if (pos == 5) {
+						tv6.setTextColor(getResources().getColor(R.color.red_shade));
+					} else if (pos == 6) {
+						tv7.setTextColor(getResources().getColor(R.color.red_shade));
+					} else if (pos == 7) {
+						tv8.setTextColor(getResources().getColor(R.color.red_shade));
+					} else if (pos == 8) {
+						tv9.setTextColor(getResources().getColor(R.color.red_shade));
+					}
+					
+					// add selection marker that incorrect letter was selected
+					arrySelected[pos] = true;
 				}
 
-				// add selection marker that incorrect letter was selected
-				arrySelected[pos] = true;
+				
 
 				if (mLevel == 0) {
 					if (mIncorrectLetters >= 4) {
@@ -769,6 +843,8 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		// TODO Auto-generated method stub
 		destroyTTS();
 		super.onBackPressed();
+		// transition animation
+		overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
 	}
 
 }

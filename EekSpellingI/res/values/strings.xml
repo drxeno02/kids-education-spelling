@@ -31,6 +31,7 @@
     <string name="txt_eek_math">Eek! Math I</string>
     <string name="txt_elements">Elements</string>
     <string name="txt_banana">Banana And The Beat</string>
+    <string name="txt_no_numbers">Numbers not allowed!</string>
 
     <!-- device menu related options -->
     <string name="settings_options">More Options</string>

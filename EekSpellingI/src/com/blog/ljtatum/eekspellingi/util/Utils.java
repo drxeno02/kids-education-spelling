@@ -180,4 +180,15 @@ public class Utils {
 
 		return e;
 	}
+	
+	/**
+	 * Method will check if string value is a number
+	 * @param str
+	 * @return
+	 */
+	public static boolean isNumericRegex(String str) {
+	    if (str == null)
+	        return false; 
+	    return str.matches("-?\\d+");
+	}
 }

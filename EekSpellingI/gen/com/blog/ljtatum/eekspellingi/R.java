@@ -9,10 +9,12 @@ package com.blog.ljtatum.eekspellingi;
 
 public final class R {
     public static final class anim {
-        public static final int anim_slide_in_left=0x7f040000;
-        public static final int anim_slide_in_right=0x7f040001;
-        public static final int anim_slide_out_left=0x7f040002;
-        public static final int anim_slide_out_right=0x7f040003;
+        public static final int anim_shake=0x7f040000;
+        public static final int anim_slide_in_left=0x7f040001;
+        public static final int anim_slide_in_right=0x7f040002;
+        public static final int anim_slide_out_left=0x7f040003;
+        public static final int anim_slide_out_right=0x7f040004;
+        public static final int shake_cycle=0x7f040005;
     }
     public static final class array {
         public static final int arryWordBankActions=0x7f060002;
@@ -402,7 +404,7 @@ containing a value of this type.
         public static final int you_did_it=0x7f050012;
     }
     public static final class string {
-        public static final int action_settings=0x7f09001e;
+        public static final int action_settings=0x7f09001f;
         /**  application labels 
          */
         public static final int app_name=0x7f090000;
@@ -413,8 +415,8 @@ containing a value of this type.
         public static final int btn_rewards=0x7f09000b;
         /**  device menu related options 
          */
-        public static final int settings_options=0x7f09001c;
-        public static final int settings_share=0x7f09001d;
+        public static final int settings_options=0x7f09001d;
+        public static final int settings_share=0x7f09001e;
         public static final int txt_author=0x7f090007;
         public static final int txt_banana=0x7f09001b;
         public static final int txt_bank=0x7f090005;
@@ -432,6 +434,7 @@ containing a value of this type.
         public static final int txt_letter_tree=0x7f09000e;
         public static final int txt_meta=0x7f090002;
         public static final int txt_more_apps=0x7f090017;
+        public static final int txt_no_numbers=0x7f09001c;
         public static final int txt_picture_drop=0x7f09000f;
         public static final int txt_select=0x7f090004;
         public static final int txt_share=0x7f090018;

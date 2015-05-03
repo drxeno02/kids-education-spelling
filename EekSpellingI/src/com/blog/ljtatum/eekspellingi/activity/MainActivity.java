@@ -180,7 +180,11 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 			if (i < 4) {
 				sharedPref.setPref(strPrefNameUnlock, true);
 			} else {
-				sharedPref.setPref(strPrefNameUnlock, true); // false
+				if (Constants.DEBUG) {
+					sharedPref.setPref(strPrefNameUnlock, true);
+				} else {
+					sharedPref.setPref(strPrefNameUnlock, false);
+				}				
 			}
 		}
 

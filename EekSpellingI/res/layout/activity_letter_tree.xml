@@ -233,8 +233,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:visibility="invisible"
                 android:weightSum="0.9" >
 
                 <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
@@ -361,10 +361,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ll_txt_answer"
-                android:layout_marginRight="4dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="30dp"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:visibility="invisible"
+                android:visibility="gone"
                 android:weightSum="1" >
 
                 <TextView
@@ -390,10 +392,7 @@
                     android:maxLines="1"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/font_size_28" >
-
-                    <requestFocus />
-                </EditText>
+                    android:textSize="@dimen/font_size_28" />
 
                 <Button
                     android:id="@+id/btn_submit"
@@ -411,6 +410,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ll_txt_answer"
+                android:layout_centerInParent="true"
                 android:layout_marginTop="6dp"
                 android:gravity="center"
                 android:orientation="horizontal"
