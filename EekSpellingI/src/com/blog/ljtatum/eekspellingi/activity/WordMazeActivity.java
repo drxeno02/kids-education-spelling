@@ -42,7 +42,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	private Context mContext;
 	private ImageView ivBack, ivBanner, iv1;
 	private TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10, tv11,
-			tv12, tv13, tv14, tv15, tvHint;
+			tv12, tv13, tv14, tv15, tv16, tv17, tv18, tv19, tv20, tv21, tvHint;
 	private LinearLayout pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9,
 			pos10, pos11, pos12, pos13, pos14, pos15, pos16, pos17, pos18,
 			pos19, pos20, pos21, ll1, ll2, ll3, ll4, ll5;
@@ -110,6 +110,12 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		tv13 = (TextView) findViewById(R.id.tv13);
 		tv14 = (TextView) findViewById(R.id.tv14);
 		tv15 = (TextView) findViewById(R.id.tv15);
+		tv16 = (TextView) findViewById(R.id.tv16);
+		tv17 = (TextView) findViewById(R.id.tv17);
+		tv18 = (TextView) findViewById(R.id.tv18);
+		tv19 = (TextView) findViewById(R.id.tv19);
+		tv20 = (TextView) findViewById(R.id.tv20);
+		tv21 = (TextView) findViewById(R.id.tv21);
 		tvHint = (TextView) findViewById(R.id.tv_hint);
 		pos1 = (LinearLayout) findViewById(R.id.pos1);
 		pos2 = (LinearLayout) findViewById(R.id.pos2);
@@ -771,7 +777,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 
 			tv1.setText(String.valueOf(arryLetters[0]));
 			arryPath.add(1);
-			int temp = r.nextInt(1);
+			int temp = r.nextInt(2);
 			if (temp == 0) {
 				tv2.setText(String.valueOf(arryLetters[1]));
 				arryPath.add(2);
@@ -788,7 +794,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 
 			tv1.setText(String.valueOf(arryLetters[0]));
 			arryPath.add(1);
-			int temp = r.nextInt(2);
+			int temp = r.nextInt(3);
 			if (temp == 0) {
 				tv2.setText(String.valueOf(arryLetters[1]));
 				tv3.setText(String.valueOf(arryLetters[2]));
@@ -814,7 +820,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 
 			tv1.setText(String.valueOf(arryLetters[0]));
 			arryPath.add(1);
-			int temp = r.nextInt(3);
+			int temp = r.nextInt(4);
 			if (temp == 0) {
 				tv2.setText(String.valueOf(arryLetters[1]));
 				tv3.setText(String.valueOf(arryLetters[2]));
@@ -854,7 +860,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 
 			tv1.setText(String.valueOf(arryLetters[0]));
 			arryPath.add(1);
-			int temp = r.nextInt(4);
+			int temp = r.nextInt(5);
 			if (temp == 0) {
 				tv2.setText(String.valueOf(arryLetters[1]));
 				tv3.setText(String.valueOf(arryLetters[2]));
@@ -908,11 +914,11 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
 					tvAnswer6, tvAnswer7, pos1, pos2, pos3, pos4, pos5, 
 					pos6, pos7, pos8, pos9,pos10, pos11, pos12, pos13, 
-					pos14, pos15, end3);
+					pos14, pos15, end4);
 
 			tv1.setText(String.valueOf(arryLetters[0]));
 			arryPath.add(1);
-			int temp = r.nextInt(5);
+			int temp = r.nextInt(6);
 			if (temp == 0) {
 				tv2.setText(String.valueOf(arryLetters[1]));
 				tv3.setText(String.valueOf(arryLetters[2]));
@@ -985,39 +991,147 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		} else if (num == 8) {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7, v8,
 					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
-					tvAnswer6, tvAnswer7, tvAnswer8);
+					tvAnswer6, tvAnswer7, tvAnswer8, pos1, pos2, pos3, pos4, 
+					pos5, pos6, pos7, pos8, pos9,pos10, pos11, pos12, pos13, 
+					pos14, pos15, pos16, pos17, pos18, end5);
 
 			tv1.setText(String.valueOf(arryLetters[0]));
 			arryPath.add(1);
-			int temp = r.nextInt(6);		
+			int temp = r.nextInt(7);		
 			if (temp == 0) {
-				
+				tv2.setText(String.valueOf(arryLetters[1]));
+				tv3.setText(String.valueOf(arryLetters[2]));
+				tv6.setText(String.valueOf(arryLetters[3]));
+				tv9.setText(String.valueOf(arryLetters[4]));
+				tv12.setText(String.valueOf(arryLetters[5]));
+				tv15.setText(String.valueOf(arryLetters[6]));
+				arryPath.add(2);
+				arryPath.add(3);
+				arryPath.add(6);
+				arryPath.add(9);
+				arryPath.add(12);
+				arryPath.add(15);
 			} else if (temp == 1) {
-				
+				tv4.setText(String.valueOf(arryLetters[1]));
+				tv7.setText(String.valueOf(arryLetters[2]));
+				tv10.setText(String.valueOf(arryLetters[3]));
+				tv13.setText(String.valueOf(arryLetters[4]));
+				tv16.setText(String.valueOf(arryLetters[5]));
+				tv17.setText(String.valueOf(arryLetters[6]));
+				arryPath.add(4);
+				arryPath.add(7);
+				arryPath.add(10);
+				arryPath.add(13);
+				arryPath.add(16);
+				arryPath.add(17);
 			} else if (temp == 2) {
-				
+				tv4.setText(String.valueOf(arryLetters[1]));
+				tv7.setText(String.valueOf(arryLetters[2]));
+				tv10.setText(String.valueOf(arryLetters[3]));
+				tv11.setText(String.valueOf(arryLetters[4]));
+				tv14.setText(String.valueOf(arryLetters[5]));
+				tv15.setText(String.valueOf(arryLetters[6]));
+				arryPath.add(4);
+				arryPath.add(7);
+				arryPath.add(10);
+				arryPath.add(11);
+				arryPath.add(14);
+				arryPath.add(15);
 			} else if (temp == 3) {
-				
+				tv2.setText(String.valueOf(arryLetters[1]));
+				tv5.setText(String.valueOf(arryLetters[2]));
+				tv8.setText(String.valueOf(arryLetters[3]));
+				tv11.setText(String.valueOf(arryLetters[4]));
+				tv12.setText(String.valueOf(arryLetters[5]));
+				tv15.setText(String.valueOf(arryLetters[6]));
+				arryPath.add(2);
+				arryPath.add(3);
+				arryPath.add(6);
+				arryPath.add(9);
+				arryPath.add(12);
+				arryPath.add(15);
 			} else if (temp == 4) {
-				
+				tv4.setText(String.valueOf(arryLetters[1]));
+				tv7.setText(String.valueOf(arryLetters[2]));
+				tv8.setText(String.valueOf(arryLetters[3]));
+				tv11.setText(String.valueOf(arryLetters[4]));
+				tv14.setText(String.valueOf(arryLetters[5]));
+				tv17.setText(String.valueOf(arryLetters[6]));
+				arryPath.add(4);
+				arryPath.add(7);
+				arryPath.add(8);
+				arryPath.add(11);
+				arryPath.add(14);
+				arryPath.add(17);
 			} else if (temp == 5) {
-				
+				tv4.setText(String.valueOf(arryLetters[1]));
+				tv7.setText(String.valueOf(arryLetters[2]));
+				tv10.setText(String.valueOf(arryLetters[3]));
+				tv13.setText(String.valueOf(arryLetters[4]));
+				tv14.setText(String.valueOf(arryLetters[5]));
+				tv17.setText(String.valueOf(arryLetters[6]));
+				arryPath.add(4);
+				arryPath.add(7);
+				arryPath.add(10);
+				arryPath.add(13);
+				arryPath.add(14);
+				arryPath.add(17);
 			} else {
-				
+				tv4.setText(String.valueOf(arryLetters[1]));
+				tv7.setText(String.valueOf(arryLetters[2]));
+				tv10.setText(String.valueOf(arryLetters[3]));
+				tv13.setText(String.valueOf(arryLetters[4]));
+				tv14.setText(String.valueOf(arryLetters[5]));
+				tv15.setText(String.valueOf(arryLetters[6]));
+				arryPath.add(4);
+				arryPath.add(7);
+				arryPath.add(10);
+				arryPath.add(13);
+				arryPath.add(14);
+				arryPath.add(15);
 			}
-			
+			tv18.setText(String.valueOf(arryLetters[7]));
+			arryPath.add(18);
 		} else if (num == 9) {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7, v8, v9,
 					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
-					tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9);
+					tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9, pos1, pos2, pos3,  
+					pos4, pos5, pos6, pos7, pos8, pos9,pos10, pos11, pos12, pos13, 
+					pos14, pos15, pos16, pos17, pos18, pos19, pos20, pos21, end6);
 			
 			tv1.setText(String.valueOf(arryLetters[0]));
 			arryPath.add(1);	
-			int temp = r.nextInt(7);
+			int temp = r.nextInt(8);
 			if (temp == 0) {
-				
+				tv2.setText(String.valueOf(arryLetters[1]));
+				tv3.setText(String.valueOf(arryLetters[2]));
+				tv6.setText(String.valueOf(arryLetters[3]));
+				tv9.setText(String.valueOf(arryLetters[4]));
+				tv12.setText(String.valueOf(arryLetters[5]));
+				tv15.setText(String.valueOf(arryLetters[6]));
+				tv18.setText(String.valueOf(arryLetters[7]));
+				arryPath.add(2);
+				arryPath.add(3);
+				arryPath.add(6);
+				arryPath.add(9);
+				arryPath.add(12);
+				arryPath.add(15);
+				arryPath.add(18);
 			} else if (temp == 1) {
-				
+				tv4.setText(String.valueOf(arryLetters[1]));
+				tv7.setText(String.valueOf(arryLetters[2]));
+				tv10.setText(String.valueOf(arryLetters[3]));
+				tv13.setText(String.valueOf(arryLetters[4]));
+				tv16.setText(String.valueOf(arryLetters[5]));
+				tv19.setText(String.valueOf(arryLetters[6]));
+				tv20.setText(String.valueOf(arryLetters[7]));
+				arryPath.add(4);
+				arryPath.add(7);
+				arryPath.add(10);
+				arryPath.add(13);
+				arryPath.add(16);
+				arryPath.add(19);
+				arryPath.add(20);
 			} else if (temp == 2) {
 				
 			} else if (temp == 3) {
@@ -1028,8 +1142,11 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				
 			} else if (temp == 6) {
 				
+			} else {
+				
 			}
-			
+			tv21.setText(String.valueOf(arryLetters[8]));
+			arryPath.add(21);
 		}
 	}
 
