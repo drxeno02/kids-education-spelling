@@ -25,6 +25,7 @@ import com.blog.ljtatum.eekspellingi.R;
 import com.blog.ljtatum.eekspellingi.anim.Shimmer;
 import com.blog.ljtatum.eekspellingi.anim.ShimmerTextView;
 import com.blog.ljtatum.eekspellingi.constants.Constants;
+import com.blog.ljtatum.eekspellingi.enums.WordCategory;
 import com.blog.ljtatum.eekspellingi.helper.Messages;
 import com.blog.ljtatum.eekspellingi.logger.Logger;
 import com.blog.ljtatum.eekspellingi.sharedpref.SharedPref;
@@ -176,6 +177,12 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		pos13.setOnClickListener(this);
 		pos14.setOnClickListener(this);
 		pos15.setOnClickListener(this);
+		pos16.setOnClickListener(this);
+		pos17.setOnClickListener(this);
+		pos18.setOnClickListener(this);
+		pos19.setOnClickListener(this);
+		pos20.setOnClickListener(this);
+		pos21.setOnClickListener(this);
 		
 		// retrieve level
 		Intent intent = getIntent();
@@ -240,6 +247,24 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		case R.id.pos15:
 			transverseToPos(15);
 			break;
+		case R.id.pos16:
+			transverseToPos(16);
+			break;
+		case R.id.pos17:
+			transverseToPos(17);
+			break;
+		case R.id.pos18:
+			transverseToPos(18);
+			break;
+		case R.id.pos19:
+			transverseToPos(19);
+			break;			
+		case R.id.pos20:
+			transverseToPos(20);
+			break;
+		case R.id.pos21:
+			transverseToPos(21);
+			break;			
 		case R.id.iv_back:
 			finish();
 			break;
@@ -658,6 +683,32 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	private void initLesson() {
 		// retrieve full word bank
 		String[] arryWordBankFull = getWordBank(mLevel);
+		
+		// set hint
+		if (mLevel >= 8) {
+			tvHint.setText("????");
+			tvHint.setTextColor(getResources().getColor(R.color.red_shade));
+		} else {
+			if (mWordCategory == WordCategory.CATEGORY_OBJECT_PLACE) {
+				tvHint.setText("Object or Place");
+			} else if (mWordCategory == WordCategory.CATEGORY_OBJECT_NUMBER) {
+				tvHint.setText("Object or Number");
+			} else if (mWordCategory == WordCategory.CATEGORY_OBJECT_COLOR) {
+				tvHint.setText("Object or Color");
+			} else if (mWordCategory == WordCategory.CATEGORY_PLACE_NUMBER_COLOR) {	
+				tvHint.setText("Object, Number or Color");
+			} else if (mWordCategory == WordCategory.CATEGORY_OBJECT_ACTION) {
+				tvHint.setText("Object or Action");
+			} else if (mWordCategory == WordCategory.CATEGORY_OBJECT_ANIMAL) {	
+				tvHint.setText("Object or Animal");
+			} else if (mWordCategory == WordCategory.CATEGORY_OBJECT_DAY_MONTH) {	
+				tvHint.setText("Object, Day or Month");
+			} else if (mWordCategory == WordCategory.CATEGORY_ACTION_ANIMAL_DAY_MONTH) {
+				tvHint.setText("Action, Animal, Day or Month");
+			}
+			tvHint.setTextColor(getResources().getColor(R.color.black));
+		}	
+		
 		mArryWordBank = getWordBank(arryWordBankFull, mLevel);
 		mWord = mArryWordBank.get(r.nextInt(mArryWordBank.size()));
 		generateLevel();
@@ -757,13 +808,6 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			resetVisibility();
 		}
 
-		// setup maze map views
-		if (num >= 6) {
-			Utils.setViewVisibility(true, pos1, pos2, pos3, pos4, pos5, pos6,
-					pos7, pos8, pos9, pos10, pos11, pos12, pos13, pos14, pos15,
-					end4);
-		}
-		
 		arryLetters = mWord.toCharArray();
 		// reset path list
 		if (arryPath.size() > 0) {
@@ -1249,7 +1293,8 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
 				tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9, pos1, pos2, pos3,
 				pos4, pos5, pos6, pos7, pos8, pos9, pos10, pos11, pos12, pos13,
-				pos14, pos15, end1, end2, end3, end4);
+				pos14, pos15, pos16, pos17, pos18, pos19, pos20, pos21, 
+				end1, end2, end3, end4, end5, end6);
 
 	}
 
