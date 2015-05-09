@@ -176,7 +176,7 @@ public class Utils {
 		System.arraycopy(a, 0, e, 0, aLen);
 		System.arraycopy(b, 0, e, aLen, bLen);
 		System.arraycopy(c, 0, e, aLen + bLen, cLen);
-		System.arraycopy(c, 0, e, aLen + bLen + cLen, dLen);
+		System.arraycopy(d, 0, e, aLen + bLen + cLen, dLen);
 
 		return e;
 	}
