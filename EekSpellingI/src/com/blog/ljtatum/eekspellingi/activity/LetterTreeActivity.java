@@ -312,28 +312,44 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			tvHint.setText("????");
 			tvHint.setTextColor(getResources().getColor(R.color.red_shade));
 		} else {
-			if (mWordCategory == WordCategory.CATEGORY_OBJECT_PLACE) {
-				tvHint.setText("Object or Place");
-			} else if (mWordCategory == WordCategory.CATEGORY_OBJECT_NUMBER) {
-				tvHint.setText("Object or Number");
-			} else if (mWordCategory == WordCategory.CATEGORY_OBJECT_COLOR) {
-				tvHint.setText("Object or Color");
-			} else if (mWordCategory == WordCategory.CATEGORY_PLACE_NUMBER_COLOR) {	
-				tvHint.setText("Object, Number or Color");
-			} else if (mWordCategory == WordCategory.CATEGORY_OBJECT_ACTION) {
-				tvHint.setText("Object or Action");
+			if (mWordCategory == WordCategory.CATEGORY_OBJECT) {
+				tvHint.setText("Object");
+			} else if (mWordCategory == WordCategory.CATEGORY_PLACE) {	
+				tvHint.setText("Place");
+			} else if (mWordCategory == WordCategory.CATEGORY_NUMBER) {	
+				tvHint.setText("Number");
+			} else if (mWordCategory == WordCategory.CATEGORY_COLOR) {	
+				tvHint.setText("Color");
+			} else if (mWordCategory == WordCategory.CATEGORY_PLACE_NUMBER) {		
+				tvHint.setText("Place or Number");
+			} else if (mWordCategory == WordCategory.CATEGORY_COLOR_NUMBER) {		
+				tvHint.setText("Color or Number");
+			} else if (mWordCategory == WordCategory.CATEGORY_ACTION) {
+				tvHint.setText("Action");
+			} else if (mWordCategory == WordCategory.CATEGORY_ANIMAL) {
+				tvHint.setText("Animal");
 			} else if (mWordCategory == WordCategory.CATEGORY_OBJECT_ANIMAL) {	
 				tvHint.setText("Object or Animal");
-			} else if (mWordCategory == WordCategory.CATEGORY_OBJECT_DAY_MONTH) {	
-				tvHint.setText("Object, Day or Month");
-			} else if (mWordCategory == WordCategory.CATEGORY_ACTION_ANIMAL_DAY_MONTH) {
-				tvHint.setText("Action, Animal, Day or Month");
+			} else if (mWordCategory == WordCategory.CATEGORY_DAY_MONTH) {
+				tvHint.setText("Day or Month");
+			} else if (mWordCategory == WordCategory.CATEGORY_ACTION_ANIMAL) {
+				tvHint.setText("Action or Animal");				
+			} else if (mWordCategory == WordCategory.CATEGORY_CAREER) {	
+				tvHint.setText("Career");
+			} else if (mWordCategory == WordCategory.CATEGORY_MATH) {	
+				tvHint.setText("Math");
+			} else if (mWordCategory == WordCategory.CATEGORY_SCIENCE) {	
+				tvHint.setText("Science");	
+			} else if (mWordCategory == WordCategory.CATEGORY_MATH_SCIENCE) {	
+				tvHint.setText("Math or Science");
+			} else if (mWordCategory == WordCategory.CATEGORY_CAREER_SCIENCE) {
+				tvHint.setText("Career or Science");
 			}
 			tvHint.setTextColor(getResources().getColor(R.color.black));
-		}
+		}	
 		
 		// retrieve list of usable words
-		mArryWordBank = getWordBank(arryWordBankFull, mLevel);
+		mArryWordBank = getWordBank(arryWordBankFull, mLevel, false);
 		// select a word from usable word list
 		mWord = mArryWordBank.get(r.nextInt(mArryWordBank.size()));
 		generateLevel();
@@ -522,6 +538,9 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		}
 	}
 
+	/**
+	 * Method is used for resetting visibility on views
+	 */
 	private void resetVisibility() {
 		// reset correct and incorrect trackers
 		mCorrectLetters = 0;

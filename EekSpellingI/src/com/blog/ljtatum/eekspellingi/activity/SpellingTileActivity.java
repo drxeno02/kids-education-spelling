@@ -22,6 +22,7 @@ import com.blog.ljtatum.eekspellingi.R;
 import com.blog.ljtatum.eekspellingi.anim.Shimmer;
 import com.blog.ljtatum.eekspellingi.anim.ShimmerTextView;
 import com.blog.ljtatum.eekspellingi.constants.Constants;
+import com.blog.ljtatum.eekspellingi.enums.WordCategory;
 import com.blog.ljtatum.eekspellingi.logger.Logger;
 import com.blog.ljtatum.eekspellingi.sharedpref.SharedPref;
 import com.blog.ljtatum.eekspellingi.util.MusicUtils;
@@ -39,7 +40,7 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 	private View v1, v2, v3, v4, v5, v6, v7, v8, v9;
 	private TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10, tv11,
 			tv12, tv13, tv14, tv15, tv16, tv17, tv18, tv19, tv20, tv21, tv22,
-			tv23, tv24, tv25;
+			tv23, tv24, tv25, tvHint;
 	private LinearLayout pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9,
 			pos10, pos11, pos12, pos13, pos14, pos15, pos16, pos17, pos18, pos19,
 			pos20, pos21, pos22, pos23, pos24, pos25;
@@ -112,6 +113,7 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 		tv23 = (TextView) findViewById(R.id.tv22);
 		tv24 = (TextView) findViewById(R.id.tv23);
 		tv25 = (TextView) findViewById(R.id.tv24);
+		tvHint = (TextView) findViewById(R.id.tv_hint);
 		pos1 = (LinearLayout) findViewById(R.id.pos0);
 		pos2 = (LinearLayout) findViewById(R.id.pos1);
 		pos3 = (LinearLayout) findViewById(R.id.pos2);
@@ -174,6 +176,13 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 		pos23.setOnClickListener(this);
 		pos24.setOnClickListener(this);
 		pos25.setOnClickListener(this);
+		
+		// retrieve level
+		Intent intent = getIntent();
+		if (!Utils.checkIfNull(intent)) {
+			mLevel = intent.getIntExtra(Constants.LEVEL_SELECTED, 0);
+			Logger.i(TAG, "level: " + mLevel);
+		}		
 
 		// initialize lesson
 		initLesson();
@@ -256,18 +265,62 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 	 * @Note Only needs to be called once
 	 */
 	private void initLesson() {
-		// retrieve level
-		Intent intent = getIntent();
-		if (!Utils.checkIfNull(intent)) {
-			mLevel = intent.getIntExtra(Constants.LEVEL_SELECTED, 0);
-			Logger.i(TAG, "level: " + mLevel);
-		}
-
 		// retrieve full word bank
 		String[] arryWordBankFull = getWordBank(mLevel);
-		mArryWordBank = getWordBank(arryWordBankFull, mLevel);
+		
+		// set hint
+		if (mLevel >= 8) {
+			tvHint.setText("????");
+			tvHint.setTextColor(getResources().getColor(R.color.red_shade));
+		} else {
+			if (mWordCategory == WordCategory.CATEGORY_OBJECT) {
+				tvHint.setText("Object");
+			} else if (mWordCategory == WordCategory.CATEGORY_PLACE) {	
+				tvHint.setText("Place");
+			} else if (mWordCategory == WordCategory.CATEGORY_NUMBER) {	
+				tvHint.setText("Number");
+			} else if (mWordCategory == WordCategory.CATEGORY_COLOR) {	
+				tvHint.setText("Color");
+			} else if (mWordCategory == WordCategory.CATEGORY_PLACE_NUMBER) {		
+				tvHint.setText("Place or Number");
+			} else if (mWordCategory == WordCategory.CATEGORY_COLOR_NUMBER) {		
+				tvHint.setText("Color or Number");
+			} else if (mWordCategory == WordCategory.CATEGORY_ACTION) {
+				tvHint.setText("Action");
+			} else if (mWordCategory == WordCategory.CATEGORY_ANIMAL) {
+				tvHint.setText("Animal");
+			} else if (mWordCategory == WordCategory.CATEGORY_OBJECT_ANIMAL) {	
+				tvHint.setText("Object or Animal");
+			} else if (mWordCategory == WordCategory.CATEGORY_DAY_MONTH) {
+				tvHint.setText("Day or Month");
+			} else if (mWordCategory == WordCategory.CATEGORY_ACTION_ANIMAL) {
+				tvHint.setText("Action or Animal");				
+			} else if (mWordCategory == WordCategory.CATEGORY_CAREER) {	
+				tvHint.setText("Career");
+			} else if (mWordCategory == WordCategory.CATEGORY_MATH) {	
+				tvHint.setText("Math");
+			} else if (mWordCategory == WordCategory.CATEGORY_SCIENCE) {	
+				tvHint.setText("Science");	
+			} else if (mWordCategory == WordCategory.CATEGORY_MATH_SCIENCE) {	
+				tvHint.setText("Math or Science");
+			} else if (mWordCategory == WordCategory.CATEGORY_CAREER_SCIENCE) {
+				tvHint.setText("Career or Science");
+			}
+			tvHint.setTextColor(getResources().getColor(R.color.black));
+		}	
+		
+		// retrieve list of usable words	
+		mArryWordBank = getWordBank(arryWordBankFull, mLevel, true);
+		// select a word from usable word list
 		mWord = mArryWordBank.get(r.nextInt(mArryWordBank.size()));
 		generateLevel();
+	}
+	
+	/**
+	 * Method is used for setting up the backs of the tiles
+	 */
+	private void setupTiles() {
+		
 	}
 	
 	/**
@@ -302,8 +355,56 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 		}
 
 		// set visibility of views
-		//setVisibility(mWord.length());
+		setVisibility(mWord.length());
 	}	
+	
+	/**
+	 * Sets the number of needed visible views to form the correct word
+	 * 
+	 * @param num
+	 */
+	private void setVisibility(int num) {
+		if (mSolvedWords > 0) {
+			resetVisibility();
+		}
+		
+		arryLetters = mWord.toCharArray();
+		// reset path list
+		if (arryPath.size() > 0) {
+			arryPath.clear();
+		}
+		
+		// setup letter positions on map
+		if (num == 3) {
+			
+		}
+		
+
+	}
+	
+	/**
+	 * Method is used for resetting visibility on views
+	 */
+	private void resetVisibility() {
+		// reset correct and incorrect trackers
+
+		// clear maze letter views
+		Utils.clearText(tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10,
+				tv11, tv12, tv13, tv14, tv15, tvAnswer1, tvAnswer2, tvAnswer3,
+				tvAnswer4, tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8,
+				tvAnswer9);
+
+		// reset maze views
+		Utils.setViewVisibility(false, v1, v2, v3, v4, v5, v6, v7, v8, v9,
+				tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
+				tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9, pos1, pos2, pos3,
+				pos4, pos5, pos6, pos7, pos8, pos9, pos10, pos11, pos12, pos13,
+				pos14, pos15, pos16, pos17, pos18, pos19, pos20, pos21);
+
+	}
+	
+	
+	
 	
 	/**
 	 * Method is used to start shimmer animation

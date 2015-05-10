@@ -133,53 +133,6 @@ public class Utils {
 
 		return c;
 	}
-
-	/**
-	 * Method is used to concatenate Three arrays using generics and reflection
-	 *
-	 * @param a
-	 * @param b
-	 * @param c
-	 * @return
-	 */
-	public static <T> T[] concatenate(T[] a, T[] b, T[] c) {
-		int aLen = a.length;
-		int bLen = b.length;
-		int cLen = c.length;
-
-		@SuppressWarnings("unchecked")
-		T[] d = (T[]) Array.newInstance(a.getClass().getComponentType(), aLen + bLen + cLen);
-		System.arraycopy(a, 0, d, 0, aLen);
-		System.arraycopy(b, 0, d, aLen, bLen);
-		System.arraycopy(c, 0, d, aLen + bLen, cLen);
-
-		return d;
-	}
-
-	/**
-	 * Method is used to concatenate Three arrays using generics and reflection
-	 *
-	 * @param a
-	 * @param b
-	 * @param c
-	 * @param d
-	 * @return
-	 */
-	public static <T> T[] concatenate(T[] a, T[] b, T[] c, T[] d) {
-		int aLen = a.length;
-		int bLen = b.length;
-		int cLen = c.length;
-		int dLen = d.length;
-
-		@SuppressWarnings("unchecked")
-		T[] e = (T[]) Array.newInstance(a.getClass().getComponentType(), aLen + bLen + cLen + dLen);
-		System.arraycopy(a, 0, e, 0, aLen);
-		System.arraycopy(b, 0, e, aLen, bLen);
-		System.arraycopy(c, 0, e, aLen + bLen, cLen);
-		System.arraycopy(d, 0, e, aLen + bLen + cLen, dLen);
-
-		return e;
-	}
 	
 	/**
 	 * Method will check if string value is a number

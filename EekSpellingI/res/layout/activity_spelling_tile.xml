@@ -38,10 +38,38 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/ll1"
+        android:id="@+id/ll_hint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rl"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_hint"
+            android:textColor="@color/grey_shade"
+            android:textSize="@dimen/font_size_20"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/txt_meta"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_20" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_hint"
         android:orientation="horizontal"
         android:weightSum="1" >
 
@@ -50,7 +78,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/red_shade"
+            android:background="@color/grey_shade"
             android:orientation="horizontal"
             android:visibility="visible" >
 
@@ -126,7 +154,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/red_shade"
+            android:background="@color/grey_shade"
             android:orientation="horizontal"
             android:visibility="visible" >
 
@@ -154,7 +182,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/red_shade"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="visible" >
 
@@ -230,7 +258,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/red_shade"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="visible" >
 
@@ -258,7 +286,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/red_shade"
+            android:background="@color/grey_shade"
             android:orientation="horizontal"
             android:visibility="visible" >
 
@@ -334,7 +362,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/red_shade"
+            android:background="@color/grey_shade"
             android:orientation="horizontal"
             android:visibility="visible" >
 
@@ -362,7 +390,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/red_shade"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="visible" >
 
@@ -438,7 +466,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/red_shade"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="visible" >
 
@@ -466,7 +494,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/red_shade"
+            android:background="@color/grey_shade"
             android:orientation="horizontal"
             android:visibility="visible" >
 
@@ -542,7 +570,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/red_shade"
+            android:background="@color/grey_shade"
             android:orientation="horizontal"
             android:visibility="visible" >
 

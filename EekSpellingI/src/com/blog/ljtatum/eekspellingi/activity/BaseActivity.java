@@ -263,24 +263,36 @@ public class BaseActivity extends Activity implements OnInitListener {
 	 * @param level
 	 * @return
 	 */
-	protected List<String> getWordBank(String[] wordBank, int level) {
+	protected List<String> getWordBank(String[] wordBank, int level, boolean reverseLengthOrder) {
 		List<String> mWordBank = new ArrayList<String>();
 
 		// populate word bank based on length
 		for (int i = 0; i < wordBank.length; i++) {
 			String metaStr = wordBank[i].toString().trim();
 			if (level >= 0 && level <= 3) {
-				if (metaStr.length() >= 3 && metaStr.length() <= 5) {
-					mWordBank.add(metaStr);
-				}
+				if (!reverseLengthOrder) {
+					if (metaStr.length() >= 3 && metaStr.length() <= 5) {
+						mWordBank.add(metaStr);
+					}
+				} else {
+					if (metaStr.length() >= 6 && metaStr.length() <= 9) {
+						mWordBank.add(metaStr);
+					}
+				}			
 			} else if (level >= 4 && level <= 7) {
 				if (metaStr.length() >= 4 && metaStr.length() <= 7) {
 					mWordBank.add(metaStr);
 				}
 			} else if (level >= 8) {
-				if (metaStr.length() >= 6 && metaStr.length() <= 9) {
-					mWordBank.add(metaStr);
-				}
+				if (!reverseLengthOrder) {
+					if (metaStr.length() >= 6 && metaStr.length() <= 9) {
+						mWordBank.add(metaStr);
+					}
+				} else {
+					if (metaStr.length() >= 3 && metaStr.length() <= 5) {
+						mWordBank.add(metaStr);
+					}
+				}				
 			}
 		}
 
@@ -302,92 +314,113 @@ public class BaseActivity extends Activity implements OnInitListener {
 	 */
 	protected String[] getWordBank(int level) {
 		Random r = new Random();
-		int rand = r.nextInt(4);	
+		int rand = r.nextInt(6);	
 		String[] arryTempA;
 		String[] arryTempB;
-		String[] arryTempC;
-		String[] arryTempD;
 		if (level >= 0 && level <= 3) {
 			if (rand == 0) {
-				// object + places
-				mWordCategory = WordCategory.CATEGORY_OBJECT_PLACE;
+				// object 
+				mWordCategory = WordCategory.CATEGORY_OBJECT;
 				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
-				arryTempB = getResources().getStringArray(R.array.arryWordBankPlaces);	
-				return Utils.concatenate(arryTempA, arryTempB);
+				return arryTempA;
 			} else if (rand == 1) {
-				// object + numbers
-				mWordCategory = WordCategory.CATEGORY_OBJECT_NUMBER;
-				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
-				arryTempB = getResources().getStringArray(R.array.arryWordBankNumbers);
-				return Utils.concatenate(arryTempA, arryTempB);
+				// place
+				mWordCategory = WordCategory.CATEGORY_PLACE;
+				arryTempA = getResources().getStringArray(R.array.arryWordBankPlaces);
+				return arryTempA;
 			} else if (rand == 2) {
-				// object + colors
-				mWordCategory = WordCategory.CATEGORY_OBJECT_COLOR;
-				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
-				arryTempB = getResources().getStringArray(R.array.arryWordBankColors);
-				return Utils.concatenate(arryTempA, arryTempB);
-			} else {
-				// places + numbers + colors 
-				mWordCategory = WordCategory.CATEGORY_PLACE_NUMBER_COLOR;
+				// number
+				mWordCategory = WordCategory.CATEGORY_NUMBER;
+				arryTempA = getResources().getStringArray(R.array.arryWordBankNumbers);
+				return arryTempA;
+			} else if (rand == 3) {
+				// color
+				mWordCategory = WordCategory.CATEGORY_COLOR;
+				arryTempA = getResources().getStringArray(R.array.arryWordBankColors);
+				return arryTempA;
+			} else if (rand == 4) {
+				// place + number
+				mWordCategory = WordCategory.CATEGORY_PLACE_NUMBER;
 				arryTempA = getResources().getStringArray(R.array.arryWordBankPlaces);
 				arryTempB = getResources().getStringArray(R.array.arryWordBankNumbers);
-				arryTempC = getResources().getStringArray(R.array.arryWordBankColors);
-				return Utils.concatenate(arryTempA, arryTempB, arryTempC);
+				return Utils.concatenate(arryTempA, arryTempB);
+			} else {
+				// color + number 
+				mWordCategory = WordCategory.CATEGORY_COLOR_NUMBER;
+				arryTempA = getResources().getStringArray(R.array.arryWordBankColors);
+				arryTempB = getResources().getStringArray(R.array.arryWordBankNumbers);			
+				return Utils.concatenate(arryTempA, arryTempB);
 			}
 		} else if (level >= 4 && level <= 7) {
 			if (rand == 0) {
-				// object + actions
-				mWordCategory = WordCategory.CATEGORY_OBJECT_ACTION;
+				// object 
+				mWordCategory = WordCategory.CATEGORY_OBJECT;
 				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
-				arryTempB = getResources().getStringArray(R.array.arryWordBankActions);
-				return Utils.concatenate(arryTempA, arryTempB);
+				return arryTempA;
 			} else if (rand == 1) {
-				// object + animals
+				// action
+				mWordCategory = WordCategory.CATEGORY_ACTION;
+				arryTempA = getResources().getStringArray(R.array.arryWordBankActions);
+				return arryTempA;
+			} else if (rand == 2) {
+				// animal
+				mWordCategory = WordCategory.CATEGORY_ANIMAL;
+				arryTempA = getResources().getStringArray(R.array.arryWordBankAnimals);
+				return arryTempA;
+			} else if (rand == 3) {
+				// object + animal
 				mWordCategory = WordCategory.CATEGORY_OBJECT_ANIMAL;
 				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
 				arryTempB = getResources().getStringArray(R.array.arryWordBankAnimals);
 				return Utils.concatenate(arryTempA, arryTempB);
-			} else if (rand == 2) {
-				// object + days + months
-				mWordCategory = WordCategory.CATEGORY_OBJECT_DAY_MONTH;
-				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
-				arryTempB = getResources().getStringArray(R.array.arryWordBankDays);
-				arryTempC = getResources().getStringArray(R.array.arryWordBankMonths);
-				return Utils.concatenate(arryTempA, arryTempB, arryTempC);
+			} else if (rand == 4) {				
+				// day + month
+				mWordCategory = WordCategory.CATEGORY_DAY_MONTH;
+				arryTempA = getResources().getStringArray(R.array.arryWordBankDays);
+				arryTempB = getResources().getStringArray(R.array.arryWordBankMonths);
+				return Utils.concatenate(arryTempA, arryTempB);			
 			} else {
-				// actions + animals + days + months 
-				mWordCategory = WordCategory.CATEGORY_ACTION_ANIMAL_DAY_MONTH;
+				// action + animal
+				mWordCategory = WordCategory.CATEGORY_ACTION_ANIMAL;
 				arryTempA = getResources().getStringArray(R.array.arryWordBankActions);
 				arryTempB = getResources().getStringArray(R.array.arryWordBankAnimals);
-				arryTempC = getResources().getStringArray(R.array.arryWordBankDays);
-				arryTempD = getResources().getStringArray(R.array.arryWordBankMonths);
-				return Utils.concatenate(arryTempA, arryTempB, arryTempC, arryTempD);
+				return Utils.concatenate(arryTempA, arryTempB);	
 			}
 		} else if (level >= 8) {
 			if (rand == 0) {
-				// object + career
+				// object
+				mWordCategory = WordCategory.CATEGORY_OBJECT;
 				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
-				arryTempB = getResources().getStringArray(R.array.arryWordBankCareer);
-				return Utils.concatenate(arryTempA, arryTempB);
+				return arryTempA;
 			} else if (rand == 1) {
-				// object + math
-				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
-				arryTempB = getResources().getStringArray(R.array.arryWordBankMath);
-				return Utils.concatenate(arryTempA, arryTempB);
+				// career
+				mWordCategory = WordCategory.CATEGORY_CAREER;
+				arryTempA = getResources().getStringArray(R.array.arryWordBankCareer);
+				return arryTempA;
 			} else if (rand == 2) {
-				// object + science
-				arryTempA = getResources().getStringArray(R.array.arryWordBankObj);
+				// math
+				mWordCategory = WordCategory.CATEGORY_MATH;
+				arryTempA = getResources().getStringArray(R.array.arryWordBankMath);
+				return arryTempA;
+			} else if (rand == 3) {	
+				// science
+				mWordCategory = WordCategory.CATEGORY_SCIENCE;
+				arryTempA = getResources().getStringArray(R.array.arryWordBankScience);
+				return arryTempA;
+			} else if (rand == 4) {	
+				// math + science
+				mWordCategory = WordCategory.CATEGORY_MATH_SCIENCE;
+				arryTempA = getResources().getStringArray(R.array.arryWordBankMath);
 				arryTempB = getResources().getStringArray(R.array.arryWordBankScience);
 				return Utils.concatenate(arryTempA, arryTempB);
 			} else {
-				// career + math + science
+				// career + science
+				mWordCategory = WordCategory.CATEGORY_CAREER_SCIENCE;
 				arryTempA = getResources().getStringArray(R.array.arryWordBankCareer);
-				arryTempB = getResources().getStringArray(R.array.arryWordBankMath);
-				arryTempC = getResources().getStringArray(R.array.arryWordBankActions);
-				return Utils.concatenate(arryTempA, arryTempB, arryTempC);
+				arryTempB = getResources().getStringArray(R.array.arryWordBankScience);
+				return Utils.concatenate(arryTempA, arryTempB);
 			}
 		}
-			
 		return getResources().getStringArray(R.array.arryWordBankObj);
 	}
 
