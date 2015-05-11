@@ -787,6 +787,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			}
 		}
 	}
+	
 
 	/**
 	 * Method is used to start shimmer animation

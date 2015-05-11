@@ -16,16 +16,23 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    
+
     <style name="Widget.Button.Toggle" parent="android:Widget">
         <item name="android:background">@drawable/ic_toggle_bg</item>
         <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
-    </style>    
+    </style>
 
+    <!-- Custom toggle button -->
     <style name="toggleButton" parent="@android:Theme.Black">
         <item name="android:buttonStyleToggle">@style/Widget.Button.Toggle</item>
         <item name="android:textOn"></item>
         <item name="android:textOff"></item>
+    </style>
+
+    <!-- Popup animation -->
+    <style name="Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_slide_in_left</item>
+        <item name="android:windowExitAnimation">@anim/anim_slide_in_right</item>
     </style>
 
 </resources>

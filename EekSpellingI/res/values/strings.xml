@@ -3,18 +3,6 @@
     <!-- application labels -->
     <string name="app_name">Eek! Spelling I</string>
     <string name="app_name_label">Eek! Spelling</string>
-    <string name="txt_meta">[meta]</string>
-    <string name="txt_hint">Hint:</string>
-    <string name="txt_select">Lets Learn!</string>
-    <string name="txt_bank">Bank</string>
-    <string name="txt_by">By:</string>
-    <string name="txt_author">Jordan Mann &amp; Leonard Tatum</string>
-    <string name="txt_dialog_wait_please">Please wait&#8230;</string>
-    <string name="txt_input_letter">Input A Letter:</string>
-    <string name="btn_learn">Learn</string>
-    <string name="btn_rewards">Rewards</string>
-    <string name="btn_extras">Extras</string>
-    <string name="btn_go">Go!</string>
 
     <!-- game labels -->
     <string name="txt_letter_tree">Letter Tree</string>
@@ -32,6 +20,19 @@
     <string name="txt_elements">Elements</string>
     <string name="txt_banana">Banana And The Beat</string>
     <string name="txt_no_numbers">Numbers not allowed!</string>
+   	<string name="txt_meta">[meta]</string>
+    <string name="txt_hint">Hint:</string>
+    <string name="txt_select">Lets Learn!</string>
+    <string name="txt_bank">Bank</string>
+    <string name="txt_by">By:</string>
+    <string name="txt_author">Jordan Mann &amp; Leonard Tatum</string>
+    <string name="txt_dialog_wait_please">Please wait&#8230;</string>
+    <string name="txt_dialog_congratulation">Congratulations! Level completed</string>
+    <string name="txt_input_letter">Input A Letter:</string>
+    <string name="btn_learn">Learn</string>
+    <string name="btn_rewards">Rewards</string>
+    <string name="btn_extras">Extras</string>
+    <string name="btn_go">Go!</string>
 
     <!-- device menu related options -->
     <string name="settings_options">More Options</string>

@@ -25,16 +25,16 @@ public class Utils {
 	public static Drawable getBanner(Context context) {
 		int rand = 0;
 		Random r = new Random();
-		rand = r.nextInt(9) + 1;
+		rand = r.nextInt(10);
 		if (rand <= 2) {
 			bannerId = 1;
-			return context.getResources().getDrawable(R.drawable.ph_banner_a);
+			return context.getResources().getDrawable(R.drawable.banner_math);
 		} else if (rand > 2 && rand < 5) {
 			bannerId = 2;
-			return context.getResources().getDrawable(R.drawable.ph_banner_eek);
+			return context.getResources().getDrawable(R.drawable.banner_elements);
 		}
 		bannerId = 3;
-		return context.getResources().getDrawable(R.drawable.ph_banner_b);
+		return context.getResources().getDrawable(R.drawable.banner_batb);
 
 	}
 
