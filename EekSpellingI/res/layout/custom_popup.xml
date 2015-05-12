@@ -1,31 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/brush_a"
+    android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/tv1"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="@string/txt_dialog_congratulation"
-        android:textAllCaps="true"
-        android:textColor="@color/orange_shade"
-        android:textSize="@dimen/font_size_24" />
+        android:background="@drawable/splash_bg_1a"
+        android:orientation="vertical"
+        android:paddingLeft="14dp"
+        android:paddingRight="14dp" >
 
-    <TextView
-        android:id="@+id/tv_meta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="@string/txt_meta"
-        android:textColor="@color/black"
-        android:textSize="@dimen/font_size_20" />
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/txt_dialog_congratulation"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_20" />
+
+        <com.blog.ljtatum.eekspellingi.view.CircleImageView
+            android:id="@+id/iv1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/tv1"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_meta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@+id/iv1"
+            android:gravity="center_horizontal"
+            android:paddingBottom="20dp"
+            android:text="@string/txt_meta"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_20" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/iv1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:background="@color/material_lime_500_color_code"
+            android:gravity="center"
+            android:clickable="true"
+            android:text="@string/btn_ok"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_20" />
+    </RelativeLayout>
 
 </RelativeLayout>

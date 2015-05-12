@@ -1,7 +1,5 @@
 package com.blog.ljtatum.eekspellingi.view;
 
-import com.blog.ljtatum.eekspellingi.R;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -12,6 +10,7 @@ import android.graphics.ColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -20,9 +19,15 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import android.graphics.Shader;
 
-// https://github.com/hdodenhof/CircleImageView/blob/master/sample/src/main/res/layout/activity_main.xml
+import com.blog.ljtatum.eekspellingi.R;
+
+/**
+ * Class is a custom imageView transformer to create circular 
+ * images with border options
+ * @author Tatum
+ *
+ */
 public class CircleImageView extends ImageView {
  
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;

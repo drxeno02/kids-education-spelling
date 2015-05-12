@@ -33,6 +33,7 @@
     <string name="btn_rewards">Rewards</string>
     <string name="btn_extras">Extras</string>
     <string name="btn_go">Go!</string>
+    <string name="btn_ok">OK</string>
 
     <!-- device menu related options -->
     <string name="settings_options">More Options</string>

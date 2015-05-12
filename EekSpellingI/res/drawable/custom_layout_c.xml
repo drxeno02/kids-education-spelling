@@ -7,7 +7,7 @@
 
     <solid
         android:width="3dp"
-        android:color="@color/material_light_blue_500_color_code" />
+        android:color="@color/material_purple_500_color_code" />
 
 	<corners
         android:radius="20dp"

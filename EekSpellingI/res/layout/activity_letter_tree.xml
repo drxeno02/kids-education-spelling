@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@color/white"
+    android:background="@drawable/splash_bg_3a"
     android:orientation="vertical"
     tools:context="${packageName}.${activityClass}"
     tools:ignore="UselessParent,contentDescription" >
@@ -214,7 +214,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txt_hint"
-                    android:textColor="@color/grey_shade"
+                    android:textColor="@color/material_grey_500_color_code"
                     android:textSize="@dimen/font_size_20"
                     android:textStyle="bold" />
 

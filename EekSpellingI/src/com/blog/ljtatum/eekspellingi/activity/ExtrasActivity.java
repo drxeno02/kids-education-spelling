@@ -23,6 +23,7 @@ import com.blog.ljtatum.eekspellingi.constants.Constants;
 import com.blog.ljtatum.eekspellingi.sharedpref.SharedPref;
 import com.blog.ljtatum.eekspellingi.util.MusicUtils;
 import com.blog.ljtatum.eekspellingi.util.ShareAppUtil;
+import com.blog.ljtatum.eekspellingi.view.CircleImageView;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
@@ -31,7 +32,8 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 
 	private Activity mActivity;
 	private Context mContext;
-	private ImageView ivBack, ivBanner;
+	private ImageView ivBack; 
+	private CircleImageView ivBatb, ivMath, ivElements, ivTwit, ivFb, ivEmail;
 	private ShareAppUtil shareApp;
 	private SharedPref sharedPref;
 	private TextView tvMeta;
@@ -54,8 +56,13 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 		shareApp = new ShareAppUtil();
 		sharedPref = new SharedPref(mContext, Constants.PREF_FILE_NAME);
 		tvMeta = (TextView) findViewById(R.id.extras_tv_meta);
-		ivBanner = (ImageView) findViewById(R.id.iv_banner);
 		ivBack = (ImageView) findViewById(R.id.extras_iv_back);
+		ivBatb = (CircleImageView) findViewById(R.id.extras_iv1);
+		ivMath = (CircleImageView) findViewById(R.id.extras_iv4);
+		ivTwit = (CircleImageView) findViewById(R.id.extras_iv2);
+		ivFb = (CircleImageView) findViewById(R.id.extras_iv3);
+		ivEmail = (CircleImageView) findViewById(R.id.extras_iv5);
+		ivElements = (CircleImageView) findViewById(R.id.extras_iv6);
 		mToggle = (ToggleButton) findViewById(R.id.toggleButton);
 		rl1 = (RelativeLayout) findViewById(R.id.extras_rl4);
 		rl2 = (RelativeLayout) findViewById(R.id.extras_rl6);
@@ -64,6 +71,20 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 		rl5 = (RelativeLayout) findViewById(R.id.extras_rl8);
 		rl6 = (RelativeLayout) findViewById(R.id.extras_rl10);
 		rlBackground =  (RelativeLayout) findViewById(R.id.extras_rl2);
+		
+		ivBatb.setBorderColor(getResources().getColor(R.color.white));
+		ivBatb.setBorderWidth(5);
+		ivMath.setBorderColor(getResources().getColor(R.color.white));
+		ivMath.setBorderWidth(5);
+		ivElements.setBorderColor(getResources().getColor(R.color.white));
+		ivElements.setBorderWidth(5);
+		ivTwit.setBorderColor(getResources().getColor(R.color.material_orange_500_color_code));
+		ivTwit.setBorderWidth(5);
+		ivFb.setBorderColor(getResources().getColor(R.color.material_orange_500_color_code));
+		ivFb.setBorderWidth(5);
+		ivEmail.setBorderColor(getResources().getColor(R.color.white));
+		ivEmail.setBorderWidth(5);
+		
 		rl1.setOnClickListener(this);
 		rl2.setOnClickListener(this);
 		rl3.setOnClickListener(this);
@@ -71,7 +92,6 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 		rl5.setOnClickListener(this);
 		rl6.setOnClickListener(this);
 		ivBack.setOnClickListener(this);
-		ivBanner.setOnClickListener(this);
 		mToggle.setOnClickListener(this);
 		
 		if (sharedPref.getBooleanPref(Constants.PREF_MUSIC, true)) {
@@ -79,19 +99,16 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 			mToggle.setSelected(true);
 			mToggle.setText("ON");
 			tvMeta.setText("ON");
-			mToggle.setTextColor(getResources().getColor(R.color.green_shade));
-			rlBackground.setBackgroundColor(getResources().getColor(R.color.green_overlay3));
+			mToggle.setTextColor(getResources().getColor(R.color.material_green_500_color_code));
+			rlBackground.setBackgroundColor(getResources().getColor(R.color.material_green_a400_color_code));
 		} else {
 			mToggle.setChecked(false);
 			mToggle.setSelected(false);
 			mToggle.setText("OFF");
 			tvMeta.setText("OFF");
 			mToggle.setTextColor(getResources().getColor(R.color.white));
-			rlBackground.setBackgroundColor(getResources().getColor(R.color.red_overlay3));
+			rlBackground.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
 		}
-		
-		// set default banner
-		setDefaultBanner(mContext, ivBanner);
 	}
 	
 	@Override
@@ -106,7 +123,7 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 				mToggle.setSelected(false);
 				mToggle.setText("OFF");
 				mToggle.setTextColor(getResources().getColor(R.color.white));
-				rlBackground.setBackgroundColor(getResources().getColor(R.color.red_overlay3));
+				rlBackground.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
 				sharedPref.setPref(Constants.PREF_MUSIC, false);
 				MusicUtils.stop();
 			} else {
@@ -114,8 +131,8 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 				mToggle.setChecked(true);
 				mToggle.setSelected(true);
 				mToggle.setText("ON");
-				mToggle.setTextColor(getResources().getColor(R.color.green_shade));
-				rlBackground.setBackgroundColor(getResources().getColor(R.color.green_overlay3));
+				mToggle.setTextColor(getResources().getColor(R.color.material_green_500_color_code));
+				rlBackground.setBackgroundColor(getResources().getColor(R.color.material_green_a400_color_code));
 				sharedPref.setPref(Constants.PREF_MUSIC, true);
 				MusicUtils.start(mContext, 1);
 			}
@@ -215,7 +232,6 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 	 */
 	private void startAnimations() {
 		startButtonAnim(ivBack);
-		startBannerAnim(mContext, ivBanner);
 	}
 
 	@Override

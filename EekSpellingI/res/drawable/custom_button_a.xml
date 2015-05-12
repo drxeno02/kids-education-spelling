@@ -10,7 +10,7 @@
 
             <stroke 
                 android:width="3dp" 
-                android:color="@color/blue_shade" />
+                android:color="@color/material_light_blue_a400_color_code" />
 
             <corners 
                 android:radius="8dp" />
@@ -31,7 +31,7 @@
 
             <stroke 
                 android:width="3dp" 
-                android:color="@color/blue_shade" />
+                android:color="@color/material_light_blue_500_color_code" />
 
             <corners 
                 android:radius="8dp" />
@@ -54,7 +54,7 @@
 
             <stroke 
                 android:width="3dp" 
-                android:color="@color/blue_shade" />
+                android:color="@color/material_light_blue_500_color_code" />
 
             <corners 
                 android:radius="8dp" />

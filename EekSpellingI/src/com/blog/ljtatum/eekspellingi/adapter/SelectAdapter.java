@@ -2,12 +2,14 @@ package com.blog.ljtatum.eekspellingi.adapter;
 
 import java.util.ArrayList;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -49,6 +51,7 @@ public class SelectAdapter extends BaseAdapter {
 		return position;
 	}
 
+	@SuppressLint("NewApi")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
@@ -61,6 +64,7 @@ public class SelectAdapter extends BaseAdapter {
 			view = inflater.inflate(R.layout.item_select, parent, false);		
 			holder = new ViewHolder();
 			
+			holder.ll = (LinearLayout) view.findViewById(R.id.ll_bkg);
 			holder.rlLeft = (RelativeLayout) view.findViewById(R.id.rl_left);
 			holder.rlRight = (RelativeLayout) view.findViewById(R.id.rl_right);
 			holder.tvTitle = (TextView) view.findViewById(R.id.tv_title);	
@@ -100,6 +104,17 @@ public class SelectAdapter extends BaseAdapter {
 		} else {
 			holder.ivLock.setVisibility(View.GONE);
 		}
+		
+		// set background of views
+		if (position == 0 || position == 4 || position == 8) {
+			holder.ll.setBackground(mContext.getResources().getDrawable(R.drawable.custom_layout_a));
+		} else if (position == 1 || position == 5 || position == 9) {
+			holder.ll.setBackground(mContext.getResources().getDrawable(R.drawable.custom_layout_b));
+		} else if (position == 2 || position == 6 || position == 10) {
+			holder.ll.setBackground(mContext.getResources().getDrawable(R.drawable.custom_layout_c));
+		} else {
+			holder.ll.setBackground(mContext.getResources().getDrawable(R.drawable.custom_layout_d));
+		}
 
 		return view;
 	}
@@ -108,6 +123,7 @@ public class SelectAdapter extends BaseAdapter {
 		private ImageView ivLock;
 		private TextView tvLeftBubble, tvRightBubble, tvTitle;
 		private RelativeLayout rlLeft, rlRight;
+		private LinearLayout ll;
 	}
 	
 

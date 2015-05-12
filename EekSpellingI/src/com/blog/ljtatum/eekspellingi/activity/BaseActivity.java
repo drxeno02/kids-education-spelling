@@ -22,6 +22,7 @@ import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -30,6 +31,7 @@ import android.view.animation.LinearInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.blog.ljtatum.eekspellingi.R;
 import com.blog.ljtatum.eekspellingi.constants.Constants;
@@ -212,18 +214,6 @@ public class BaseActivity extends Activity implements OnInitListener {
 		for (ImageView iv : param) {
 			iv.startAnimation(animation);
 		}
-	}
-	
-	
-	protected void startRewardAnim(Context context, int level) {
-		final Dialog alert = new Dialog(context);
-		alert.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		LayoutInflater inflater = LayoutInflater.from(context);
-		View mView = inflater.inflate(R.layout.custom_popup, null);
-		mView.setAnimation(AnimationUtils.loadAnimation(context, R.style.Animation));
-		
-		
-		
 	}
 	
 	/**

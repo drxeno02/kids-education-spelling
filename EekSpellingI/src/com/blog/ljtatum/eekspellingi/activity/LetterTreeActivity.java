@@ -5,13 +5,16 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,6 +37,7 @@ import com.blog.ljtatum.eekspellingi.sharedpref.SharedPref;
 import com.blog.ljtatum.eekspellingi.util.MusicUtils;
 import com.blog.ljtatum.eekspellingi.util.ShareAppUtil;
 import com.blog.ljtatum.eekspellingi.util.Utils;
+import com.blog.ljtatum.eekspellingi.view.CircleImageView;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
@@ -158,7 +162,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 					Logger.i(TAG, "onTextChanged");
 					if (edtAnswer != null && Utils.isNumericRegex(edtAnswer.getText().toString().trim())) {
 						vibrate(mContext, 500);
-						edtAnswer.setTextColor(getResources().getColor(R.color.red_shade));
+						edtAnswer.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
 						String temp = getResources().getString(R.string.txt_no_numbers);
 						hideKeyboard();
 						Crouton.showText(mActivity, temp, Style.ALERT);
@@ -310,7 +314,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		// set hint
 		if (mLevel >= 8) {
 			tvHint.setText("????");
-			tvHint.setTextColor(getResources().getColor(R.color.red_shade));
+			tvHint.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
 		} else {
 			if (mWordCategory == WordCategory.CATEGORY_OBJECT) {
 				tvHint.setText("Object");
@@ -683,27 +687,27 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 
 				if (mLevel >= 8) {
 					startShakeAnim(mContext, llEditAnswer);
-					edtAnswer.setTextColor(getResources().getColor(R.color.red_shade));
+					edtAnswer.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
 				} else {
 					// add color marker that letter is incorrect
 					if (pos == 0) {
-						tv1.setTextColor(getResources().getColor(R.color.red_shade));
+						tv1.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
 					} else if (pos == 1) {
-						tv2.setTextColor(getResources().getColor(R.color.red_shade));
+						tv2.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
 					} else if (pos == 2) {
-						tv3.setTextColor(getResources().getColor(R.color.red_shade));
+						tv3.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
 					} else if (pos == 3) {
-						tv4.setTextColor(getResources().getColor(R.color.red_shade));
+						tv4.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
 					} else if (pos == 4) {
-						tv5.setTextColor(getResources().getColor(R.color.red_shade));
+						tv5.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
 					} else if (pos == 5) {
-						tv6.setTextColor(getResources().getColor(R.color.red_shade));
+						tv6.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
 					} else if (pos == 6) {
-						tv7.setTextColor(getResources().getColor(R.color.red_shade));
+						tv7.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
 					} else if (pos == 7) {
-						tv8.setTextColor(getResources().getColor(R.color.red_shade));
+						tv8.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
 					} else if (pos == 8) {
-						tv9.setTextColor(getResources().getColor(R.color.red_shade));
+						tv9.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
 					}
 					
 					// add selection marker that incorrect letter was selected
@@ -712,33 +716,18 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 
 				if (mLevel == 0) {
 					if (mIncorrectLetters >= 4) {
-						Logger.e(TAG, "level failed");
-						mHandler.postDelayed(new Runnable() {
-							@Override
-							public void run() {
-								goToActivityAnimRight(mContext, SelectActivity.class, -1);
-							}
-						}, 2500);
+						// level failed
+						launchPrevActivity(2500);
 					}
 				} else if (mLevel == 4) {
 					if (mIncorrectLetters >= 3) {
-						Logger.e(TAG, "level failed");
-						mHandler.postDelayed(new Runnable() {
-							@Override
-							public void run() {
-								goToActivityAnimRight(mContext, SelectActivity.class, -1);
-							}
-						}, 2500);
+						// level failed
+						launchPrevActivity(2500);
 					}
 				} else {
 					if (mIncorrectLetters >= 4) {
-						Logger.e(TAG, "level failed");
-						mHandler.postDelayed(new Runnable() {
-							@Override
-							public void run() {
-								goToActivityAnimRight(mContext, SelectActivity.class, -1);
-							}
-						}, 2500);
+						// level failed
+						launchPrevActivity(2500);
 					}
 				}
 				
@@ -759,22 +748,21 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				mSolvedWords++;
 				if (mSolvedWords >= 3) {
 					// TODO: play sounds, animations, messaging and add rewards for completing level
+					boolean isLvUnlockRecent = false;
 					String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
 					String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + (mLevel+4));
 					int lvCount = sharedPref.getIntPref(strPrefName, 0);				
 					if (lvCount >= 3) {
 						boolean isUnlock = sharedPref.getBooleanPref(strPrefNameUnlock, false);
 						if (!isUnlock) {
-							sharedPref.setPref(strPrefNameUnlock, true);
+							isLvUnlockRecent = true;
+							sharedPref.setPref(strPrefNameUnlock, true);											
 						}
 					}		
 					lvCount++;
-					sharedPref.setPref(strPrefName, lvCount);
-					goToActivityAnimRight(mContext, SelectActivity.class, -1);
+					sharedPref.setPref(strPrefName, lvCount);					
+					startRewardAnim(isLvUnlockRecent);
 				} else {
-					// restart level
-					// TODO: play sounds, animations, messaging and add rewards for completing level
-					
 					// delay before generating the next level
 					mHandler.postDelayed(new Runnable() {
 						@Override
@@ -788,7 +776,59 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		}
 	}
 	
+	/**
+	 * Method is used after failing level to go back to SelectActivity
+	 * @param time
+	 */
+	private void launchPrevActivity(final int time) {
+		mHandler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				goToActivityAnimRight(mContext, SelectActivity.class, -1);
+			}
+		}, time);
+	}
+		
+	/**
+	 * Method is used to
+	 * @param isLvUnlockRecent
+	 */
+	@SuppressLint("InflateParams")
+	private void startRewardAnim(boolean isLvUnlockRecent) {
+		final Dialog mDialog = new Dialog(mContext);
+		mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		mDialog.setCancelable(false);
+		LayoutInflater inflater = LayoutInflater.from(mContext);
+		View mView = inflater.inflate(R.layout.custom_popup, null);
+		mDialog.setContentView(mView);
+		TextView tvMeta = (TextView) mView.findViewById(R.id.tv_meta);
+		CircleImageView iv = (CircleImageView) mView.findViewById(R.id.iv1);
+		iv.setBorderColor(getResources().getColor(R.color.white));
+		iv.setBorderWidth(5);
+		Button btnConfirm = (Button) mView.findViewById(R.id.btn_confirm);
+		
+		// set text message
+		if (isLvUnlockRecent) {
+			int levelUnlocked = mLevel + 4;
+			tvMeta.setText("Level " + levelUnlocked + 
+					" is now unlocked! More difficult levels will have more challenging words to learn");
+		} else {
+			tvMeta.setText("Good job! Keep practicing to learn new words");
+		}
 
+		// display dialog
+		mDialog.show();
+		
+		btnConfirm.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				mDialog.dismiss();
+				goToActivityAnimRight(mContext, SelectActivity.class, -1);
+			} 		
+		});
+	}
+	
 	/**
 	 * Method is used to start shimmer animation
 	 *

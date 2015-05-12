@@ -687,7 +687,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		// set hint
 		if (mLevel >= 8) {
 			tvHint.setText("????");
-			tvHint.setTextColor(getResources().getColor(R.color.red_shade));
+			tvHint.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
 		} else {
 			if (mWordCategory == WordCategory.CATEGORY_OBJECT) {
 				tvHint.setText("Object");

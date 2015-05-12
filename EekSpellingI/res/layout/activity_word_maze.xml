@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@color/blue_shade"
+    android:background="@drawable/splash_bg_2a"
     android:orientation="vertical"
     tools:context="${packageName}.${activityClass}"
     tools:ignore="UselessParent,contentDescription" >
@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txt_hint"
-                    android:textColor="@color/grey_shade"
+                    android:textColor="@color/material_grey_500_color_code"
                     android:textSize="@dimen/font_size_20"
                     android:textStyle="bold" />
 
@@ -105,7 +105,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/grey_shade"
+            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -168,7 +168,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/grey_shade"
+            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -206,7 +206,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/grey_shade"
+            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -225,7 +225,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/yellow_shade"
+            android:background="@color/material_yellow_500_color_code"
             android:orientation="horizontal"
             android:visibility="gone" />
     </LinearLayout>
@@ -270,7 +270,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/grey_shade"
+            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -308,7 +308,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/yellow_shade"
+            android:background="@color/material_yellow_500_color_code"
             android:orientation="horizontal"
             android:visibility="gone" />
     </LinearLayout>
@@ -334,7 +334,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/grey_shade"
+            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -372,7 +372,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/grey_shade"
+            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -391,7 +391,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/yellow_shade"
+            android:background="@color/material_yellow_500_color_code"
             android:orientation="horizontal"
             android:visibility="gone" />
     </LinearLayout>
@@ -436,7 +436,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/grey_shade"
+            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -474,7 +474,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/yellow_shade"
+            android:background="@color/material_yellow_500_color_code"
             android:orientation="horizontal"
             android:visibility="gone" />
     </LinearLayout>
@@ -519,7 +519,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/grey_shade"
+            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -557,7 +557,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/yellow_shade"
+            android:background="@color/material_yellow_500_color_code"
             android:orientation="horizontal"
             android:visibility="gone" />
     </LinearLayout>  
@@ -584,7 +584,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/grey_shade"
+            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -622,7 +622,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/grey_shade"
+            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -641,7 +641,7 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/yellow_shade"
+            android:background="@color/material_yellow_500_color_code"
             android:orientation="horizontal"
             android:visibility="gone" />
     </LinearLayout>    

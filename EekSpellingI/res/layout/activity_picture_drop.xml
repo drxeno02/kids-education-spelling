@@ -3,7 +3,7 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_bg_4c"
+    android:background="@drawable/splash_bg_4a"
     android:orientation="vertical"
     tools:context="${packageName}.${activityClass}"
     tools:ignore="UselessParent,contentDescription" >
@@ -278,7 +278,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_below="@id/sv"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
         android:orientation="vertical" >
