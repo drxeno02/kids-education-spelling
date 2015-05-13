@@ -126,6 +126,8 @@ public class SelectActivity extends BaseActivity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.iv_back:
 			finish();
+			// transition animation
+			overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
 			break;
 		case R.id.iv_banner:
 			if (Utils.getBannerId() == 1) {
@@ -241,12 +243,14 @@ public class SelectActivity extends BaseActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 		Crouton.cancelAllCroutons();
 		Crouton.clearCroutonsForActivity(this);
+		SelectModel.clearList();
 		super.onDestroy();
 	}
 
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
+		SelectModel.clearList();
 		super.onBackPressed();
 		// transition animation
 		overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);

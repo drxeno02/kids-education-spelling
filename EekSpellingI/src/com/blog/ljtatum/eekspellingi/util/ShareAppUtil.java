@@ -87,7 +87,7 @@ public class ShareAppUtil {
 		}
 	
 		return shareIntent;
-	} // end shareIntent()
+	}
 
 	/**
 	 * Returns lists of sharable intents, e.g. facebook, twitter, email

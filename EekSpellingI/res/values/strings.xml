@@ -23,6 +23,7 @@
    	<string name="txt_meta">[meta]</string>
     <string name="txt_hint">Hint:</string>
     <string name="txt_select">Lets Learn!</string>
+    <string name="txt_locked">Locked</string>
     <string name="txt_bank">Bank</string>
     <string name="txt_by">By:</string>
     <string name="txt_author">Jordan Mann &amp; Leonard Tatum</string>

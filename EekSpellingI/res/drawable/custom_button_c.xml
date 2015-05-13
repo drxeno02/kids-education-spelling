@@ -5,12 +5,12 @@
         <shape>
             <gradient 
                 android:angle="270" 
-                android:endColor="@color/material_light_blue_a200_color_code" 
-                android:startColor="@color/material_light_blue_a200_color_code" />
+                android:endColor="@color/material_orange_a200_color_code" 
+                android:startColor="@color/material_orange_a200_color_code" />
 
             <stroke 
                 android:width="3dp" 
-                android:color="@color/material_light_blue_a200_color_code" />
+                android:color="@color/material_orange_a200_color_code" />
 
             <corners 
                 android:radius="8dp" />
@@ -26,12 +26,12 @@
     <item android:state_focused="true"><shape>
             <gradient 
                 android:angle="270" 
-                android:endColor="@color/material_light_blue_a200_color_code" 
-                android:startColor="@color/material_light_blue_a200_color_code" />
+                android:endColor="@color/material_orange_a200_color_code" 
+                android:startColor="@color/material_orange_a200_color_code" />
 
             <stroke 
                 android:width="3dp" 
-                android:color="@color/material_light_blue_500_color_code" />
+                android:color="@color/material_orange_500_color_code" />
 
             <corners 
                 android:radius="8dp" />
@@ -49,12 +49,12 @@
             <gradient 
                 android:alpha="0.6" 
                 android:angle="270" 
-                android:endColor="@color/material_light_blue_a200_color_code" 
-                android:startColor="@color/material_light_blue_a200_color_code" />
+                android:endColor="@color/material_orange_a200_color_code" 
+                android:startColor="@color/material_orange_a200_color_code" />
 
             <stroke 
                 android:width="3dp" 
-                android:color="@color/material_light_blue_500_color_code" />
+                android:color="@color/material_orange_500_color_code" />
 
             <corners 
                 android:radius="8dp" />

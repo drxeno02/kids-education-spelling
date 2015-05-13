@@ -24,7 +24,7 @@ import com.blog.ljtatum.eekspellingi.R;
 
 /**
  * Class is a custom imageView transformer to create circular 
- * images with border options
+ * images with border padding options
  * @author Tatum
  *
  */

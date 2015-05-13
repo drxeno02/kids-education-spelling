@@ -8,9 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.blog.ljtatum.eekspellingi.R;
@@ -19,6 +16,7 @@ import com.blog.ljtatum.eekspellingi.logger.Logger;
 import com.blog.ljtatum.eekspellingi.model.SelectModel;
 import com.blog.ljtatum.eekspellingi.sharedpref.SharedPref;
 import com.blog.ljtatum.eekspellingi.util.Utils;
+import com.blog.ljtatum.eekspellingi.view.RoundedImageView;
 
 public class SelectAdapter extends BaseAdapter {
 	private static final String TAG = SelectAdapter.class.getSimpleName();
@@ -63,35 +61,12 @@ public class SelectAdapter extends BaseAdapter {
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			view = inflater.inflate(R.layout.item_select, parent, false);		
 			holder = new ViewHolder();
-			
-			holder.ll = (LinearLayout) view.findViewById(R.id.ll_bkg);
-			holder.rlLeft = (RelativeLayout) view.findViewById(R.id.rl_left);
-			holder.rlRight = (RelativeLayout) view.findViewById(R.id.rl_right);
-			holder.tvTitle = (TextView) view.findViewById(R.id.tv_title);	
-			holder.tvLeftBubble = (TextView) view.findViewById(R.id.tv_left_bubble);
-			holder.tvRightBubble = (TextView) view.findViewById(R.id.tv_right_bubble);
-			holder.ivLock = (ImageView) view.findViewById(R.id.iv_lock);
-		
+
+			holder.tvLock = (TextView) view.findViewById(R.id.tv_lock);
+			holder.rlBkg = (RoundedImageView) view.findViewById(R.id.rl_bkg);	
 			view.setTag(holder);
 		} else {
 			holder = (ViewHolder) view.getTag();
-		}
-
-		holder.tvTitle.setText(mArrySelect.get(position).getTitle());
-		
-		// set visibility gone on views
-		if (position % 2 == 0) {
-			holder.rlLeft.setVisibility(View.GONE);
-			if (holder.rlRight.getVisibility() == View.GONE) {
-				holder.rlRight.setVisibility(View.VISIBLE);
-			}
-			holder.tvRightBubble.setText(mArrySelect.get(position).getMessage());
-		} else {
-			holder.rlRight.setVisibility(View.GONE);
-			if (holder.rlLeft.getVisibility() == View.GONE) {
-				holder.rlLeft.setVisibility(View.VISIBLE);
-			}
-			holder.tvLeftBubble.setText(mArrySelect.get(position).getMessage());
 		}
 		
 		// set visibility on level locks
@@ -99,31 +74,30 @@ public class SelectAdapter extends BaseAdapter {
 			String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + position);
 			Logger.i(TAG, "pos: " + position + " // strPrefNameUnlock: " + strPrefNameUnlock);
 			if (!sharedPref.getBooleanPref(strPrefNameUnlock, false)) {
-				holder.ivLock.setVisibility(View.VISIBLE);
+				holder.tvLock.setVisibility(View.VISIBLE);
 			}
 		} else {
-			holder.ivLock.setVisibility(View.GONE);
+			holder.tvLock.setVisibility(View.GONE);
 		}
 		
 		// set background of views
 		if (position == 0 || position == 4 || position == 8) {
-			holder.ll.setBackground(mContext.getResources().getDrawable(R.drawable.custom_layout_a));
+			holder.rlBkg.setBackground(mContext.getResources().getDrawable(R.drawable.select_letter_tree_block));
 		} else if (position == 1 || position == 5 || position == 9) {
-			holder.ll.setBackground(mContext.getResources().getDrawable(R.drawable.custom_layout_b));
+			holder.rlBkg.setBackground(mContext.getResources().getDrawable(R.drawable.select_spelling_tile_block));
 		} else if (position == 2 || position == 6 || position == 10) {
-			holder.ll.setBackground(mContext.getResources().getDrawable(R.drawable.custom_layout_c));
-		} else {
-			holder.ll.setBackground(mContext.getResources().getDrawable(R.drawable.custom_layout_d));
+			holder.rlBkg.setBackground(mContext.getResources().getDrawable(R.drawable.select_word_maze_block));
+		} else if (position == 3 || position == 7 || position == 11) {
+			holder.rlBkg.setBackground(mContext.getResources().getDrawable(R.drawable.select_picture_block));
 		}
-
 		return view;
 	}
 	
+	
+	
 	private static class ViewHolder {
-		private ImageView ivLock;
-		private TextView tvLeftBubble, tvRightBubble, tvTitle;
-		private RelativeLayout rlLeft, rlRight;
-		private LinearLayout ll;
+		private TextView tvLock;
+		private RoundedImageView rlBkg;
 	}
 	
 

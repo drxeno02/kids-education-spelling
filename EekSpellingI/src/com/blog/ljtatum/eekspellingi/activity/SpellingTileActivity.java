@@ -243,6 +243,8 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 			break;
 		case R.id.iv_back:
 			finish();
+			// transition animation
+			overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
 			break;
 		case R.id.iv_banner:
 			if (Utils.getBannerId() == 1) {

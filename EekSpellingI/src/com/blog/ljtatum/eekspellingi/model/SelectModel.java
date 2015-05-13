@@ -23,6 +23,10 @@ public class SelectModel {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
+	public static void clearList() {
+		arrySelect.clear();
+	}
 
 	public static ArrayList<SelectModel> getArrySelect() {
 		return arrySelect;
