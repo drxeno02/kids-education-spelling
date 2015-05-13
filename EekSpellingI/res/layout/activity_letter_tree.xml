@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/splash_bg_3a"
+    android:background="@drawable/tree_bg"
     android:orientation="vertical"
     tools:context="${packageName}.${activityClass}"
     tools:ignore="UselessParent,contentDescription" >
@@ -195,15 +195,8 @@
             android:layout_weight="0.2"
             android:orientation="vertical" >
 
-            <ImageView
-                android:id="@+id/iv_tree"
-                android:layout_width="240dp"
-                android:layout_height="280dp"
-                android:layout_centerHorizontal="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/ph_tree" />
-
             <LinearLayout
+                android:id="@+id/ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -214,7 +207,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txt_hint"
-                    android:textColor="@color/material_grey_500_color_code"
+                    android:textColor="@color/material_grey_700_color_code"
                     android:textSize="@dimen/font_size_20"
                     android:textStyle="bold" />
 
@@ -228,10 +221,21 @@
                     android:textSize="@dimen/font_size_20" />
             </LinearLayout>
 
+            <ImageView
+                android:id="@+id/iv_tree"
+                android:layout_width="240dp"
+                android:layout_height="280dp"
+                android:layout_below="@id/ll"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="66dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/tree" />
+
             <LinearLayout
                 android:id="@+id/ll_txt_answer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/iv_tree"
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:orientation="horizontal"

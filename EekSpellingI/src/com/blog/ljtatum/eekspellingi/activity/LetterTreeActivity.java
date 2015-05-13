@@ -42,12 +42,13 @@ import com.blog.ljtatum.eekspellingi.view.CircleImageView;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 
+@SuppressLint("NewApi")
 public class LetterTreeActivity extends BaseActivity implements OnClickListener {
 	private static final String TAG = LetterTreeActivity.class.getSimpleName();
 
 	private Activity mActivity;
 	private Context mContext;
-	private ImageView ivBack, ivBanner;
+	private ImageView ivBack, ivBanner, ivTree;
 	private View v1, v2, v3, v4, v5, v6, v7, v8, v9;
 	private TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tvHint;
 	private ShimmerTextView tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4,
@@ -80,6 +81,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 
 	}
 
+	
 	private void getIds() {
 		mActivity = LetterTreeActivity.this;
 		mContext = LetterTreeActivity.this;
@@ -93,6 +95,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		llEditAnswer = (LinearLayout) findViewById(R.id.ll_edit_answer);
 		ivBanner = (ImageView) findViewById(R.id.iv_banner);
 		ivBack = (ImageView) findViewById(R.id.iv_back);
+		ivTree = (ImageView) findViewById(R.id.iv_tree);
 		btnSubmit = (Button) findViewById(R.id.btn_submit);
 		edtAnswer = (EditText) findViewById(R.id.edt_answer_1);
 		v1 = findViewById(R.id.v1);
@@ -136,6 +139,13 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		ivBack.setOnClickListener(this);
 		ivBanner.setOnClickListener(this);
 		btnSubmit.setOnClickListener(this);
+		
+		// set default tree
+		if (mLevel == 4) {
+			ivTree.setImageResource(R.drawable.tree_three);
+		} else {
+			ivTree.setImageResource(R.drawable.tree_four);
+		}
 		
 		// retrieve level
 		Intent intent = getIntent();
