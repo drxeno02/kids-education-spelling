@@ -49,7 +49,7 @@
             android:id="@+id/ll_word_bank"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.8"
+            android:layout_weight="0.8"                      
             android:orientation="vertical"
             android:visibility="gone" >
 
@@ -77,113 +77,105 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:paddingBottom="10dp"
-                android:paddingLeft="4dp"
+                android:paddingLeft="4dp" 
                 android:paddingRight="4dp" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
+                    android:gravity="center_horizontal"
                     android:orientation="vertical"
                     android:weightSum="0.9" >
 
-                    <TextView
-                        android:id="@+id/tv1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:id="@+id/iv1"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:scaleType="fitXY"
+                        android:padding="2dp"
                         android:layout_marginBottom="4dp"
                         android:layout_weight="0.1"
-                        android:gravity="center_horizontal"
-                        android:textAllCaps="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_34" />
+                        android:gravity="center_horizontal" />
 
-                    <TextView
-                        android:id="@+id/tv2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:id="@+id/iv2"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:scaleType="fitXY"
+                        android:padding="2dp"
                         android:layout_marginBottom="4dp"
                         android:layout_weight="0.1"
-                        android:gravity="center_horizontal"
-                        android:textAllCaps="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_34" />
+                        android:gravity="center_horizontal" />
 
-                    <TextView
-                        android:id="@+id/tv3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:id="@+id/iv3"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:scaleType="fitXY"
+                        android:padding="2dp"
                         android:layout_marginBottom="4dp"
                         android:layout_weight="0.1"
-                        android:gravity="center_horizontal"
-                        android:textAllCaps="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_34" />
+                        android:gravity="center_horizontal" />
 
-                    <TextView
-                        android:id="@+id/tv4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:id="@+id/iv4"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:scaleType="fitXY"
+                        android:padding="2dp"
                         android:layout_marginBottom="4dp"
                         android:layout_weight="0.1"
-                        android:gravity="center_horizontal"
-                        android:textAllCaps="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_34" />
+                        android:gravity="center_horizontal" />
 
-                    <TextView
-                        android:id="@+id/tv5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:id="@+id/iv5"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:scaleType="fitXY"
+                        android:padding="2dp"
                         android:layout_marginBottom="4dp"
                         android:layout_weight="0.1"
-                        android:gravity="center_horizontal"
-                        android:textAllCaps="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_34" />
+                        android:gravity="center_horizontal" />
 
-                    <TextView
-                        android:id="@+id/tv6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:id="@+id/iv6"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:scaleType="fitXY"
+                        android:padding="2dp"
                         android:layout_marginBottom="4dp"
                         android:layout_weight="0.1"
-                        android:gravity="center_horizontal"
-                        android:textAllCaps="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_34" />
+                        android:gravity="center_horizontal" />
 
-                    <TextView
-                        android:id="@+id/tv7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:id="@+id/iv7"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:scaleType="fitXY"
+                        android:padding="2dp"
                         android:layout_marginBottom="4dp"
                         android:layout_weight="0.1"
-                        android:gravity="center_horizontal"
-                        android:textAllCaps="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_34" />
+                        android:gravity="center_horizontal" />
 
-                    <TextView
-                        android:id="@+id/tv8"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:id="@+id/iv8"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:scaleType="fitXY"
+                        android:padding="2dp"
                         android:layout_marginBottom="4dp"
                         android:layout_weight="0.1"
-                        android:gravity="center_horizontal"
-                        android:textAllCaps="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_34" />
+                        android:gravity="center_horizontal" />
 
-                    <TextView
-                        android:id="@+id/tv9"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:id="@+id/iv9"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:scaleType="fitXY"
+                        android:padding="2dp"
                         android:layout_weight="0.1"
-                        android:gravity="center_horizontal"
-                        android:textAllCaps="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/font_size_34" />
+                        android:gravity="center_horizontal" />
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>

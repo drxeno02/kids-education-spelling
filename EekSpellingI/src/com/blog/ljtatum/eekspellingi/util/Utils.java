@@ -7,6 +7,7 @@ import java.util.Random;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.blog.ljtatum.eekspellingi.R;
@@ -84,6 +85,18 @@ public class Utils {
 	public static void setTextViewColor(int colorId, TextView... params) {
 		for (TextView tv : params) {
 			tv.setTextColor(colorId);
+		}
+	}
+	
+	/**
+	 * Method is used to set color of TextViews
+	 *
+	 * @param colorId
+	 * @param params
+	 */
+	public static void setImageViewBkgColor(int colorId, ImageView... params) {
+		for (ImageView iv : params) {
+			iv.setBackgroundColor(colorId);
 		}
 	}
 

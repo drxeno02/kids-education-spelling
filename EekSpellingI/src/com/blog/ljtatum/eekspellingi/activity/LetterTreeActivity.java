@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -48,9 +49,9 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 
 	private Activity mActivity;
 	private Context mContext;
-	private ImageView ivBack, ivBanner, ivTree;
+	private ImageView ivBack, ivBanner, ivTree, iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9;
 	private View v1, v2, v3, v4, v5, v6, v7, v8, v9;
-	private TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tvHint;
+	private TextView tvHint;
 	private ShimmerTextView tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4,
 		tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
 	private LinearLayout llWordBank, llEditAnswer;
@@ -107,15 +108,15 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		v7 = findViewById(R.id.v7);
 		v8 = findViewById(R.id.v8);
 		v9 = findViewById(R.id.v9);
-		tv1 = (TextView) findViewById(R.id.tv1);
-		tv2 = (TextView) findViewById(R.id.tv2);
-		tv3 = (TextView) findViewById(R.id.tv3);
-		tv4 = (TextView) findViewById(R.id.tv4);
-		tv5 = (TextView) findViewById(R.id.tv5);
-		tv6 = (TextView) findViewById(R.id.tv6);
-		tv7 = (TextView) findViewById(R.id.tv7);
-		tv8 = (TextView) findViewById(R.id.tv8);
-		tv9 = (TextView) findViewById(R.id.tv9);
+		iv1 = (ImageView) findViewById(R.id.iv1);
+		iv2 = (ImageView) findViewById(R.id.iv2);
+		iv3 = (ImageView) findViewById(R.id.iv3);
+		iv4 = (ImageView) findViewById(R.id.iv4);
+		iv5 = (ImageView) findViewById(R.id.iv5);
+		iv6 = (ImageView) findViewById(R.id.iv6);
+		iv7 = (ImageView) findViewById(R.id.iv7);
+		iv8 = (ImageView) findViewById(R.id.iv8);
+		iv9 = (ImageView) findViewById(R.id.iv9);
 		tvHint = (TextView) findViewById(R.id.tv_hint);
 		tvAnswer1 = (ShimmerTextView) findViewById(R.id.tv_answer_1);
 		tvAnswer2 = (ShimmerTextView) findViewById(R.id.tv_answer_2);
@@ -127,15 +128,15 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		tvAnswer8 = (ShimmerTextView) findViewById(R.id.tv_answer_8);
 		tvAnswer9 = (ShimmerTextView) findViewById(R.id.tv_answer_9);
 
-		tv1.setOnClickListener(this);
-		tv2.setOnClickListener(this);
-		tv3.setOnClickListener(this);
-		tv4.setOnClickListener(this);
-		tv5.setOnClickListener(this);
-		tv6.setOnClickListener(this);
-		tv7.setOnClickListener(this);
-		tv8.setOnClickListener(this);
-		tv9.setOnClickListener(this);
+		iv1.setOnClickListener(this);
+		iv2.setOnClickListener(this);
+		iv3.setOnClickListener(this);
+		iv4.setOnClickListener(this);
+		iv5.setOnClickListener(this);
+		iv6.setOnClickListener(this);
+		iv7.setOnClickListener(this);
+		iv8.setOnClickListener(this);
+		iv9.setOnClickListener(this);
 		ivBack.setOnClickListener(this);
 		ivBanner.setOnClickListener(this);
 		btnSubmit.setOnClickListener(this);
@@ -204,7 +205,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		case R.id.tv1:
+		case R.id.iv1:
 			if (!isController) {
 				if (!arrySelected[0]) {
 					checkLetter(0);
@@ -213,7 +214,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				}
 			}		
 			break;
-		case R.id.tv2:
+		case R.id.iv2:
 			if (!isController) {
 				if (!arrySelected[1]) {
 					checkLetter(1);
@@ -222,7 +223,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				}
 			}			
 			break;
-		case R.id.tv3:
+		case R.id.iv3:
 			if (!isController) {
 				if (!arrySelected[2]) {
 					checkLetter(2);
@@ -231,7 +232,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				}
 			}					
 			break;
-		case R.id.tv4:
+		case R.id.iv4:
 			if (!isController) {
 				if (!arrySelected[3]) {
 					checkLetter(3);
@@ -240,14 +241,14 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				}
 			}			
 			break;
-		case R.id.tv5:
+		case R.id.iv5:
 			if (!isController) {
 				if (!arrySelected[4]) {
 					checkLetter(4);
 				}
 			}		
 			break;
-		case R.id.tv6:
+		case R.id.iv6:
 			if (!isController) {
 				if (!arrySelected[5]) {
 					checkLetter(5);
@@ -256,7 +257,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				}
 			}			
 			break;
-		case R.id.tv7:
+		case R.id.iv7:
 			if (!isController) {
 				if (!arrySelected[6]) {
 					checkLetter(6);
@@ -265,7 +266,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				}
 			}		
 			break;
-		case R.id.tv8:
+		case R.id.iv8:
 			if (!isController) {
 				if (!arrySelected[7]) {
 					checkLetter(7);
@@ -274,7 +275,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				}
 			}			
 			break;
-		case R.id.tv9:
+		case R.id.iv9:
 			if (!isController) {
 				if (!arrySelected[8]) {
 					checkLetter(8);
@@ -422,15 +423,15 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			arryJumbled = getJumbledWord();
 
 			// set char values of word bank
-			tv1.setText(String.valueOf(arryJumbled[0]));
-			tv2.setText(String.valueOf(arryJumbled[1]));
-			tv3.setText(String.valueOf(arryJumbled[2]));
-			tv4.setText(String.valueOf(arryJumbled[3]));
-			tv5.setText(String.valueOf(arryJumbled[4]));
-			tv6.setText(String.valueOf(arryJumbled[5]));
-			tv7.setText(String.valueOf(arryJumbled[6]));
-			tv8.setText(String.valueOf(arryJumbled[7]));
-			tv9.setText(String.valueOf(arryJumbled[8]));
+			iv1.setImageResource(getDrawableLetter(0));
+			iv2.setImageResource(getDrawableLetter(1));
+			iv3.setImageResource(getDrawableLetter(2));
+			iv4.setImageResource(getDrawableLetter(3));
+			iv5.setImageResource(getDrawableLetter(4));
+			iv6.setImageResource(getDrawableLetter(5));
+			iv7.setImageResource(getDrawableLetter(6));
+			iv8.setImageResource(getDrawableLetter(7));
+			iv9.setImageResource(getDrawableLetter(8));
 			
 			// set default selection
 			for (int i = 0; i < arrySelected.length; i++) {
@@ -440,6 +441,61 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			arryJumbled = mWord.toCharArray();
 		}	
 	}
+	
+	private int getDrawableLetter(int index) {	
+		if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("a")) {
+			return R.drawable.a;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("b")) {
+			return R.drawable.b;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("c")) {
+			return R.drawable.c;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("d")) {
+			return R.drawable.d;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("e")) {
+			return R.drawable.e;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("f")) {
+			return R.drawable.f;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("g")) {
+			return R.drawable.g;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("h")) {
+			return R.drawable.h;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("i")) {
+			return R.drawable.i;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("j")) {
+			return R.drawable.j;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("k")) {
+			return R.drawable.k;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("l")) {
+			return R.drawable.l;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("m")) {
+			return R.drawable.m;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("n")) {
+			return R.drawable.n;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("o")) {
+			return R.drawable.o;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("p")) {
+			return R.drawable.p;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("q")) {
+			return R.drawable.q;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("r")) {
+			return R.drawable.r;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("s")) {
+			return R.drawable.s;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("t")) {
+			return R.drawable.t;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("u")) {
+			return R.drawable.u;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("v")) {
+			return R.drawable.v;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("w")) {
+			return R.drawable.w;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("x")) {
+			return R.drawable.x;
+		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("y")) {
+			return R.drawable.y;
+		}
+		return R.drawable.z;
+	}	
 
 	/**
 	 * Method is used to add random letters to word bank
@@ -567,11 +623,11 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9);
 
 		// reset views that were gone to visible
-		Utils.setViewVisibility(true, tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9);
+		Utils.setViewVisibility(true, iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9);
 		
-		// reset views color
-		Utils.setTextViewColor(getResources().getColor(R.color.black), 
-				tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9);
+		// reset imageViews color
+		Utils.setImageViewBkgColor(getResources().getColor(R.color.transparent), 
+				iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9);
 		
 		// reset letter views
 		Utils.setViewVisibility(false, v1, v2, v3, v4, v5, v6, v7, v8, v9,
@@ -590,32 +646,23 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			edtAnswer.setText("");
 		} else {
 			if (pos == 0) {
-				tv1.setText("");
-				tv1.setVisibility(View.GONE);
+				iv1.setVisibility(View.GONE);
 			} else if (pos == 1) {
-				tv2.setText("");
-				tv2.setVisibility(View.GONE);
+				iv2.setVisibility(View.GONE);
 			} else if (pos == 2) {
-				tv3.setText("");
-				tv3.setVisibility(View.GONE);
+				iv3.setVisibility(View.GONE);
 			} else if (pos == 3) {
-				tv4.setText("");
-				tv4.setVisibility(View.GONE);
+				iv4.setVisibility(View.GONE);
 			} else if (pos == 4) {
-				tv5.setText("");
-				tv5.setVisibility(View.GONE);
+				iv5.setVisibility(View.GONE);
 			} else if (pos == 5) {
-				tv6.setText("");
-				tv6.setVisibility(View.GONE);
+				iv6.setVisibility(View.GONE);
 			} else if (pos == 6) {
-				tv7.setText("");
-				tv7.setVisibility(View.GONE);
+				iv7.setVisibility(View.GONE);
 			} else if (pos == 7) {
-				tv8.setText("");
-				tv8.setVisibility(View.GONE);
+				iv8.setVisibility(View.GONE);
 			} else {
-				tv9.setText("");
-				tv9.setVisibility(View.GONE);
+				iv9.setVisibility(View.GONE);
 			}
 		}
 	}
@@ -703,23 +750,23 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				} else {
 					// add color marker that letter is incorrect
 					if (pos == 0) {
-						tv1.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv1.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
 					} else if (pos == 1) {
-						tv2.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv2.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
 					} else if (pos == 2) {
-						tv3.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv3.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
 					} else if (pos == 3) {
-						tv4.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv4.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
 					} else if (pos == 4) {
-						tv5.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv5.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
 					} else if (pos == 5) {
-						tv6.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv6.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
 					} else if (pos == 6) {
-						tv7.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv7.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
 					} else if (pos == 7) {
-						tv8.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv8.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
 					} else if (pos == 8) {
-						tv9.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv9.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
 					}
 					
 					// add selection marker that incorrect letter was selected
