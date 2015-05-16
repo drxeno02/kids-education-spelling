@@ -167,6 +167,11 @@
         <item>white</item>
         <item>black</item>
         <item>red</item>
+        <item>teal</item>
+        <item>green</item>
+        <item>indigo</item>
+        <item>yellow</item>
+        <item>lavender</item>
     </array>
     
     <array name="arryWordBankDays">

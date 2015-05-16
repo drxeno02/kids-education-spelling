@@ -727,7 +727,9 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			tvHint.setTextColor(getResources().getColor(R.color.black));
 		}	
 		
+		// retrieve list of usable words
 		mArryWordBank = getWordBank(arryWordBankFull, mLevel, false);
+		// select a word from usable word list
 		mWord = mArryWordBank.get(r.nextInt(mArryWordBank.size()));
 		generateLevel();
 	}

@@ -330,6 +330,9 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 	 */
 	private void generateLevel() {
 		speakInstructions();
+		
+		// set image source
+		setTiles();
 
 		// confirm that next set of words are unique
 		if (!Utils.checkIfNull(arryPrev)) {
@@ -344,14 +347,9 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 				}
 				isCheck = true;
 			}
-
 			arryPrev.add(mWord);
-			Logger.i(TAG, mWord + " //count: " + mWord.length());
 		}
 
-		// set image source
-		setTiles();
-		
 		// set visibility of views
 		setVisibility(mWord.length());
 	}	
