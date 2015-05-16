@@ -113,7 +113,6 @@
     </array>
     
     <array name="arryWordBankAnimals">
-
         <!-- animals letter words -->
         <item>cat</item>
         <item>cow</item>
@@ -167,6 +166,7 @@
         <!-- colors letter words -->
         <item>white</item>
         <item>black</item>
+        <item>red</item>
     </array>
     
     <array name="arryWordBankDays">

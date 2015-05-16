@@ -36,11 +36,11 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 	
 	private Activity mActivity;
 	private Context mContext;
-	private ImageView ivBack, ivBanner;
+	private ImageView ivBack, ivBanner, iv1, iv2, iv3, iv4, iv5, iv6, iv7, 
+			iv8, iv9, iv10, iv11, iv12, iv13, iv14, iv15, iv16, iv17, iv18, 
+			iv19, iv20, iv21, iv22, iv23, iv24, iv25;
 	private View v1, v2, v3, v4, v5, v6, v7, v8, v9;
-	private TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10, tv11,
-			tv12, tv13, tv14, tv15, tv16, tv17, tv18, tv19, tv20, tv21, tv22,
-			tv23, tv24, tv25, tvHint;
+	private TextView tvHint;
 	private LinearLayout pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9,
 			pos10, pos11, pos12, pos13, pos14, pos15, pos16, pos17, pos18, pos19,
 			pos20, pos21, pos22, pos23, pos24, pos25;
@@ -88,31 +88,31 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 		v7 = findViewById(R.id.v7);
 		v8 = findViewById(R.id.v8);
 		v9 = findViewById(R.id.v9);
-		tv1 = (TextView) findViewById(R.id.tv0);
-		tv2 = (TextView) findViewById(R.id.tv1);
-		tv3 = (TextView) findViewById(R.id.tv2);
-		tv4 = (TextView) findViewById(R.id.tv3);
-		tv5 = (TextView) findViewById(R.id.tv4);
-		tv6 = (TextView) findViewById(R.id.tv5);
-		tv7 = (TextView) findViewById(R.id.tv6);
-		tv8 = (TextView) findViewById(R.id.tv7);
-		tv9 = (TextView) findViewById(R.id.tv8);
-		tv10 = (TextView) findViewById(R.id.tv9);
-		tv11 = (TextView) findViewById(R.id.tv10);
-		tv12 = (TextView) findViewById(R.id.tv11);
-		tv13 = (TextView) findViewById(R.id.tv12);
-		tv14 = (TextView) findViewById(R.id.tv13);
-		tv15 = (TextView) findViewById(R.id.tv14);
-		tv16 = (TextView) findViewById(R.id.tv15);
-		tv17 = (TextView) findViewById(R.id.tv16);
-		tv18 = (TextView) findViewById(R.id.tv17);
-		tv19 = (TextView) findViewById(R.id.tv18);
-		tv20 = (TextView) findViewById(R.id.tv19);
-		tv21 = (TextView) findViewById(R.id.tv20);
-		tv22 = (TextView) findViewById(R.id.tv21);
-		tv23 = (TextView) findViewById(R.id.tv22);
-		tv24 = (TextView) findViewById(R.id.tv23);
-		tv25 = (TextView) findViewById(R.id.tv24);
+		iv1 = (ImageView) findViewById(R.id.iv0);
+		iv2 = (ImageView) findViewById(R.id.iv1);
+		iv3 = (ImageView) findViewById(R.id.iv2);
+		iv4 = (ImageView) findViewById(R.id.iv3);
+		iv5 = (ImageView) findViewById(R.id.iv4);
+		iv6 = (ImageView) findViewById(R.id.iv5);
+		iv7 = (ImageView) findViewById(R.id.iv6);
+		iv8 = (ImageView) findViewById(R.id.iv7);
+		iv9 = (ImageView) findViewById(R.id.iv8);
+		iv10 = (ImageView) findViewById(R.id.iv9);
+		iv11 = (ImageView) findViewById(R.id.iv10);
+		iv12 = (ImageView) findViewById(R.id.iv11);
+		iv13 = (ImageView) findViewById(R.id.iv12);
+		iv14 = (ImageView) findViewById(R.id.iv13);
+		iv15 = (ImageView) findViewById(R.id.iv14);
+		iv16 = (ImageView) findViewById(R.id.iv15);
+		iv17 = (ImageView) findViewById(R.id.iv16);
+		iv18 = (ImageView) findViewById(R.id.iv17);
+		iv19 = (ImageView) findViewById(R.id.iv18);
+		iv20 = (ImageView) findViewById(R.id.iv19);
+		iv21 = (ImageView) findViewById(R.id.iv20);
+		iv22 = (ImageView) findViewById(R.id.iv21);
+		iv23 = (ImageView) findViewById(R.id.iv22);
+		iv24 = (ImageView) findViewById(R.id.iv23);
+		iv25 = (ImageView) findViewById(R.id.iv24);
 		tvHint = (TextView) findViewById(R.id.tv_hint);
 		pos1 = (LinearLayout) findViewById(R.id.pos0);
 		pos2 = (LinearLayout) findViewById(R.id.pos1);
@@ -319,13 +319,6 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 	}
 	
 	/**
-	 * Method is used for setting up the backs of the tiles
-	 */
-	private void setupTiles() {
-		
-	}
-	
-	/**
 	 * Method is used to speak instructions
 	 */
 	private void speakInstructions() {
@@ -356,6 +349,9 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 			Logger.i(TAG, mWord + " //count: " + mWord.length());
 		}
 
+		// set image source
+		setTiles();
+		
 		// set visibility of views
 		setVisibility(mWord.length());
 	}	
@@ -391,10 +387,8 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 		// reset correct and incorrect trackers
 
 		// clear maze letter views
-		Utils.clearText(tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10,
-				tv11, tv12, tv13, tv14, tv15, tvAnswer1, tvAnswer2, tvAnswer3,
-				tvAnswer4, tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8,
-				tvAnswer9);
+		Utils.clearText(tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5, 
+				tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9);
 
 		// reset maze views
 		Utils.setViewVisibility(false, v1, v2, v3, v4, v5, v6, v7, v8, v9,
@@ -405,7 +399,61 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 
 	}
 	
+	/**
+	 * Method sets the tile colors of views
+	 */
+	private void setTiles() {
+		iv1.setImageResource(getDrawableSrc(0));
+		iv2.setImageResource(getDrawableSrc(1));
+		iv3.setImageResource(getDrawableSrc(2));
+		iv4.setImageResource(getDrawableSrc(3));
+		iv5.setImageResource(getDrawableSrc(4));
+		iv6.setImageResource(getDrawableSrc(5));
+		iv7.setImageResource(getDrawableSrc(6));
+		iv8.setImageResource(getDrawableSrc(7));
+		iv9.setImageResource(getDrawableSrc(8));
+		iv10.setImageResource(getDrawableSrc(9));
+		iv11.setImageResource(getDrawableSrc(10));
+		iv12.setImageResource(getDrawableSrc(11));
+		iv13.setImageResource(getDrawableSrc(12));
+		iv14.setImageResource(getDrawableSrc(13));
+		iv15.setImageResource(getDrawableSrc(14));
+		iv16.setImageResource(getDrawableSrc(15));
+		iv17.setImageResource(getDrawableSrc(16));
+		iv18.setImageResource(getDrawableSrc(17));
+		iv19.setImageResource(getDrawableSrc(18));
+		iv20.setImageResource(getDrawableSrc(19));
+		iv21.setImageResource(getDrawableSrc(20));
+		iv22.setImageResource(getDrawableSrc(21));
+		iv23.setImageResource(getDrawableSrc(22));
+		iv24.setImageResource(getDrawableSrc(23));
+		iv25.setImageResource(getDrawableSrc(24));
+	}
 	
+	/**
+	 * Method will return a drawable 
+	 * @param pos
+	 * @return
+	 */
+	private int getDrawableSrc(int pos) {
+		if (pos % 2 == 0) {
+			if (mLevel == 1) {
+				return R.drawable.tile_a;
+			} else if (mLevel == 5) {
+				return R.drawable.tile_b;
+			} else {
+				return R.drawable.tile_c;
+			}
+		}
+		
+		if (mLevel == 1) {
+			return R.drawable.tile_b;
+		} else if (mLevel == 5) {
+			return R.drawable.tile_c;
+		} else {
+			return R.drawable.tile_d;
+		}	
+	}
 	
 	
 	/**

@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rl"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="horizontal" >
@@ -69,6 +69,7 @@
         android:id="@+id/ll1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
         android:layout_below="@id/ll_hint"
         android:orientation="horizontal"
         android:weightSum="1" >
@@ -77,19 +78,15 @@
             android:id="@+id/pos0"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            android:layout_weight="0.2"
-            android:background="@color/material_grey_500_color_code"
+            android:layout_weight="0.2"           
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv0"
+            <ImageView
+                android:id="@+id/iv0"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -97,18 +94,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv1"
+            <ImageView
+                android:id="@+id/iv1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -116,18 +109,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv2"
+            <ImageView
+                android:id="@+id/iv2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -135,18 +124,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv3"
+            <ImageView
+                android:id="@+id/iv3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -154,18 +139,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv4"
+            <ImageView
+                android:id="@+id/iv4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
     </LinearLayout>
 
@@ -173,6 +154,7 @@
         android:id="@+id/ll2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
         android:layout_below="@id/ll1"
         android:orientation="horizontal"
         android:weightSum="1" >
@@ -181,19 +163,15 @@
             android:id="@+id/pos5"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            android:layout_weight="0.2"
-            android:background="@color/white"
+            android:layout_weight="0.2"           
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv5"
+            <ImageView
+                android:id="@+id/iv5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -201,18 +179,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv6"
+            <ImageView
+                android:id="@+id/iv6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -220,18 +194,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv7"
+            <ImageView
+                android:id="@+id/iv7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -239,18 +209,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv8"
+            <ImageView
+                android:id="@+id/iv8"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -258,18 +224,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv9"
+            <ImageView
+                android:id="@+id/iv9"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
     </LinearLayout>
 
@@ -277,6 +239,7 @@
         android:id="@+id/ll3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
         android:layout_below="@id/ll2"
         android:orientation="horizontal"
         android:weightSum="1" >
@@ -286,18 +249,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv10"
+            <ImageView
+                android:id="@+id/iv10"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -305,18 +264,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv11"
+            <ImageView
+                android:id="@+id/iv11"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -324,18 +279,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv12"
+            <ImageView
+                android:id="@+id/iv12"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -343,18 +294,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv13"
+            <ImageView
+                android:id="@+id/iv13"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -362,18 +309,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv14"
+            <ImageView
+                android:id="@+id/iv14"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
     </LinearLayout>
 
@@ -381,6 +324,7 @@
         android:id="@+id/ll4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
         android:layout_below="@id/ll3"
         android:orientation="horizontal"
         android:weightSum="1" >
@@ -390,18 +334,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv15"
+            <ImageView
+                android:id="@+id/iv15"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -409,18 +349,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv16"
+            <ImageView
+                android:id="@+id/iv16"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -428,18 +364,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv17"
+            <ImageView
+                android:id="@+id/iv17"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -447,18 +379,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv18"
+            <ImageView
+                android:id="@+id/iv18"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -466,18 +394,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv19"
+            <ImageView
+                android:id="@+id/iv19"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
     </LinearLayout>
 
@@ -494,18 +418,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv20"
+            <ImageView
+                android:id="@+id/iv20"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -513,18 +433,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv21"
+            <ImageView
+                android:id="@+id/iv21"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -532,18 +448,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv22"
+            <ImageView
+                android:id="@+id/iv22"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -551,18 +463,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv23"
+            <ImageView
+                android:id="@+id/iv23"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
 
         <LinearLayout
@@ -570,18 +478,14 @@
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_weight="0.2"
-            android:background="@color/material_grey_500_color_code"
             android:orientation="horizontal"
             android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tv24"
+            <ImageView
+                android:id="@+id/iv24"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_size_28" />
+                android:src="@drawable/tile_a" />
         </LinearLayout>
     </LinearLayout>
 
@@ -590,7 +494,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ll5"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:weightSum="0.9" >

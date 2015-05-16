@@ -442,6 +442,11 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		}	
 	}
 	
+	/**
+	 * Method will return the image version of the letter param
+	 * @param index
+	 * @return
+	 */
 	private int getDrawableLetter(int index) {	
 		if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("a")) {
 			return R.drawable.a;
