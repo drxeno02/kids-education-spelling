@@ -10,7 +10,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -81,7 +80,6 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		getIds();
 
 	}
-
 	
 	private void getIds() {
 		mActivity = LetterTreeActivity.this;
@@ -742,7 +740,6 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 					}
 				}
 			} else {
-				// TODO: play sounds, animations and messaging
 				vibrate(mContext, 500);
 				mIncorrectLetters++;
 				String temp = Messages.msgPath(false, true);

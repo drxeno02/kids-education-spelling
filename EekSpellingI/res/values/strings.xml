@@ -28,7 +28,7 @@
     <string name="txt_by">By:</string>
     <string name="txt_author">Jordan Mann &amp; Leonard Tatum</string>
     <string name="txt_dialog_wait_please">Please wait&#8230;</string>
-    <string name="txt_dialog_congratulation">Congratulations! Level completed</string>
+    <string name="txt_dialog_congratulation">Congratulations!</string>
     <string name="txt_input_letter">Input A Letter:</string>
     <string name="btn_learn">Learn</string>
     <string name="btn_rewards">Rewards</string>

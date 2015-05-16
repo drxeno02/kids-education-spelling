@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,6 +20,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -32,6 +36,7 @@ import com.blog.ljtatum.eekspellingi.sharedpref.SharedPref;
 import com.blog.ljtatum.eekspellingi.util.MusicUtils;
 import com.blog.ljtatum.eekspellingi.util.ShareAppUtil;
 import com.blog.ljtatum.eekspellingi.util.Utils;
+import com.blog.ljtatum.eekspellingi.view.CircleImageView;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
@@ -46,7 +51,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			tv12, tv13, tv14, tv15, tv16, tv17, tv18, tv19, tv20, tv21, tvHint;
 	private LinearLayout pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9,
 			pos10, pos11, pos12, pos13, pos14, pos15, pos16, pos17, pos18,
-			pos19, pos20, pos21, ll1, ll2, ll3, ll4, ll5;
+			pos19, pos20, pos21, ll1, ll2, ll3, ll4, ll5, ll6, ll7;
 	private View end1, end2, end3, end4, end5, end6, v1, v2, v3, v4, v5, v6, v7, v8, v9;
 	private ShimmerTextView tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4,
 			tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
@@ -144,6 +149,8 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		ll3 = (LinearLayout) findViewById(R.id.ll3);
 		ll4 = (LinearLayout) findViewById(R.id.ll4);
 		ll5 = (LinearLayout) findViewById(R.id.ll5);
+		ll6 = (LinearLayout) findViewById(R.id.ll6);
+		ll7 = (LinearLayout) findViewById(R.id.ll7);
 		end1 = findViewById(R.id.end1);
 		end2 = findViewById(R.id.end2);
 		end3 = findViewById(R.id.end3);
@@ -538,12 +545,39 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			}	
 			mSteps++;
 			startMovement();
-		} else if (currPos == 16 && pos == 119) {
-			currPos = 19;
+		} else if (currPos == 13 && pos == 16) {
+			currPos = 16;
 			if (yEnd > 0) {
 				yEnd = yEnd + yEnd;
 			} else {
 				yEnd = ll5.getBottom() - ll5.getTop();
+			}	
+			mSteps++;
+			startMovement();
+		} else if (currPos == 14 && pos == 17) {
+			currPos = 17;
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll5.getBottom() - ll5.getTop();
+			}	
+			mSteps++;
+			startMovement();
+		} else if (currPos == 15 && pos == 18) {
+			currPos = 18;
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll5.getBottom() - ll5.getTop();
+			}	
+			mSteps++;
+			startMovement();			
+		} else if (currPos == 16 && pos == 19) {
+			currPos = 19;
+			if (yEnd > 0) {
+				yEnd = yEnd + yEnd;
+			} else {
+				yEnd = ll6.getBottom() - ll6.getTop();
 			}	
 			mSteps++;
 			startMovement();
@@ -552,7 +586,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			if (yEnd > 0) {
 				yEnd = yEnd + yEnd;
 			} else {
-				yEnd = ll5.getBottom() - ll5.getTop();
+				yEnd = ll6.getBottom() - ll6.getTop();
 			}	
 			mSteps++;
 			startMovement();
@@ -561,7 +595,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			if (yEnd > 0) {
 				yEnd = yEnd + yEnd;
 			} else {
-				yEnd = ll5.getBottom() - ll5.getTop();
+				yEnd = ll6.getBottom() - ll6.getTop();
 			}	
 			mSteps++;
 			startMovement();
@@ -643,27 +677,27 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			startShimmerAnimation(tvAnswer9);
 		}
 		
-		// check for win
+		// check if maze is completed
 		if (mSteps >= arryPath.size()) {
 			Logger.i(TAG, "maze completed");
 			mSolvedWords++;		
 			if ( mSolvedWords>= 3) {
 				// TODO: play sounds, animations, messaging and add rewards for completing level
-				
-				// delay before ending this activity
-				mHandler.postDelayed(new Runnable() {
-					@Override
-					public void run() {
-						String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
-						int lvCount = sharedPref.getIntPref(strPrefName, 0);
-						sharedPref.setPref(Constants.LV_COUNT.concat("_" + mLevel), lvCount++);
-						goToActivityAnimRight(mContext, SelectActivity.class, -1);
+				boolean isLvUnlockRecent = false;
+				String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
+				String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + (mLevel+4));
+				int lvCount = sharedPref.getIntPref(strPrefName, 0);				
+				if (lvCount >= 3) {
+					boolean isUnlock = sharedPref.getBooleanPref(strPrefNameUnlock, false);
+					if (!isUnlock) {
+						isLvUnlockRecent = true;
+						sharedPref.setPref(strPrefNameUnlock, true);											
 					}
-				}, 3500);				
+				}		
+				lvCount++;
+				sharedPref.setPref(strPrefName, lvCount);					
+				startRewardAnim(isLvUnlockRecent);			
 			} else {
-				// restart level
-				// TODO: play sounds, animations, messaging and add rewards for completing level
-
 				// delay before generating the next level
 				mHandler.postDelayed(new Runnable() {
 					@Override
@@ -674,8 +708,47 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				}, 3000);
 			}			
 		}
-
 	}
+	
+	/**
+	 * Method is used to
+	 * @param isLvUnlockRecent
+	 */
+	@SuppressLint("InflateParams")
+	private void startRewardAnim(boolean isLvUnlockRecent) {
+		final Dialog mDialog = new Dialog(mContext);
+		mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		mDialog.setCancelable(false);
+		LayoutInflater inflater = LayoutInflater.from(mContext);
+		View mView = inflater.inflate(R.layout.custom_popup, null);
+		mDialog.setContentView(mView);
+		TextView tvMeta = (TextView) mView.findViewById(R.id.tv_meta);
+		CircleImageView iv = (CircleImageView) mView.findViewById(R.id.iv1);
+		iv.setBorderColor(getResources().getColor(R.color.white));
+		iv.setBorderWidth(5);
+		Button btnConfirm = (Button) mView.findViewById(R.id.btn_confirm);
+		
+		// set text message
+		if (isLvUnlockRecent) {
+			int levelUnlocked = mLevel + 4;
+			tvMeta.setText("Level " + levelUnlocked + 
+					" is now unlocked! More difficult levels will have more challenging words to learn");
+		} else {
+			tvMeta.setText("Good job! Keep practicing to learn new words");
+		}
+
+		// display dialog
+		mDialog.show();
+		
+		btnConfirm.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				mDialog.dismiss();
+				goToActivityAnimRight(mContext, SelectActivity.class, -1);
+			} 		
+		});
+	}	
 
 	/**
 	 * Method is used to initialize the game level; sets level, default word,
@@ -837,7 +910,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		// setup maze path
 		if (num == 3) {
 			Utils.setViewVisibility(true, v1, v2, v3, tvAnswer1, tvAnswer2,
-					tvAnswer3, pos1, pos2, pos4, pos5, end1);
+					tvAnswer3, pos1, pos2, pos4, pos5, end1, ll1, ll2);
 
 			tv1.setText(String.valueOf(arryLetters[0]));
 			arryPath.add(1);
@@ -854,7 +927,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		} else if (num == 4) {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, tvAnswer1, tvAnswer2,
 					tvAnswer3, tvAnswer4, pos1, pos2, pos3, pos4, pos5, pos6,
-					end1);
+					end1, ll1, ll2);
 
 			tv1.setText(String.valueOf(arryLetters[0]));
 			arryPath.add(1);
@@ -880,7 +953,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		} else if (num == 5) {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, tvAnswer1,
 					tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5, pos1, pos2,
-					pos3, pos4, pos5, pos6, pos7, pos8, pos9, end2);
+					pos3, pos4, pos5, pos6, pos7, pos8, pos9, end2, ll1, ll2, ll3);
 
 			tv1.setText(String.valueOf(arryLetters[0]));
 			arryPath.add(1);
@@ -920,7 +993,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, tvAnswer1,
 					tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5, tvAnswer6,
 					pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9,
-					pos10, pos11, pos12, end3);
+					pos10, pos11, pos12, end3, ll1, ll2, ll3, ll4);
 
 			tv1.setText(String.valueOf(arryLetters[0]));
 			arryPath.add(1);
@@ -978,7 +1051,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
 					tvAnswer6, tvAnswer7, pos1, pos2, pos3, pos4, pos5, 
 					pos6, pos7, pos8, pos9,pos10, pos11, pos12, pos13, 
-					pos14, pos15, end4);
+					pos14, pos15, end4, ll1, ll2, ll3, ll4, ll5);
 
 			tv1.setText(String.valueOf(arryLetters[0]));
 			arryPath.add(1);
@@ -1057,7 +1130,8 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
 					tvAnswer6, tvAnswer7, tvAnswer8, pos1, pos2, pos3, pos4, 
 					pos5, pos6, pos7, pos8, pos9,pos10, pos11, pos12, pos13, 
-					pos14, pos15, pos16, pos17, pos18, end5);
+					pos14, pos15, pos16, pos17, pos18, end5, ll1, ll2, ll3,
+					ll4, ll5, ll6);
 
 			tv1.setText(String.valueOf(arryLetters[0]));
 			arryPath.add(1);
@@ -1161,7 +1235,8 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
 					tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9, pos1, pos2, pos3,  
 					pos4, pos5, pos6, pos7, pos8, pos9,pos10, pos11, pos12, pos13, 
-					pos14, pos15, pos16, pos17, pos18, pos19, pos20, pos21, end6);
+					pos14, pos15, pos16, pos17, pos18, pos19, pos20, pos21, end6,
+					ll1, ll2, ll3, ll4, ll5, ll6, ll7);
 			
 			tv1.setText(String.valueOf(arryLetters[0]));
 			arryPath.add(1);	
