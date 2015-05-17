@@ -566,7 +566,36 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 				pos = r.nextInt(25);
 			}
 			arryPath.add(pos);
+			Logger.i("TEST", "pos: " + pos);
 		}
+		
+		// setup words to solve views
+		if (num == 3) {
+			Utils.setViewVisibility(true, v1, v2, v3,
+					tvAnswer1, tvAnswer2, tvAnswer3);
+		} else if (num == 4) {
+			Utils.setViewVisibility(true, v1, v2, v3, v4,
+					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4);
+		} else if (num == 5) {
+			Utils.setViewVisibility(true, v1, v2, v3, v4, v5,
+					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5);
+		} else if (num == 6) {
+			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6,
+					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
+					tvAnswer6);
+		} else if (num == 7) {
+			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7,
+					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
+					tvAnswer6, tvAnswer7);
+		} else if (num == 8) {
+			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7, v8,
+					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
+					tvAnswer6, tvAnswer7, tvAnswer8);
+		} else if (num == 9) {
+			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7, v8, v9,
+					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
+					tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9);
+		}		
 	}
 	
 	/**
@@ -650,6 +679,7 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 	 * @return
 	 */
 	private int getDrawableLetter(int index) {	
+		Logger.e("TEST", "String.valueOf(arryLetters[index]: " + String.valueOf(arryLetters[index]));
 		if (String.valueOf(arryLetters[index]).equalsIgnoreCase("a")) {
 			return R.drawable.a;
 		} else if (String.valueOf(arryLetters[index]).equalsIgnoreCase("b")) {
@@ -714,6 +744,8 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 		if (!Utils.checkIfNull(arryLetters) && 
 				!Utils.checkIfNull(arryPath)) {
 			
+			Logger.v("TEST", "mWord: " + mWord);
+			Logger.i("TEST", "arryPath.indexOf(pos): " + arryPath.indexOf(pos));
 			if (arryPath.contains(pos)) {
 				if (pos == 0) {
 					iv1.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
@@ -767,7 +799,7 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 					iv25.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
 				}		
 				
-				String c = String.valueOf(arryLetters[pos]);
+				String c = String.valueOf(arryLetters[arryPath.indexOf(pos)]);
 				ArrayList<Integer> arryMatch = new ArrayList<Integer>();
 				if (mWord.contains(c)) {
 					// check the entire word for instances of the selected letter

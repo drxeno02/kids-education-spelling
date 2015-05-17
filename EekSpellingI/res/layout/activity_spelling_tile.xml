@@ -515,7 +515,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
             android:id="@+id/tv_answer_2"
@@ -528,7 +528,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
             android:id="@+id/tv_answer_3"
@@ -541,7 +541,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
             android:id="@+id/tv_answer_4"
@@ -554,7 +554,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
             android:id="@+id/tv_answer_5"
@@ -567,7 +567,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
             android:id="@+id/tv_answer_6"
@@ -580,7 +580,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
             android:id="@+id/tv_answer_7"
@@ -593,7 +593,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
             android:id="@+id/tv_answer_8"
@@ -606,7 +606,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
             android:id="@+id/tv_answer_9"
@@ -620,7 +620,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_30"
-            android:visibility="visible" />
+            android:visibility="gone" />
     </LinearLayout>
 
     <LinearLayout

@@ -72,17 +72,17 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 		rl6 = (RelativeLayout) findViewById(R.id.extras_rl10);
 		rlBackground =  (RelativeLayout) findViewById(R.id.extras_rl2);
 		
-		ivBatb.setBorderColor(getResources().getColor(R.color.white));
+		ivBatb.setBorderColor(getResources().getColor(R.color.black));
 		ivBatb.setBorderWidth(5);
-		ivMath.setBorderColor(getResources().getColor(R.color.white));
+		ivMath.setBorderColor(getResources().getColor(R.color.black));
 		ivMath.setBorderWidth(5);
-		ivElements.setBorderColor(getResources().getColor(R.color.white));
+		ivElements.setBorderColor(getResources().getColor(R.color.black));
 		ivElements.setBorderWidth(5);
-		ivTwit.setBorderColor(getResources().getColor(R.color.material_orange_500_color_code));
+		ivTwit.setBorderColor(getResources().getColor(R.color.black));
 		ivTwit.setBorderWidth(5);
-		ivFb.setBorderColor(getResources().getColor(R.color.material_orange_500_color_code));
+		ivFb.setBorderColor(getResources().getColor(R.color.black));
 		ivFb.setBorderWidth(5);
-		ivEmail.setBorderColor(getResources().getColor(R.color.white));
+		ivEmail.setBorderColor(getResources().getColor(R.color.black));
 		ivEmail.setBorderWidth(5);
 		
 		rl1.setOnClickListener(this);

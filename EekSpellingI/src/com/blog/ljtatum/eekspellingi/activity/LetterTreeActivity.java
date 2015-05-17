@@ -876,19 +876,19 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 						iv9.setImageResource(getDrawableLetter(8, true));
 					}
 					
+					// update tree
+					if (mIncorrectLetters == 1) {
+						ivTree.setImageResource(R.drawable.tree_three);
+					} else if (mIncorrectLetters == 2) {
+						ivTree.setImageResource(R.drawable.tree_two);
+					} else if (mIncorrectLetters == 3) {
+						ivTree.setImageResource(R.drawable.tree_one);
+					} else {
+						ivTree.setImageResource(R.drawable.tree_zero);
+					}
+					
 					// add selection marker that incorrect letter was selected
 					arrySelected[pos] = true;
-				}
-				
-				// update tree
-				if (mIncorrectLetters == 1) {
-					ivTree.setBackground(getResources().getDrawable(R.drawable.tree_three));
-				} else if (mIncorrectLetters == 2) {
-					ivTree.setBackground(getResources().getDrawable(R.drawable.tree_two));
-				} else if (mIncorrectLetters == 3) {
-					ivTree.setBackground(getResources().getDrawable(R.drawable.tree_one));
-				} else {
-					ivTree.setBackground(getResources().getDrawable(R.drawable.tree_zero));
 				}
 
 				if (mLevel == 0) {
