@@ -1,7 +1,7 @@
 <resources>
 
     <!-- application labels -->
-    <string name="app_name">Eek! Spelling I</string>
+    <string name="app_name">Eek! Spelling</string>
     <string name="app_name_label">Eek! Spelling</string>
 
     <!-- game labels -->

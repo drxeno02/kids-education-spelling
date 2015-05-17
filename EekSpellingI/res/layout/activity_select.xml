@@ -50,10 +50,10 @@
         android:id="@+id/ll_banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
         android:gravity="bottom|center"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp" >
 
         <ImageView
             android:id="@+id/iv_banner"

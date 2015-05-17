@@ -99,15 +99,15 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 			mToggle.setSelected(true);
 			mToggle.setText("ON");
 			tvMeta.setText("ON");
-			mToggle.setTextColor(getResources().getColor(R.color.material_green_500_color_code));
-			rlBackground.setBackgroundColor(getResources().getColor(R.color.material_green_a400_color_code));
+			mToggle.setTextColor(getResources().getColor(R.color.white));
+			rlBackground.setBackgroundColor(getResources().getColor(R.color.green_overlay));
 		} else {
 			mToggle.setChecked(false);
 			mToggle.setSelected(false);
 			mToggle.setText("OFF");
 			tvMeta.setText("OFF");
 			mToggle.setTextColor(getResources().getColor(R.color.white));
-			rlBackground.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+			rlBackground.setBackgroundColor(getResources().getColor(R.color.red_overlay));
 		}
 	}
 	
@@ -123,7 +123,7 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 				mToggle.setSelected(false);
 				mToggle.setText("OFF");
 				mToggle.setTextColor(getResources().getColor(R.color.white));
-				rlBackground.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+				rlBackground.setBackgroundColor(getResources().getColor(R.color.red_overlay));
 				sharedPref.setPref(Constants.PREF_MUSIC, false);
 				MusicUtils.stop();
 			} else {
@@ -131,8 +131,8 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 				mToggle.setChecked(true);
 				mToggle.setSelected(true);
 				mToggle.setText("ON");
-				mToggle.setTextColor(getResources().getColor(R.color.material_green_500_color_code));
-				rlBackground.setBackgroundColor(getResources().getColor(R.color.material_green_a400_color_code));
+				mToggle.setTextColor(getResources().getColor(R.color.white));
+				rlBackground.setBackgroundColor(getResources().getColor(R.color.green_overlay));
 				sharedPref.setPref(Constants.PREF_MUSIC, true);
 				MusicUtils.start(mContext, 1);
 			}

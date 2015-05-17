@@ -421,15 +421,15 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			arryJumbled = getJumbledWord();
 
 			// set char values of word bank
-			iv1.setImageResource(getDrawableLetter(0));
-			iv2.setImageResource(getDrawableLetter(1));
-			iv3.setImageResource(getDrawableLetter(2));
-			iv4.setImageResource(getDrawableLetter(3));
-			iv5.setImageResource(getDrawableLetter(4));
-			iv6.setImageResource(getDrawableLetter(5));
-			iv7.setImageResource(getDrawableLetter(6));
-			iv8.setImageResource(getDrawableLetter(7));
-			iv9.setImageResource(getDrawableLetter(8));
+			iv1.setImageResource(getDrawableLetter(0, false));
+			iv2.setImageResource(getDrawableLetter(1, false));
+			iv3.setImageResource(getDrawableLetter(2, false));
+			iv4.setImageResource(getDrawableLetter(3, false));
+			iv5.setImageResource(getDrawableLetter(4, false));
+			iv6.setImageResource(getDrawableLetter(5, false));
+			iv7.setImageResource(getDrawableLetter(6, false));
+			iv8.setImageResource(getDrawableLetter(7, false));
+			iv9.setImageResource(getDrawableLetter(8, false));
 			
 			// set default selection
 			for (int i = 0; i < arrySelected.length; i++) {
@@ -445,59 +445,164 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	 * @param index
 	 * @return
 	 */
-	private int getDrawableLetter(int index) {	
+	private int getDrawableLetter(int index, boolean isWrong) {	
 		if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("a")) {
-			return R.drawable.a;
+			if (!isWrong) {
+				return R.drawable.a;
+			} else {
+				return R.drawable.a_wrong;
+			}		
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("b")) {
-			return R.drawable.b;
+			if (!isWrong) {
+				return R.drawable.b;
+			} else {
+				return R.drawable.b_wrong;
+			}		
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("c")) {
-			return R.drawable.c;
+			if (!isWrong) {
+				return R.drawable.c;
+			} else {
+				return R.drawable.c_wrong;
+			}		
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("d")) {
-			return R.drawable.d;
+			if (!isWrong) {
+				return R.drawable.d;
+			} else {
+				return R.drawable.d_wrong;
+			}		
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("e")) {
-			return R.drawable.e;
+			if (!isWrong) {
+				return R.drawable.e;
+			} else {
+				return R.drawable.e_wrong;
+			}		
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("f")) {
-			return R.drawable.f;
+			if (!isWrong) {
+				return R.drawable.f;
+			} else {
+				return R.drawable.f_wrong;
+			}			
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("g")) {
-			return R.drawable.g;
+			if (!isWrong) {
+				return R.drawable.g;
+			} else {
+				return R.drawable.g_wrong;
+			}		
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("h")) {
-			return R.drawable.h;
+			if (!isWrong) {
+				return R.drawable.h;
+			} else {
+				return R.drawable.h_wrong;
+			}		
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("i")) {
-			return R.drawable.i;
+			if (!isWrong) {
+				return R.drawable.i;
+			} else {
+				return R.drawable.i_wrong;
+			}		
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("j")) {
-			return R.drawable.j;
+			if (!isWrong) {
+				return R.drawable.j;
+			} else {
+				return R.drawable.j_wrong;
+			}			
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("k")) {
-			return R.drawable.k;
+			if (!isWrong) {
+				return R.drawable.k;
+			} else {
+				return R.drawable.k_wrong;
+			}			
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("l")) {
-			return R.drawable.l;
+			if (!isWrong) {
+				return R.drawable.l;
+			} else {
+				return R.drawable.l_wrong;
+			}			
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("m")) {
-			return R.drawable.m;
+			if (!isWrong) {
+				return R.drawable.m;
+			} else {
+				return R.drawable.m_wrong;
+			}			
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("n")) {
-			return R.drawable.n;
+			if (!isWrong) {
+				return R.drawable.n;
+			} else {
+				return R.drawable.n_wrong;
+			}			
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("o")) {
-			return R.drawable.o;
+			if (!isWrong) {
+				return R.drawable.o;
+			} else {
+				return R.drawable.o_wrong;
+			}			
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("p")) {
-			return R.drawable.p;
+			if (!isWrong) {
+				return R.drawable.p;
+			} else {
+				return R.drawable.p_wrong;	
+			}		
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("q")) {
-			return R.drawable.q;
+			if (!isWrong) {
+				return R.drawable.q;
+			} else {
+				return R.drawable.q_wrong;
+			}			
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("r")) {
-			return R.drawable.r;
+			if (!isWrong) {
+				return R.drawable.r;
+			} else {
+				return R.drawable.r_wrong;
+			}		
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("s")) {
-			return R.drawable.s;
+			if (!isWrong) {
+				return R.drawable.s;
+			} else {
+				return R.drawable.s_wrong;
+			}		
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("t")) {
-			return R.drawable.t;
+			if (!isWrong) {
+				return R.drawable.t;
+			} else {
+				return R.drawable.t_wrong;
+			}			
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("u")) {
-			return R.drawable.u;
+			if (!isWrong) {
+				return R.drawable.u;
+			} else {
+				return R.drawable.u_wrong;
+			}		
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("v")) {
-			return R.drawable.v;
+			if (!isWrong) {
+				return R.drawable.v;
+			} else {
+				return R.drawable.v_wrong;
+			}			
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("w")) {
-			return R.drawable.w;
+			if (!isWrong) {
+				return R.drawable.w;
+			} else {
+				return R.drawable.w_wrong;
+			}		
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("x")) {
-			return R.drawable.x;
+			if (!isWrong) {
+				return R.drawable.x;
+			} else {
+				return R.drawable.x_wrong;
+			}			
 		} else if (String.valueOf(arryJumbled[index]).equalsIgnoreCase("y")) {
-			return R.drawable.y;
+			if (!isWrong) {
+				return R.drawable.y;
+			} else {
+				return R.drawable.y_wrong;
+			}			
 		}
-		return R.drawable.z;
+		
+		if (!isWrong) {
+			return R.drawable.z;
+		} else {
+			return R.drawable.z_wrong;
+		}		
 	}	
 
 	/**
@@ -752,27 +857,38 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				} else {
 					// add color marker that letter is incorrect
 					if (pos == 0) {
-						iv1.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv1.setImageResource(getDrawableLetter(0, true));
 					} else if (pos == 1) {
-						iv2.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv2.setImageResource(getDrawableLetter(1, true));
 					} else if (pos == 2) {
-						iv3.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv3.setImageResource(getDrawableLetter(2, true));
 					} else if (pos == 3) {
-						iv4.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv4.setImageResource(getDrawableLetter(3, true));
 					} else if (pos == 4) {
-						iv5.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv5.setImageResource(getDrawableLetter(4, true));
 					} else if (pos == 5) {
-						iv6.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv6.setImageResource(getDrawableLetter(5, true));
 					} else if (pos == 6) {
-						iv7.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv7.setImageResource(getDrawableLetter(6, true));
 					} else if (pos == 7) {
-						iv8.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv8.setImageResource(getDrawableLetter(7, true));
 					} else if (pos == 8) {
-						iv9.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+						iv9.setImageResource(getDrawableLetter(8, true));
 					}
 					
 					// add selection marker that incorrect letter was selected
 					arrySelected[pos] = true;
+				}
+				
+				// update tree
+				if (mIncorrectLetters == 1) {
+					ivTree.setBackground(getResources().getDrawable(R.drawable.tree_three));
+				} else if (mIncorrectLetters == 2) {
+					ivTree.setBackground(getResources().getDrawable(R.drawable.tree_two));
+				} else if (mIncorrectLetters == 3) {
+					ivTree.setBackground(getResources().getDrawable(R.drawable.tree_one));
+				} else {
+					ivTree.setBackground(getResources().getDrawable(R.drawable.tree_zero));
 				}
 
 				if (mLevel == 0) {

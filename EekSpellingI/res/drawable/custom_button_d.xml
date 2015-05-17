@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <shape>
+            <gradient 
+                android:angle="270" 
+                android:endColor="@color/material_lime_a400_color_code" 
+                android:startColor="@color/material_lime_a400_color_code" />
+
+            <padding 
+                android:bottom="10dp" 
+                android:left="10dp" 
+                android:right="10dp" 
+                android:top="10dp" />
+        </shape>
+       
+    </item>
+    <item android:state_focused="true"><shape>
+            <gradient 
+                android:angle="270" 
+                android:endColor="@color/material_lime_a400_color_code" 
+                android:startColor="@color/material_lime_a400_color_code" />
+
+            <padding 
+                android:bottom="10dp" 
+                android:left="10dp" 
+                android:right="10dp" 
+                android:top="10dp" />
+        </shape>
+        
+    </item>
+    <item>
+        <shape>
+            <gradient 
+                android:alpha="0.6" 
+                android:angle="270" 
+                android:endColor="@color/material_lime_500_color_code" 
+                android:startColor="@color/material_lime_500_color_code" />
+
+            <padding 
+                android:bottom="10dp" 
+                android:left="10dp" 
+                android:right="10dp" 
+                android:top="10dp" />
+        </shape>      
+    </item>
+</selector>

@@ -59,7 +59,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	private int mLevel = 0, mSolvedWords = 0, mSteps = 0, xStart = 0,
 			yStart = 0, xEnd = 0, yEnd = 0, currPos = 0;
 	private String mWord;
-	private boolean isController = false;
+	private boolean isController = false, isLvUnlockRecent = false;
 	private List<String> mArryWordBank, arryPrev;
 	private List<Integer> arryPath;
 
@@ -683,7 +683,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			mSolvedWords++;		
 			if ( mSolvedWords>= 3) {
 				// TODO: play sounds, animations, messaging and add rewards for completing level
-				boolean isLvUnlockRecent = false;
+				isLvUnlockRecent = false;
 				String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
 				String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + (mLevel+4));
 				int lvCount = sharedPref.getIntPref(strPrefName, 0);				
@@ -695,8 +695,13 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 					}
 				}		
 				lvCount++;
-				sharedPref.setPref(strPrefName, lvCount);					
-				startRewardAnim(isLvUnlockRecent);			
+				sharedPref.setPref(strPrefName, lvCount);
+				mHandler.postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						startRewardAnim();
+					}
+				}, 3500);						
 			} else {
 				// delay before generating the next level
 				mHandler.postDelayed(new Runnable() {
@@ -715,7 +720,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	 * @param isLvUnlockRecent
 	 */
 	@SuppressLint("InflateParams")
-	private void startRewardAnim(boolean isLvUnlockRecent) {
+	private void startRewardAnim() {
 		final Dialog mDialog = new Dialog(mContext);
 		mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		mDialog.setCancelable(false);

@@ -47,9 +47,16 @@
     <View
         android:id="@+id/drag_view"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_centerVertical="true"
-        android:background="@color/black_overlay2" />
+        android:layout_above="@+id/v_sea"
+        android:layout_height="200dp"
+        android:background="@drawable/picture_drop_boat" />
+    
+        <View
+        android:id="@+id/v_sea"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/blue_sea" />
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/splash_bg_1a"
+    android:background="@drawable/bg_tile"
     android:orientation="vertical"
     tools:context="${packageName}.${activityClass}"
     tools:ignore="UselessParent,contentDescription" >
@@ -69,9 +69,9 @@
         android:id="@+id/ll1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:baselineAligned="false"
-        android:layout_marginBottom="6dp"
         android:layout_below="@id/ll_hint"
+        android:layout_marginBottom="6dp"
+        android:baselineAligned="false"
         android:orientation="horizontal"
         android:weightSum="1" >
 
@@ -79,7 +79,7 @@
             android:id="@+id/pos0"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            android:layout_weight="0.2"           
+            android:layout_weight="0.2"
             android:orientation="horizontal"
             android:visibility="visible" >
 
@@ -155,9 +155,9 @@
         android:id="@+id/ll2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/ll1"
         android:layout_marginBottom="6dp"
         android:baselineAligned="false"
-        android:layout_below="@id/ll1"
         android:orientation="horizontal"
         android:weightSum="1" >
 
@@ -165,7 +165,7 @@
             android:id="@+id/pos5"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            android:layout_weight="0.2"           
+            android:layout_weight="0.2"
             android:orientation="horizontal"
             android:visibility="visible" >
 
@@ -241,9 +241,9 @@
         android:id="@+id/ll3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:baselineAligned="false"
-        android:layout_marginBottom="6dp"
         android:layout_below="@id/ll2"
+        android:layout_marginBottom="6dp"
+        android:baselineAligned="false"
         android:orientation="horizontal"
         android:weightSum="1" >
 
@@ -327,9 +327,9 @@
         android:id="@+id/ll4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:baselineAligned="false"
-        android:layout_marginBottom="6dp"
         android:layout_below="@id/ll3"
+        android:layout_marginBottom="6dp"
+        android:baselineAligned="false"
         android:orientation="horizontal"
         android:weightSum="1" >
 
@@ -413,8 +413,8 @@
         android:id="@+id/ll5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:baselineAligned="false"
         android:layout_below="@id/ll4"
+        android:baselineAligned="false"
         android:orientation="horizontal"
         android:weightSum="1" >
 

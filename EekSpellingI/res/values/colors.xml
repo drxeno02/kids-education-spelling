@@ -152,7 +152,7 @@
     <color name="material_green_200_color_code">#72d572</color>
     <color name="material_green_300_color_code">#42bd41</color>
     <color name="material_green_400_color_code">#2baf2b</color>
-    <color name="material_green_500_color_code">#259b24</color>
+    <color name="material_green_500_color_code">#66259b24</color>
     <color name="material_green_600_color_code">#0a8f08</color>
     <color name="material_green_700_color_code">#0a7e07</color>
     <color name="material_green_800_color_code">#056f00</color>
@@ -296,6 +296,15 @@
 
     <!-- transparent -->
     <color name="transparent">#00000000</color>
+    
+    <!-- sea blue -->
+    <color name="blue_sea">#3366FF</color>
+    
+    <!-- green 40% -->
+    <color name="green_overlay">#66259b24</color>
+    
+    <!-- red 40% -->
+    <color name="red_overlay">#66e51c23</color>
 
     <!-- black -->
     <color name="black">#000000</color>
