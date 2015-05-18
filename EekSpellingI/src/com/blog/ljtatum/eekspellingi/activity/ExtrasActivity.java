@@ -270,7 +270,6 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
-		destroyTTS();
 		Crouton.cancelAllCroutons();
 		Crouton.clearCroutonsForActivity(this);
 		super.onDestroy();
@@ -279,7 +278,6 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
-		destroyTTS();
 		super.onBackPressed();
 		// transition animation
 		overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);

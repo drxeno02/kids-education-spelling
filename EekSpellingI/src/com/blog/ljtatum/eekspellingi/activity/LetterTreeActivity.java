@@ -149,7 +149,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		// retrieve level
 		Intent intent = getIntent();
 		if (!Utils.checkIfNull(intent)) {
-			mLevel = intent.getIntExtra(Constants.LEVEL_SELECTED, 0);
+			mLevel = intent.getIntExtra(Constants.LV_SELECTED, 0);
 			Logger.i(TAG, "level: " + mLevel);
 		}
 		
@@ -374,7 +374,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	 * Method is used to speak instructions
 	 */
 	private void speakInstructions() {
-		int temp = r.nextInt(3);
+		int temp = r.nextInt(4);
 		if (temp >= 0) {
 			speakText("Try to solve the word!");
 		} else if (temp == 1) {
@@ -604,6 +604,26 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			return R.drawable.z_wrong;
 		}		
 	}	
+	
+	/**
+	 * Method will return the reward image
+	 * @param index
+	 * @return
+	 */
+	private int getDrawableReward(int index) {	
+		if (index == 0) {
+			return R.drawable.reward_one;
+		} else if (index == 1) {
+			return R.drawable.reward_two;
+		} else if (index == 2) {
+			return R.drawable.reward_three;
+		} else if (index == 3) {
+			return R.drawable.reward_four;
+		} else if (index == 4) {
+			return R.drawable.reward_five;
+		}
+		return R.drawable.a;		
+	}
 
 	/**
 	 * Method is used to add random letters to word bank
@@ -725,6 +745,9 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		// reset correct and incorrect trackers
 		mCorrectLetters = 0;
 		mIncorrectLetters = 0;
+		
+		// reset tree
+		ivTree.setImageResource(R.drawable.tree_zero);
 
 		// clear letter views
 		Utils.clearText(tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4,
@@ -923,34 +946,87 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			if (mWord.length() == mCorrectLetters) {
 				Logger.i(TAG, "word solved");
 				mSolvedWords++;
-				if (mSolvedWords >= 3) {
-					// TODO: play sounds, animations, messaging and add rewards for completing level
-					boolean isLvUnlockRecent = false;
-					String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
-					String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + (mLevel+4));
-					int lvCount = sharedPref.getIntPref(strPrefName, 0);				
-					if (lvCount >= 3) {
-						boolean isUnlock = sharedPref.getBooleanPref(strPrefNameUnlock, false);
-						if (!isUnlock) {
-							isLvUnlockRecent = true;
-							sharedPref.setPref(strPrefNameUnlock, true);											
+				
+				// speak the completed word
+				reviewWord();
+				
+				mHandler.postDelayed(new Runnable() {
+					@Override
+					public void run() {	
+			
+						if (mSolvedWords >= 3) {
+							// TODO: play sounds, animations, messaging and add rewards for completing level
+							boolean isLvUnlockRecent = false;
+							String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
+							String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + (mLevel+4));
+							int lvCount = sharedPref.getIntPref(strPrefName, 0);				
+							if (lvCount >= 3) {
+								boolean isUnlock = sharedPref.getBooleanPref(strPrefNameUnlock, false);
+								if (!isUnlock) {
+									isLvUnlockRecent = true;
+									sharedPref.setPref(strPrefNameUnlock, true);											
+								}
+							}		
+							lvCount++;
+							sharedPref.setPref(strPrefName, lvCount);	
+							startRewardAnim(isLvUnlockRecent);
+						} else {
+							// delay before generating the next level
+							mHandler.postDelayed(new Runnable() {
+								@Override
+								public void run() {						
+									generateLevel();
+								}
+							}, 2500);
 						}
-					}		
-					lvCount++;
-					sharedPref.setPref(strPrefName, lvCount);					
-					startRewardAnim(isLvUnlockRecent);
-				} else {
-					// delay before generating the next level
-					mHandler.postDelayed(new Runnable() {
-						@Override
-						public void run() {						
-							speakInstructions();
-							generateLevel();
-						}
-					}, 2500);
-				}
+				
+					}
+				}, 4200);				
 			}
 		}
+	}
+	
+	/**
+	 * Method is used to speak and animate the completed word
+	 */
+	private void reviewWord() {
+		speakText(mWord);
+		
+		if (tvAnswer1.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer1);
+		} 
+		
+		if (tvAnswer2.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer2);
+		}
+
+		if (tvAnswer3.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer3);
+		}
+		
+		if (tvAnswer4.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer4);
+		}		
+	
+		if (tvAnswer5.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer5);
+		}
+		
+		if (tvAnswer6.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer6);
+		}
+		
+		if (tvAnswer7.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer7);
+		}
+		
+		if (tvAnswer8.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer8);
+		}	
+		
+		if (tvAnswer9.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer9);
+		}	
 	}
 	
 	/**
@@ -983,6 +1059,15 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		iv.setBorderColor(getResources().getColor(R.color.white));
 		iv.setBorderWidth(5);
 		Button btnConfirm = (Button) mView.findViewById(R.id.btn_confirm);
+		
+		// setup rewards
+		int rewardCount = 0;
+		int mReward = r.nextInt(5);
+		String strPrefName = Constants.REWARDS.concat("_" + mReward);
+		rewardCount = sharedPref.getIntPref(strPrefName, 0);
+		rewardCount++;
+		sharedPref.setPref(strPrefName, rewardCount);
+		iv.setImageResource(getDrawableReward(mReward));
 		
 		// set text message
 		if (isLvUnlockRecent) {
@@ -1062,7 +1147,6 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
-		destroyTTS();
 		Crouton.cancelAllCroutons();
 		Crouton.clearCroutonsForActivity(this);
 		super.onDestroy();
@@ -1071,7 +1155,6 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
-		destroyTTS();
 		super.onBackPressed();
 		// transition animation
 		overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);

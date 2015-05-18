@@ -53,7 +53,7 @@ public class BaseActivity extends Activity implements OnInitListener {
 	protected void goToActivityAnimLeft(Context context, Class<?> activity, int level) {
 		Intent intent = new Intent(context, activity);
 		if (level >= 0) {
-			intent.putExtra(Constants.LEVEL_SELECTED, level);
+			intent.putExtra(Constants.LV_SELECTED, level);
 		}
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
 			| Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -72,7 +72,7 @@ public class BaseActivity extends Activity implements OnInitListener {
 	protected void goToActivityAnimRight(Context context, Class<?> activity, int level) {
 		Intent intent = new Intent(context, activity);
 		if (level >= 0) {
-			intent.putExtra(Constants.LEVEL_SELECTED, level);
+			intent.putExtra(Constants.LV_SELECTED, level);
 		}
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
 			| Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -90,7 +90,7 @@ public class BaseActivity extends Activity implements OnInitListener {
 	protected void goToActivity(Context context, Class<?> activity, int level) {
 		Intent intent = new Intent(context, activity);
 		if (level >= 0) {
-			intent.putExtra(Constants.LEVEL_SELECTED, level);
+			intent.putExtra(Constants.LV_SELECTED, level);
 		}
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
 			| Intent.FLAG_ACTIVITY_SINGLE_TOP);

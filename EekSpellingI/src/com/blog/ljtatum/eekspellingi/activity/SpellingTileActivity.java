@@ -189,7 +189,7 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 		// retrieve level
 		Intent intent = getIntent();
 		if (!Utils.checkIfNull(intent)) {
-			mLevel = intent.getIntExtra(Constants.LEVEL_SELECTED, 0);
+			mLevel = intent.getIntExtra(Constants.LV_SELECTED, 0);
 			Logger.i(TAG, "level: " + mLevel);
 		}		
 
@@ -735,6 +735,26 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 	}	
 	
 	/**
+	 * Method will return the reward image
+	 * @param index
+	 * @return
+	 */
+	private int getDrawableReward(int index) {	
+		if (index == 0) {
+			return R.drawable.reward_one;
+		} else if (index == 1) {
+			return R.drawable.reward_two;
+		} else if (index == 2) {
+			return R.drawable.reward_three;
+		} else if (index == 3) {
+			return R.drawable.reward_four;
+		} else if (index == 4) {
+			return R.drawable.reward_five;
+		}
+		return R.drawable.a;		
+	}	
+	
+	/**
 	 * Method is used to check the selected letter from the 
 	 * word bank with the possible letters of the correct answer
 	 * @param pos
@@ -941,6 +961,15 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 		iv.setBorderWidth(5);
 		Button btnConfirm = (Button) mView.findViewById(R.id.btn_confirm);
 		
+		// setup rewards
+		int rewardCount = 0;
+		int mReward = r.nextInt(5);
+		String strPrefName = Constants.REWARDS.concat("_" + mReward);
+		rewardCount = sharedPref.getIntPref(strPrefName, 0);
+		rewardCount++;
+		sharedPref.setPref(strPrefName, rewardCount);
+		iv.setImageResource(getDrawableReward(mReward));				
+		
 		// set text message
 		if (isLvUnlockRecent) {
 			int levelUnlocked = mLevel + 4;
@@ -1019,7 +1048,6 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
-		destroyTTS();
 		Crouton.cancelAllCroutons();
 		Crouton.clearCroutonsForActivity(this);
 		super.onDestroy();
@@ -1028,7 +1056,6 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
-		destroyTTS();
 		super.onBackPressed();
 		// transition animation
 		overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);

@@ -89,6 +89,7 @@ public class SelectActivity extends BaseActivity implements OnClickListener {
 					} else {
 						vibrate(mContext, 500);
 						Crouton.showText(mActivity, "Level is locked", Style.ALERT);
+						speakText("Level is locked");
 					}
 				} else if (position == 1 || position == 5 || position == 9) {
 					if (isUnlock) {
@@ -97,6 +98,7 @@ public class SelectActivity extends BaseActivity implements OnClickListener {
 					} else {
 						vibrate(mContext, 500);
 						Crouton.showText(mActivity, "Level is locked", Style.ALERT);
+						speakText("Level is locked");
 					}
 				} else if (position == 2 || position == 6 || position == 10) {
 					if (isUnlock) {
@@ -105,6 +107,7 @@ public class SelectActivity extends BaseActivity implements OnClickListener {
 					} else {
 						vibrate(mContext, 500);
 						Crouton.showText(mActivity, "Level is locked", Style.ALERT);
+						speakText("Level is locked");
 					}
 				} else if (position == 3 || position == 7 || position == 11) {
 					if (isUnlock) {
@@ -113,6 +116,7 @@ public class SelectActivity extends BaseActivity implements OnClickListener {
 					} else {
 						vibrate(mContext, 500);
 						Crouton.showText(mActivity, "Level is locked", Style.ALERT);
+						speakText("Level is locked");
 					}
 				}
 			}
@@ -165,7 +169,6 @@ public class SelectActivity extends BaseActivity implements OnClickListener {
 	 * @return arryList of titles and messages
 	 */
 	private ArrayList<SelectModel> populateSelectModel() {
-
 		SelectModel model = null;
 		for (int i = 0; i < 12; i++) {
 			model = new SelectModel();

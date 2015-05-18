@@ -7,8 +7,7 @@ public class Constants {
 	public static final boolean DEBUG_HIGH_VERBOSITY = true;
 
 	// constants
-	public static final String LEVEL_SELECTED = "levelSelected";
-	public static final String LEVEL_COUNT = "levelCount";
+	public static final String LV_SELECTED = "lvSelected";
 
 	// shared pref constants
 	public static final String PREF_FILE_NAME = "prefFileName";
@@ -16,6 +15,7 @@ public class Constants {
 	public static final String PREF_DEFAULT_LV_SETTINGS = "prefDefaultLvSettings";
 	public static final String LV_UNLOCKED = "lvUnlocked";
 	public static final String LV_COUNT = "lvCount";
+	public static final String REWARDS = "rewards";
 
 	// app store constants
 	public static final String PKG_NAME_BANANA = "biz.jordanmann.BananaAndTheBeat";
