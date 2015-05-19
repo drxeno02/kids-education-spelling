@@ -9,14 +9,14 @@
     tools:ignore="UselessParent,contentDescription" >
 
     <RelativeLayout
-        android:id="@+id/extras_rl1"
+        android:id="@+id/rl"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/black_overlay3"
         android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/extras_tv_header"
+            android:id="@+id/tv_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -27,7 +27,7 @@
             android:textSize="@dimen/font_size_28" />
 
         <ImageView
-            android:id="@+id/extras_iv_back"
+            android:id="@+id/iv_back"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"
@@ -41,7 +41,7 @@
         android:id="@+id/extras_rl2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/extras_rl1"
+        android:layout_below="@id/rl"
         android:orientation="vertical"
         android:paddingBottom="10dp"
         android:paddingTop="10dp" >

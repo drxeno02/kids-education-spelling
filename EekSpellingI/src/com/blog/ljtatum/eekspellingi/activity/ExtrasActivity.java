@@ -56,7 +56,7 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 		shareApp = new ShareAppUtil();
 		sharedPref = new SharedPref(mContext, Constants.PREF_FILE_NAME);
 		tvMeta = (TextView) findViewById(R.id.extras_tv_meta);
-		ivBack = (ImageView) findViewById(R.id.extras_iv_back);
+		ivBack = (ImageView) findViewById(R.id.iv_back);
 		ivBatb = (CircleImageView) findViewById(R.id.extras_iv1);
 		ivMath = (CircleImageView) findViewById(R.id.extras_iv4);
 		ivTwit = (CircleImageView) findViewById(R.id.extras_iv2);
@@ -72,17 +72,17 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 		rl6 = (RelativeLayout) findViewById(R.id.extras_rl10);
 		rlBackground =  (RelativeLayout) findViewById(R.id.extras_rl2);
 		
-		ivBatb.setBorderColor(getResources().getColor(R.color.black));
+		ivBatb.setBorderColor(getResources().getColor(R.color.material_light_blue_500_color_code));
 		ivBatb.setBorderWidth(5);
-		ivMath.setBorderColor(getResources().getColor(R.color.black));
+		ivMath.setBorderColor(getResources().getColor(R.color.material_light_blue_500_color_code));
 		ivMath.setBorderWidth(5);
-		ivElements.setBorderColor(getResources().getColor(R.color.black));
+		ivElements.setBorderColor(getResources().getColor(R.color.material_light_blue_500_color_code));
 		ivElements.setBorderWidth(5);
-		ivTwit.setBorderColor(getResources().getColor(R.color.black));
+		ivTwit.setBorderColor(getResources().getColor(R.color.material_light_blue_500_color_code));
 		ivTwit.setBorderWidth(5);
-		ivFb.setBorderColor(getResources().getColor(R.color.black));
+		ivFb.setBorderColor(getResources().getColor(R.color.material_light_blue_500_color_code));
 		ivFb.setBorderWidth(5);
-		ivEmail.setBorderColor(getResources().getColor(R.color.black));
+		ivEmail.setBorderColor(getResources().getColor(R.color.material_light_blue_500_color_code));
 		ivEmail.setBorderWidth(5);
 		
 		rl1.setOnClickListener(this);
@@ -218,7 +218,7 @@ public class ExtrasActivity extends BaseActivity implements OnClickListener {
 				e.printStackTrace();
 			}		
 			break;
-		case R.id.extras_iv_back:
+		case R.id.iv_back:
 			// transition animation
 			overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
 			finish();

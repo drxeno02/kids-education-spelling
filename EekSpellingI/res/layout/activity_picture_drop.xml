@@ -47,11 +47,11 @@
     <View
         android:id="@+id/drag_view"
         android:layout_width="match_parent"
-        android:layout_above="@+id/v_sea"
         android:layout_height="200dp"
+        android:layout_above="@+id/v_sea"
         android:background="@drawable/picture_drop_boat" />
-    
-        <View
+
+    <View
         android:id="@+id/v_sea"
         android:layout_width="match_parent"
         android:layout_height="100dp"

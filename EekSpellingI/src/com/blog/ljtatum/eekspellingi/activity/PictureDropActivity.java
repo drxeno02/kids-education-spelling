@@ -39,7 +39,7 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 	private ShareAppUtil shareApp;
 	private SharedPref sharedPref;
 	private RelativeLayout.LayoutParams layoutParams;
-	private boolean containDragable = false;
+	private boolean containDraggable = false;
 	
 	private int xCord, yCord;
 	
@@ -103,14 +103,14 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 					break;
 				case DragEvent.ACTION_DRAG_ENTERED:
 					Logger.i(TAG, "Action is DragEvent.ACTION_DRAG_ENTERED");
-					containDragable = true;
+					containDraggable = true;
 					xCord = (int) event.getX();
 					yCord = (int) event.getY();
 					Logger.i(TAG, "xCord: " + xCord + " // yCord: " + yCord);
 					break;
 				case DragEvent.ACTION_DRAG_EXITED:
 					Logger.i(TAG, "Action is DragEvent.ACTION_DRAG_EXITED");
-					containDragable = false;
+					containDraggable = false;
 					xCord = (int) event.getX();
 					yCord = (int) event.getY();
 					Logger.i(TAG, "xCord: " + xCord + " // yCord: " + yCord);
