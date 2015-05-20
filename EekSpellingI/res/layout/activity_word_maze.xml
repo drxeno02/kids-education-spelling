@@ -87,7 +87,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -106,7 +106,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -125,7 +125,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -170,7 +170,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -189,7 +189,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -208,7 +208,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -254,7 +254,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -273,7 +273,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -292,7 +292,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -338,7 +338,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -357,7 +357,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -376,7 +376,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -422,7 +422,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -441,7 +441,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -460,7 +460,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -506,7 +506,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -525,7 +525,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -544,7 +544,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -590,7 +590,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -609,7 +609,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 
@@ -628,7 +628,7 @@
             android:layout_width="0dp"
             android:layout_height="57dp"
             android:layout_weight="0.2"
-            android:background="@color/black_overlay3"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:visibility="gone" >
 

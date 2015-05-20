@@ -30,7 +30,6 @@ import com.blog.ljtatum.eekspellingi.anim.Shimmer;
 import com.blog.ljtatum.eekspellingi.anim.ShimmerTextView;
 import com.blog.ljtatum.eekspellingi.constants.Constants;
 import com.blog.ljtatum.eekspellingi.enums.WordCategory;
-import com.blog.ljtatum.eekspellingi.helper.Messages;
 import com.blog.ljtatum.eekspellingi.logger.Logger;
 import com.blog.ljtatum.eekspellingi.sharedpref.SharedPref;
 import com.blog.ljtatum.eekspellingi.util.MusicUtils;
@@ -669,10 +668,6 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	 * and to reset the level
 	 */
 	private void checkLetter() {
-		String temp = Messages.msgPath(true, true);
-		Crouton.showText(mActivity, temp, Style.CONFIRM);
-		speakText(temp);
-		
 		// set letter to correct position
 		if (mSteps == 1) {
 			tvAnswer1.setText(String.valueOf(arryLetters[mSteps-1]));
@@ -747,7 +742,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 					}
 			
 				}
-			}, 4200);				
+			}, 3800);				
 		}
 	}
 	
@@ -755,6 +750,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	 * Method is used to speak and animate the completed word
 	 */
 	private void reviewWord() {
+		Crouton.showText(mActivity, mWord, Style.INFO);
 		speakText(mWord);
 		
 		if (tvAnswer1.getVisibility() == View.VISIBLE) {
@@ -951,6 +947,29 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			
 		});		
 		iv1.startAnimation(animation);	
+		
+		// reset color tiles
+		pos1.setBackgroundColor(getResources().getColor(R.color.white));
+		pos2.setBackgroundColor(getResources().getColor(R.color.white));
+		pos3.setBackgroundColor(getResources().getColor(R.color.white));
+		pos4.setBackgroundColor(getResources().getColor(R.color.white));
+		pos5.setBackgroundColor(getResources().getColor(R.color.white));
+		pos6.setBackgroundColor(getResources().getColor(R.color.white));
+		pos7.setBackgroundColor(getResources().getColor(R.color.white));
+		pos8.setBackgroundColor(getResources().getColor(R.color.white));
+		pos9.setBackgroundColor(getResources().getColor(R.color.white));
+		pos10.setBackgroundColor(getResources().getColor(R.color.white));
+		pos11.setBackgroundColor(getResources().getColor(R.color.white));
+		pos12.setBackgroundColor(getResources().getColor(R.color.white));
+		pos13.setBackgroundColor(getResources().getColor(R.color.white));
+		pos14.setBackgroundColor(getResources().getColor(R.color.white));
+		pos15.setBackgroundColor(getResources().getColor(R.color.white));
+		pos16.setBackgroundColor(getResources().getColor(R.color.white));
+		pos17.setBackgroundColor(getResources().getColor(R.color.white));
+		pos18.setBackgroundColor(getResources().getColor(R.color.white));
+		pos19.setBackgroundColor(getResources().getColor(R.color.white));
+		pos20.setBackgroundColor(getResources().getColor(R.color.white));
+		pos21.setBackgroundColor(getResources().getColor(R.color.white));
 	}
 
 	/**
@@ -1006,16 +1025,20 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 					tvAnswer3, pos1, pos2, pos4, pos5, end1, ll1, ll2);
 
 			tv1.setText(String.valueOf(arryLetters[0]));
+			pos1.setBackgroundColor(getResources().getColor(R.color.material_amber_500_color_code));
 			arryPath.add(1);
 			int temp = r.nextInt(2);
 			if (temp == 0) {
 				tv2.setText(String.valueOf(arryLetters[1]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
 				arryPath.add(2);
-			} else {
+			} else {				
 				tv4.setText(String.valueOf(arryLetters[1]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
 				arryPath.add(4);
-			}
+			}		
 			tv5.setText(String.valueOf(arryLetters[2]));
+			pos5.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
 			arryPath.add(5);
 		} else if (num == 4) {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, tvAnswer1, tvAnswer2,
@@ -1023,25 +1046,33 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 					end1, ll1, ll2);
 
 			tv1.setText(String.valueOf(arryLetters[0]));
+			pos1.setBackgroundColor(getResources().getColor(R.color.material_blue_500_color_code));
 			arryPath.add(1);
 			int temp = r.nextInt(3);
 			if (temp == 0) {
 				tv2.setText(String.valueOf(arryLetters[1]));
 				tv3.setText(String.valueOf(arryLetters[2]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos3.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));
 				arryPath.add(2);
 				arryPath.add(3);
 			} else if (temp == 1) {
 				tv4.setText(String.valueOf(arryLetters[1]));
 				tv5.setText(String.valueOf(arryLetters[2]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos5.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));
 				arryPath.add(4);
 				arryPath.add(5);
 			} else {
 				tv2.setText(String.valueOf(arryLetters[1]));
 				tv5.setText(String.valueOf(arryLetters[2]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos5.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));
 				arryPath.add(2);
 				arryPath.add(5);
 			}
 			tv6.setText(String.valueOf(arryLetters[3]));
+			pos6.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
 			arryPath.add(6);
 		} else if (num == 5) {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, tvAnswer1,
@@ -1049,12 +1080,16 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 					pos3, pos4, pos5, pos6, pos7, pos8, pos9, end2, ll1, ll2, ll3);
 
 			tv1.setText(String.valueOf(arryLetters[0]));
+			pos1.setBackgroundColor(getResources().getColor(R.color.material_lime_500_color_code));
 			arryPath.add(1);
 			int temp = r.nextInt(4);
 			if (temp == 0) {
 				tv2.setText(String.valueOf(arryLetters[1]));
 				tv3.setText(String.valueOf(arryLetters[2]));
 				tv6.setText(String.valueOf(arryLetters[3]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos3.setBackgroundColor(getResources().getColor(R.color.material_blue_500_color_code));
+				pos6.setBackgroundColor(getResources().getColor(R.color.material_amber_500_color_code));
 				arryPath.add(2);
 				arryPath.add(3);
 				arryPath.add(6);
@@ -1062,6 +1097,9 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv4.setText(String.valueOf(arryLetters[1]));
 				tv7.setText(String.valueOf(arryLetters[2]));
 				tv8.setText(String.valueOf(arryLetters[3]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos7.setBackgroundColor(getResources().getColor(R.color.material_blue_500_color_code));
+				pos8.setBackgroundColor(getResources().getColor(R.color.material_amber_500_color_code));
 				arryPath.add(4);
 				arryPath.add(7);
 				arryPath.add(8);
@@ -1069,6 +1107,9 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv4.setText(String.valueOf(arryLetters[1]));
 				tv5.setText(String.valueOf(arryLetters[2]));
 				tv8.setText(String.valueOf(arryLetters[3]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos5.setBackgroundColor(getResources().getColor(R.color.material_blue_500_color_code));
+				pos8.setBackgroundColor(getResources().getColor(R.color.material_amber_500_color_code));
 				arryPath.add(4);
 				arryPath.add(5);
 				arryPath.add(8);
@@ -1076,11 +1117,15 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv2.setText(String.valueOf(arryLetters[1]));
 				tv5.setText(String.valueOf(arryLetters[2]));
 				tv8.setText(String.valueOf(arryLetters[3]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos5.setBackgroundColor(getResources().getColor(R.color.material_blue_500_color_code));
+				pos8.setBackgroundColor(getResources().getColor(R.color.material_amber_500_color_code));
 				arryPath.add(2);
 				arryPath.add(5);
 				arryPath.add(8);
 			}
 			tv9.setText(String.valueOf(arryLetters[4]));
+			pos9.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
 			arryPath.add(9);
 		} else if (num == 6) {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, tvAnswer1,
@@ -1089,6 +1134,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 					pos10, pos11, pos12, end3, ll1, ll2, ll3, ll4);
 
 			tv1.setText(String.valueOf(arryLetters[0]));
+			pos1.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
 			arryPath.add(1);
 			int temp = r.nextInt(5);
 			if (temp == 0) {
@@ -1096,6 +1142,10 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv3.setText(String.valueOf(arryLetters[2]));
 				tv6.setText(String.valueOf(arryLetters[3]));
 				tv9.setText(String.valueOf(arryLetters[4]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+				pos3.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));
+				pos6.setBackgroundColor(getResources().getColor(R.color.material_lime_500_color_code));
+				pos9.setBackgroundColor(getResources().getColor(R.color.material_amber_500_color_code));
 				arryPath.add(2);
 				arryPath.add(3);
 				arryPath.add(6);
@@ -1105,6 +1155,10 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv7.setText(String.valueOf(arryLetters[2]));
 				tv10.setText(String.valueOf(arryLetters[3]));
 				tv11.setText(String.valueOf(arryLetters[4]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+				pos7.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));
+				pos10.setBackgroundColor(getResources().getColor(R.color.material_lime_500_color_code));
+				pos11.setBackgroundColor(getResources().getColor(R.color.material_amber_500_color_code));
 				arryPath.add(4);
 				arryPath.add(7);
 				arryPath.add(10);
@@ -1114,6 +1168,10 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv5.setText(String.valueOf(arryLetters[2]));
 				tv8.setText(String.valueOf(arryLetters[3]));
 				tv9.setText(String.valueOf(arryLetters[4]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+				pos5.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));
+				pos8.setBackgroundColor(getResources().getColor(R.color.material_lime_500_color_code));
+				pos9.setBackgroundColor(getResources().getColor(R.color.material_amber_500_color_code));
 				arryPath.add(2);
 				arryPath.add(5);
 				arryPath.add(8);
@@ -1123,6 +1181,10 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv5.setText(String.valueOf(arryLetters[2]));
 				tv8.setText(String.valueOf(arryLetters[3]));
 				tv11.setText(String.valueOf(arryLetters[4]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+				pos5.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));
+				pos8.setBackgroundColor(getResources().getColor(R.color.material_lime_500_color_code));
+				pos11.setBackgroundColor(getResources().getColor(R.color.material_amber_500_color_code));
 				arryPath.add(2);
 				arryPath.add(5);
 				arryPath.add(8);
@@ -1132,12 +1194,17 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv7.setText(String.valueOf(arryLetters[2]));
 				tv8.setText(String.valueOf(arryLetters[3]));
 				tv11.setText(String.valueOf(arryLetters[4]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+				pos7.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));
+				pos8.setBackgroundColor(getResources().getColor(R.color.material_lime_500_color_code));
+				pos11.setBackgroundColor(getResources().getColor(R.color.material_amber_500_color_code));
 				arryPath.add(4);
 				arryPath.add(7);
 				arryPath.add(8);
 				arryPath.add(11);
 			}				
 			tv12.setText(String.valueOf(arryLetters[5]));
+			pos12.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
 			arryPath.add(12);
 		} else if (num == 7) {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7,
@@ -1147,6 +1214,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 					pos14, pos15, end4, ll1, ll2, ll3, ll4, ll5);
 
 			tv1.setText(String.valueOf(arryLetters[0]));
+			pos1.setBackgroundColor(getResources().getColor(R.color.material_blue_500_color_code));
 			arryPath.add(1);
 			int temp = r.nextInt(6);
 			if (temp == 0) {
@@ -1155,6 +1223,11 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv6.setText(String.valueOf(arryLetters[3]));
 				tv9.setText(String.valueOf(arryLetters[4]));
 				tv12.setText(String.valueOf(arryLetters[5]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_amber_500_color_code));
+				pos3.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
+				pos6.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos9.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos12.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));
 				arryPath.add(2);
 				arryPath.add(3);
 				arryPath.add(6);
@@ -1166,6 +1239,11 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv10.setText(String.valueOf(arryLetters[3]));
 				tv13.setText(String.valueOf(arryLetters[4]));
 				tv14.setText(String.valueOf(arryLetters[5]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_amber_500_color_code));
+				pos7.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
+				pos10.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos13.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos14.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));				
 				arryPath.add(4);
 				arryPath.add(7);
 				arryPath.add(10);
@@ -1177,6 +1255,11 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv8.setText(String.valueOf(arryLetters[3]));
 				tv11.setText(String.valueOf(arryLetters[4]));
 				tv12.setText(String.valueOf(arryLetters[5]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_amber_500_color_code));
+				pos5.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
+				pos8.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos11.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos12.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));				
 				arryPath.add(4);
 				arryPath.add(5);
 				arryPath.add(8);
@@ -1188,6 +1271,11 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv8.setText(String.valueOf(arryLetters[3]));
 				tv9.setText(String.valueOf(arryLetters[4]));
 				tv12.setText(String.valueOf(arryLetters[5]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_amber_500_color_code));
+				pos5.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
+				pos8.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos9.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos12.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));				
 				arryPath.add(2);
 				arryPath.add(5);
 				arryPath.add(8);
@@ -1199,6 +1287,11 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv6.setText(String.valueOf(arryLetters[3]));
 				tv9.setText(String.valueOf(arryLetters[4]));
 				tv12.setText(String.valueOf(arryLetters[5]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_amber_500_color_code));
+				pos5.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
+				pos6.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos9.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos12.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));
 				arryPath.add(2);
 				arryPath.add(5);
 				arryPath.add(6);
@@ -1210,6 +1303,11 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv8.setText(String.valueOf(arryLetters[3]));
 				tv11.setText(String.valueOf(arryLetters[4]));
 				tv14.setText(String.valueOf(arryLetters[5]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_amber_500_color_code));
+				pos5.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
+				pos8.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos11.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos14.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));
 				arryPath.add(2);
 				arryPath.add(5);
 				arryPath.add(8);
@@ -1217,6 +1315,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				arryPath.add(14);
 			}
 			tv15.setText(String.valueOf(arryLetters[6]));
+			pos15.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
 			arryPath.add(15);
 		} else if (num == 8) {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7, v8,
@@ -1227,6 +1326,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 					ll4, ll5, ll6);
 
 			tv1.setText(String.valueOf(arryLetters[0]));
+			pos15.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
 			arryPath.add(1);
 			int temp = r.nextInt(7);		
 			if (temp == 0) {
@@ -1236,6 +1336,12 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv9.setText(String.valueOf(arryLetters[4]));
 				tv12.setText(String.valueOf(arryLetters[5]));
 				tv15.setText(String.valueOf(arryLetters[6]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos3.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+				pos6.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));
+				pos9.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos12.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos15.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));			
 				arryPath.add(2);
 				arryPath.add(3);
 				arryPath.add(6);
@@ -1249,6 +1355,12 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv13.setText(String.valueOf(arryLetters[4]));
 				tv16.setText(String.valueOf(arryLetters[5]));
 				tv17.setText(String.valueOf(arryLetters[6]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos7.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+				pos10.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));
+				pos13.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos16.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos17.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));	
 				arryPath.add(4);
 				arryPath.add(7);
 				arryPath.add(10);
@@ -1262,6 +1374,12 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv11.setText(String.valueOf(arryLetters[4]));
 				tv14.setText(String.valueOf(arryLetters[5]));
 				tv15.setText(String.valueOf(arryLetters[6]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos7.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+				pos10.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));
+				pos11.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos14.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos15.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));	
 				arryPath.add(4);
 				arryPath.add(7);
 				arryPath.add(10);
@@ -1275,6 +1393,12 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv11.setText(String.valueOf(arryLetters[4]));
 				tv12.setText(String.valueOf(arryLetters[5]));
 				tv15.setText(String.valueOf(arryLetters[6]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos5.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+				pos8.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));
+				pos11.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos12.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos15.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));	
 				arryPath.add(2);
 				arryPath.add(3);
 				arryPath.add(6);
@@ -1288,6 +1412,12 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv11.setText(String.valueOf(arryLetters[4]));
 				tv14.setText(String.valueOf(arryLetters[5]));
 				tv17.setText(String.valueOf(arryLetters[6]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos7.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+				pos8.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));
+				pos11.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos14.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos17.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));	
 				arryPath.add(4);
 				arryPath.add(7);
 				arryPath.add(8);
@@ -1301,6 +1431,12 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv13.setText(String.valueOf(arryLetters[4]));
 				tv14.setText(String.valueOf(arryLetters[5]));
 				tv17.setText(String.valueOf(arryLetters[6]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos7.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+				pos10.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));
+				pos13.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos14.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos17.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));	
 				arryPath.add(4);
 				arryPath.add(7);
 				arryPath.add(10);
@@ -1314,6 +1450,12 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv13.setText(String.valueOf(arryLetters[4]));
 				tv14.setText(String.valueOf(arryLetters[5]));
 				tv15.setText(String.valueOf(arryLetters[6]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos7.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));
+				pos10.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));
+				pos13.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos14.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos15.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));	
 				arryPath.add(4);
 				arryPath.add(7);
 				arryPath.add(10);
@@ -1322,6 +1464,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				arryPath.add(15);
 			}
 			tv18.setText(String.valueOf(arryLetters[7]));
+			pos18.setBackgroundColor(getResources().getColor(R.color.material_indigo_500_color_code));	
 			arryPath.add(18);
 		} else if (num == 9) {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7, v8, v9,
@@ -1332,6 +1475,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 					ll1, ll2, ll3, ll4, ll5, ll6, ll7);
 			
 			tv1.setText(String.valueOf(arryLetters[0]));
+			pos1.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));
 			arryPath.add(1);	
 			int temp = r.nextInt(8);
 			if (temp == 0) {
@@ -1342,6 +1486,13 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv12.setText(String.valueOf(arryLetters[5]));
 				tv15.setText(String.valueOf(arryLetters[6]));
 				tv18.setText(String.valueOf(arryLetters[7]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos3.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos6.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));	
+				pos9.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
+				pos12.setBackgroundColor(getResources().getColor(R.color.material_indigo_500_color_code));	
+				pos15.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos18.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));			
 				arryPath.add(2);
 				arryPath.add(3);
 				arryPath.add(6);
@@ -1357,6 +1508,13 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv16.setText(String.valueOf(arryLetters[5]));
 				tv19.setText(String.valueOf(arryLetters[6]));
 				tv20.setText(String.valueOf(arryLetters[7]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos7.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos10.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));	
+				pos13.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
+				pos16.setBackgroundColor(getResources().getColor(R.color.material_indigo_500_color_code));	
+				pos19.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos20.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));	
 				arryPath.add(4);
 				arryPath.add(7);
 				arryPath.add(10);
@@ -1372,6 +1530,13 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv14.setText(String.valueOf(arryLetters[5]));
 				tv15.setText(String.valueOf(arryLetters[6]));
 				tv18.setText(String.valueOf(arryLetters[7]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos7.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos10.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));	
+				pos11.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
+				pos14.setBackgroundColor(getResources().getColor(R.color.material_indigo_500_color_code));	
+				pos15.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos18.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));	
 				arryPath.add(4);
 				arryPath.add(7);
 				arryPath.add(10);
@@ -1387,6 +1552,13 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv14.setText(String.valueOf(arryLetters[5]));
 				tv17.setText(String.valueOf(arryLetters[6]));
 				tv18.setText(String.valueOf(arryLetters[7]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos5.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos8.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));	
+				pos11.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
+				pos14.setBackgroundColor(getResources().getColor(R.color.material_indigo_500_color_code));	
+				pos17.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos18.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));	
 				arryPath.add(2);
 				arryPath.add(5);
 				arryPath.add(8);
@@ -1402,6 +1574,13 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv12.setText(String.valueOf(arryLetters[5]));
 				tv15.setText(String.valueOf(arryLetters[6]));
 				tv18.setText(String.valueOf(arryLetters[7]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos7.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos8.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));	
+				pos9.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
+				pos12.setBackgroundColor(getResources().getColor(R.color.material_indigo_500_color_code));	
+				pos15.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos18.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));	
 				arryPath.add(4);
 				arryPath.add(7);
 				arryPath.add(8);
@@ -1417,6 +1596,13 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv14.setText(String.valueOf(arryLetters[5]));
 				tv17.setText(String.valueOf(arryLetters[6]));
 				tv20.setText(String.valueOf(arryLetters[7]));
+				pos2.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos5.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos8.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));	
+				pos11.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
+				pos14.setBackgroundColor(getResources().getColor(R.color.material_indigo_500_color_code));	
+				pos17.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos20.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));	
 				arryPath.add(2);
 				arryPath.add(5);
 				arryPath.add(8);
@@ -1432,6 +1618,13 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv12.setText(String.valueOf(arryLetters[5]));
 				tv15.setText(String.valueOf(arryLetters[6]));
 				tv18.setText(String.valueOf(arryLetters[7]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos5.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos8.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));	
+				pos11.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
+				pos12.setBackgroundColor(getResources().getColor(R.color.material_indigo_500_color_code));	
+				pos15.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos18.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));	
 				arryPath.add(4);
 				arryPath.add(5);
 				arryPath.add(8);
@@ -1447,6 +1640,13 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				tv14.setText(String.valueOf(arryLetters[5]));
 				tv17.setText(String.valueOf(arryLetters[6]));
 				tv20.setText(String.valueOf(arryLetters[7]));
+				pos4.setBackgroundColor(getResources().getColor(R.color.material_light_blue_500_color_code));
+				pos7.setBackgroundColor(getResources().getColor(R.color.material_green_500_color_code));
+				pos10.setBackgroundColor(getResources().getColor(R.color.material_purple_500_color_code));	
+				pos13.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
+				pos14.setBackgroundColor(getResources().getColor(R.color.material_indigo_500_color_code));	
+				pos17.setBackgroundColor(getResources().getColor(R.color.material_light_green_500_color_code));
+				pos20.setBackgroundColor(getResources().getColor(R.color.material_red_500_color_code));	
 				arryPath.add(4);
 				arryPath.add(7);
 				arryPath.add(10);
@@ -1456,6 +1656,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 				arryPath.add(20);
 			}
 			tv21.setText(String.valueOf(arryLetters[8]));
+			pos21.setBackgroundColor(getResources().getColor(R.color.material_orange_500_color_code));	
 			arryPath.add(21);
 		}
 	}

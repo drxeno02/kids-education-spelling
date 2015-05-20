@@ -761,174 +761,275 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 	 */
 	private void checkLetter(int pos) {
 		isController = true;
-		if (!Utils.checkIfNull(arryLetters) && 
-				!Utils.checkIfNull(arryPath)) {
+		if (arryPath.contains(pos)) {
+			if (pos == 0) {
+				iv1.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 1) {
+				iv2.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 2) {	
+				iv3.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 3) {	
+				iv4.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 4) {	
+				iv5.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 5) {	
+				iv6.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 6) {	
+				iv7.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 7) {	
+				iv8.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 8) {	
+				iv9.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 9) {	
+				iv10.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 10) {	
+				iv11.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 11) {	
+				iv12.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 12) {	
+				iv13.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 13) {	
+				iv14.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 14) {	
+				iv15.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 15) {	
+				iv16.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 16) {		
+				iv17.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 17) {		
+				iv18.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 18) {		
+				iv19.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 19) {		
+				iv20.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 20) {		
+				iv21.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 21) {	
+				iv22.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 22) {		
+				iv23.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 23) {	
+				iv24.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			} else if (pos == 24) {		
+				iv25.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
+			}		
 			
-			Logger.v("TEST", "mWord: " + mWord);
-			Logger.i("TEST", "arryPath.indexOf(pos): " + arryPath.indexOf(pos));
-			if (arryPath.contains(pos)) {
-				if (pos == 0) {
-					iv1.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 1) {
-					iv2.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 2) {	
-					iv3.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 3) {	
-					iv4.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 4) {	
-					iv5.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 5) {	
-					iv6.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 6) {	
-					iv7.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 7) {	
-					iv8.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 8) {	
-					iv9.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 9) {	
-					iv10.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 10) {	
-					iv11.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 11) {	
-					iv12.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 12) {	
-					iv13.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 13) {	
-					iv14.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 14) {	
-					iv15.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 15) {	
-					iv16.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 16) {		
-					iv17.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 17) {		
-					iv18.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 18) {		
-					iv19.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 19) {		
-					iv20.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 20) {		
-					iv21.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 21) {	
-					iv22.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 22) {		
-					iv23.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 23) {	
-					iv24.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				} else if (pos == 24) {		
-					iv25.setImageResource(getDrawableLetter(arryPath.indexOf(pos)));
-				}		
+			String c = String.valueOf(arryLetters[arryPath.indexOf(pos)]);
+			ArrayList<Integer> arryMatch = new ArrayList<Integer>();
+			if (mWord.contains(c)) {
+				// check the entire word for instances of the selected letter
+				for (int i = -1; (i = mWord.indexOf(c, i + 1)) != -1;) {
+					arryMatch.add(i);
+				}
 				
-				String c = String.valueOf(arryLetters[arryPath.indexOf(pos)]);
-				ArrayList<Integer> arryMatch = new ArrayList<Integer>();
-				if (mWord.contains(c)) {
-					// check the entire word for instances of the selected letter
-					for (int i = -1; (i = mWord.indexOf(c, i + 1)) != -1;) {
-						arryMatch.add(i);
+				// set letter to correct position
+				for (int i = 0; i < arryMatch.size(); i++) {
+					mCorrectLetters++;
+					String temp = Messages.msgPath(true, true);
+					Crouton.showText(mActivity, temp, Style.CONFIRM);
+					speakText(temp);
+					if (arryMatch.get(i) == 0) {
+						tvAnswer1.setText(c);
+						startShimmerAnimation(tvAnswer1);
+					} else if (arryMatch.get(i) == 1) {
+						tvAnswer2.setText(c);
+						startShimmerAnimation(tvAnswer2);
+					} else if (arryMatch.get(i) == 2) {
+						tvAnswer3.setText(c);
+						startShimmerAnimation(tvAnswer3);
+					} else if (arryMatch.get(i) == 3) {
+						tvAnswer4.setText(c);
+						startShimmerAnimation(tvAnswer4);
+					} else if (arryMatch.get(i) == 4) {
+						tvAnswer5.setText(c);
+						startShimmerAnimation(tvAnswer5);
+					} else if (arryMatch.get(i) == 5) {
+						tvAnswer6.setText(c);
+						startShimmerAnimation(tvAnswer6);
+					} else if (arryMatch.get(i) == 6) {
+						tvAnswer7.setText(c);
+						startShimmerAnimation(tvAnswer7);
+					} else if (arryMatch.get(i) == 7) {
+						tvAnswer8.setText(c);
+						startShimmerAnimation(tvAnswer8);
+					} else if (arryMatch.get(i) == 8) {
+						tvAnswer9.setText(c);
+						startShimmerAnimation(tvAnswer9);
 					}
 					
-					// set letter to correct position
-					for (int i = 0; i < arryMatch.size(); i++) {
-						mCorrectLetters++;
-						String temp = Messages.msgPath(true, true);
-						Crouton.showText(mActivity, temp, Style.CONFIRM);
-						speakText(temp);
-						if (arryMatch.get(i) == 0) {
-							tvAnswer1.setText(c);
-							startShimmerAnimation(tvAnswer1);
-						} else if (arryMatch.get(i) == 1) {
-							tvAnswer2.setText(c);
-							startShimmerAnimation(tvAnswer2);
-						} else if (arryMatch.get(i) == 2) {
-							tvAnswer3.setText(c);
-							startShimmerAnimation(tvAnswer3);
-						} else if (arryMatch.get(i) == 3) {
-							tvAnswer4.setText(c);
-							startShimmerAnimation(tvAnswer4);
-						} else if (arryMatch.get(i) == 4) {
-							tvAnswer5.setText(c);
-							startShimmerAnimation(tvAnswer5);
-						} else if (arryMatch.get(i) == 5) {
-							tvAnswer6.setText(c);
-							startShimmerAnimation(tvAnswer6);
-						} else if (arryMatch.get(i) == 6) {
-							tvAnswer7.setText(c);
-							startShimmerAnimation(tvAnswer7);
-						} else if (arryMatch.get(i) == 7) {
-							tvAnswer8.setText(c);
-							startShimmerAnimation(tvAnswer8);
-						} else if (arryMatch.get(i) == 8) {
-							tvAnswer9.setText(c);
-							startShimmerAnimation(tvAnswer9);
-						}
-						
-						if (isController) {
-							// delay before allowing tile selection
-							mHandler.postDelayed(new Runnable() {
-								@Override
-								public void run() {
-									isController = false;
-								}
-							}, 2500);
-						}
+					if (isController) {
+						// delay before allowing tile selection
+						mHandler.postDelayed(new Runnable() {
+							@Override
+							public void run() {
+								isController = false;
+							}
+						}, 2500);
 					}
 				}
-			} else {
-				vibrate(mContext, 500);
-				mIncorrectLetters++;
-				String temp = Messages.msgPath(false, true);
-				Crouton.showText(mActivity, temp, Style.ALERT);
-				speakText(temp);
-				
-				if (mIncorrectLetters >= 5) {
-					// level failed
-					launchPrevActivity(2500);
-				}
-				
-				if (isController) {
-					// delay before allowing tile selection
-					mHandler.postDelayed(new Runnable() {
-						@Override
-						public void run() {
-							isController = false;
-						}
-					}, 2500);
-				}
+			}
+		} else {
+			vibrate(mContext, 500);
+			mIncorrectLetters++;
+			String temp = Messages.msgPath(false, true);
+			Crouton.showText(mActivity, temp, Style.ALERT);
+			speakText(temp);
+			
+			if (pos == 0) {
+				iv1.setImageResource(R.drawable.wrong);
+			} else if (pos == 1) {
+				iv2.setImageResource(R.drawable.wrong);
+			} else if (pos == 2) {	
+				iv3.setImageResource(R.drawable.wrong);
+			} else if (pos == 3) {	
+				iv4.setImageResource(R.drawable.wrong);
+			} else if (pos == 4) {	
+				iv5.setImageResource(R.drawable.wrong);
+			} else if (pos == 5) {	
+				iv6.setImageResource(R.drawable.wrong);
+			} else if (pos == 6) {	
+				iv7.setImageResource(R.drawable.wrong);
+			} else if (pos == 7) {	
+				iv8.setImageResource(R.drawable.wrong);
+			} else if (pos == 8) {	
+				iv9.setImageResource(R.drawable.wrong);
+			} else if (pos == 9) {	
+				iv10.setImageResource(R.drawable.wrong);
+			} else if (pos == 10) {	
+				iv11.setImageResource(R.drawable.wrong);
+			} else if (pos == 11) {	
+				iv12.setImageResource(R.drawable.wrong);
+			} else if (pos == 12) {	
+				iv13.setImageResource(R.drawable.wrong);
+			} else if (pos == 13) {	
+				iv14.setImageResource(R.drawable.wrong);
+			} else if (pos == 14) {	
+				iv15.setImageResource(R.drawable.wrong);
+			} else if (pos == 15) {	
+				iv16.setImageResource(R.drawable.wrong);
+			} else if (pos == 16) {		
+				iv17.setImageResource(R.drawable.wrong);
+			} else if (pos == 17) {		
+				iv18.setImageResource(R.drawable.wrong);
+			} else if (pos == 18) {		
+				iv19.setImageResource(R.drawable.wrong);
+			} else if (pos == 19) {		
+				iv20.setImageResource(R.drawable.wrong);
+			} else if (pos == 20) {		
+				iv21.setImageResource(R.drawable.wrong);
+			} else if (pos == 21) {	
+				iv22.setImageResource(R.drawable.wrong);
+			} else if (pos == 22) {		
+				iv23.setImageResource(R.drawable.wrong);
+			} else if (pos == 23) {	
+				iv24.setImageResource(R.drawable.wrong);
+			} else if (pos == 24) {		
+				iv25.setImageResource(R.drawable.wrong);
+			}	
+			
+			if (mIncorrectLetters >= 10) {
+				// level failed
+				launchPrevActivity(2500);
 			}
 			
-			// check if puzzle is solved
-			if (mWord.length() == mCorrectLetters) {
-				Logger.i(TAG, "word solved");
-				mSolvedWords++;
-				if (mSolvedWords >= 3) {
-					// TODO: play sounds, animations, messaging and add rewards for completing level
-					boolean isLvUnlockRecent = false;
-					String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
-					String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + (mLevel+4));
-					int lvCount = sharedPref.getIntPref(strPrefName, 0);				
-					if (lvCount >= 3) {
-						boolean isUnlock = sharedPref.getBooleanPref(strPrefNameUnlock, false);
-						if (!isUnlock) {
-							isLvUnlockRecent = true;
-							sharedPref.setPref(strPrefNameUnlock, true);											
-						}
-					}		
-					lvCount++;
-					sharedPref.setPref(strPrefName, lvCount);					
-					startRewardAnim(isLvUnlockRecent);
-				} else {
-					// delay before generating the next level
-					mHandler.postDelayed(new Runnable() {
-						@Override
-						public void run() {						
-							speakInstructions();
-							generateLevel();
-						}
-					}, 2500);
-				}
-			}					
+			if (isController) {
+				// delay before allowing tile selection
+				mHandler.postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						isController = false;
+					}
+				}, 2500);
+			}
 		}
+		
+		// check if puzzle is solved
+		if (mWord.length() == mCorrectLetters) {
+			Logger.i(TAG, "word solved");
+			mSolvedWords++;
+			
+			// speak the completed word
+			reviewWord();
+			
+			mHandler.postDelayed(new Runnable() {
+				@Override
+				public void run() {				
+			
+					if (mSolvedWords >= 3) {
+						// TODO: play sounds, animations, messaging and add rewards for completing level
+						boolean isLvUnlockRecent = false;
+						String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
+						String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + (mLevel+4));
+						int lvCount = sharedPref.getIntPref(strPrefName, 0);				
+						if (lvCount >= 3) {
+							boolean isUnlock = sharedPref.getBooleanPref(strPrefNameUnlock, false);
+							if (!isUnlock) {
+								isLvUnlockRecent = true;
+								sharedPref.setPref(strPrefNameUnlock, true);											
+							}
+						}		
+						lvCount++;
+						sharedPref.setPref(strPrefName, lvCount);					
+						startRewardAnim(isLvUnlockRecent);
+					} else {
+						// delay before generating the next level
+						mHandler.postDelayed(new Runnable() {
+							@Override
+							public void run() {						
+								speakInstructions();
+								generateLevel();
+							}
+						}, 2500);
+					}
+			
+				}
+			}, 4200);			
+		}	
 	}
+	
+	/**
+	 * Method is used to speak and animate the completed word
+	 */
+	private void reviewWord() {
+		Crouton.showText(mActivity, mWord, Style.INFO);
+		speakText(mWord);
+		
+		if (tvAnswer1.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer1);
+		} 
+		
+		if (tvAnswer2.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer2);
+		}
+
+		if (tvAnswer3.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer3);
+		}
+		
+		if (tvAnswer4.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer4);
+		}		
+	
+		if (tvAnswer5.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer5);
+		}
+		
+		if (tvAnswer6.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer6);
+		}
+		
+		if (tvAnswer7.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer7);
+		}
+		
+		if (tvAnswer8.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer8);
+		}	
+		
+		if (tvAnswer9.getVisibility() == View.VISIBLE) {
+			startShimmerAnimation(tvAnswer9);
+		}	
+	}	
 	
 	/**
 	 * Method is used after failing level to go back to SelectActivity

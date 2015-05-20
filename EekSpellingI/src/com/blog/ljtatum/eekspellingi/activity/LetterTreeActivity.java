@@ -990,6 +990,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	 * Method is used to speak and animate the completed word
 	 */
 	private void reviewWord() {
+		Crouton.showText(mActivity, mWord, Style.INFO);
 		speakText(mWord);
 		
 		if (tvAnswer1.getVisibility() == View.VISIBLE) {
