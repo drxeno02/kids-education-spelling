@@ -423,8 +423,8 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 			break;			
 		case R.id.pos24:
 			if (!isController) {
-				if (!arrySelected[25]) {
-					checkLetter(25);
+				if (!arrySelected[24]) {
+					checkLetter(24);
 				} else {
 					vibrate(mContext, 500);
 				}
@@ -602,19 +602,14 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 	 * Method is used for resetting visibility on views
 	 */
 	private void resetVisibility() {
-		// reset correct and incorrect trackers
-
-		// clear maze letter views
+		// clear letter views
 		Utils.clearText(tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5, 
 				tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9);
 
-		// reset maze views
+		// reset views
 		Utils.setViewVisibility(false, v1, v2, v3, v4, v5, v6, v7, v8, v9,
 				tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
-				tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9, pos1, pos2, pos3,
-				pos4, pos5, pos6, pos7, pos8, pos9, pos10, pos11, pos12, pos13,
-				pos14, pos15, pos16, pos17, pos18, pos19, pos20, pos21);
-
+				tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9);
 	}
 	
 	/**
@@ -822,12 +817,69 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 					arryMatch.add(i);
 				}
 				
+				// check the entire tile map for instances of the selected letter
+				if (arryMatch.size() > 1) {
+					for (int i = 0; i < arryMatch.size(); i++) {
+						int value = arryMatch.get(i);
+						int getPos = arryPath.get(value);
+						
+						if (getPos == 0) {
+							iv1.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 1) {
+							iv2.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 2) {	
+							iv3.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 3) {	
+							iv4.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 4) {	
+							iv5.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 5) {	
+							iv6.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 6) {	
+							iv7.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 7) {	
+							iv8.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 8) {	
+							iv9.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 9) {	
+							iv10.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 10) {	
+							iv11.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 11) {	
+							iv12.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 12) {	
+							iv13.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 13) {	
+							iv14.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 14) {	
+							iv15.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 15) {	
+							iv16.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 16) {		
+							iv17.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 17) {		
+							iv18.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 18) {		
+							iv19.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 19) {		
+							iv20.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 20) {		
+							iv21.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 21) {	
+							iv22.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 22) {		
+							iv23.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 23) {	
+							iv24.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						} else if (getPos == 24) {		
+							iv25.setImageResource(getDrawableLetter(arryPath.indexOf(getPos)));
+						}
+					}
+				}
+		
 				// set letter to correct position
 				for (int i = 0; i < arryMatch.size(); i++) {
 					mCorrectLetters++;
-					String temp = Messages.msgPath(true, true);
-					Crouton.showText(mActivity, temp, Style.CONFIRM);
-					speakText(temp);
 					if (arryMatch.get(i) == 0) {
 						tvAnswer1.setText(c);
 						startShimmerAnimation(tvAnswer1);
@@ -976,7 +1028,6 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 						mHandler.postDelayed(new Runnable() {
 							@Override
 							public void run() {						
-								speakInstructions();
 								generateLevel();
 							}
 						}, 2500);
