@@ -756,7 +756,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		// reset views that were gone to visible
 		Utils.setViewVisibility(true, iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9);
 		
-		// reset imageViews color
+		// reset imageView color
 		Utils.setImageViewBkgColor(getResources().getColor(R.color.transparent), 
 				iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9);
 		

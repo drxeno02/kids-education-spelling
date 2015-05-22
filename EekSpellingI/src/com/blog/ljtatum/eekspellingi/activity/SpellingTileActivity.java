@@ -602,6 +602,10 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 	 * Method is used for resetting visibility on views
 	 */
 	private void resetVisibility() {
+		// reset correct and incorrect trackers
+		mCorrectLetters = 0;
+		mIncorrectLetters = 0;		
+		
 		// clear letter views
 		Utils.clearText(tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5, 
 				tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9);
