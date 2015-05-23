@@ -1,5 +1,7 @@
 package com.blog.ljtatum.eekspellingi.activity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import android.annotation.SuppressLint;
@@ -9,30 +11,30 @@ import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.blog.ljtatum.eekspellingi.R;
 import com.blog.ljtatum.eekspellingi.anim.Shimmer;
 import com.blog.ljtatum.eekspellingi.anim.ShimmerTextView;
 import com.blog.ljtatum.eekspellingi.constants.Constants;
+import com.blog.ljtatum.eekspellingi.helper.Messages;
 import com.blog.ljtatum.eekspellingi.logger.Logger;
 import com.blog.ljtatum.eekspellingi.sharedpref.SharedPref;
 import com.blog.ljtatum.eekspellingi.util.MusicUtils;
@@ -50,6 +52,7 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 	private Activity mActivity;
 	private Context mContext;
 	
+	private RelativeLayout rlParent;
 	private FrameLayout dragToView;
 	private TextView tvHint;
 	private ImageView ivBack, ivBanner, ivDrag;
@@ -58,10 +61,11 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 		tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
 	private ShareAppUtil shareApp;
 	private SharedPref sharedPref;
-	private boolean containDraggable = false;
+	private boolean containDraggable = false, earnPoint = false;;
 	private Random r;
 	private int mLevel = 0, itemDragCount = 0;
 	private String mWord;
+	private char[] arryChar = null;
 	private int[] arryDropImg = {R.drawable.drop_ball, R.drawable.drop_bone, R.drawable.drop_car,
 			R.drawable.drop_cup, R.drawable.drop_fish, R.drawable.drop_dolphin, R.drawable.drop_earth,
 			R.drawable.drop_glasses, R.drawable.drop_pencil, R.drawable.drop_helmet, 
@@ -70,6 +74,8 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 	private String[] arryDropWord = {"ball", "bone", "car", "cup", "fish", "dolphin", "earth",
 			"glasses", "pencil", "helmet", "airplane", "butterfly", "elephant", "pyramid", "scissors"};
 	
+	private Handler mHandler;
+	private List<String> arryPrev;
 	private int xCord, yCord;
 	
 
@@ -90,7 +96,9 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 		mContext = PictureDropActivity.this;
 		shareApp = new ShareAppUtil();
 		sharedPref = new SharedPref(mContext, Constants.PREF_FILE_NAME);
+		mHandler = new Handler();
 		r = new Random();
+		rlParent = (RelativeLayout) findViewById(R.id.rl_parent);
 		dragToView = (FrameLayout) findViewById(R.id.drag_view);
 		v1 = findViewById(R.id.v1);
 		v2 = findViewById(R.id.v2);
@@ -139,14 +147,20 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 			public boolean onLongClick(View v) {
 				// TODO Auto-generated method stub
 				Logger.i(TAG, "onLongClick registered");
-				ClipData.Item item = new ClipData.Item((CharSequence)v.getTag());
-				String[] mineTypes = {ClipDescription.MIMETYPE_TEXT_PLAIN};
-				ClipData dragData = new ClipData(v.getTag().toString(), mineTypes, item);
-				// instantiate the drag shadow builder
-				DragShadowBuilder mShadow = new DragShadowBuilder(v);
-				v.startDrag(dragData, mShadow, v, 0);
-				dragToView.setOnDragListener(dragToListener);
-				return true;
+				if (!containDraggable) {
+					ClipData.Item item = new ClipData.Item((CharSequence)v.getTag());
+					String[] mineTypes = {ClipDescription.MIMETYPE_TEXT_PLAIN};
+					ClipData dragData = new ClipData(v.getTag().toString(), mineTypes, item);
+					// instantiate the drag shadow builder
+					DragShadowBuilder mShadow = new DragShadowBuilder(v);
+					v.startDrag(dragData, mShadow, v, 0);
+					dragToView.setOnDragListener(dragToListener);
+					return true;
+				}
+				
+				Logger.d(TAG, "RETURNING FALSE!");
+				return false;
+				
 			}
 		});
 		
@@ -180,8 +194,7 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 					return false;
 				case DragEvent.ACTION_DRAG_ENTERED:
 					Logger.i(TAG, "Action is DragEvent.ACTION_DRAG_ENTERED");
-					Logger.i(TAG, "xCord: " + xCord + " // yCord: " + yCord);
-					
+
 					// Invalidate the view to force a redraw in the new tint 
 	                v.invalidate();
 					
@@ -213,11 +226,85 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 					}
 
 	                if (event.getResult()) {
-	                	Logger.i(TAG, "The drop was successful");	
-
+	                	Logger.d(TAG, "The drop was successful");
+	                	if (!earnPoint) {
+	                		earnPoint = true;
+	                		itemDragCount++;
+	                		Logger.d(TAG, "itemDragCount: " + itemDragCount);
+	                	}	                	                	
 	                	
+	                	String c = "";
+	                	for (int i = 0; i < arryChar.length; i++) {               		
+		                	c = String.valueOf(arryChar[i]);
+		                	
+		                	if (i == 0) {
+        						tvAnswer1.setText(c);
+        						startShimmerAnimation(tvAnswer1);
+        					} else if (i == 1) {
+        						tvAnswer2.setText(c);
+        						startShimmerAnimation(tvAnswer2);
+        					} else if (i == 2) {
+        						tvAnswer3.setText(c);
+        						startShimmerAnimation(tvAnswer3);
+        					} else if (i == 3) {
+        						tvAnswer4.setText(c);
+        						startShimmerAnimation(tvAnswer4);
+        					} else if (i == 4) {
+        						tvAnswer5.setText(c);
+        						startShimmerAnimation(tvAnswer5);
+        					} else if (i == 5) {
+        						tvAnswer6.setText(c);
+        						startShimmerAnimation(tvAnswer6);
+        					} else if (i == 6) {
+        						tvAnswer7.setText(c);
+        						startShimmerAnimation(tvAnswer7);
+        					} else if (i == 7) {
+        						tvAnswer8.setText(c);
+        						startShimmerAnimation(tvAnswer8);
+        					} else if (i == 8) {
+        						tvAnswer9.setText(c);
+        						startShimmerAnimation(tvAnswer9);
+        					}
+	                	}
+	                	
+	                	Crouton.showText(mActivity, mWord, Style.INFO);
+	            		speakText(mWord);
+	            		
+	            		mHandler.postDelayed(new Runnable() {
+	    					@Override
+	    					public void run() {	
+	    			
+	    						if (itemDragCount >= 3) {
+	    							// TODO: play sounds, animations, messaging and add rewards for completing level
+	    							boolean isLvUnlockRecent = false;
+	    							String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
+	    							String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + (mLevel+4));
+	    							int lvCount = sharedPref.getIntPref(strPrefName, 0);				
+	    							if (lvCount >= 3) {
+	    								boolean isUnlock = sharedPref.getBooleanPref(strPrefNameUnlock, false);
+	    								if (!isUnlock) {
+	    									isLvUnlockRecent = true;
+	    									sharedPref.setPref(strPrefNameUnlock, true);											
+	    								}
+	    							}		
+	    							lvCount++;
+	    							sharedPref.setPref(strPrefName, lvCount);	
+	    							startRewardAnim(isLvUnlockRecent);
+	    						} else {    							
+	    							// remove view from drop container back to parent
+	    							ViewGroup parent = (ViewGroup) ivDrag.getParent();
+									parent.removeView(ivDrag);
+									RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+									params.addRule(RelativeLayout.CENTER_HORIZONTAL);								
+									ivDrag.setLayoutParams(params);
+
+									generateLevel();
+	    						}   				
+	    					}
+	    				}, 4000);
+	            		
 	                } else { 
-	                	Logger.i(TAG, "The drop didn't work");
+	                	Logger.d(TAG, "The drop didn't work");
 	                } 
 
 	                // returns true; the value is ignored. 
@@ -279,12 +366,30 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 	 * Method is used to setup the game level
 	 */
 	private void generateLevel() {
-	
+		// set new drag object image
+		if (itemDragCount > 0) {
+			ivDrag.setImageResource(getDragDrawable());
+		}
+		
+		// reset point controller boolean
+		if (earnPoint) {
+    		earnPoint = false;
+    	}
+		
+		// reset drag controller boolean
+		if (containDraggable) {
+			containDraggable = false;
+		}
+
 		// set visibility of views
 		setVisibility(mWord.length());
 		
+		// reset jumbled array
+		if (!Utils.checkIfNull(arryChar)) {
+			arryChar = null;
+		}
 		
-		
+		arryChar = mWord.toCharArray();		
 	}
 	
 	/**
@@ -354,30 +459,35 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 				instructions = "Drop the " + arryDropWord[0] + " into the boat!";
 				tvHint.setText(instructions);
 				speakText(instructions);
+				Crouton.showText(mActivity, instructions, Style.INFO);
 				return arryDropImg[0];
 			} else if (temp == 1) {
 				mWord = arryDropWord[1];
 				instructions = "Drop the " + arryDropWord[1] + " into the boat!";
 				tvHint.setText(instructions);
 				speakText(instructions);
+				Crouton.showText(mActivity, instructions, Style.INFO);
 				return arryDropImg[1];
 			} else if (temp == 2) {
 				mWord = arryDropWord[2];
 				instructions = "Drop the " + arryDropWord[2] + " into the boat!";
 				tvHint.setText(instructions);
 				speakText(instructions);
+				Crouton.showText(mActivity, instructions, Style.INFO);
 				return arryDropImg[2];
 			} else if (temp == 3) {
 				mWord = arryDropWord[3];
 				instructions = "Drop the " + arryDropWord[3] + " into the boat!";
 				tvHint.setText(instructions);
 				speakText(instructions);
+				Crouton.showText(mActivity, instructions, Style.INFO);
 				return arryDropImg[3];
 			} else {
 				mWord = arryDropWord[4];
 				instructions = "Drop the " + arryDropWord[4] + " into the boat!";
 				tvHint.setText(instructions);
 				speakText(instructions);
+				Crouton.showText(mActivity, instructions, Style.INFO);
 				return arryDropImg[4];
 			}
 		} else if (mLevel == 7) {
@@ -387,29 +497,34 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 				instructions = "Drop the " + arryDropWord[5] + " into the boat!";
 				tvHint.setText(instructions);
 				speakText(instructions);
+				Crouton.showText(mActivity, instructions, Style.INFO);
 				return arryDropImg[5];
 			} else if (temp == 6) {
 				mWord = arryDropWord[6];
 				instructions = "Drop the " + arryDropWord[6] + " into the boat!";
 				tvHint.setText(instructions);
 				speakText(instructions);
+				Crouton.showText(mActivity, instructions, Style.INFO);
 				return arryDropImg[6];
 			} else if (temp == 7) {
 				instructions = "Drop the " + arryDropWord[7] + " into the boat!";
 				tvHint.setText(instructions);
 				speakText(instructions);
+				Crouton.showText(mActivity, instructions, Style.INFO);
 				return arryDropImg[7];
 			} else if (temp == 8) {
 				mWord = arryDropWord[8];
 				instructions = "Drop the " + arryDropWord[8] + " into the boat!";
 				tvHint.setText(instructions);
 				speakText(instructions);
+				Crouton.showText(mActivity, instructions, Style.INFO);
 				return arryDropImg[8];
 			} else {
 				mWord = arryDropWord[9];
 				instructions = "Drop the " + arryDropWord[9] + " into the boat!";
 				tvHint.setText(instructions);
 				speakText(instructions);
+				Crouton.showText(mActivity, instructions, Style.INFO);
 				return arryDropImg[9];
 			}
 		} else {
@@ -419,30 +534,35 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 				instructions = "Drop the " + arryDropWord[10] + " into the boat!";
 				tvHint.setText(instructions);
 				speakText(instructions);
+				Crouton.showText(mActivity, instructions, Style.INFO);
 				return arryDropImg[10];
 			} else if (temp == 11) {
 				mWord = arryDropWord[11];
 				instructions = "Drop the " + arryDropWord[11] + " into the boat!";
 				tvHint.setText(instructions);
 				speakText(instructions);
+				Crouton.showText(mActivity, instructions, Style.INFO);
 				return arryDropImg[11];
 			} else if (temp == 12) {
 				mWord = arryDropWord[12];
 				instructions = "Drop the " + arryDropWord[12] + " into the boat!";
 				tvHint.setText(instructions);
 				speakText(instructions);
+				Crouton.showText(mActivity, instructions, Style.INFO);
 				return arryDropImg[12];
 			} else if (temp == 13) {
 				mWord = arryDropWord[13];
 				instructions = "Drop the " + arryDropWord[13] + " into the boat!";
 				tvHint.setText(instructions);
 				speakText(instructions);
+				Crouton.showText(mActivity, instructions, Style.INFO);
 				return arryDropImg[13];
 			} else {
 				mWord = arryDropWord[14];
 				instructions = "Drop the " + arryDropWord[14] + " into the boat!";
 				tvHint.setText(instructions);
 				speakText(instructions);
+				Crouton.showText(mActivity, instructions, Style.INFO);
 				return arryDropImg[14];
 			}
 		}	
@@ -468,26 +588,6 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 			break;
 		default:
 			break;
-		}	
-	}
-	
-	
-	private void speakInstructions(int id) {
-		if (id == 0) {
-			Crouton.showText(mActivity, "Drag the ball to the boat!", Style.INFO);
-			speakText("Drag the ball to the boat!");
-		} else if (id == 1) {
-			Crouton.showText(mActivity, "Drag the bone to the boat!", Style.INFO);
-			speakText("Drag the bone to the boat!");
-		} else if (id == 2) {
-			Crouton.showText(mActivity, "Drag the car to the boat!", Style.INFO);
-			speakText("Drag the car to the boat!");
-		} else if (id == 3) {
-			Crouton.showText(mActivity, "Drag the cup to the boat!", Style.INFO);
-			speakText("Drag the cup to the boat!");
-		} else if (id == 4) {
-			Crouton.showText(mActivity, "Drag the fish to the boat!", Style.INFO);
-			speakText("Drag the fish to the boat!");
 		}	
 	}
 	

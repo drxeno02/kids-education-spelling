@@ -7,6 +7,8 @@
     android:orientation="vertical"
     tools:context="${packageName}.${activityClass}"
     tools:ignore="UselessParent,contentDescription" >
+    
+
 
     <RelativeLayout
         android:id="@+id/rl"
@@ -62,12 +64,18 @@
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_20" />
     </LinearLayout>
+    
+            <RelativeLayout
+        android:id="@+id/rl_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll"
+        android:orientation="vertical" >
 
     <ImageView
         android:id="@+id/iv_drag"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ll"
+        android:layout_height="wrap_content"     
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:scaleType="fitXY"
@@ -86,7 +94,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
-            android:background="@color/white_overlay2" />
+            android:background="@color/green_overlay" />
 
     </LinearLayout>
 
@@ -337,5 +345,6 @@
             android:layout_height="65dp"
             android:background="@drawable/banner_batb" />
     </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>
