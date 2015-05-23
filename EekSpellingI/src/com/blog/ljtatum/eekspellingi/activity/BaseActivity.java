@@ -212,6 +212,24 @@ public class BaseActivity extends Activity implements OnInitListener {
 	}
 	
 	/**
+	 * Method is used to start a repeating glow animation
+	 *
+	 * @param param View widget
+	 */
+	protected void startViewAnim(final View... param) {
+		Animation animation = new AlphaAnimation(1.0F, 0.4F);
+		animation.setDuration(400);
+		animation.setInterpolator(new LinearInterpolator());
+		// Repeat animation infinitely
+		animation.setRepeatCount(Animation.INFINITE);
+		// Reverse animation at the end so the button will fade back in
+		animation.setRepeatMode(Animation.REVERSE);
+		for (View v : param) {
+			v.startAnimation(animation);
+		}
+	}
+	
+	/**
 	 * Method is used to shake a view
 	 * @param context
 	 * @param param

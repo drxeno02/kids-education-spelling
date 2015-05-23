@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
 	private Activity mActivity;
 	private Context mContext;
-	private ImageView ivChar, ivBanner;
+	private ImageView ivBanner;
 	private Button btnLearn, btnRewards, btnExtras;
 	private boolean isInitLaunch = false;
 
@@ -58,7 +58,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		shareApp = new ShareAppUtil();
 		sharedPref = new SharedPref(mContext, Constants.PREF_FILE_NAME);
 		mHandler = new Handler();
-		ivChar = (ImageView) findViewById(R.id.iv_char);
 		ivBanner = (ImageView) findViewById(R.id.iv_banner);
 		btnLearn = (Button) findViewById(R.id.btn_learn);
 		btnRewards = (Button) findViewById(R.id.btn_rewards);
@@ -77,9 +76,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
 		// set default banner
 		setDefaultBanner(mContext, ivBanner);
-
-		// set character image
-		ivChar.setBackgroundResource(R.drawable.b_character_smile);
 
 		// delay before welcome message to allow tts initialization
 		mHandler.postDelayed(new Runnable() {
@@ -106,7 +102,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 	 */
 	private void startAnimations() {
 		startButtonAnim(btnLearn);
-		// startViewAnim();
 		startBannerAnim(mContext, ivBanner);
 	}
 

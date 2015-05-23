@@ -138,19 +138,19 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		ivBack.setOnClickListener(this);
 		ivBanner.setOnClickListener(this);
 		btnSubmit.setOnClickListener(this);
+
+		// retrieve level
+		Intent intent = getIntent();
+		if (!Utils.checkIfNull(intent)) {
+			mLevel = intent.getIntExtra(Constants.LV_SELECTED, 0);
+			Logger.i(TAG, "level: " + mLevel);
+		}
 		
 		// set default tree
 		if (mLevel == 4) {
 			ivTree.setImageResource(R.drawable.tree_three);
 		} else {
 			ivTree.setImageResource(R.drawable.tree_four);
-		}
-		
-		// retrieve level
-		Intent intent = getIntent();
-		if (!Utils.checkIfNull(intent)) {
-			mLevel = intent.getIntExtra(Constants.LV_SELECTED, 0);
-			Logger.i(TAG, "level: " + mLevel);
 		}
 		
 		// setup editText listener
@@ -621,6 +621,20 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			return R.drawable.reward_four;
 		} else if (index == 4) {
 			return R.drawable.reward_five;
+		} else if (index == 5) {
+			return R.drawable.reward_six;
+		} else if (index == 6) {
+			return R.drawable.reward_seven;
+		} else if (index == 7) {
+			return R.drawable.reward_eight;
+		} else if (index == 8) {
+			return R.drawable.reward_nine;
+		} else if (index == 9) {
+			return R.drawable.reward_ten;
+		} else if (index == 10) {
+			return R.drawable.reward_eleven;
+		} else if (index == 11) {
+			return R.drawable.reward_twelve;
 		}
 		return R.drawable.a;		
 	}
@@ -1063,7 +1077,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		
 		// setup rewards
 		int rewardCount = 0;
-		int mReward = r.nextInt(5);
+		int mReward = r.nextInt(12);
 		String strPrefName = Constants.REWARDS.concat("_" + mReward);
 		rewardCount = sharedPref.getIntPref(strPrefName, 0);
 		rewardCount++;

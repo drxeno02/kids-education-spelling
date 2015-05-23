@@ -3,7 +3,7 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_bg_4c"
+    android:background="@drawable/bg_home_screen"
     android:orientation="vertical"
     tools:context="${packageName}.${activityClass}"
     tools:ignore="UselessParent,contentDescription" >
@@ -26,20 +26,12 @@
             android:textSize="@dimen/font_size_28" />
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/iv_char"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:layout_above="@+id/ll_banner"
-        android:layout_alignParentLeft="true"
-        android:scaleType="fitXY"
-        android:src="@drawable/b_character_smile" />
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/iv_char"
-        android:layout_alignParentRight="true"
+        android:layout_below="@id/rl"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
         android:orientation="vertical"
         android:padding="6dp" >
 

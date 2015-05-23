@@ -12,6 +12,8 @@
         <item>sun</item>
         <item>air</item>
         <item>boy</item>
+		<item>car</item>
+		<item>toy</item>
 
         <!-- four letter words -->
         <item>gate</item>
@@ -42,34 +44,110 @@
         <item>house</item>
         <item>stone</item>
         <item>table</item>
+		<item>money</item>
+		<item>water</item>
+		<item>fruit</item>
+		<item>ocean</item> 
 
         <!-- six letter words -->
         <item>carpet</item>
         <item>icebox</item>
         <item>bridge</item>
         <item>school</item>
+		<item>banana</item>
+		<item>celery</item>
+		<item>cherry</item>
+		<item>helmet</item>
+        <item>dollar</item>
+		<item>bottle</item>
+        <item>ladder</item>
+        <item>street</item>
+        <item>coffee</item>
+        <item>yogurt</item>
+        <item>faucet</item>
+        <item>pencil</item>
+        <item>cereal</item>
 
         <!-- seven letter words -->
         <item>mailbox</item>
         <item>factory</item>
         <item>theater</item>
         <item>college</item>
+		<item>pumpkin</item>
+		<item>morning</item>
+		<item>kitchen</item> 	
+        <item>battery</item>
+        <item>utensil</item>
+        <item>popcorn</item>
+        <item>grocery</item>
+		<item>coconut</item>
+		<item>bedroom</item>	
+		<item>cupcake</item>  	
+		<item>iceberg</item>
 
         <!-- eight letter words -->
         <item>seashore</item>
         <item>seashell</item>
         <item>raindrop</item>
         <item>treasure</item>
+        <item>shoulder</item>
+        <item>keyboard</item>
+        <item>lollipop</item>
+		<item>computer</item>
+        <item>backyard</item>
+        <item>cartoons</item>
+        <item>charcoal</item>
+        <item>elevator</item>
+        <item>hardware</item>
+        <item>clarinet</item>
+		<item>miracles</item>
 
         <!-- nine letter words -->
         <item>seashells</item>
         <item>dollhouse</item>
+        <item>aerospace</item>    
+        <item>boulevard</item>
+        <item>chocolate</item>
+        <item>handshake</item>
+        <item>milkshake</item>
+        <item>pineapple</item>
+        <item>rainwater</item>
+        <item>scorecard</item>
+        <item>tightrope</item>
+        <item>wallpaper</item>
+        <item>footprint</item>
+        <item>washcloth</item>
+        <item>honeycomb</item>
+        <item>earthworm</item>
     </array>
     
     <array name="arryWordBankPlaces">
         <item>ohio</item>
         <item>wyoming</item>
+		<item>florida</item>
+		<item>texas</item>
+		<item>miami</item>
+		<item>france</item>
+		<item>idaho</item>
+		<item>montana</item>
+		<item>nevada</item>
+		<item>nebraska</item>
+		<item>spain</item>
+		<item>hawaii</item>
         <item>africa</item>
+		<item>egypt</item>
+        <item>asia</item>
+        <item>europe</item>
+        <item>texas</item>
+        <item>china</item>
+        <item>mexico</item>
+        <item>japan</item>
+        <item>kenya</item>
+        <item>ghana</item>
+        <item>italy</item>
+        <item>russia</item>
+        <item>canada</item>
+        <item>fiji</item>
     </array>
     
     <array name="arryWordBankActions">
@@ -78,6 +156,13 @@
         <item>cry</item>
         <item>eat</item>
         <item>run</item>
+		<item>dance</item>
+		<item>hum</item>
+        <item>jab</item>
+        <item>mow</item>
+        <item>ask</item>
+		<item>act</item>	
+		<item>cut</item>
 
         <!-- four letter words -->
         <item>fall</item>
@@ -86,7 +171,22 @@
         <item>wake</item>
         <item>chat</item>
         <item>code</item>
-  
+		<item>jump</item>
+		<item>flip</item>
+		<item>toss</item>
+		<item>plan</item>
+		<item>bark</item>
+		<item>find</item>
+        <item>yell</item>
+        <item>hear</item>
+        <item>look</item>
+        <item>give</item>
+        <item>pick</item>
+        <item>scan</item>
+        <item>tear</item>
+        <item>wink</item>
+        <item>love</item>
+        
         <!-- five letter words -->
         <item>awake</item>
         <item>shake</item>
@@ -94,17 +194,30 @@
         <item>catch</item>
         <item>study</item>
         <item>smile</item>
+		<item>think</item>
+		<item>knock</item>
+		<item>carry</item>
+		<item>build</item>
 
         <!-- six letter words -->
         <item>recite</item>
         <item>crunch</item>
         <item>brunch</item>
         <item>summon</item>
+		<item>ponder</item>
+		<item>stroll</item>
+		<item>follow</item>
+		<item>choose</item>
+		<item>handle</item>
+		<item>mowing</item>
 
         <!-- seven letter words -->
         <item>promise</item>
         <item>destroy</item>
-
+		<item>cherish</item>
+		<item>plowing</item>
+		<item>blowing</item>
+		
         <!-- eight letter words -->
         <item>building</item>
         <item>laughing</item>
@@ -132,6 +245,10 @@
         <item>gorilla</item>
         <item>gorillas</item>
         <item>piglet</item>
+		<item>alligator</item>
+		<item>giraffe</item>
+		<item>dolphin</item>
+		<item>chicken</item>
     </array>
     
     <array name="arryWordBankNumbers">
@@ -172,6 +289,12 @@
         <item>indigo</item>
         <item>yellow</item>
         <item>lavender</item>
+		<item>pink</item>
+        <item>orange</item>
+		<item>blue</item>
+		<item>purple</item>
+        <item>maroon</item>
+        <item>grey</item>
     </array>
     
     <array name="arryWordBankDays">
@@ -215,6 +338,11 @@
         <item>nurse</item>
         <item>therapist</item>
         <item>astronaut</item>
+		<item>actor</item>
+		<item>scientist</item>
+        <item>writer</item>
+        <item>banker</item>
+        <item>reporter</item>
     </array>
     
     <array name="arryWordBankMath">
@@ -251,6 +379,7 @@
         <item>finger</item>
         <item>fingers</item>
         <item>abdomen</item>
+		<item>earlobe</item>
         <item>thumb</item>
         <item>eyelid</item>
         <item>eyebrow</item>
@@ -258,6 +387,7 @@
         <item>knee</item>
         <item>toe</item>
         <item>toes</item>
+		<item>elbow</item>
         <item>shoulder</item>
         <item>shoulders</item>
         <item>chemical</item>

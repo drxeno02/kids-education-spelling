@@ -14,7 +14,7 @@
         android:layout_height="280dp"
         android:orientation="vertical"
         android:scaleType="fitXY"
-        android:src="@drawable/splash_bg_1a"
+        android:src="@drawable/bg_popup"
         app:riv_border_color="@color/white"
         app:riv_border_width="3dp"
         app:riv_corner_radius="12dp"
