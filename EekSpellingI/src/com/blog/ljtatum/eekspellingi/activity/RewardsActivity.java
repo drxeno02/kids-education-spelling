@@ -71,6 +71,7 @@ public class RewardsActivity extends BaseActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.iv_back:
+			prepareMusicToChange();
 			finish();
 			// transition animation
 			overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
@@ -86,6 +87,20 @@ public class RewardsActivity extends BaseActivity implements OnClickListener {
 			break;
 		default:
 			break;
+		}
+	}
+	
+	/**
+	 * Method is used to prepare music to change
+	 */
+	private void prepareMusicToChange() {
+		// prepare music to change
+		if (sharedPref.getBooleanPref(Constants.PREF_MUSIC, true)) {
+			try {
+				MusicUtils.stop();
+			} catch (IllegalStateException ise) {
+				ise.printStackTrace();
+			}
 		}
 	}
 	
@@ -135,13 +150,7 @@ public class RewardsActivity extends BaseActivity implements OnClickListener {
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
-		if (sharedPref.getBooleanPref(Constants.PREF_MUSIC, true)) {
-			try {
-				MusicUtils.stop();
-			} catch (IllegalStateException ise) {
-				ise.printStackTrace();
-			}
-		}
+		prepareMusicToChange();
 		super.onBackPressed();
 		// transition animation
 		overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);

@@ -272,6 +272,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			transverseToPos(21);
 			break;			
 		case R.id.iv_back:
+			prepareMusicToChange();
 			finish();
 			// transition animation
 			overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
@@ -287,6 +288,20 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			break;
 		default:
 			break;
+		}
+	}
+	
+	/**
+	 * Method is used to prepare music to change
+	 */
+	private void prepareMusicToChange() {
+		// prepare music to change
+		if (sharedPref.getBooleanPref(Constants.PREF_MUSIC, true)) {
+			try {
+				MusicUtils.stop();
+			} catch (IllegalStateException ise) {
+				ise.printStackTrace();
+			}
 		}
 	}
 
@@ -847,6 +862,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
+				prepareMusicToChange();
 				mDialog.dismiss();
 				goToActivityAnimRight(mContext, SelectActivity.class, -1);
 			} 		
@@ -1773,6 +1789,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
+		prepareMusicToChange();
 		super.onBackPressed();
 		// transition animation
 		overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);

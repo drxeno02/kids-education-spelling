@@ -431,6 +431,7 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 			}
 			break;				
 		case R.id.iv_back:
+			prepareMusicToChange();
 			finish();
 			// transition animation
 			overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
@@ -448,6 +449,20 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 			break;
 		}
 	}
+	
+	/**
+	 * Method is used to prepare music to change
+	 */
+	private void prepareMusicToChange() {
+		// prepare music to change
+		if (sharedPref.getBooleanPref(Constants.PREF_MUSIC, true)) {
+			try {
+				MusicUtils.stop();
+			} catch (IllegalStateException ise) {
+				ise.printStackTrace();
+			}
+		}
+	}	
 	
 	/**
 	 * Method is used to initialize the game level; sets level, default word, 
@@ -830,6 +845,8 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 			String c = String.valueOf(arryLetters[arryPath.indexOf(pos)]);
 			ArrayList<Integer> arryMatch = new ArrayList<Integer>();
 			if (mWord.contains(c)) {
+				MusicUtils.playSound(mContext, R.raw.correct);
+				
 				// check the entire word for instances of the selected letter
 				for (int i = -1; (i = mWord.indexOf(c, i + 1)) != -1;) {
 					arryMatch.add(i);
@@ -898,7 +915,7 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 				// set letter to correct position
 				for (int i = 0; i < arryMatch.size(); i++) {
 					mCorrectLetters++;
-					MusicUtils.playSound(R.raw.correct);
+					
 					if (arryMatch.get(i) == 0) {
 						tvAnswer1.setText(c);
 						startShimmerAnimation(tvAnswer1);
@@ -942,7 +959,7 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 		} else {
 			vibrate(mContext, 500);
 			mIncorrectLetters++;
-			MusicUtils.playSound(R.raw.incorrect);
+			MusicUtils.playSound(mContext, R.raw.incorrect);
 			String temp = Messages.msgPath(false, true);
 			Crouton.showText(mActivity, temp, Style.ALERT);
 			speakText(temp);
@@ -1158,6 +1175,7 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
+				prepareMusicToChange();
 				mDialog.dismiss();
 				goToActivityAnimRight(mContext, SelectActivity.class, -1);
 			} 		
@@ -1235,6 +1253,7 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
+		prepareMusicToChange();
 		super.onBackPressed();
 		// transition animation
 		overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);

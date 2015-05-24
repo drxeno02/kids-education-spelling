@@ -13,7 +13,6 @@ public class MusicUtils {
 
 	private static Context mContext;
 	public static MediaPlayer gameBgm;
-	private static int mMusicId;
 	private static int mBgmKeyStore = -1;
 	private static int currentMusic = -1;
 	private static int previousMusic = -1;
@@ -26,9 +25,8 @@ public class MusicUtils {
 	public static void start(Context context, int bgmKeyStore) {
 		mContext = context;
 		mBgmKeyStore = bgmKeyStore;
-		mMusicId = convertMusicId(mBgmKeyStore);
-		Logger.v(TAG, "musicId: " + mMusicId);
-		start(mContext, mBgmKeyStore, true);
+		Logger.v(TAG, "musicId: " + convertMusicId(bgmKeyStore));
+		start(mContext, convertMusicId(bgmKeyStore), true);
 	}
 
 	/**
@@ -187,14 +185,14 @@ public class MusicUtils {
 	 * @param context
 	 * @param sound
 	 */
-	public static void playSound(int sound) {
-		MediaPlayer mp = MediaPlayer.create(mContext, sound);
+	public static void playSound(Context context, int sound) {
+		MediaPlayer mp = MediaPlayer.create(context, sound);
 		mp.setVolume((float) .5, (float) .5);
 		mp.start();
 		mp.setOnCompletionListener(new OnCompletionListener() {
 			public void onCompletion(MediaPlayer mp) {
 				mp.release();
 			}
-		});
+		});		
 	}
 }

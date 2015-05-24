@@ -278,7 +278,8 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				}
 			}			
 			break;
-		case R.id.iv_back:		
+		case R.id.iv_back:
+			prepareMusicToChange();
 			finish();
 			// transition animation
 			overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
@@ -307,6 +308,20 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			break;
 		}
 	}
+	
+	/**
+	 * Method is used to prepare music to change
+	 */
+	private void prepareMusicToChange() {
+		// prepare music to change
+		if (sharedPref.getBooleanPref(Constants.PREF_MUSIC, true)) {
+			try {
+				MusicUtils.stop();
+			} catch (IllegalStateException ise) {
+				ise.printStackTrace();
+			}
+		}
+	}	
 
 	/**
 	 * Method is used to initialize the game level; sets level, default word, 
@@ -387,11 +402,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	 */
 	private void generateLevel() {
 		speakInstructions();
-		
-		if (mSolvedWords > 0) {
-			ivTree.setImageResource(R.drawable.tree_four);
-		}
-			
+
 		// confirm that next set of words are unique
 		if (!Utils.checkIfNull(arryPrev)) {
 			boolean isCheck = false;
@@ -650,29 +661,15 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		// remove duplicate values from origStr
 		String noDup = Utils.removeDuplicates(mWord);
 		int len = 0;
-		if(mLevel == 0) {
-			len = 8 - noDup.length();
-		} else {
-			len = 10 - noDup.length();
-		}
+		len = 8 - noDup.length();
 
 		// append random letters to word bank pool
-		if (mLevel == 0) {
-			for (int i = 0; i <= len; i++) {
-				char temp = alphabet.charAt(r.nextInt(alphabet.length()));
-				while (noDup.indexOf(temp) != -1) {
-					temp = alphabet.charAt(r.nextInt(alphabet.length()));
-				}
-				noDup = noDup.concat(String.valueOf(temp));
+		for (int i = 0; i <= len; i++) {
+			char temp = alphabet.charAt(r.nextInt(alphabet.length()));
+			while (noDup.indexOf(temp) != -1) {
+				temp = alphabet.charAt(r.nextInt(alphabet.length()));
 			}
-		} else if (mLevel == 4) {
-			for (int i = 0; i <= len; i++) {
-				char temp = alphabet.charAt(r.nextInt(alphabet.length()));
-				while (noDup.indexOf(temp) != -1) {
-					temp = alphabet.charAt(r.nextInt(alphabet.length()));
-				}
-				noDup = noDup.concat(String.valueOf(temp));
-			}
+			noDup = noDup.concat(String.valueOf(temp));
 		}
 
 		return shuffle(noDup.toCharArray());
@@ -761,7 +758,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		mIncorrectLetters = 0;
 		
 		// reset tree
-		ivTree.setImageResource(R.drawable.tree_zero);
+		ivTree.setImageResource(R.drawable.tree_four);
 
 		// clear letter views
 		Utils.clearText(tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4,
@@ -828,6 +825,8 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			}
 			ArrayList<Integer> arryMatch = new ArrayList<Integer>();
 			if (mWord.contains(c)) {
+				MusicUtils.playSound(mContext, R.raw.correct);
+				
 				// check the entire word for instances of the selected letter
 				for (int i = -1; (i = mWord.indexOf(c, i + 1)) != -1;) {
 					arryMatch.add(i);
@@ -836,8 +835,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				// set letter to correct position
 				for (int i = 0; i < arryMatch.size(); i++) {
 					mCorrectLetters++;
-					MusicUtils.playSound(R.raw.correct);
-					
+
 					String temp = Messages.msgPath(true, true);
 					Crouton.showText(mActivity, temp, Style.CONFIRM);
 					speakText(temp);
@@ -886,7 +884,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			} else {
 				vibrate(mContext, 500);
 				mIncorrectLetters++;
-				MusicUtils.playSound(R.raw.incorrect);
+				MusicUtils.playSound(mContext, R.raw.incorrect);
 				String temp = Messages.msgPath(false, true);
 				Crouton.showText(mActivity, temp, Style.ALERT);
 				speakText(temp);
@@ -969,7 +967,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				mHandler.postDelayed(new Runnable() {
 					@Override
 					public void run() {	
-			
+						speakText(mWord);
 						if (mSolvedWords >= 3) {
 							// TODO: play sounds, animations, messaging and add rewards for completing level
 							boolean isLvUnlockRecent = false;
@@ -990,14 +988,14 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 							// delay before generating the next level
 							mHandler.postDelayed(new Runnable() {
 								@Override
-								public void run() {						
+								public void run() {										
 									generateLevel();
 								}
 							}, 2500);
 						}
 				
 					}
-				}, 4200);				
+				}, 4000);				
 			}
 		}
 	}
@@ -1006,9 +1004,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	 * Method is used to speak and animate the completed word
 	 */
 	private void reviewWord() {
-		Crouton.showText(mActivity, mWord, Style.INFO);
-		speakText(mWord);
-		
+		Crouton.showText(mActivity, mWord, Style.INFO);		
 		if (tvAnswer1.getVisibility() == View.VISIBLE) {
 			startShimmerAnimation(tvAnswer1);
 		} 
@@ -1043,7 +1039,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		
 		if (tvAnswer9.getVisibility() == View.VISIBLE) {
 			startShimmerAnimation(tvAnswer9);
-		}	
+		}
 	}
 	
 	/**
@@ -1102,6 +1098,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
+				prepareMusicToChange();
 				mDialog.dismiss();
 				goToActivityAnimRight(mContext, SelectActivity.class, -1);
 			} 		
@@ -1179,6 +1176,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
+		prepareMusicToChange();
 		super.onBackPressed();
 		// transition animation
 		overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);

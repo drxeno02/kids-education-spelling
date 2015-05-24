@@ -38,6 +38,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 	private SharedPref sharedPref;
 
 	private Handler mHandler;
+	private int prevBannerId = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +103,16 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 	 */
 	private void startAnimations() {
 		startButtonAnim(btnLearn);
+		
+		if (prevBannerId != Utils.getBannerId()) {
+			if (Utils.getBannerId() == 1) {
+				ivBanner.setImageDrawable(getResources().getDrawable(R.drawable.banner_math));
+			} else if (Utils.getBannerId() == 2) {
+				ivBanner.setImageDrawable(getResources().getDrawable(R.drawable.banner_elements));
+			} else if (Utils.getBannerId() == 3) {
+				ivBanner.setImageDrawable(getResources().getDrawable(R.drawable.banner_batb));
+			}
+		}		
 		startBannerAnim(mContext, ivBanner);
 	}
 
@@ -115,15 +126,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 			goToActivityAnimLeft(mContext, SelectActivity.class, -1);
 			break;
 		case R.id.btn_rewards:	
-			// prepare music to change
-			if (sharedPref.getBooleanPref(Constants.PREF_MUSIC, true)) {
-				try {
-					MusicUtils.stop();
-				} catch (IllegalStateException ise) {
-					ise.printStackTrace();
-				}
-			}		
-			
+			prepareMusicToChange();					
 			goToActivityAnimLeft(mContext, RewardsActivity.class, -1);
 			break;
 		case R.id.btn_extras:
@@ -142,6 +145,20 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 			break;
 		}
 	}
+	
+	/**
+	 * Method is used to prepare music to change
+	 */
+	private void prepareMusicToChange() {
+		// prepare music to change
+		if (sharedPref.getBooleanPref(Constants.PREF_MUSIC, true)) {
+			try {
+				MusicUtils.stop();
+			} catch (IllegalStateException ise) {
+				ise.printStackTrace();
+			}
+		}
+	}
 
 	/**
 	 * Method is used to display exit app dialog
@@ -157,6 +174,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 				// TODO Auto-generated method stub
 				destroyTTS();
 				MusicUtils.release();
+				stopTimerBanner();
 				finish();
 			}
 
@@ -231,19 +249,10 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
+		prevBannerId = Utils.getBannerId();
 		MusicUtils.pause();
 		Crouton.cancelAllCroutons();
 		Crouton.clearCroutonsForActivity(this);
-	}
-
-	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		destroyTTS();
-		MusicUtils.release();
-		Crouton.cancelAllCroutons();
-		Crouton.clearCroutonsForActivity(this);
-		super.onDestroy();
 	}
 
 	@Override

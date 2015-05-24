@@ -85,6 +85,7 @@ public class SelectActivity extends BaseActivity implements OnClickListener {
 				if (position == 0 || position == 4 || position == 8) {
 					if (isUnlock) {
 						Logger.i(TAG, "launching LetterTree :: pos " + position);
+						prepareMusicToChange();						
 						goToActivityAnimLeft(mContext, LetterTreeActivity.class, position);
 					} else {
 						vibrate(mContext, 500);
@@ -94,6 +95,7 @@ public class SelectActivity extends BaseActivity implements OnClickListener {
 				} else if (position == 1 || position == 5 || position == 9) {
 					if (isUnlock) {
 						Logger.i(TAG, "launching SpellingTile :: pos " + position);
+						prepareMusicToChange();	
 						goToActivityAnimLeft(mContext, SpellingTileActivity.class, position);
 					} else {
 						vibrate(mContext, 500);
@@ -103,6 +105,7 @@ public class SelectActivity extends BaseActivity implements OnClickListener {
 				} else if (position == 2 || position == 6 || position == 10) {
 					if (isUnlock) {
 						Logger.i(TAG, "launching WordMaze :: pos " + position);
+						prepareMusicToChange();	
 						goToActivityAnimLeft(mContext, WordMazeActivity.class, position);
 					} else {
 						vibrate(mContext, 500);
@@ -112,6 +115,7 @@ public class SelectActivity extends BaseActivity implements OnClickListener {
 				} else if (position == 3 || position == 7 || position == 11) {
 					if (isUnlock) {
 						Logger.i(TAG, "launching PictureDrop :: pos " + position);
+						prepareMusicToChange();	
 						goToActivityAnimLeft(mContext, PictureDropActivity.class, position);
 					} else {
 						vibrate(mContext, 500);
@@ -122,6 +126,20 @@ public class SelectActivity extends BaseActivity implements OnClickListener {
 			}
 		});
 
+	}
+	
+	/**
+	 * Method is used to prepare music to change
+	 */
+	private void prepareMusicToChange() {
+		// prepare music to change
+		if (sharedPref.getBooleanPref(Constants.PREF_MUSIC, true)) {
+			try {
+				MusicUtils.stop();
+			} catch (IllegalStateException ise) {
+				ise.printStackTrace();
+			}
+		}
 	}
 
 	@Override

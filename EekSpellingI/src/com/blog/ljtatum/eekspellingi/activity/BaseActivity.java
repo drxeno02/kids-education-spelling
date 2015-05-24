@@ -39,6 +39,7 @@ public class BaseActivity extends Activity implements OnInitListener {
 	private final static String TAG = BaseActivity.class.getSimpleName();
 
 	private Context mContext;
+	private static Timer mTimerBanner = null;
 	protected WordCategory mWordCategory;
 	private static TextToSpeech textToSpeech;
 	private static HashMap<String, String> map = new HashMap<String, String>();
@@ -51,6 +52,9 @@ public class BaseActivity extends Activity implements OnInitListener {
 	 * @param activity
 	 */
 	protected void goToActivityAnimLeft(Context context, Class<?> activity, int level) {
+		// stop banner animation to prepare restart of animation
+		stopTimerBanner();
+		
 		Intent intent = new Intent(context, activity);
 		if (level >= 0) {
 			intent.putExtra(Constants.LV_SELECTED, level);
@@ -70,6 +74,9 @@ public class BaseActivity extends Activity implements OnInitListener {
 	 * @param activity
 	 */
 	protected void goToActivityAnimRight(Context context, Class<?> activity, int level) {
+		// stop banner animation to prepare restart of animation
+		stopTimerBanner();
+		
 		Intent intent = new Intent(context, activity);
 		if (level >= 0) {
 			intent.putExtra(Constants.LV_SELECTED, level);
@@ -88,6 +95,9 @@ public class BaseActivity extends Activity implements OnInitListener {
 	 * @param activity
 	 */
 	protected void goToActivity(Context context, Class<?> activity, int level) {
+		// stop banner animation to prepare restart of animation
+		stopTimerBanner();
+		
 		Intent intent = new Intent(context, activity);
 		if (level >= 0) {
 			intent.putExtra(Constants.LV_SELECTED, level);
@@ -103,6 +113,9 @@ public class BaseActivity extends Activity implements OnInitListener {
 	 * @param pkgName
 	 */
 	protected void goToStore(String pkgName) {
+		// stop banner animation to prepare restart of animation
+		stopTimerBanner();
+		
 		try {
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.MARKET + pkgName)));
 		} catch (android.content.ActivityNotFoundException anfe) {
@@ -130,9 +143,17 @@ public class BaseActivity extends Activity implements OnInitListener {
 	 * @param ivBanner
 	 */
 	protected void startBannerAnim(final Context context, final ImageView ivBanner) {
-		Timer mTimerBanner = new Timer();
+		Logger.d(TAG, "startBannerAnim()");
+		if (mTimerBanner == null) {
+			Logger.v(TAG, "creating banner timer object");
+			mTimerBanner = new Timer();
+		} else {
+			stopTimerBanner();
+			mTimerBanner = new Timer();
+		}
+		
 		mTimerBanner.schedule(new TimerTask() {
-
+			
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
@@ -143,35 +164,23 @@ public class BaseActivity extends Activity implements OnInitListener {
 						// TODO Auto-generated method stub
 						Drawable mDrawable = Utils.getBanner(context);
 						ivBanner.setImageDrawable(mDrawable);
-
 					}
 				});
 
 			}
 		}, Config.BANNER_TIMER, Config.BANNER_TIMER);
 	}
-
+	
 	/**
-	 * Method is used to start animation on imageView
+	 * Method is used to destroy timer object
 	 */
-	protected void startViewAnim() {
-		Timer mTimerView = new Timer();
-		mTimerView.schedule(new TimerTask() {
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				runOnUiThread(new Runnable() {
-
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-
-					}
-				});
-
-			}
-		}, Config.VIEW_TIMER, Config.VIEW_TIMER);
+	protected void stopTimerBanner() {
+		if (mTimerBanner != null) {
+			Logger.v(TAG, "destroying banner timer object");
+			mTimerBanner.cancel();
+			mTimerBanner.purge();
+			mTimerBanner = null;
+		}		
 	}
 
 	/**
