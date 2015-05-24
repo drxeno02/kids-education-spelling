@@ -1741,8 +1741,15 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onResume();
 		startAnimations();
+		
 		if (sharedPref.getBooleanPref(Constants.PREF_MUSIC, true)) {
-			MusicUtils.start(mContext, 1);
+			if (mLevel == 2) {
+				MusicUtils.start(mContext, 3);
+			} else if (mLevel == 6) {
+				MusicUtils.start(mContext, 4);
+			} else {
+				MusicUtils.start(mContext, 5);
+			}
 		}
 	}
 

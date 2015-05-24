@@ -147,11 +147,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		}
 		
 		// set default tree
-		if (mLevel == 4) {
-			ivTree.setImageResource(R.drawable.tree_three);
-		} else {
-			ivTree.setImageResource(R.drawable.tree_four);
-		}
+		ivTree.setImageResource(R.drawable.tree_four);
 		
 		// setup editText listener
 		if (mLevel >= 8) {		
@@ -391,7 +387,11 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 	 */
 	private void generateLevel() {
 		speakInstructions();
-
+		
+		if (mSolvedWords > 0) {
+			ivTree.setImageResource(R.drawable.tree_four);
+		}
+			
 		// confirm that next set of words are unique
 		if (!Utils.checkIfNull(arryPrev)) {
 			boolean isCheck = false;
@@ -836,6 +836,8 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				// set letter to correct position
 				for (int i = 0; i < arryMatch.size(); i++) {
 					mCorrectLetters++;
+					MusicUtils.playSound(R.raw.correct);
+					
 					String temp = Messages.msgPath(true, true);
 					Crouton.showText(mActivity, temp, Style.CONFIRM);
 					speakText(temp);
@@ -884,6 +886,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 			} else {
 				vibrate(mContext, 500);
 				mIncorrectLetters++;
+				MusicUtils.playSound(R.raw.incorrect);
 				String temp = Messages.msgPath(false, true);
 				Crouton.showText(mActivity, temp, Style.ALERT);
 				speakText(temp);
@@ -891,6 +894,17 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 				if (mLevel >= 8) {
 					startShakeAnim(mContext, llEditAnswer);
 					edtAnswer.setTextColor(getResources().getColor(R.color.material_red_500_color_code));
+					
+					// update tree
+					if (mIncorrectLetters == 1) {
+						ivTree.setImageResource(R.drawable.tree_three);
+					} else if (mIncorrectLetters == 2) {
+						ivTree.setImageResource(R.drawable.tree_two);
+					} else if (mIncorrectLetters == 3) {
+						ivTree.setImageResource(R.drawable.tree_one);
+					} else {
+						ivTree.setImageResource(R.drawable.tree_zero);
+					}
 				} else {
 					// add color marker that letter is incorrect
 					if (pos == 0) {
@@ -928,21 +942,9 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 					arrySelected[pos] = true;
 				}
 
-				if (mLevel == 0) {
-					if (mIncorrectLetters >= 4) {
-						// level failed
-						launchPrevActivity(2500);
-					}
-				} else if (mLevel == 4) {
-					if (mIncorrectLetters >= 3) {
-						// level failed
-						launchPrevActivity(2500);
-					}
-				} else {
-					if (mIncorrectLetters >= 4) {
-						// level failed
-						launchPrevActivity(2500);
-					}
+				if (mIncorrectLetters >= 4) {
+					// level failed
+					launchPrevActivity(2500);
 				}
 				
 				if (isController) {
@@ -1145,8 +1147,15 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		// TODO Auto-generated method stub
 		super.onResume();
 		startAnimations();
+		
 		if (sharedPref.getBooleanPref(Constants.PREF_MUSIC, true)) {
-			MusicUtils.start(mContext, 1);
+			if (mLevel == 0) {
+				MusicUtils.start(mContext, 3);
+			} else if (mLevel == 4) {
+				MusicUtils.start(mContext, 4);
+			} else {
+				MusicUtils.start(mContext, 5);
+			}
 		}
 	}
 

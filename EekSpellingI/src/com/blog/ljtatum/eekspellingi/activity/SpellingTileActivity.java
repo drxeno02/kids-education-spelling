@@ -898,6 +898,7 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 				// set letter to correct position
 				for (int i = 0; i < arryMatch.size(); i++) {
 					mCorrectLetters++;
+					MusicUtils.playSound(R.raw.correct);
 					if (arryMatch.get(i) == 0) {
 						tvAnswer1.setText(c);
 						startShimmerAnimation(tvAnswer1);
@@ -941,6 +942,7 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 		} else {
 			vibrate(mContext, 500);
 			mIncorrectLetters++;
+			MusicUtils.playSound(R.raw.incorrect);
 			String temp = Messages.msgPath(false, true);
 			Crouton.showText(mActivity, temp, Style.ALERT);
 			speakText(temp);
@@ -1201,8 +1203,15 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 		// TODO Auto-generated method stub
 		super.onResume();
 		startAnimations();
+		
 		if (sharedPref.getBooleanPref(Constants.PREF_MUSIC, true)) {
-			MusicUtils.start(mContext, 1);
+			if (mLevel == 1) {
+				MusicUtils.start(mContext, 3);
+			} else if (mLevel == 5) {
+				MusicUtils.start(mContext, 4);
+			} else {
+				MusicUtils.start(mContext, 5);
+			}
 		}
 	}
 

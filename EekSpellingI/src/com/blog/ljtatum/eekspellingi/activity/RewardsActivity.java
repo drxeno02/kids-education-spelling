@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.GridView;
@@ -28,7 +27,10 @@ public class RewardsActivity extends BaseActivity implements OnClickListener {
 	private int dimens;
 	private final int NUM_COLS = 3;
 	private int[] arryImg = {R.drawable.reward_one, R.drawable.reward_two,
-			R.drawable.reward_three, R.drawable.reward_four, R.drawable.reward_five};
+			R.drawable.reward_three, R.drawable.reward_four, R.drawable.reward_five,
+			R.drawable.reward_six, R.drawable.reward_seven, R.drawable.reward_eight,
+			R.drawable.reward_nine, R.drawable.reward_ten, R.drawable.reward_eleven,
+			R.drawable.reward_twelve};
 	private GridView gv;
 	private ShareAppUtil shareApp;
 	private SharedPref sharedPref;
@@ -113,7 +115,7 @@ public class RewardsActivity extends BaseActivity implements OnClickListener {
 		super.onResume();
 		startAnimations();
 		if (sharedPref.getBooleanPref(Constants.PREF_MUSIC, true)) {
-			MusicUtils.start(mContext, 1);
+			MusicUtils.start(mContext, 2);
 		}
 	}
 
@@ -133,6 +135,13 @@ public class RewardsActivity extends BaseActivity implements OnClickListener {
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
+		if (sharedPref.getBooleanPref(Constants.PREF_MUSIC, true)) {
+			try {
+				MusicUtils.stop();
+			} catch (IllegalStateException ise) {
+				ise.printStackTrace();
+			}
+		}
 		super.onBackPressed();
 		// transition animation
 		overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);

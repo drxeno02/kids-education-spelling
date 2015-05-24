@@ -37,14 +37,17 @@ public class MusicUtils {
 	 * @return
 	 */
 	private static int convertMusicId(int bgmKeyStore) {
-//		if (bgmKeyStore == 1) {
-//			return R.raw.bgm01;
-//		} else if (bgmKeyStore == 2) {
-//			return R.raw.bgm02;
-//		} else if (bgmKeyStore == 3) {
-//			return R.raw.bgm03;
-//		}
-
+		if (bgmKeyStore == 1) {
+			return R.raw.bgm_main;
+		} else if (bgmKeyStore == 2) {
+			return R.raw.bgm_rewards;
+		} else if (bgmKeyStore == 3) {
+			return R.raw.bgm_level_easy;
+		} else if (bgmKeyStore == 4) {
+			return R.raw.bgm_level_medium;
+		} else if (bgmKeyStore == 5) {	
+			return R.raw.bgm_level_hard;
+		}
 		return 0;
 	}
 
@@ -87,9 +90,15 @@ public class MusicUtils {
 		} else {
 			Logger.v(TAG, "Initial start of music(" + currentMusic + ")");
 			if (mBgmKeyStore == 1) {
- 				gameBgm = MediaPlayer.create(context, R.raw.bgm01);
+ 				gameBgm = MediaPlayer.create(context, R.raw.bgm_main);
  			} else if (mBgmKeyStore == 2) {
- 				gameBgm = MediaPlayer.create(context, R.raw.bgm02);
+ 				gameBgm = MediaPlayer.create(context, R.raw.bgm_rewards);
+ 			} else if (mBgmKeyStore == 3) {	
+ 				gameBgm = MediaPlayer.create(context, R.raw.bgm_level_easy);
+ 			} else if (mBgmKeyStore == 4) {
+ 				gameBgm = MediaPlayer.create(context, R.raw.bgm_level_medium);
+ 			} else if (mBgmKeyStore == 5) {	
+ 				gameBgm = MediaPlayer.create(context, R.raw.bgm_level_hard);
  			}
 			
 			try {
@@ -178,7 +187,7 @@ public class MusicUtils {
 	 * @param context
 	 * @param sound
 	 */
-	public void playSound(int sound) {
+	public static void playSound(int sound) {
 		MediaPlayer mp = MediaPlayer.create(mContext, sound);
 		mp.setVolume((float) .5, (float) .5);
 		mp.start();

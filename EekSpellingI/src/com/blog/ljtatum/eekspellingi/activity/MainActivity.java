@@ -114,7 +114,16 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		case R.id.btn_learn:
 			goToActivityAnimLeft(mContext, SelectActivity.class, -1);
 			break;
-		case R.id.btn_rewards:
+		case R.id.btn_rewards:	
+			// prepare music to change
+			if (sharedPref.getBooleanPref(Constants.PREF_MUSIC, true)) {
+				try {
+					MusicUtils.stop();
+				} catch (IllegalStateException ise) {
+					ise.printStackTrace();
+				}
+			}		
+			
 			goToActivityAnimLeft(mContext, RewardsActivity.class, -1);
 			break;
 		case R.id.btn_extras:
