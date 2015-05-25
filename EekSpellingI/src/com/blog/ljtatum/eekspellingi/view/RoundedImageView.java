@@ -22,7 +22,6 @@ import android.widget.ImageView;
  * @author Tatum
  *
  */
-@SuppressWarnings("UnusedDeclaration")
 public class RoundedImageView extends ImageView {
 	private static final String TAG = RoundedImageView.class.getSimpleName();
 

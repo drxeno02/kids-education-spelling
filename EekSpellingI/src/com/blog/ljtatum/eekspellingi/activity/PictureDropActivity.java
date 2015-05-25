@@ -49,6 +49,7 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 	private Activity mActivity;
 	private Context mContext;
 
+	private RelativeLayout rlParent;
 	private FrameLayout dragToView;
 	private TextView tvHint;
 	private ImageView ivBack, ivBanner, ivDrag;
@@ -95,6 +96,7 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 		mHandler = new Handler();
 		arryPrev = new ArrayList<String>();
 		r = new Random();
+		rlParent = (RelativeLayout) findViewById(R.id.rl_parent);
 		dragToView = (FrameLayout) findViewById(R.id.drag_view);
 		v1 = findViewById(R.id.v1);
 		v2 = findViewById(R.id.v2);
@@ -274,7 +276,7 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 		    							String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
 		    							String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + (mLevel+4));
 		    							int lvCount = sharedPref.getIntPref(strPrefName, 0);				
-		    							if (lvCount >= 3) {
+		    							if (lvCount >= 3 && mLevel < 8) {
 		    								boolean isUnlock = sharedPref.getBooleanPref(strPrefNameUnlock, false);
 		    								if (!isUnlock) {
 		    									isLvUnlockRecent = true;
@@ -292,7 +294,7 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 										RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 										params.addRule(RelativeLayout.CENTER_HORIZONTAL);								
 										ivDrag.setLayoutParams(params);
-
+										rlParent.addView(ivDrag);
 										generateLevel();
 		    						}   				
 		    					}
@@ -598,8 +600,7 @@ public class PictureDropActivity extends BaseActivity implements OnClickListener
 		// set text message
 		if (isLvUnlockRecent) {
 			int levelUnlocked = mLevel + 4;
-			tvMeta.setText("Level " + levelUnlocked + 
-					" is now unlocked! More difficult levels will have more challenging words to learn");
+			tvMeta.setText("Level " + levelUnlocked + " is now unlocked!");
 		} else {
 			tvMeta.setText("Good job! Keep practicing to learn new words");
 		}

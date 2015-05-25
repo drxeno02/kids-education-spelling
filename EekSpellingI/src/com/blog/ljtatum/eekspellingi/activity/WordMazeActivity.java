@@ -56,7 +56,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8, tvAnswer9;
 	private Random r;
 	private int mLevel = 0, mSolvedWords = 0, mSteps = 0, xStart = 0,
-			yStart = 0, xEnd = 0, yEnd = 0, currPos = 0;
+			yStart = 0, xEnd = 0, yEnd = 0, currPos = 0, downDistance = 0;
 	private String mWord;
 	private boolean isController = false, isLvUnlockRecent = false;
 	private List<String> mArryWordBank, arryPrev;
@@ -314,38 +314,108 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			// prevent register of action until animation ends
 			isController = true;
 			if (pos == 1 && mSteps == 0 && pos == arryPath.get(mSteps)) {
+				Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //right");
 				setRightCords(pos);
 			} else if (pos == 2 && mSteps == 1 && pos == arryPath.get(mSteps)) {
+				Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //right");
 				setRightCords(pos);
 			} else if (pos == 3 && mSteps == 2 && pos == arryPath.get(mSteps)) {
+				Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //right");
 				setRightCords(pos);
 			} else if (pos == 4 && mSteps == 1 && pos == arryPath.get(mSteps)) {
+				Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //down");
 				setDownCords(pos);
 			} else if (pos == 5 && mSteps == 2 && pos == arryPath.get(mSteps)) {
 				if (currPos == 2) {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //down");
 					setDownCords(pos); // from pos 2
 				} else {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //right");
 					setRightCords(pos); // from pos 4
 				}	
 			} else if (pos == 6 && mSteps == 3 && pos == arryPath.get(mSteps)) {
 				if (currPos == 3) {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //down");
 					setDownCords(pos); // from pos 3
 				} else {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //right");
 					setRightCords(pos); // from pos 5
 				}
 			} else if (pos == 7 && mSteps == 2 && pos == arryPath.get(mSteps)) {
+				Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //down");
 				setDownCords(pos);
 			} else if (pos == 8 && mSteps == 3 && pos == arryPath.get(mSteps)) {
 				if (currPos == 5) {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //down");
 					setDownCords(pos); // from pos 5
 				} else {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //right");
 					setRightCords(pos); // from pos 7
 				}
 			} else if (pos == 9 && mSteps == 4 && pos == arryPath.get(mSteps)) {
 				if (currPos == 6) {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //down");
 					setDownCords(pos); // from pos 6
 				} else {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //right");
 					setRightCords(pos); // from pos 8
+				}
+			} else if (pos == 10 && mSteps == 3 && pos == arryPath.get(mSteps)) {
+				Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //down");
+				setDownCords(pos);
+			} else if (pos == 11 && mSteps == 4 && pos == arryPath.get(mSteps))	{
+				if (currPos == 8) {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //down");
+					setDownCords(pos); // from pos 8
+				} else {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //right");
+					setRightCords(pos); // from pos 10
+				}
+			} else if (pos == 12 && mSteps == 5 && pos == arryPath.get(mSteps))	{
+				if (currPos == 9) {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //down");
+					setDownCords(pos); // from pos 9
+				} else {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //right");
+					setRightCords(pos); // from pos 11
+				}
+			} else if (pos == 13 && mSteps == 4 && pos == arryPath.get(mSteps)) {
+				Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //down");
+				setDownCords(pos);
+			} else if (pos == 14 && mSteps == 5 && pos == arryPath.get(mSteps)) {
+				if (currPos == 11) {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //down");
+					setDownCords(pos); // from pos 11
+				} else {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //right");
+					setRightCords(pos); // from pos 13
+				}
+			} else if (pos == 15 && mSteps == 6 && pos == arryPath.get(mSteps)) {
+				if (currPos == 12) {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //down");
+					setDownCords(pos); // from pos 12
+				} else {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //right");
+					setRightCords(pos); // from pos 14
+				}
+			} else if (pos == 16 && mSteps == 5 && pos == arryPath.get(mSteps)) {
+				Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //down");
+				setDownCords(pos);
+			} else if (pos == 17 && mSteps == 6 && pos == arryPath.get(mSteps))	{
+				if (currPos == 14) {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //down");
+					setDownCords(pos); // from pos 14
+				} else {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //right");
+					setRightCords(pos); // from pos 16
+				}
+			} else if (pos == 18 && mSteps == 7 && pos == arryPath.get(mSteps)) {
+				if (currPos == 15) {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //down");
+					setDownCords(pos); // from pos 15
+				} else {
+					Logger.v("TEST", "pos: " + pos + " //steps: " + mSteps + " //right");
+					setRightCords(pos); // from pos 17
 				}
 			}
 			
@@ -459,165 +529,114 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 
 		if (currPos == 1 && pos == 4) {
 			currPos = 4;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll1.getBottom() - ll1.getTop();
-			}	
+			yEnd = ll1.getBottom() - ll1.getTop();	
+			downDistance = yEnd;
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		} else if (currPos == 2 && pos == 5) {
 			currPos = 5;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll1.getBottom() - ll1.getTop();
-			}	
+			yEnd = ll1.getBottom() - ll1.getTop();	
+			downDistance = yEnd;
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		} else if (currPos == 3 && pos == 6) {			
 			currPos = 6;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll1.getBottom() - ll1.getTop();
-			}	
+			yEnd = ll1.getBottom() - ll1.getTop();	
+			downDistance = yEnd;
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		} else if (currPos == 4 && pos == 7) {
 			currPos = 7;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll2.getBottom() - ll2.getTop();
-			}	
+			yEnd = downDistance*2;	
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		} else if (currPos == 5 && pos == 8) {
 			currPos = 8;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll2.getBottom() - ll2.getTop();
-			}	
+			yEnd = downDistance*2;	
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		} else if (currPos == 6 && pos == 9) {
 			currPos = 9;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll2.getBottom() - ll2.getTop();
-			}	
+			yEnd = downDistance*2;
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		} else if (currPos == 7 && pos == 10) {
 			currPos = 10;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll3.getBottom() - ll3.getTop();
-			}	
+			yEnd = downDistance*3;	
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		} else if (currPos == 8 && pos == 11) {			
 			currPos = 11;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll3.getBottom() - ll3.getTop();
-			}	
+			yEnd = downDistance*3;	
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		} else if (currPos == 9 && pos == 12) {
 			currPos = 12;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll3.getBottom() - ll3.getTop();
-			}	
+			yEnd = downDistance*3;	
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		} else if (currPos == 10 && pos == 13) {
 			currPos = 13;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll4.getBottom() - ll4.getTop();
-			}	
+			yEnd = downDistance*4;	
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		} else if (currPos == 11 && pos == 14) {
 			currPos = 14;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll4.getBottom() - ll4.getTop();
-			}	
+			yEnd = downDistance*4;	
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		} else if (currPos == 12 && pos == 15) {
 			currPos = 15;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll4.getBottom() - ll4.getTop();
-			}	
+			yEnd = downDistance*4;	
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		} else if (currPos == 13 && pos == 16) {
 			currPos = 16;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll5.getBottom() - ll5.getTop();
-			}	
+			yEnd = downDistance*5;	
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		} else if (currPos == 14 && pos == 17) {
 			currPos = 17;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll5.getBottom() - ll5.getTop();
-			}	
+			yEnd = downDistance*5;	
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		} else if (currPos == 15 && pos == 18) {
 			currPos = 18;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll5.getBottom() - ll5.getTop();
-			}	
+			yEnd = downDistance*5;	
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();			
 		} else if (currPos == 16 && pos == 19) {
 			currPos = 19;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll6.getBottom() - ll6.getTop();
-			}	
+			yEnd = downDistance*6;	
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		} else if (currPos == 17 && pos == 20) {
 			currPos = 20;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll6.getBottom() - ll6.getTop();
-			}	
+			yEnd = downDistance*6;	
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		} else if (currPos == 18 && pos == 21) {
 			currPos = 21;
-			if (yEnd > 0) {
-				yEnd = yEnd + yEnd;
-			} else {
-				yEnd = ll6.getBottom() - ll6.getTop();
-			}	
+			yEnd = downDistance*6;	
 			mSteps++;
+			Logger.e("TEST", "mSteps: " + mSteps + " yEnd: " + yEnd);
 			startMovement();
 		}
 	}
@@ -738,14 +757,14 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			mHandler.postDelayed(new Runnable() {
 				@Override
 				public void run() {	
-			
+					speakText(mWord);
 					if ( mSolvedWords>= 3) {
 						// TODO: play sounds, animations, messaging and add rewards for completing level
 						isLvUnlockRecent = false;
 						String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
 						String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + (mLevel+4));
 						int lvCount = sharedPref.getIntPref(strPrefName, 0);				
-						if (lvCount >= 3) {
+						if (lvCount >= 3 && mLevel < 8) {
 							boolean isUnlock = sharedPref.getBooleanPref(strPrefNameUnlock, false);
 							if (!isUnlock) {
 								isLvUnlockRecent = true;
@@ -767,11 +786,10 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 							public void run() {
 								generateLevel();
 							}
-						}, 3000);
-					}
-			
+						}, 2500);
+					}		
 				}
-			}, 3800);				
+			}, 3500);				
 		}
 	}
 	
@@ -779,9 +797,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 	 * Method is used to speak and animate the completed word
 	 */
 	private void reviewWord() {
-		Crouton.showText(mActivity, mWord, Style.INFO);
-		speakText(mWord);
-		
+		Crouton.showText(mActivity, mWord, Style.INFO);		
 		if (tvAnswer1.getVisibility() == View.VISIBLE) {
 			startShimmerAnimation(tvAnswer1);
 		} 
@@ -849,8 +865,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		// set text message
 		if (isLvUnlockRecent) {
 			int levelUnlocked = mLevel + 4;
-			tvMeta.setText("Level " + levelUnlocked + 
-					" is now unlocked! More difficult levels will have more challenging words to learn");
+			tvMeta.setText("Level " + levelUnlocked + " is now unlocked!");
 		} else {
 			tvMeta.setText("Good job! Keep practicing to learn new words");
 		}
@@ -950,6 +965,7 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		xEnd = 0;
 		yStart = 0;
 		yEnd = 0;
+		downDistance = 0;
 		TranslateAnimation animation = new TranslateAnimation(xStart, xEnd,
 				yStart, yEnd);
 		animation.setDuration(0);
@@ -1351,12 +1367,12 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 			Utils.setViewVisibility(true, v1, v2, v3, v4, v5, v6, v7, v8,
 					tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5,
 					tvAnswer6, tvAnswer7, tvAnswer8, pos1, pos2, pos3, pos4, 
-					pos5, pos6, pos7, pos8, pos9,pos10, pos11, pos12, pos13, 
+					pos5, pos6, pos7, pos8, pos9, pos10, pos11, pos12, pos13, 
 					pos14, pos15, pos16, pos17, pos18, end5, ll1, ll2, ll3,
 					ll4, ll5, ll6);
 
 			tv1.setText(String.valueOf(arryLetters[0]));
-			pos15.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
+			pos1.setBackgroundColor(getResources().getColor(R.color.material_yellow_500_color_code));
 			arryPath.add(1);
 			int temp = r.nextInt(7);		
 			if (temp == 0) {
@@ -1705,9 +1721,9 @@ public class WordMazeActivity extends BaseActivity implements OnClickListener {
 		
 		// clear maze letter views
 		Utils.clearText(tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10,
-				tv11, tv12, tv13, tv14, tv15, tvAnswer1, tvAnswer2, tvAnswer3,
-				tvAnswer4, tvAnswer5, tvAnswer6, tvAnswer7, tvAnswer8,
-				tvAnswer9);
+				tv11, tv12, tv13, tv14, tv15, tv16, tv17, tv18, tv19, tv20, tv21,
+				tvAnswer1, tvAnswer2, tvAnswer3, tvAnswer4, tvAnswer5, tvAnswer6, 
+				tvAnswer7, tvAnswer8, tvAnswer9);
 
 		// reset maze views
 		Utils.setViewVisibility(false, v1, v2, v3, v4, v5, v6, v7, v8, v9,

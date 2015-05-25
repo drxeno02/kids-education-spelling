@@ -7,8 +7,6 @@
     android:orientation="vertical"
     tools:context="${packageName}.${activityClass}"
     tools:ignore="UselessParent,contentDescription" >
-    
-
 
     <RelativeLayout
         android:id="@+id/rl"
@@ -64,287 +62,286 @@
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_20" />
     </LinearLayout>
-    
-            <RelativeLayout
+
+    <RelativeLayout
         android:id="@+id/rl_parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/ll"
         android:orientation="vertical" >
 
-    <ImageView
-        android:id="@+id/iv_drag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"     
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_launcher" />
-
-    <LinearLayout
-        android:id="@+id/ll_drag"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_above="@+id/v_sea"
-        android:background="@drawable/picture_drop_boat"
-        android:orientation="vertical" >
-
-        <FrameLayout
-            android:id="@+id/drag_view"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/green_overlay" />
-
-    </LinearLayout>
-
-    <View
-        android:id="@+id/v_sea"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/blue_sea" />
-
-    <LinearLayout
-        android:id="@+id/ll_txt_answer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/v_sea"
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:weightSum="0.9" >
-
-        <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
-            android:id="@+id/tv_answer_1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="0.1"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_size_28"
-            android:visibility="gone" />
-
-        <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
-            android:id="@+id/tv_answer_2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="0.1"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_size_28"
-            android:visibility="gone" />
-
-        <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
-            android:id="@+id/tv_answer_3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="0.1"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_size_28"
-            android:visibility="gone" />
-
-        <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
-            android:id="@+id/tv_answer_4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="0.1"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_size_28"
-            android:visibility="gone" />
-
-        <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
-            android:id="@+id/tv_answer_5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="0.1"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_size_28"
-            android:visibility="gone" />
-
-        <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
-            android:id="@+id/tv_answer_6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="0.1"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_size_28"
-            android:visibility="gone" />
-
-        <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
-            android:id="@+id/tv_answer_7"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="0.1"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_size_28"
-            android:visibility="gone" />
-
-        <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
-            android:id="@+id/tv_answer_8"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="0.1"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_size_28"
-            android:visibility="gone" />
-
-        <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
-            android:id="@+id/tv_answer_9"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_weight="0.1"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_size_28"
-            android:visibility="gone" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ll_txt_answer"
-        android:layout_marginTop="6dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:weightSum="0.9" >
-
-        <View
-            android:id="@+id/v1"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="0.1"
-            android:background="@color/black"
-            android:visibility="gone" />
-
-        <View
-            android:id="@+id/v2"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="0.1"
-            android:background="@color/black"
-            android:visibility="gone" />
-
-        <View
-            android:id="@+id/v3"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="0.1"
-            android:background="@color/black"
-            android:visibility="gone" />
-
-        <View
-            android:id="@+id/v4"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="0.1"
-            android:background="@color/black"
-            android:visibility="gone" />
-
-        <View
-            android:id="@+id/v5"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="0.1"
-            android:background="@color/black"
-            android:visibility="gone" />
-
-        <View
-            android:id="@+id/v6"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="0.1"
-            android:background="@color/black"
-            android:visibility="gone" />
-
-        <View
-            android:id="@+id/v7"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="0.1"
-            android:background="@color/black"
-            android:visibility="gone" />
-
-        <View
-            android:id="@+id/v8"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="0.1"
-            android:background="@color/black"
-            android:visibility="gone" />
-
-        <View
-            android:id="@+id/v9"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_weight="0.1"
-            android:background="@color/black"
-            android:visibility="gone" />
-    </LinearLayout>
-    <!-- </LinearLayout> -->
-
-
-    <!-- Banner size: 320x65 -->
-
-    <LinearLayout
-        android:id="@+id/ll_banner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical" >
-
         <ImageView
-            android:id="@+id/iv_banner"
-            android:layout_width="320dp"
-            android:layout_height="65dp"
-            android:background="@drawable/banner_batb" />
-    </LinearLayout>
+            android:id="@+id/iv_drag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher" />
+
+        <LinearLayout
+            android:id="@+id/ll_drag"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_above="@+id/v_sea"
+            android:background="@drawable/picture_drop_boat"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:id="@+id/drag_view"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/green_overlay" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/v_sea"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/blue_sea" />
+
+        <LinearLayout
+            android:id="@+id/ll_txt_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/v_sea"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="0.9" >
+
+            <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
+                android:id="@+id/tv_answer_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28"
+                android:visibility="gone" />
+
+            <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
+                android:id="@+id/tv_answer_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28"
+                android:visibility="gone" />
+
+            <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
+                android:id="@+id/tv_answer_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28"
+                android:visibility="gone" />
+
+            <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
+                android:id="@+id/tv_answer_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28"
+                android:visibility="gone" />
+
+            <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
+                android:id="@+id/tv_answer_5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28"
+                android:visibility="gone" />
+
+            <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
+                android:id="@+id/tv_answer_6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28"
+                android:visibility="gone" />
+
+            <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
+                android:id="@+id/tv_answer_7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28"
+                android:visibility="gone" />
+
+            <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
+                android:id="@+id/tv_answer_8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28"
+                android:visibility="gone" />
+
+            <com.blog.ljtatum.eekspellingi.anim.ShimmerTextView
+                android:id="@+id/tv_answer_9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_28"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_txt_answer"
+            android:layout_marginTop="6dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="0.9" >
+
+            <View
+                android:id="@+id/v1"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.1"
+                android:background="@color/black"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/v2"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.1"
+                android:background="@color/black"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/v3"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.1"
+                android:background="@color/black"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/v4"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.1"
+                android:background="@color/black"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/v5"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.1"
+                android:background="@color/black"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/v6"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.1"
+                android:background="@color/black"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/v7"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.1"
+                android:background="@color/black"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/v8"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.1"
+                android:background="@color/black"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/v9"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_weight="0.1"
+                android:background="@color/black"
+                android:visibility="gone" />
+        </LinearLayout>
+        <!-- </LinearLayout> -->
+
+
+        <!-- Banner size: 320x65 -->
+
+        <LinearLayout
+            android:id="@+id/ll_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/iv_banner"
+                android:layout_width="320dp"
+                android:layout_height="65dp"
+                android:background="@drawable/banner_batb" />
+        </LinearLayout>
     </RelativeLayout>
 
 </RelativeLayout>

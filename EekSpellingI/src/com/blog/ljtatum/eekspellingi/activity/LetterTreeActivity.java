@@ -974,7 +974,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 							String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
 							String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + (mLevel+4));
 							int lvCount = sharedPref.getIntPref(strPrefName, 0);				
-							if (lvCount >= 3) {
+							if (lvCount >= 3 && mLevel < 8) {
 								boolean isUnlock = sharedPref.getBooleanPref(strPrefNameUnlock, false);
 								if (!isUnlock) {
 									isLvUnlockRecent = true;
@@ -992,8 +992,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 									generateLevel();
 								}
 							}, 2500);
-						}
-				
+						}			
 					}
 				}, 4000);				
 			}
@@ -1085,8 +1084,7 @@ public class LetterTreeActivity extends BaseActivity implements OnClickListener 
 		// set text message
 		if (isLvUnlockRecent) {
 			int levelUnlocked = mLevel + 4;
-			tvMeta.setText("Level " + levelUnlocked + 
-					" is now unlocked! More difficult levels will have more challenging words to learn");
+			tvMeta.setText("Level " + levelUnlocked + " is now unlocked!");
 		} else {
 			tvMeta.setText("Good job! Keep practicing to learn new words");
 		}

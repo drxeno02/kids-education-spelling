@@ -1043,14 +1043,14 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 			mHandler.postDelayed(new Runnable() {
 				@Override
 				public void run() {				
-			
+					speakText(mWord);
 					if (mSolvedWords >= 3) {
 						// TODO: play sounds, animations, messaging and add rewards for completing level
 						boolean isLvUnlockRecent = false;
 						String strPrefName = Constants.LV_COUNT.concat("_" + mLevel);
 						String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + (mLevel+4));
 						int lvCount = sharedPref.getIntPref(strPrefName, 0);				
-						if (lvCount >= 3) {
+						if (lvCount >= 3 && mLevel < 8) {
 							boolean isUnlock = sharedPref.getBooleanPref(strPrefNameUnlock, false);
 							if (!isUnlock) {
 								isLvUnlockRecent = true;
@@ -1068,10 +1068,9 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 								generateLevel();
 							}
 						}, 2500);
-					}
-			
+					}		
 				}
-			}, 4200);			
+			}, 4000);			
 		}	
 	}
 	
@@ -1080,8 +1079,6 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 	 */
 	private void reviewWord() {
 		Crouton.showText(mActivity, mWord, Style.INFO);
-		speakText(mWord);
-		
 		if (tvAnswer1.getVisibility() == View.VISIBLE) {
 			startShimmerAnimation(tvAnswer1);
 		} 
@@ -1162,8 +1159,7 @@ public class SpellingTileActivity extends BaseActivity implements OnClickListene
 		// set text message
 		if (isLvUnlockRecent) {
 			int levelUnlocked = mLevel + 4;
-			tvMeta.setText("Level " + levelUnlocked + 
-					" is now unlocked! More difficult levels will have more challenging words to learn");
+			tvMeta.setText("Level " + levelUnlocked + " is now unlocked!");
 		} else {
 			tvMeta.setText("Good job! Keep practicing to learn new words");
 		}

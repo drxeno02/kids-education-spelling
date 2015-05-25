@@ -8,8 +8,6 @@ import com.blog.ljtatum.eekspellingi.constants.Constants;
 import com.blog.ljtatum.eekspellingi.sharedpref.SharedPref;
 
 public class Messages {
-	private static final String TAG = Messages.class.getSimpleName();
-
 	private static String metaStr;
 
 	/**
@@ -25,7 +23,6 @@ public class Messages {
 		String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + level);
 		int lvCount = sharedPref.getIntPref(strPrefNameCount, 0);
 		boolean isUnlocked = sharedPref.getBooleanPref(strPrefNameUnlock, false);
-		Random r = new Random();
 
 		if (!isUnlocked) {
 			metaDesc = "Level is currently locked";

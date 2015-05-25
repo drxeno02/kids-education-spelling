@@ -20,7 +20,6 @@ import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView.ScaleType;
 
-@SuppressWarnings("UnusedDeclaration")
 public class RoundedDrawable extends Drawable {
 	  private static final String TAG = RoundedDrawable.class.getSimpleName();
 	  

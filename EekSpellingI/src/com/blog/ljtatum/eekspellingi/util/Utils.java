@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.blog.ljtatum.eekspellingi.R;
 
-@SuppressWarnings("unused")
 public class Utils {
 
 	private static int bannerId;
