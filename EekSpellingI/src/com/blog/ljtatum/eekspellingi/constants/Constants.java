@@ -3,8 +3,8 @@ package com.blog.ljtatum.eekspellingi.constants;
 public class Constants {
 
 	// debuggable mode
-	public static final boolean DEBUG = true;
-	public static final boolean DEBUG_HIGH_VERBOSITY = true;
+	public static final boolean DEBUG = false;
+	public static final boolean DEBUG_HIGH_VERBOSITY = false;
 
 	// constants
 	public static final String LV_SELECTED = "lvSelected";
