@@ -120,7 +120,6 @@ public class BaseActivity extends Activity implements OnInitListener {
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.MARKET + pkgName)));
 		} catch (android.content.ActivityNotFoundException anfe) {
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.GOOGLE_PLAY + pkgName)));
-
 		}
 	}
 

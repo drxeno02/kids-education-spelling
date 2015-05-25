@@ -72,9 +72,12 @@ public class AppRater {
 		b1.setBackgroundResource(R.drawable.custom_button_a);
 		b1.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri
-						.parse("market://details?id=" + Constants.PKG_NAME_SPELLING)));
-				dialog.dismiss();
+				try {
+					mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.MARKET + Constants.PKG_NAME_SPELLING)));
+				} catch (android.content.ActivityNotFoundException anfe) {
+					mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.GOOGLE_PLAY + Constants.PKG_NAME_SPELLING)));
+				}
+				dialog.dismiss();				
 			}
 		});
 		ll.addView(b1);
