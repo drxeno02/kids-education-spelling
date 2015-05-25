@@ -68,6 +68,9 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		btnRewards.setOnClickListener(this);
 		btnExtras.setOnClickListener(this);
 		ivBanner.setOnClickListener(this);
+		
+		// rate this app
+		AppRater.rateThisApp(this);
 
 		// set default level settings
 		boolean isDefaultLevelSet = sharedPref.getBooleanPref(Constants.PREF_DEFAULT_LV_SETTINGS, false);

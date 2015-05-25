@@ -18,6 +18,7 @@ public class Constants {
 	public static final String REWARDS = "rewards";
 
 	// app store constants
+	public static final String PKG_NAME_SPELLING = "com.blog.ljtatum.eekspellingi";
 	public static final String PKG_NAME_BANANA = "biz.jordanmann.BananaAndTheBeat";
 	public static final String PKG_NAME_MATH = "com.blog.ljtatum.eekmathi";
 	public static final String PKG_NAME_ELEMENTS = "com.blog.ljtatum.elements";
