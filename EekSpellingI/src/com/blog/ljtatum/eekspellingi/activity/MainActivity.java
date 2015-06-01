@@ -206,7 +206,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 				sharedPref.setPref(strPrefNameUnlock, true);
 			} else {
 				if (Constants.DEBUG) {
-					sharedPref.setPref(strPrefNameUnlock, true);
+					sharedPref.setPref(strPrefNameUnlock, false);
 				} else {
 					sharedPref.setPref(strPrefNameUnlock, false);
 				}				

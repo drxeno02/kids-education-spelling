@@ -14,6 +14,9 @@
         <item>boy</item>
 		<item>car</item>
 		<item>toy</item>
+		<item>pen</item>
+		<item>cup</item>
+		<item>bag</item>
 
         <!-- four letter words -->
         <item>gate</item>
@@ -42,12 +45,13 @@
         <item>paper</item>
         <item>chain</item>      
         <item>house</item>
-        <item>stone</item>
+        <item>stove</item>
         <item>table</item>
 		<item>money</item>
 		<item>water</item>
 		<item>fruit</item>
 		<item>ocean</item> 
+		<item>plate</item>
 
         <!-- six letter words -->
         <item>carpet</item>
@@ -67,6 +71,8 @@
         <item>faucet</item>
         <item>pencil</item>
         <item>cereal</item>
+        <item>crayon</item>
+        <item>staple</item>
 
         <!-- seven letter words -->
         <item>mailbox</item>
@@ -101,6 +107,7 @@
         <item>hardware</item>
         <item>clarinet</item>
 		<item>miracles</item>
+		<item>backpack</item>
 
         <!-- nine letter words -->
         <item>seashells</item>
@@ -148,6 +155,15 @@
         <item>russia</item>
         <item>canada</item>
         <item>fiji</item>
+        <item>utah</item>
+        <item>kansas</item>
+        <item>oregan</item>
+        <item>vermont</item>
+        <item>alabama</item>
+        <item>missouri</item>
+        <item>alaska</item>
+        <item>haiti</item>
+        <item>uruguay</item>
     </array>
     
     <array name="arryWordBankActions">
@@ -198,6 +214,7 @@
 		<item>knock</item>
 		<item>carry</item>
 		<item>build</item>
+		<item>coded</item>
 
         <!-- six letter words -->
         <item>recite</item>
@@ -210,6 +227,9 @@
 		<item>choose</item>
 		<item>handle</item>
 		<item>mowing</item>
+		<item>earned</item>
+		<item>edited</item>
+		<item>guided</item>
 
         <!-- seven letter words -->
         <item>promise</item>
@@ -217,12 +237,16 @@
 		<item>cherish</item>
 		<item>plowing</item>
 		<item>blowing</item>
+		<item>insured</item>
+		<item>focused</item>
+		<item>imposed</item>
 		
         <!-- eight letter words -->
         <item>building</item>
         <item>laughing</item>
         <item>spinning</item>
         <item>feasting</item>
+        <item>improved</item>
     </array>
     
     <array name="arryWordBankAnimals">
@@ -248,7 +272,12 @@
 		<item>alligator</item>
 		<item>giraffe</item>
 		<item>dolphin</item>
-		<item>chicken</item>
+		<item>camel</item>
+		<item>octopus</item>
+		<item>kitten</item>
+		<item>owl</item>
+		<item>wolf</item>
+		<item>turtle</item>
     </array>
     
     <array name="arryWordBankNumbers">
@@ -343,6 +372,8 @@
         <item>writer</item>
         <item>banker</item>
         <item>reporter</item>
+        <item>teacher</item>
+        <item>professor</item>
     </array>
     
     <array name="arryWordBankMath">

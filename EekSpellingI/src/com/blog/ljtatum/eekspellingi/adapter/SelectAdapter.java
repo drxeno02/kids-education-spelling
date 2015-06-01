@@ -73,8 +73,11 @@ public class SelectAdapter extends BaseAdapter {
 		if (position > 3) {
 			String strPrefNameUnlock = Constants.LV_UNLOCKED.concat("_" + position);
 			Logger.i(TAG, "pos: " + position + " // strPrefNameUnlock: " + strPrefNameUnlock);
+			Logger.i(TAG, "unlocked?: " + sharedPref.getBooleanPref(strPrefNameUnlock, false));
 			if (!sharedPref.getBooleanPref(strPrefNameUnlock, false)) {
 				holder.tvLock.setVisibility(View.VISIBLE);
+			} else {
+				holder.tvLock.setVisibility(View.GONE);
 			}
 		} else {
 			holder.tvLock.setVisibility(View.GONE);
